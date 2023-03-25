@@ -2,6 +2,7 @@
    import MistLogo from './svg-assets/MistLogo.svelte';
    import { 
       AnimationDesignCube, DesignBranding, 
+      // DevicesShowcase, 
       MistMediaLogo, 
       WebDesignFullStack, WebDesignFullStackColor, WebDevCodeStack 
    } from './svg-assets';
@@ -15,6 +16,7 @@
 
    const svgAssets: {[key:string]: any} = {
       AnimationDesignCube, DesignBranding, 
+      // DevicesShowcase, 
       MistMediaLogo, WebDesignFullStack, WebDesignFullStackColor, 
       WebDevCodeStack
    }
