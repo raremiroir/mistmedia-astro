@@ -2,12 +2,15 @@
 import Svg from "./Svg.svelte";
 
 export interface Props {
-	name: string;
-   width?: number;
+   logo?: boolean;
+   animIcon?: string;
+   svg?: string;
+
+   size?: number;
    klass?: string;
 }
 
-const { name, width, klass } = Astro.props;
+const { logo, animIcon, svg, size, klass } = Astro.props;
 ---
 
-<Svg name={name} width={width} class={klass}/>
+<Svg size={size} class={klass} logo={logo} animIcon={animIcon} svg={svg}/>
