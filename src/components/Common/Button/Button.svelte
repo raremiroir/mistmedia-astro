@@ -18,8 +18,10 @@
    export let loading: boolean = false;
 
    export let block: boolean = false;
-   export let flat: boolean = false;
    export let ripple: boolean = false;
+
+   export let flat: boolean = false;
+   export let bevel: boolean = false;
    
    export let rounded: boolean = false;
    export let circle: boolean = false;
@@ -68,7 +70,10 @@
    $: btnClass = `btn ${colorVariantClass} ${sizeClass} ${groupClass}`;
 
    // Add standard classes
-   $: btnClass += ` transition-all duration-200 ease-in-out overflow-hidden font-semibold tracking-wide`;
+   $: btnClass += ` transition-all duration-200 ease-in-out 
+                  overflow-hidden font-semibold tracking-wide 
+                  active:translate-y-0.5 active:!scale-[99%]`;
+
    // Define extra classes
    $: btnClass += disabled ? ' disabled' : '';
    $: btnClass += block ? ' w-full' : ' w-fit';
@@ -78,7 +83,27 @@
              : ' rounded-md';
    $: btnClass += circle ? ' !rounded-full' : '';
    $: btnClass += square ? ' aspect-square' : '';
-   $: btnClass += flat ? ' shadow-none' : ' shadow-md hover:shadow-lg focus:shadow-lg active:shadow-sm ';
+
+   $: if (flat) {
+      btnClass += ' shadow-none';
+   } else if (bevel) {
+      switch (size) {
+         case 'sm': btnClass += ' shadow-sm-noblur'; break;
+         case 'lg': btnClass += ' shadow-lg-noblur'; break;
+         case 'xl': btnClass += ' shadow-xl-noblur'; break;
+         default: btnClass += ' shadow-md-noblur'; break;
+      }
+      switch(color) {
+         case 'primary': btnClass += ' shadow-primary/40 hover:shadow-primary-600/40 dark:hover:shadow-primary-400/40'; break;
+         case 'secondary': btnClass += ' shadow-secondary/40 hover:shadow-secondary-600/40 dark:hover:shadow-secondary-400/40'; break;
+         case 'tertiary': btnClass += ' shadow-tertiary/40 hover:shadow-tertiary-600/40 dark:hover:shadow-tertiary-400/40'; break;
+         case 'success': btnClass += ' shadow-success/40 hover:shadow-success-600/40 dark:hover:shadow-success-400/40'; break;
+         case 'warning': btnClass += ' shadow-warning/40 hover:shadow-warning-600/40 dark:hover:shadow-warning-400/40'; break;
+         case 'error': btnClass += ' shadow-error/40 hover:shadow-error-600/40 dark:hover:shadow-error-400/40'; break;
+         case 'surface': btnClass += ' shadow-surface/40 hover:shadow-surface-600/40 dark:hover:shadow-surface-400/40'; break;
+         default: btnClass += ' shadow-gray-500/40 hover:shadow-gray-500/40'; break;
+      }
+   }
 </script>
 
 
