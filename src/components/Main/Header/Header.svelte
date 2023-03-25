@@ -1,7 +1,6 @@
 <script>
 	import HeaderLink from './HeaderLink.svelte';
-	import { SITE_TITLE } from '../../../consts';
-	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
    import Svg from '../../Media/Svg/Svg.svelte';
    import Button from '../../Common/Button/Button.svelte';
 
@@ -12,17 +11,13 @@ export let klass = '';
 export let width = '';
 
 </script>
-
-
-<!-- Might conflict with switch, dunno -->
-<!-- <svelte:head>{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}</svelte:head> -->
-
 <header class="
          flex flex-row w-full z-99
          justify-between items-center
          mb-8 fixed top-0 left-0 right-0
-			bg-gray-50 dark:bg-surface-800 
-			py-4 {klass}">
+			backdrop-blur-md
+			bg-surface-100/20	 dark:bg-surface-800/20 
+			py-6 {klass}">
 	<div class="flex flex-row {width} justify-between items-center mx-auto">
 		<Button variant="minimal" flat href="/">
 			<Svg logo width={150} />
