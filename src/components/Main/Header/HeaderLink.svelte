@@ -10,7 +10,14 @@ export { klass as class};
 $: active = href === currentPath || href === currentPath.replace(/\/$/, '');
 </script>
 
-<a href={href} class="{klass}" class:active>
+
+<a 
+	href={href} 
+	class:active
+	class="
+		btn variant-soft-surface
+		{klass}" 
+>
 	<span>
 		<slot />
 	</span>
