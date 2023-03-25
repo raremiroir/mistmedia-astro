@@ -1,63 +1,55 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Header from '../components/Main/Header/Header.astro';
-import Footer from '../components/Main/Footer.astro';
+import Page from '../components/Base/Page.astro';
 import Section from '../components/Base/Section.astro';
-import { Button, Heading } from '../components/svelte';
-import Hero from '../components/Main/Hero/Hero.svelte';
+
+import { Picture } from '@astrojs/image/components';
+import { Button, Heading, Hero, Svg } from '../components/svelte';
 ---
 
 <BaseLayout>
-	<Hero customTitle media>
-		<div class="media">
-			<img src="/assets/images/hero.jpg" alt="Hero Image" />
-		</div>
-		<div slot="title">
-			<div class="">
-
+	<Page>
+		<Hero slot="hero" customTitle media client:load>
+			<Picture 
+				slot="bg-img"
+				src="/images/stock/code-1.webp"
+				alt="Placeholder Hero Image"
+				sizes="100vw"
+				widths={[320, 640, 1024, 1280, 1920]}
+				formats={['webp', 'avif', 'jpeg']}
+				aspectRatio={16 / 12}
+				fit="cover"
+				position="center"
+				class="w-full h-auto opacity-70 brightness-75 contrast-125 mix"
+			/>
+	
+			<Picture 
+				slot="media"
+				src="/images/hero/DevicesShowcase-Light.png"
+				alt="Placeholder Hero Image"
+				sizes="(min-width: 600px;) 400w, (min-width: 800px;) 600w, (min-width: 1200px;) 800w"
+				widths={[400, 600, 800]}
+				formats={['webp', 'avif', 'png']}
+				aspectRatio={1.172}
+				fit="contain"
+				position="bottom"
+				class="w-fit max-w-md h-auto bg-transparent opacity-70 mix-blend-darken"
+			/>
+			<div slot="title">
+				<div class="">
+	
+				</div>
+				<Heading type="h1" size="sm" color="primary" client:load>
+					Hello
+				</Heading>
 			</div>
-			<Heading type="h1" size="sm" color="primary">
-				🧑‍🚀 Hello, Astronaut!
-			</Heading>
-		</div>
-	</Hero>
+		</Hero>
 
-	<Section name="intro">
-		Bleep Bloop
-		<Button color="primary" variant="filled" ripple bevel tile>
-			Something
-		</Button>
-	</Section>
-
-	<p>
-		Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-		template serves as a lightweight, minimally-styled starting point for anyone looking to build
-		a personal website, blog, or portfolio with Astro.
-	</p>
-	<p>
-		This template comes with a few integrations already configured in your
-		<code>astro.config.mjs</code> file. You can customize your setup with
-		<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-		React, or Vue to your project.
-	</p>
-	<p>Here are a few ideas on how to get started with the template:</p>
-	<ul>
-		<li>Edit this page in <code>src/pages/index.astro</code></li>
-		<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-		<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-		<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-		<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-	</ul>
-	<p>
-		Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-			>read the docs
-		</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-	</p>
-	<p>
-		Looking for a blog template with a bit more personality? Check out <a
-			href="https://github.com/Charca/astro-blog-template"
-			>astro-blog-template
-		</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-	</p>
+		<Section name="intro">
+			Bleep Bloop
+			<Button color="primary" variant="filled" ripple bevel tile client:idle>
+				Something
+			</Button>
+		</Section>
+	</Page>
 </BaseLayout>
