@@ -1,0 +1,12 @@
+---
+  import BaseHead from '../components/Base/BaseHead.astro';
+	import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+<!DOCTYPE html>
+<html lang='nl'>
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+  <body class='container'>
+    <slot />
+  </body>
+</html>
