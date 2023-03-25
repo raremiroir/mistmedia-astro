@@ -1,0 +1,32 @@
+---
+export interface Props {
+	name: string;
+   klass?: string;
+}
+
+const { name, klass } = Astro.props;
+
+const sectionClass = `
+   w-full mx-auto
+   flex flex-col gap-8 
+   pb-12 md:pb-16 
+   pt-6 md:pt-8 
+   px-1 xs:px-2 sm:px-4 md:px-0
+   ${klass}
+`;
+---
+
+<section
+   id={name}
+   class={sectionClass}>
+      <!-- Section Title -->
+      <div class="m-0 p-0">
+         <slot name="title"/>
+      </div>
+      
+      <!-- Section Content -->
+      <div class="m-0 flex flex-col gap-8">
+         <slot/>
+      </div>
+
+</section>
