@@ -57,6 +57,16 @@ module.exports = {
             '2xs': ['8px', '10px'],
             '10xl': ['72px', '76px'],
             '11xl': ['80px', '84px'],
+				'title-3xl': "clamp(3rem, 2rem + 4vw, 5rem)",
+				'title-2xl': "clamp(2.5rem, 1.375rem + 4.5vw, 4.75rem)",
+				'title-xl': "clamp(2rem, 0.75rem + 5vw, 4.5rem)",
+				'title-lg': "clamp(1.75rem, 1.125rem + 2.5vw, 3rem)",
+				'title-md': "clamp(1.5rem, 1rem + 2vw, 2.5rem)",
+				'title-sm': "clamp(1.25rem, 0.875rem + 1.5vw, 2rem)",
+				'title-xs': "clamp(1rem, 0.75rem + 1.25vw, 1.75rem)",
+				'title-2xs': "clamp(1rem, 0.875rem + 0.5vw, 1.25rem)",
+				'title-3xs': "clamp(0.875rem, 0.75rem + 0.5vw, 1.125rem)",
+				'title-4xs': "clamp(0.75rem, 0.5rem + 1vw, 1.25rem)",
          },
 			// Define theme colors
 			colors: {
