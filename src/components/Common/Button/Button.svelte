@@ -8,7 +8,7 @@
    export let title:boolean = false;
 
    // Main btn style props
-   export let variant: ButtonVariant = 'initial';  // [initial], transparent, filled, ghost, soft, ringed
+   export let variant: ButtonVariant = 'initial';  // [initial], transparent, minimal, filled, ghost, soft, ringed
    export let color: ButtonColors = '';            // [default], surface, primary, secondary, tertiary, success, warning, error
    export let size: ButtonSizes = '';              // sm, [md], lg, xl
    export let group: ButtonGroupType = '';         // '', vertical, horizontal
@@ -37,9 +37,28 @@
    $: colorVariantClass = 
       variant === 'initial' ? 'bg-initial' 
       : variant === 'transparent' ? '!bg-transparent'
+      : variant === 'minimal' ? 
+            color === 'primary' ? `!bg-primary/5 hover:!bg-primary/40`
+          : color === 'secondary' ? `!bg-secondary/5 hover:!bg-secondary/40`
+          : color === 'tertiary' ? `!bg-tertiary/5 hover:!bg-tertiary/40`
+          : color === 'success' ? `!bg-success/5 hover:!bg-success/40`
+          : color === 'warning' ? `!bg-warning/5 hover:!bg-warning/40`
+          : color === 'error' ? `!bg-error/5 hover:!bg-error/40`
+          : color === 'surface' ? `!bg-surface/5 hover:!bg-surface/40`
+          : `!bg-gray-500/5 hover:!bg-gray-500/40`
       : active ? color ? `variant-filled-${color}` : `variant-filled`
       : color ? `variant-${variant}-${color}` : `variant-${variant}`;
-   $: colorVariantClass += variant === 'soft' && !active ? ` hover:!bg-primary/40` : '';
+
+   $: colorVariantClass += variant === 'soft' && !active ? 
+        color === 'primary' ? ` hover:!bg-primary/40` 
+      : color === 'secondary' ? ` hover:!bg-secondary/40`  
+      : color === 'tertiary' ? ` hover:!bg-tertiary/40`
+      : color === 'success' ? ` hover:!bg-success/40`
+      : color === 'warning' ? ` hover:!bg-warning/40`
+      : color === 'error' ? ` hover:!bg-error/40`
+      : color === 'surface' ? ` hover:!bg-error/40`
+
+      : '' : '';
 
    // Define size class
    $: sizeClass = size ? `btn-${size} btn-icon-${size}` : '';
@@ -49,7 +68,7 @@
    $: btnClass = `btn ${colorVariantClass} ${sizeClass} ${groupClass}`;
 
    // Add standard classes
-   $: btnClass += ` transition-all duration-200 ease-in-out overflow-hidden`;
+   $: btnClass += ` transition-all duration-200 ease-in-out overflow-hidden font-semibold tracking-wide`;
    // Define extra classes
    $: btnClass += disabled ? ' disabled' : '';
    $: btnClass += block ? ' w-full' : ' w-fit';

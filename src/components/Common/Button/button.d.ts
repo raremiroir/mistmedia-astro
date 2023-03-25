@@ -1,4 +1,4 @@
-export type ButtonVariant = "initial"|"transparent"|"filled"|"ghost"|"soft"|"ringed";
+export type ButtonVariant = "initial"|"transparent"|"minimal"|"filled"|"ghost"|"soft"|"ringed";
 
 export type ButtonColors = ""|"surface"|"primary"|"secondary"|"tertiary"|"success"|"warning"|"error";
 
