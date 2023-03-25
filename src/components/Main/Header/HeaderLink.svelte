@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'astro/types';
+import Button from '../../Atoms/Button/Button.svelte'
 
 export let href:string = '';
 export let currentPath = '';
@@ -11,25 +12,13 @@ $: active = href === currentPath || href === currentPath.replace(/\/$/, '');
 </script>
 
 
-<a 
-	href={href} 
-	class:active
-	class="
-		btn variant-soft-surface
-		{klass}" 
+<Button
+	href={href}
+	klass="{klass}"
+	variant="soft"
+	color="primary"
+	{active} flat tile ripple
+	{...$$props}
 >
-	<span>
-		<slot />
-	</span>
-</a>
-
-<style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
-</style>
+	<slot />
+</Button>
