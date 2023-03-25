@@ -2,6 +2,7 @@
    // import viewport from "$lib/actions/useViewportAction";
    // import { heroInView } from "../../../stores";
 
+   import { widths } from '../../../consts';
    import { Heading } from '../../svelte'
    import Icon from 'astro-icon'
    import type { TitleSizes } from '../../Common/Heading/heading';
@@ -43,22 +44,25 @@
 
    $: cardWidth = cardWidth ? cardWidth : 'w-11/12 lg:w-5/6 xl:w-3/4 2xl:w-3/5';
 
+
+   const transition = 'transition-all duration-300 ease-out';
+
 </script>
 
-<header
+<div
    class="
-      m-0 w-full px-0
-      bg-blend-overlay dark:bg-blend-multiply
+      m-0 w-full px-0 overflow-hidden relative
       bg-surface-200/50 dark:bg-surface-700/50
-      transition-all duration-300 ease-out overflow-clip
-      h-fit flex justify-center items-center {klass}">
+      { transition } pt-36 pb-16 flex justify-center items-center {klass}">
+   <!-- Background Image -->
    <div 
       class="
-         absolute z-0 top-0 bottom-0 left-0 right-0 
-         w-full m-0 p-0
-         overflow-hidden 
-         { noCard ? 'blur-sm' : 'blur-md md:blur-[8px] lg:blur-sm'}
-         bg-primary-d2 dark:bg-secondary-d2">
+         absolute -z-1 top-0 
+         h-full flex items-center justify-center
+         w-full m-0 p-0 blur-sm
+         bg-surface-200 dark:bg-surface-700">
+        
+      <slot name="bg-img"></slot>
       <!-- <Image 
          loadPriority
          srcset={bgImgSet}
@@ -72,27 +76,36 @@
 
    </div>
    <!-- Middle Card -->
-   <div class="flex flex-col sm:flex-row gap-4 sm:gap-0 md:gap-2 lg:gap-8 
-               items-center justify-start z-2 
-               mx-auto overflow-hidden
-               { customHeight ? customHeight : 'h-fit'} 
-               py-6 px-0 sm:p-0
-               { cardWidth }">
+   <div class="
+         flex flex-col sm:flex-row items-center justify-start
+         gap-4 sm:gap-0 md:gap-2 lg:gap-8 
+         mx-auto px-6 pt-6 rounded-2xl overflow-hidden z-2
+         bg-surface-100/70 dark:bg-slate-600/60
+         backdrop-brightness-50 backdrop-blur-sm dark:backdrop-blur-md
+         { customHeight ? customHeight : 'h-fit'} 
+         { cardWidth }">
       <!-- Media -->
       {#if media}
          <slot name="media"></slot>
       {/if}
 
-      <div class="flex flex-col gap-2 w-full {titleWidth} {noCard ? 'contrast-150' : 'contrast-75'}"> 
+      <div class="flex flex-col gap-2 w-full {titleWidth} pb-6"> 
          {#if customTitle}
             <slot name="title">Custom Title Here</slot>
          {:else}
-            <Heading type="h1" color="text-black dark:text-white" klass="w-full" size={titleSize}>
-               <slot name="title">Title</slot>
+            <Heading type="h1" klass="w-full" size={titleSize}>
+               <slot name="title">Hello, Astronaut!</slot>
             </Heading>
          {/if}
-         <slot name="subtitle">Subtitle</slot>
+         <slot name="subtitle">
+            <Heading type="subheader" size="lg">
+               <slot name="subtitle">Subtitle Here</slot>
+            </Heading>
+         </slot>
+         <p>
+            <slot/>
+         </p>
       </div>
 
    </div>
-</header>
+</div>
