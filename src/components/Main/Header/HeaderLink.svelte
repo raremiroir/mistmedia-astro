@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'astro/types';
-import Button from '../../Atoms/Button/Button.svelte'
+import Button from '../../Common/Button/Button.svelte'
 
 export let href:string = '';
 export let currentPath = '';
