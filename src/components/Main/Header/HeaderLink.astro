@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import Button from '../../Atoms/Button/Button.astro';
 
 type Props = HTMLAttributes<'a'>;
 
@@ -10,8 +11,11 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+	<Button>
+		<slot />
+	</Button>
 </a>
+
 <style>
 	a {
 		display: inline-block;
