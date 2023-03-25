@@ -29,8 +29,9 @@ export let width = '';
 		</Button>
 		<nav class="flex flex-row gap-1 lg:gap-2">
 			<HeaderLink {currentPath} href="/">Home</HeaderLink>
-			<HeaderLink {currentPath} href="/about">Over Ons</HeaderLink>
-			<HeaderLink {currentPath} href="/diensten">Onze Diensten</HeaderLink>
+			<HeaderLink {currentPath} href="/about">About</HeaderLink>
+			<HeaderLink {currentPath} href="/cases">Cases</HeaderLink>
+			<HeaderLink {currentPath} href="/solutions">Solutions</HeaderLink>
 			<HeaderLink {currentPath} href="/blog">Blog</HeaderLink>
 			<HeaderLink {currentPath} href="/contact">Contact</HeaderLink>
 		</nav>
