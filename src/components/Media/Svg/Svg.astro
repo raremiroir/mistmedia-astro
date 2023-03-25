@@ -1,0 +1,13 @@
+---
+import Svg from "./Svg.svelte";
+
+export interface Props {
+	name: string;
+   width?: number;
+   klass?: string;
+}
+
+const { name, width, klass } = Astro.props;
+---
+
+<Svg name={name} width={width} class={klass}/>
