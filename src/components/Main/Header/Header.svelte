@@ -1,39 +1,41 @@
 <script>
 	import HeaderLink from './HeaderLink.svelte';
 	import { SITE_TITLE } from '../../../consts';
-	import { AppBar, LightSwitch, autoModeWatcher } from '@skeletonlabs/skeleton';
+	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
+   import Svg from '../../Media/Svg/Svg.svelte';
+   import Button from '../../Common/Button/Button.svelte';
 
 export let currentPath = '';
 $: currentPath;
+
+export let klass = '';
+export let width = '';
+
 </script>
 
 
 <!-- Might conflict with switch, dunno -->
-<svelte:head>{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}</svelte:head>
+<!-- <svelte:head>{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}</svelte:head> -->
 
 <header class="
          flex flex-row w-full 
          justify-between items-center
-         mb-8">
-	<AppBar 
-		gridColumns="grid-cols-3" 
-		slotDefault="place-self-center" slotTrail="place-content-end"
-		class="w-full"
-	>
-		<svelte:fragment slot="lead">
-			<h2 class="my-2">
-				{SITE_TITLE}
-			</h2>
-		</svelte:fragment>
-		<nav>
+         mb-8 fixed top-0 left-0 right-0
+			bg-gray-50 dark:bg-surface-800 
+			py-4 {klass}">
+	<div class="flex flex-row {width} justify-between items-center mx-auto">
+		<Button variant="minimal" flat href="/">
+			<Svg logo width={150} />
+		</Button>
+		<nav class="flex flex-row gap-1 lg:gap-2">
 			<HeaderLink {currentPath} href="/">Home</HeaderLink>
 			<HeaderLink {currentPath} href="/about">Over Ons</HeaderLink>
 			<HeaderLink {currentPath} href="/diensten">Onze Diensten</HeaderLink>
 			<HeaderLink {currentPath} href="/blog">Blog</HeaderLink>
-			<HeaderLink {currentPath} href="/contat">Contact</HeaderLink>
+			<HeaderLink {currentPath} href="/contact">Contact</HeaderLink>
 		</nav>
-		<svelte:fragment slot="trail">
+		<div>
 			<LightSwitch />
-		</svelte:fragment>
-	</AppBar>
+		</div>
+	</div>
 </header>
