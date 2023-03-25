@@ -1,7 +1,10 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
-import '../../styles/global.css';
+// Your selected Skeleton theme:
+import '../../styles/theme.postcss';
+// // This contains the bulk of Skeletons required styles:
+import '@skeletonlabs/skeleton/styles/all.css';
+// Finally, your application's global stylesheet (sometimes labeled 'app.css')
+import '../../styles/global.postcss';
 
 export interface Props {
 	title: string;

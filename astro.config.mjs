@@ -41,7 +41,11 @@ export default defineConfig({
   integrations: [
     mdx(), 
     sitemap(), 
-    tailwind(), 
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      }
+    }), 
     svelte(), 
     image(), 
     partytown(), 

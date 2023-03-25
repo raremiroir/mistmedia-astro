@@ -1,11 +1,15 @@
-const colors = require('./tailwind/colors.ts')
-const font = require('./tailwind/font.ts')
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: 'class',
 	
 	// Define content
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: [
+		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+		require('path').join(require.resolve(
+			'@skeletonlabs/skeleton'),
+			'../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'
+		)
+	],
 
 	// Style main container
 	container: {
@@ -15,14 +19,8 @@ module.exports = {
 
 	// Define theme
 	theme: {
-		extend: {
-			// Extended Colors
-			colors: colors,
-			// Extended font
-			fontFamily: font.family,
-			fontSize: font.size
-		},
+		extend: {},
 	},
 	// Define plugins
-	plugins: [],
+	plugins: [...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()],
 }
