@@ -18,7 +18,7 @@ export let width = '';
 <!-- <svelte:head>{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}</svelte:head> -->
 
 <header class="
-         flex flex-row w-full 
+         flex flex-row w-full z-99
          justify-between items-center
          mb-8 fixed top-0 left-0 right-0
 			bg-gray-50 dark:bg-surface-800 
