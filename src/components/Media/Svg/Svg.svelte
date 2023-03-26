@@ -43,12 +43,12 @@
          svg ? {} 
        : animIcon ? {
          size: size,
-         dark: 'fill-accent-d3 dark:fill-accent-l2',
-         norm: 'fill-accent-d1',
-         light: 'fill-accent',
-         strokeDark: 'stroke-accent-d3',
-         bgColor: 'primary',
-         darkBgColor: 'secondary-d1',
+         dark: 'fill-primary-800 dark:fill-primary-400',
+         norm: 'fill-primary-600',
+         light: 'fill-primary',
+         strokeDark: 'stroke-primary-800',
+         bgColor: 'surface',
+         darkBgColor: 'surface-500',
          opacity: '70',
        }
        : logo ? {
