@@ -12,15 +12,15 @@
    export let klass:string = ""
 
 
-   $: sizeClass = size === 'xxs' ? 'text-title-sm'
-                : size === 'xs' ? 'text-title-md'
-                : size === 'sm' ? 'text-title-lg'
-                : size === 'lg' ? 'text-title-2xl'
-                : size === 'xl' ? 'text-title-3xl'
-                : 'text-title-xl';
-   $: colorClass = color ? color : 'text-primary-700 dark:text-primary-400';
+   $: sizeClass = size === 'xxs' ? 'text-title-2xs'
+                : size === 'xs' ? 'text-title-xs'
+                : size === 'sm' ? 'text-title-sm'
+                : size === 'lg' ? 'text-title-lg'
+                : size === 'xl' ? 'text-title-xl'
+                : 'text-title-md';
+   $: colorClass = color ? color : 'text-surface-700 dark:text-surface-300';
    $: weightClass = weight ? weight : 'font-semibold';
-   $: fontfamClass = fontfam ? fontfam : 'font-titlemono';
+   $: fontfamClass = fontfam ? fontfam : 'font-body';
    $: leadingClass = leading ? leading : 'leading-none';
    $: shadowClass = shadow ? shadow : 'drop-shadow-md';
 
@@ -29,7 +29,7 @@
    $: titleClass = 
          `unstyled ${sizeClass} ${colorClass} ${shadowClass} 
          ${fontfamClass} ${leadingClass} ${weightClass} 
-         ${transition} ${klass}`
+         ${transition} tracking-wide ${klass}`
 </script>
 
 
