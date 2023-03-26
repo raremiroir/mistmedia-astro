@@ -16,6 +16,7 @@ export let width = '';
          justify-between items-center
          mb-8 fixed top-0 left-0 right-0
 			backdrop-blur-md
+			shadow-xl shadow-surface-900/10 dark:shadow-xl dark:shadow-primary-400/3
 			bg-surface-100/20	 dark:bg-surface-800/20 
 			py-6 {klass}">
 	<div class="flex flex-row {width} justify-between items-center mx-auto">
