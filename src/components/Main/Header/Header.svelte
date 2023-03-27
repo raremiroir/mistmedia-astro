@@ -12,7 +12,7 @@ export let width = '';
 
 </script>
 <header class="
-         flex flex-row w-full z-99
+         flex flex-row w-full z-30
          justify-between items-center
          mb-8 fixed top-0 left-0 right-0
 			backdrop-blur-md
