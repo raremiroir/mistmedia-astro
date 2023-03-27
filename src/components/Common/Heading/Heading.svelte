@@ -17,6 +17,8 @@
    export let leading: string = '';
    export let shadow: string = '';
 
+   export let fake: boolean = false;
+
    export let klass: string = '';
    
    const titleComp = titles[type];
@@ -25,7 +27,7 @@
 <svelte:component this={titleComp}
       {size} {color} {shadow}
       {weight} {fontfam} {leading}
-      klass={klass}
+      {fake} klass={klass}
    >     
       <slot/>
 </svelte:component>
