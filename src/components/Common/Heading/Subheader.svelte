@@ -17,7 +17,7 @@
                 : size === 'xxl' ? 'text-title-lg'
                 : 'text-title-xs';
    $: colorClass = color ? color : "text-black dark:text-white";
-   $: weightClass = weight ? weight : "font-bold";
+   $: weightClass = weight ? weight : "font-medium";
    $: fontfamClass = fontfam ? fontfam : "font-body";
    $: leadingClass = leading ? leading : "";
    $: shadowClass = shadow ? shadow : "drop-shadow-none";
