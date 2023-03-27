@@ -32,6 +32,6 @@
 </script>
 
 
-<div class="{boxStyle}">
+<div class="{boxStyle} overflow-hidden">
    <slot/>
 </div>
