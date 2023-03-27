@@ -1,7 +1,6 @@
 <script lang="ts">
    import type { AccordeonOpenState } from './accordeon';
-   import { openAccordeon } from '../../../stores/components'
-   import { Heading } from '../../svelte';
+   import Heading from '../../Common/Heading/Heading.svelte';
    import { fade } from 'svelte/transition';
 
    export let title:string;

@@ -1,6 +1,6 @@
 <script lang="ts">
    import { Div, Article, Anchor } from '../../Base/Raw'
-   import { Heading } from '../../svelte'
+   import Heading from '../../Common/Heading/Heading.svelte'
    import boxGen from '../../../styles/mist-theme'
    import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '../../../styles/theme';
 
@@ -80,7 +80,7 @@
          </header>
          
          <!-- Body -->
-         <section class="line-clamp-4">
+         <section class="{ article ? 'line-clamp-4' : ''}">
             <slot>
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dignissimos recusandae, quos 
                accusantium, sed voluptates nobis qui facilis ad sint maxime? Cupiditate tempora nesciunt dignissimos 

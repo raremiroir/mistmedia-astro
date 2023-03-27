@@ -1,14 +1,15 @@
 ---
 import { widths } from "../../consts";
-import { Heading } from '../svelte';
+import Heading from "../Common/Heading/Heading.svelte";
 export interface Props {
    name: string;
    title?: string;
+   subtitle?: string;
    klass?: string;
    alt?: boolean;
 }
 
-const { name, klass, title, alt } = Astro.props;
+const { name, klass, title, subtitle, alt } = Astro.props;
 
 
 const sectionClass = `
@@ -30,9 +31,14 @@ const sectionClass = `
       <!-- Section Title -->
       <div class="mt-0 mx-0 mb-8 py-0 pr-0 pl-8 border-l-4 border-primary-700 dark:border-primary-600/40">
          <slot name="title">
-            <Heading type="h2" size="sm">
+            <Heading type="h2" size="xs">
                {title}
             </Heading>
+            { subtitle && (
+               <Heading type="subheader" size="xs" klass="text-surface-400 dark:text-surface-600 italic">
+                  {subtitle}
+               </Heading>
+            )}
          </slot>
          <slot name="title"/>
       </div>

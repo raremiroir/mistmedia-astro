@@ -1,14 +1,21 @@
 ---
+
+// Main components
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Page from '../components/Base/Page.astro';
 import Section from '../components/Base/Section.astro';
-
-import { Picture } from '@astrojs/image/components';
-import { Button, Heading, Hero, Card, Svg } from '../components/svelte';
-import Accordeon from '../components/Common/Accordeon/Accordeon.astro';
+// Svelte components
+import Box 				from '../components/Base/Box.svelte';
+import Button 			from '../components/Common/Button/Button.svelte';
+import Heading 		from '../components/Common/Heading/Heading.svelte';
+import Card 			from '../components/Common/Card/Card.svelte';
+import Svg 				from '../components/Media/Svg/Svg.svelte';
+import Hero 			from '../components/Main/Hero/Hero.svelte';
+import Accordeon 		from '../components/Common/Accordeon/Accordeon.astro';
 import AccordeonItem from '../components/Common/Accordeon/AccordeonItem.astro';
-import { Icon } from 'astro-icon';
-import Box from '../components/Base/Box.svelte';
+// Astro components
+import { Picture } 	from '@astrojs/image/components';
+import { Icon } 		from 'astro-icon';
 
 const servicesCards = [
 	{
