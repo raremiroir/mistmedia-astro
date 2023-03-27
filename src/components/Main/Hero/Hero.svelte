@@ -1,35 +1,16 @@
 <script lang="ts">
-   // import viewport from "$lib/actions/useViewportAction";
-   // import { heroInView } from "../../../stores";
-
    import { widths } from '../../../consts';
-   import { Heading } from '../../svelte'
-   import Icon from 'astro-icon'
+   
+   // Svelte components
    import type { TitleSizes } from '../../Common/Heading/heading';
-	// import Image from "../Base/Media/Image.svelte";
-
+   import Heading from '../../Common/Heading/Heading.svelte';
 
    // Extra classes on hero
    export let klass = '';
-
-   // stretch the hero to 90vh? (otherwise h-fit)
-   export let stretchHero = false;
    
    // Include media in hero? (img/svg/none)
    export let media = false;
 
-   // Remove card from hero?
-   export let noCard = false;
-   
-   // What's the bg img?
-   export let bgImg = ''
-   // What's the bg img srcset?
-   export let bgImgSet = ''
-   // What's the bg img srcset sizes?
-   export let bgImgSizes:any = undefined;
-   // What's the bg img alt?
-   export let bgImgAlt = ''
-   
    // Custom title instead of normal title?
    export let customTitle = false;
    // Size of title
@@ -43,7 +24,6 @@
    export let customHeight = '';
 
    $: cardWidth = cardWidth ? cardWidth : 'w-11/12 lg:w-5/6 xl:w-3/4 2xl:w-3/5';
-
 
    const transition = 'transition-all duration-300 ease-out';
 
