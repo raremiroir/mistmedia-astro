@@ -1,13 +1,123 @@
 ---
+// Svelte components
+import Heading 	from '../Common/Heading/Heading.svelte'
+import Button 		from '../Common/Button/Button.svelte'
+import Link 		from '../Common/Button/Link.svelte'
+import Svg 			from '../Media/Svg/Svg.svelte'
+// Astro components
+import Icon 		from 'astro-icon'
+
+import { widths } from "../../consts";
+
 const today = new Date();
+
+const socialIcons = [
+	{ icon: 'LinkedInIcon', link: 'https://www.linkedin.com/in/mistmedia/'},
+	{ icon: 'InstagramIcon', link: 'https://www.instagram.com/mirostorm/'},
+	{ icon: 'discord', link: '/'},
+	{ icon: 'GithubIcon', link: 'https://github.com/raremiroir'},
+	{ icon: 'FacebookIcon', link: 'https://youtube.com/channel/UCdgOJXIe5Om_rCcpK4Adnvg'},
+]
+
+const footerLinks = [
+	{ title: "Get In Touch", links: [
+			{ title: `Antwerp, Belgium`, icon: 'ph:map-pin-line-duotone', link: '/contact' },
+			{ title: 'miro@mistmedia.be', icon: 'ph:envelope-duotone', link: 'mailto:miro@mistmedia.be' },
+			{ title: '+32 484 340 391', icon: 'ph:phone-duotone', link: 'tel:0032484340391' } 
+	]},
+	{ title: "Solutions", links: [
+			{ title: 'Item 1', icon: 'ph:check-duotone', link: '' },
+			{ title: 'Item 2', icon: 'ph:check-duotone', link: '' },
+			{ title: 'Item 3', icon: 'ph:check-duotone', link: '' },
+			{ title: 'Item 4', icon: 'ph:check-duotone', link: '' } 
+	]},
+	{ title: "More About Us", links: [
+			{ title: 'About Us', icon: 'ph:info-duotone', link: '' },
+			{ title: 'FAQ', icon: 'ph:question-duotone', link: '' },
+			{ title: 'Privacy Policy', icon: 'ph:lock-open-duotone', link: '' },
+			{ title: 'Terms & Conditions', icon: 'ph:check-circle-duotone', link: '' } 
+	]},
+]
 ---
 
-<footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+<footer class="w-full bg-surface-700 dark:bg-black/40 py-6">
+   <div class={`${widths} flex flex-col gap-6`}>
+      <!-- Socials -->
+      <div class="
+            w-full flex flex-row justify-center sm:justify-between align-center
+            pb-6 border-b-2 border-surface-200/40">
+         <Heading 
+				client:idle
+				type="h3" size="sm" 
+				color="text-surface-400"
+				klass="hidden sm:flex items-center">
+            Connect with our Socials!
+         </Heading>
+         <div class="flex justify-center gap-4">
+				{ socialIcons.map((item) => (
+					<Button 
+						client:idle
+						href={item.link} target="_blank" 
+						rounded="circle" size="sm" square shadow="none"
+						color="primary" variant="minimal" klass="group">
+						<Svg 
+							size={30} client:idle 
+							animIcon={item.icon} 
+							animProps={{
+								dark: 'fill-primary-400 dark:fill-primary-300',
+								norm: 'fill-primary-800 dark:fill-primary-700',
+								light: 'fill-primary-400 dark:fill-primary-300',
+								strokeDark: 'stroke-primary-400 dark:stroke-primary-300',
+								bgColor: 'gray-100',
+								darkBgColor: 'gray-50',
+								opacity: '70',
+							}}
+						/>
+					</Button>
+				))}
+         </div>
+      </div>
+   
+      <!-- Links -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 w-full gap-y-12 lg:gap-y-0">
+         <Heading 
+				type="h3" color="text-surface-200 dark:text-surface-100" client:idle
+				klass="order-first flex items-center justify-center lg:items-start lg:justify-start">
+				Brand
+			</Heading>
+
+			{ footerLinks.map((col) => (
+				<div class="
+						flex flex-col gap-4 lg:gap-2
+						items-center justify-start lg:items-start
+						last-of-type:order-first md:last-of-type:order-last">
+					<Heading 
+						type="h3" size="xxs"
+						color="text-surface-300 dark:text-surface-200" 
+						klass="capitalize" client:idle>
+						{col.title}
+					</Heading>
+					<ul class="grid grid-cols-1 gap-4">
+						{ col.links.map((link) => (
+							<li class="list-none">
+								<Link href={link.link}>
+									<Icon slot="icon" name={link.icon} class="w-8 h-8" />
+									{link.title}
+								</Link>
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
+      </div>
+   
+      <!-- Copyright -->
+      <span class="
+				text-center font-semibold 
+				border-t-2 border-surface-200/40
+				pt-6 opacity-70 
+				text-surface-200 dark:text-surface-100">
+			&copy; {today.getFullYear()} Mist Media. All rights reserved.
+		</span>
+   </div>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>
