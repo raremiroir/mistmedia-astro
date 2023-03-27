@@ -267,6 +267,56 @@ module.exports = {
 				'large':  'cubic-bezier(0.00, 1.89, 0.67, 1.59)',
 				'xlarge': 'cubic-bezier(0.00, 1.89, 0.52, 2.25)',
 			},
+			// Extended Keyframes
+			keyframes: {
+				zoomInOut: {
+					'0%, 100%': { transform: 'scale(100%)'},
+					'50%': { transform: 'scale(110%)'},
+				},
+				zoomOutIn: {
+					'0%, 100%': { transform: 'scale(100%)'},
+					'50%': { transform: 'scale(90%)'},
+				},
+				bounceReverse: {
+					'0%, 100%': { transform: 'translate(0, 0%)'},
+					'50%': { transform: 'translate(0, 7%)'},
+				},
+				waving: {
+					'0%, 100%': { transform: 'translate(0%, 0%) rotate(0) skew(0)'},
+					'50%': { transform: 'translate(0%, 5%) rotate(2deg) skew(0, 12deg)'},
+				},
+				wiggle: {
+					'0%, 100%': { transform: 'rotate(0deg)' },
+					'33%': { transform: 'rotate(3deg)' },
+					'66%': { transform: 'rotate(-3deg)' },
+				 },
+				slideInRight: {
+					'0%': { transform: 'translate(-100%, 0)' },
+					'100%': { transform: 'translate(0, 0)' },
+				 },
+				slideInLeft: {
+					'0%': { transform: 'translate(100%, 0)' },
+					'100%': { transform: 'translate(0, 0)' },
+				 },
+				slideInDown: {
+					'0%': { transform: 'translate(0%, -100%)' },
+					'100%': { transform: 'translate(0, 0)' },
+				 },
+				slideInUp: {
+					'0%': { transform: 'translate(0%, 100%)' },
+					'100%': { transform: 'translate(0, 0)' },
+				 },
+				spinReverse: {
+					'to': { transform: 'rotate(-360deg)' }
+				}
+			},
+			// Extended Animation
+			animation: {
+				bounceReverse: 'bounceReverse 1s ease-in-out infinite',
+				waving: 'waving 1s ease-in-out infinite',
+				wiggle: 'wiggle 1s ease-in-out infinite',
+				spinReverse: 'spin 1s linear infinite',
+			},
 		},
 	},
 
