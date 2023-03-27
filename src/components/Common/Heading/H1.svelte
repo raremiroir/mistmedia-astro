@@ -15,8 +15,8 @@
                 : size === 'xs' ? 'text-title-xl'
                 : size === 'sm' ? 'text-title-2xl'
                 : 'text-title-3xl';
-   $: colorClass = color ? color : 'text-primary';
-   $: weightClass = weight ? weight : 'font-bold';
+   $: colorClass = color ? color : 'text-black dark:text-white';
+   $: weightClass = weight ? weight : 'font-black';
    $: fontfamClass = fontfam ? fontfam : 'font-titlemono';
    $: leadingClass = leading ? leading : 'leading-none';
    $: shadowClass = shadow ? shadow : 'drop-shadow-none';
@@ -24,7 +24,8 @@
    export let transition = `transition-all duration-200 ease-out`;
 
    $: titleClass = 
-         `unstyled ${sizeClass} ${colorClass} ${shadowClass} 
+         `unstyled outline-2 mix-blend-overlay
+         ${sizeClass} ${colorClass} ${shadowClass} 
          ${fontfamClass} ${leadingClass} ${weightClass} 
          ${transition} ${klass}`
 </script>
