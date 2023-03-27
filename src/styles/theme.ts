@@ -210,8 +210,8 @@ export const theme = {
 			none: 'text-transparent',
 			primary: {
 				default: 'text-primary-500 dark:text-primary-400',
-				hover: 'hover:text-primary-400 dark:hover:text-primary-300',
-				active: 'active:text-primary-900 dark:active:text-primary-200',
+				hover: 'hover:text-primary-900 dark:hover:text-primary-200',
+				active: 'active:text-primary-300 dark:active:text-primary-100',
 			},
 			secondary: {
 				default: 'text-secondary-600 dark:text-secondary-400',
