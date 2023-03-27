@@ -2,8 +2,8 @@ import { theme } from './theme';
 import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from './theme';
 
 const baseStyles = `transition-all duration-300 ease-out border-solid border-2`;
-const hoverStyles = `hover:-translate-y-1`;
-const activeStyles = `active:translate-y-1 cursor-pointer`;
+const hoverStyles = `hover:-translate-y-0.5`;
+const activeStyles = `active:translate-y-0.5 cursor-pointer`;
 
 export type ThemeProps = {
    color: ColorProp;
