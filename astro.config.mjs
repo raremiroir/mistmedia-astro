@@ -41,12 +41,12 @@ export default defineConfig({
   integrations: [
     mdx(), 
     sitemap(), 
+    svelte(), 
     tailwind({
       config: {
         applyBaseStyles: false,
       }
     }), 
-    svelte(), 
     image({
       serviceEntryPoint: '@astrojs/image/sharp'
     }), 
