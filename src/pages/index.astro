@@ -5,7 +5,10 @@ import Section from '../components/Base/Section.astro';
 
 import { Picture } from '@astrojs/image/components';
 import { Button, Heading, Hero, Card, Svg } from '../components/svelte';
+import Accordeon from '../components/Common/Accordeon/Accordeon.astro';
+import AccordeonItem from '../components/Common/Accordeon/AccordeonItem.astro';
 import { Icon } from 'astro-icon';
+import Box from '../components/Base/Box.svelte';
 
 const servicesCards = [
 	{
@@ -78,6 +81,29 @@ const ctaCards = [
 		icon: 'DevicesResponsive'
 	}
 ]
+
+const faqItems = [
+	{
+		question: 'Question 1',
+		answer: 'This is an answer.',
+		icon: 'ph:gear-six-duotone'
+	},
+	{
+		question: 'Question 2',
+		answer: 'This is an answer.',
+		icon: 'ph:gear-six-duotone'
+	},
+	{
+		question: 'Question 3',
+		answer: 'This is an answer.',
+		icon: 'ph:gear-six-duotone'
+	},
+	{
+		question: 'Question 4',
+		answer: 'This is an answer.',
+		icon: 'ph:gear-six-duotone'
+	}
+]
 ---
 
 <BaseLayout>
@@ -121,12 +147,7 @@ const ctaCards = [
 		<Section name="our-services" title="The Things We Do">
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
-					<><Card
-						client:idle
-						direction="row" block
-						tile hover bevel color="alt"
-						title={item.title}
-					>
+					<><Card client:idle direction="row" block hover active title={item.title}>
 						<Icon 
 							slot="media" name={item.icon} 
 							class="text-surface-900 group-hover:text-primary-800 dark:text-surface-50 dark:group-hover:text-primary-400 transition-all duration-300 ease-out w-20 h-auto" 
@@ -136,10 +157,7 @@ const ctaCards = [
 				))}
 			</div>
 
-			<Card
-				tile hover bevel
-				title="Card Title"
-			>
+			<Card hover active title="Card Title">
 				<Picture 
 					slot="media"
 					src="/images/stock/code-1.webp"
@@ -163,10 +181,7 @@ const ctaCards = [
 		<Section name="portfolio" title="The Things They Say About Us">
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{reviewCards.map((item) => (
-					<><Card
-						client:idle
-						tile bevel block
-					>
+					<><Card client:idle block hover>
 						<div slot="title" class="flex items-center justify-start gap-3">
 							<Picture 
 								src={item.avatar}
@@ -194,14 +209,10 @@ const ctaCards = [
 			</div>
 		</Section>
 
-		<Section name="cta" title="Let's Get In Touch!">
+		<Section alt name="cta" title="Let's Get In Touch!">
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{ctaCards.map((item) => (
-					<><Card
-						client:idle block
-						tile bevel hover
-						color="alt"
-					>
+					<><Card client:idle block hover active>
 						<div slot="title" class="flex items-center justify-start gap-3">
 							<Svg animIcon={item.icon} size={48} />
 							<Heading type="h3" size="xxs" klass="pt-2">
@@ -212,6 +223,25 @@ const ctaCards = [
 					</Card></>
 				))}
 			</div>
+		</Section>
+
+		<Section name="faq" title="Frequently Asked Questions">
+
+			<Box>
+				Bloop
+			</Box>
+
+			<Accordeon>
+				{faqItems.map((item, index) => (
+					<AccordeonItem session={{
+						key: index, 
+						title: item.question,
+						icon: item.icon,
+					}}>
+						{item.answer}
+					</AccordeonItem>
+				))}
+			</Accordeon>
 		</Section>
 	</Page>
 </BaseLayout>
