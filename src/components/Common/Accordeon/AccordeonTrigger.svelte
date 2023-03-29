@@ -1,12 +1,10 @@
 <script lang="ts">
-   import type { AccordeonOpenState } from './accordeon';
    import Heading from '../../Common/Heading/Heading.svelte';
-   import { fade } from 'svelte/transition';
 
    export let title:string;
    export let open:boolean = false;
-   export let titleId:string;
-   export let contentId:string;
+   export let icon = false;
+   export let key = 0;
 
    const transition = 'transition-all duration-300 ease-in-out'
 </script>
@@ -18,18 +16,18 @@
    class="" 
 >
    <div 
-      id="{titleId}"
+      id="accordeon-item-{key}"
       role="button" 
       aria-expanded="{open}"
-      aria-controls="{contentId}"
-      class="
-         {titleId} 
-         w-full flex justify-between items-center"
+      aria-controls="accordeon-item-{key}"
+      class="w-full flex justify-between items-center"
    >
       <div class="w-full flex justify-start gap-4 items-center">
-         <div class="w-8 h-8 text-surface-900 group-hover:text-primary-800 dark:text-surface-50 dark:group-hover:text-primary-400 {transition}">
-            <slot name="icon"/>
-         </div>
+         {#if icon}
+            <div class="w-8 h-8 text-surface-900 group-hover:text-primary-800 dark:text-surface-50 dark:group-hover:text-primary-400 {transition}">
+               <slot name="icon"/>
+            </div>
+         {/if}
          <Heading 
             fake type="h3" size="xxs"
             color="text-surface-900 dark:text-surface-50 group-hover:text-primary-900 dark:group-hover:text-primary-400 {transition}">
