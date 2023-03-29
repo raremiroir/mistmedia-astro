@@ -11,8 +11,8 @@ import Heading 		from '../components/Common/Heading/Heading.svelte';
 import Card 			from '../components/Common/Card/Card.svelte';
 import Svg 				from '../components/Media/Svg/Svg.svelte';
 import Hero 			from '../components/Main/Hero/Hero.svelte';
-import Accordeon 		from '../components/Common/Accordeon/Accordeon.astro';
-import AccordeonItem from '../components/Common/Accordeon/AccordeonItem.astro';
+import Accordeon 		from '../components/Common/Accordeon/Accordeon.svelte';
+import AccordeonItem from '../components/Common/Accordeon/AccordeonItem.svelte';
 // Astro components
 import { Picture } 	from '@astrojs/image/components';
 import { Icon } 		from 'astro-icon';
@@ -233,18 +233,10 @@ const faqItems = [
 		</Section>
 
 		<Section name="faq" title="Frequently Asked Questions">
-
-			<Box>
-				Bloop
-			</Box>
-
-			<Accordeon>
+			<Accordeon client:load>
 				{faqItems.map((item, index) => (
-					<AccordeonItem session={{
-						key: index, 
-						title: item.question,
-						icon: item.icon,
-					}}>
+					<AccordeonItem key={index} title={item.question} icon={item.icon} client:load>
+						<Icon name={item.icon} slot="icon" />
 						{item.answer}
 					</AccordeonItem>
 				))}
