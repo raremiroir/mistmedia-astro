@@ -1,18 +1,20 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import Page from '../components/Base/Page.astro';
-import Section from '../components/Base/Section.astro';
+import BaseLayout from '@layouts/BaseLayout.astro'
+import Page 		from '@comp/Base/Page.astro';
+import Section 	from '@comp/Base/Section.astro';
 
-// Svelte components
-import Box 		from '../components/Base/Box.svelte';
-import Hero 	from '../components/Main/Hero/Hero.svelte';
-import Heading from '../components/Common/Heading/Heading.svelte';
-import Button 	from '../components/Common/Button/Button.svelte';
-import Card 	from '../components/Common/Card/Card.svelte';
-import Drawer 	from '../components/Common/Drawer/Drawer.svelte';
-import Svg 		from '../components/Media/Svg/Svg.svelte';
 // Astro components
 import { Picture } from '@astrojs/image/components';
+// Svelte components
+import Box 			from '@comp/Base/Box.svelte';
+import Hero 		from '@comp/Main/Hero/Hero.svelte';
+import Heading 	from '@comp/Common/Heading/Heading.svelte';
+import Button 		from '@comp/Common/Button/Button.svelte';
+import Card 		from '@comp/Common/Card/Card.svelte';
+import Drawer 		from '@comp/Common/Drawer/Drawer.svelte';
+import Svg 			from '@comp/Media/Svg/Svg.svelte';
+// Page-specific Components
+import AboutSliderTechStack from './components/AboutSliderTechStack.svelte';
 ---
 
 <BaseLayout>
@@ -126,9 +128,17 @@ import { Picture } from '@astrojs/image/components';
 		<Section 
 			name="about-difference" title="The Difference We Make"
 			subtitle="There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.">
-			<div class="grid grid-cols-1 md:grid-cols-2">
-
+			<div class="w-full grid grid-cols-1 md:grid-cols-2">
+				
 			</div>
+		</Section>
+		<Section 
+			name="about-difference" title="The Difference We Make"
+			subtitle="There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.">
+			<AboutSliderTechStack 
+            label="Slides about how we differ ourselves" 
+            client:only 
+         />
 		</Section>
 	</Page>
 </BaseLayout>
