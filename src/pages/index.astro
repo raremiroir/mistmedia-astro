@@ -235,7 +235,7 @@ const faqItems = [
 		<Section name="faq" title="Frequently Asked Questions">
 			<Accordeon client:load>
 				{faqItems.map((item, index) => (
-					<AccordeonItem key={index} title={item.question} icon={item.icon} client:load>
+					<AccordeonItem key={index} title={item.question} icon={item.icon ? true : false} client:load>
 						<Icon name={item.icon} slot="icon" />
 						{item.answer}
 					</AccordeonItem>
