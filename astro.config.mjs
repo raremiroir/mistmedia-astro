@@ -66,6 +66,13 @@ export default defineConfig({
         $public: './public',
         $utils: './src/utils',
       }
+    },
+    optimizeDeps: {
+      include: [
+        'lodash.get',
+        'lodash.isequal',
+        'lodash.clonedeep'
+      ]
     }
   }
   
