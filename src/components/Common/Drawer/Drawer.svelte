@@ -22,23 +22,14 @@
       rounded: rounded
    }
 
-   const openDrawer = (settings:DrawerSettings) => {
-      drawerStore.open(settings)
-      console.log('openDrawer')
-   }
-   const closeDrawer = () => {
-      drawerStore.close()
-      console.log('closeDrawer')
-   }
+   const openDrawer = (settings:DrawerSettings) => drawerStore.open(settings);
+   const closeDrawer = () => drawerStore.close();
 </script>
 
 <div 
    on:click={() => openDrawer(drawerSettings)}
    on:keydown={(e) => { if (e.key === 'Enter') openDrawer(drawerSettings) }}
 >
-   <!-- <Button on:click={() => console.log('btn clicked')}>
-      Open Drawer
-   </Button> -->
    <slot name="trigger"/>
 </div>
 

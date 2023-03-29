@@ -22,7 +22,6 @@
    })
    
    let open = false;
-   $: console.log(open);
 </script>
 
 <div
