@@ -8,9 +8,9 @@
 
 <div 
    transition:slide={{duration: 300}}
-   id="accordeon__item__content-{key}" class="accordeon__item__content-{key}"
-   aria-labelledby="accordeon__item__title-{key}"
+   id="accordeon-item-{key}" aria-labelledby="accordeon-item-{key}"
    role="region" 
+   class="mt-4 mb-2 mx-12"
 >
    <slot/>
 </div>
