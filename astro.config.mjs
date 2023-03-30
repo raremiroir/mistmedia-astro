@@ -6,7 +6,7 @@ import svelte from "@astrojs/svelte";
 import vercel from "@astrojs/vercel/serverless";
 import image from "@astrojs/image";
 import partytown from "@astrojs/partytown";
-
+import astroI18next from "astro-i18next"
 import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
@@ -50,6 +50,7 @@ export default defineConfig({
     image({
       serviceEntryPoint: '@astrojs/image/sharp'
     }), 
+    astroI18next(),
     partytown(), 
     robotsTxt()
   ],
