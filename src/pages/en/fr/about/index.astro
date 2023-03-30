@@ -1,0 +1,146 @@
+---
+import { changeLanguage } from "i18next";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Page from "@comp/Base/Page.astro";
+import Section from "@comp/Base/Section.astro";
+// Astro components
+import { Picture } from "@astrojs/image/components";
+// Svelte components
+import Box from "@comp/Base/Box.svelte";
+import Hero from "@comp/Main/Hero/Hero.svelte";
+import Heading from "@comp/Common/Heading/Heading.svelte";
+import Button from "@comp/Common/Button/Button.svelte";
+import Card from "@comp/Common/Card/Card.svelte";
+import Drawer from "@comp/Common/Drawer/Drawer.svelte";
+import Svg from "@comp/Media/Svg/Svg.svelte";
+// Page-specific Components
+import AboutSliderTechStack from "../../components/AboutSliderTechStack.svelte";
+
+changeLanguage("en");
+---
+
+<BaseLayout>
+	<Page>
+		<Hero slot="hero" customTitle media client:load>
+			<Picture 
+				slot="bg-img"
+				src="/images/stock/webdev-2.webp"
+				alt="About Mist Media"
+				sizes="100vw"
+				widths={[320, 640, 1024, 1280, 1920]}
+				formats={['webp', 'avif', 'jpeg']}
+				aspectRatio={16 / 12}
+				fit="cover"
+				position="center"
+				class="w-full h-auto opacity-70 brightness-75 contrast-125 mix"
+			/>
+
+			<Svg 
+				slot="media" client:load 
+				animIcon="MistMediaIcon"
+				size={160}
+			/>
+			<div slot="title">
+				<div class="">
+	
+				</div>
+				<Heading type="h1" size="sm" color="primary" client:load>
+					About Us
+				</Heading>
+			</div>
+			<p slot="subtitle">
+				We are a young, creative and venturous start-up company, expertised in everything surrounding the 
+				creation and publication of accessible web apps, desinging graphics and visualizing 3D models.
+			</p>
+		</Hero>
+
+		<Section name="about-me" title="">
+			<div class="w-full h-fit flex flex-row gap-4 sm:gap-6 mx-auto">
+				<Box 
+					class="h-full"
+					client:load
+					size="none">
+					<Picture 
+						src="/images/team/MiroStorm-Color.png"
+						alt="Miro Storm - Mist Media Founder"
+						sizes="(min-width: 600px;) 400w, (min-width: 800px;) 600w, (min-width: 1200px;) 800w"
+						widths={[400, 600, 800]}
+						formats={['webp', 'avif', 'png']}
+						aspectRatio={1}
+						fit="cover"
+						position="center"
+						class="h-full w-auto max-w-sm bg-transparent"
+					/>
+				</Box>
+				<div class="flex flex-col justify-start gap-4">
+					<Card color="surface" klass="col-span-3 sm:row-span-1">
+						<Heading type="h3" size="xs" slot="title">
+							Nice to meet you!<br />
+							I'm Miro; Designer, Developer, Creator
+						</Heading>
+						<p>
+							I love to design, develop and optimize. But most importantly, I love to learn.
+							Learning from people has always been my number one priority. <br/>
+							And with my next project, I’d love to learn something from you too!
+						</p>
+					</Card>
+					<!-- Buttons -->
+					<div class="flex flex-row gap-4 col-span-12 sm:col-span-8 sm:row-span-1">
+						<!-- About Me -->
+						<Drawer id="drawer_about-me" client:load>
+							<Button slot="trigger" color="surface_alt" size='xl'>
+								More About Me
+							</Button>
+							<span slot="title">More About Myself</span>
+						</Drawer>
+
+						<!-- LinkedIn Icon -->
+						<!-- <Button 
+							color="bg-[#0072b1] shadow-[#00507A]" 
+							size="square-xl" 
+							hoverFx>
+								<Icon icon="animLinkedIn" animSize="40" normColor="fill-primary-d1 dark:fill-secondary-d1" darkColor="fill-primary-l3 dark:fill-secondary-d3"/>
+						</Button> -->
+						<!-- GitHub Icon -->
+						<!-- <Button 
+							color="bg-secondary-d2 dark:bg-secondary-d3" 
+							size="square-xl" 
+							hoverFx>
+								<Icon icon="animGithub" animSize="40" normColor="fill-primary-d3 dark:fill-secondary-d1" strokeDarkColor="stroke-primary-l3 dark:stroke-secondary-l3"/>
+						</Button> -->
+						<!-- Facebook Icon -->
+						<!-- <Button 
+							color="bg-[#3b5998] shadow-[#2E4476]" 
+							size="square-xl" 
+							hoverFx>
+								<Icon icon="animFacebook" animSize="40" normColor="fill-primary-l3 dark:fill-secondary-l3" darkColor="fill-primary-l3 dark:fill-secondary-l3"/>
+						</Button> -->
+						<!-- Instagram Icon -->
+						<!-- <Button 
+							color="bg-gradient-to-tr from-[#fbad50] via-[#cd486b] to-[#8a3ab9]" 
+							size="square-xl" 
+							hoverFx>
+								<Icon icon="animInsta" animSize="40" normColor="fill-secondary/50 dark:fill-primary/50" darkColor="fill-primary-l3 dark:fill-secondary-d3"/>
+						</Button> -->
+					</div>
+				</div>
+			</div>
+		</Section>
+
+		<Section 
+			name="about-difference" title="The Difference We Make"
+			subtitle="There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.">
+			<div class="w-full grid grid-cols-1 md:grid-cols-2">
+				
+			</div>
+		</Section>
+		<Section 
+			name="about-difference" title="The Difference We Make"
+			subtitle="There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.">
+			<AboutSliderTechStack 
+            label="Slides about how we differ ourselves" 
+            client:load
+         />
+		</Section>
+	</Page>
+</BaseLayout>
