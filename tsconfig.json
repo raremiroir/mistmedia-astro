@@ -10,10 +10,10 @@
       "@public/*":  ["src/public/*"],
       "@styles/*":  ["src/styles/*"],
       // "@utils/*": ["src/utils/*"],
-      "@types/*":   ["src/types/*"],
+      "@tstype/*":  ["src/types/*"],
       "@content/*": ["src/content/*"],
       "@stores/*":  ["src/stores/*"],
+      "@consts/":   ["src/consts/*"]
     }
-
   }
 }
