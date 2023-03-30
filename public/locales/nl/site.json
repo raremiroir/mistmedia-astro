@@ -1,0 +1,25 @@
+{
+   "title": "Mist Media",
+   "description": "Mist Media is een jong en dynamisch bedrijf dat zich richt op het ontwikkelen van websites en webapplicaties, maar ook een breed scala aan andere multimediale diensten aanbiedt. Communicatie en creatieve technologie staan centraal bij Mist Media. Mist Media is gevestigd in Antwerpen, België.",
+
+   "pages": {
+      "home": {
+         "title": "Home"
+      },
+      "about": {
+         "title": "Over Ons"
+      },
+      "cases": {
+         "title": "Cases"
+      },
+      "solutions": {
+         "title": "Solutions"
+      },
+      "blog": {
+         "title": "Mist Blog"
+      },
+      "contact": {
+         "title": "Contact"
+      }
+   }
+}

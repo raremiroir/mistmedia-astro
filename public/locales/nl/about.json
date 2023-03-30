@@ -1,0 +1,31 @@
+{
+   "intro": {
+      "intro_desc": "Wij zijn een jonge, creatieve en ondernemende start-up, met expertise in alles wat de creatie en publicatie van toegankelijke web apps betreft, maar ook op vlak van grafisch ontwerp en het creëren en animeren van 3D modellen."
+   },
+   "what_we_do": {
+      "title": "Wat we doen",
+      "subtitle": "Waar houden we ons zo al mee bezig?"
+   },
+   "values": {
+      "title": "Onze Fundamentele Waarden",
+      "subtitle": "Waar staan we voor?",
+      "items": [
+         {
+            "title": "Multimediale Polyvalentie",
+            "desc": "Wij zijn gespecialiseerd in het creëren van web apps, maar ook in het ontwerpen van grafische elementen en het animeren van 3D modellen. Bij ons kan je terecht voor alles wat je nodig hebt om elk multimediaal project tot een goed einde te brengen."
+         },
+         {
+            "title": "Transparantie",
+            "desc": "Wij zijn een jonge start-up, maar we hebben al een ruime ervaring in de sector. Wij zijn transparant in onze werkwijze en prijs, en communiceren helder en duidelijk met onze klanten."
+         },
+         {
+            "title": "Efficiëntie",
+            "desc": "Kwaliteit, snelheid en prijs zijn voor ons van groot belang. Wij streven naar een efficiënte werkwijze, zodat we onze klanten een zo accuraat mogelijke prijs kunnen aanbieden en een zo snel mogelijke, uiterst kwalitatieve levering kunnen garanderen."
+         },
+         {
+            "title": "Creativiteit",
+            "desc": "Creatief denken is voor ons van groot belang. Wij streven naar een originele en unieke aanpak, zodat we onze klanten een product kunnen aanbieden dat zich onderscheidt van de rest."
+         }
+      ]
+   }
+}

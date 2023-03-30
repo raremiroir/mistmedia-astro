@@ -1,0 +1,37 @@
+{
+   "graphic_design": {
+      "title": "Grafisch Ontwerp",
+      "subtitle": "Graphics met onderscheid",
+      "description": "Wij ontwerpen grafische elementen die uw merk onderscheiden van de rest. Van logo's tot flyers, van visitekaartjes tot advertenties. Wij ontwerpen het allemaal."
+   },
+   "web_design": {
+      "title": "Webontwikkeling",
+      "subtitle": "Websites met aandacht voor detail",
+      "description": "Jouw online aanwezigheid is énorm belangrijk, anno 2023. Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+   },
+   "seo": {
+      "title": "SEO",
+      "subtitle": "Zichtbaarheid op het internet",
+      "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet. Door middel van zoekmachine optimalisatie zorgen wij ervoor dat jouw website hoog in de zoekresultaten komt."
+   },
+   "social_media": {
+      "title": "Social Media",
+      "subtitle": "Online aanwezigheid",
+      "description": "Wij zorgen ervoor dat jouw online aanwezigheid een boost krijgt. Door middel van social media marketing zorgen wij ervoor dat jouw bedrijf goed zichtbaar wordt op het internet."
+   },
+   "photography": {
+      "title": "Fotografie",
+      "subtitle": "Foto's met een verhaal",
+      "description": "Wij zorgen ervoor dat jouw bedrijf op een professionele manier wordt vastgelegd. Dit kunnen zowel foto's als video's zijn, die ook geïntegreerd kunnen worden in jouw website of graphics."
+   },
+   "3d_visualization": {
+      "title": "3D Visualisatie",
+      "subtitle": "Een nieuwe dimensie",
+      "description": "Van kleine, didactische animaties tot printbare 3D modellen. Wij zorgen ervoor dat jouw producten, prototypes en animaties op een professionele en natuurlijke manier worden weergegeven."
+   },
+   "branding": {
+      "title": "Huisstijl",
+      "subtitle": "Een sterk merk",
+      "description": "Wij zorgen ervoor dat jouw bedrijf een sterk merk wordt. Door middel van een professionenele, universele huisstijl zorgen wij ervoor dat jouw bedrijf een herkenbare identiteit krijgt."
+   }
+}

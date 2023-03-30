@@ -1,0 +1,77 @@
+{
+   "cta": {
+      "title": "Ready to kick off?",
+      "learn_more": {
+         "title": "More info",
+         "subtitle": "Learn more about our services"
+      },
+      "check_services": {
+         "title": "Check out our services",
+         "subtitle": "See what we can do for you"
+      },
+      "calculate_price": {
+         "title": "Pricing calculator",
+         "subtitle": "Calculate the price of your project in a few clicks, it's free!"
+      }
+   },
+   "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Here are some of the most frequently asked questions. If you have any other questions, please feel free to contact us.",
+      "items": [
+         {
+            "question": "How long does it take to build a website?",
+            "answer": "The time it takes to build a website depends on the size of the project. It can take a few days to a few weeks. It also depends on the complexity of the website and the requirements of the client."
+         },
+         {
+            "question": "Hoeveel kost het om een website te maken?",
+            "answer": "De kosten van het maken van een website hangen af van de grootte van het project. Het kan enkele honderden euro's tot enkele duizenden euro's kosten. Het is ook afhankelijk van de complexiteit van de website en de vereisten van de klant. Om een prijs te berekenen, raden we u aan om onze prijscalculator te gebruiken."
+         },
+         {
+            "question": "Wat is de beste manier om een website te maken?",
+            "answer": "De beste manier om een website te maken is door een professionele webontwikkelaar in te huren. Het is de beste manier om een website te maken die aan uw behoeften voldoet en die goed werkt. Het is ook de beste manier om een website te maken die goed presteert en die goed wordt gewaardeerd door zoekmachines. Enkel op deze manier kunt u een website maken die u helpt om uw doelen op een optimale manier te bereiken."
+         },
+         {
+            "question": "Wat kan mijn website voor mij doen?",
+            "answer": "Een website kan veel voor u doen. Het kan u helpen om uw bedrijf te promoten, uw producten en diensten te verkopen, uw merk te promoten, uw doelen te bereiken, uw klanten te helpen, uw bedrijf te laten groeien en nog veel meer. Het is een van de beste manieren om uw bedrijf te promoten en om uw doelen te bereiken."
+         }
+      ]
+   },
+   "reviews": {
+      "title": "Lees wat onze klanten zeggen",
+      "subtitle": "Hieronder vindt u een aantal recensies van onze klanten. Als u een recensie wilt achterlaten, neem dan contact met ons op.",
+      "items": [
+         {
+            "name": "John Doe",
+            "company": "Doe Company",
+            "job_title": "CEO",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget aliquam nisl lorem quis nisl. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget aliquam nisl lorem quis nisl."
+         },
+         {
+            "name": "Jane Doe",
+            "company": "Jane Solutions",
+            "job_title": "Manager of Important Things",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget aliquam nisl lorem quis nisl. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget aliquam nisl lorem quis nisl."
+         },
+         {
+            "name": "Wally Doe",
+            "company": "Wally Quality Products",
+            "job_title": "Quality Assurance Manager",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget aliquam nisl lorem quis nisl. Donec auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget aliquam nisl lorem quis nisl."
+         }
+      ]
+   },
+   "sections": {
+      "services": {
+         "title": "What we do",
+         "subtitle": "Hieronder vindt je een lijst met de diensten die we aanbieden. Als je een dienst wilt aanvragen, neem dan contact met ons op."
+      },
+      "portfolio": {
+         "title": "What we've made",
+         "subtitle": "Neem een kijkje naar onze portfolio om een idee te krijgen van de dingen die we hebben gemaakt."
+      },
+      "reviews": {
+         "title": "What our customers say",
+         "subtitle": "Enkele recensies van onze klanten. Als je een recensie wilt achterlaten, neem dan contact met ons op."
+      }
+   }
+}
