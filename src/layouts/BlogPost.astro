@@ -1,51 +1,27 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/Base/BaseHead.astro';
-import Header from '../components/Main/Header/Header.astro';
-import Footer from '../components/Main/Footer.astro';
 import FormattedDate from '../components/Utils/FormattedDate.astro';
+import BaseLayout from './BaseLayout.astro';
+import Page from '@comp/Base/Page.astro';
+import Heading from '@comp/Common/Heading/Heading.svelte';
+import Hero from '@comp/Main/Hero/Hero.astro';
+import { widths } from '@const/class';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, language, tags } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article>
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
-				<FormattedDate date={pubDate} />
-				{
-					updatedDate && (
-						<div class="last-updated-on">
-							Last updated on <FormattedDate date={updatedDate} />
-						</div>
-					)
-				}
-				<hr />
-				<slot />
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout title={title} description={description}>
+	<Page>
+		<Hero bgImg={`${heroImage}`} title={title} alt slot="hero"/>
+		<article>
+			<div class={`flex flex-col ${widths} py-2`}>
+				<FormattedDate date={pubDate} type="published" />
+				<FormattedDate date={updatedDate} type="updated" />
+			</div>
+			<hr class="border-t border-t-black"/>
+			<slot />
+		</article>
+	</Page>
+</BaseLayout>

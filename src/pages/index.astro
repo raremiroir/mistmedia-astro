@@ -7,13 +7,13 @@ import { Icon } from "astro-icon";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Page from "@comp/Base/Page.astro";
 import Section from "@comp/Base/Section.astro";
+import Hero from "@comp/Main/Hero/Hero.astro";
 // Svelte components
 import Box from "@comp/Base/Box.svelte";
 import Button from "@comp/Common/Button/Button.svelte";
 import Heading from "@comp/Common/Heading/Heading.svelte";
 import Card from "@comp/Common/Card/Card.svelte";
 import Svg from "@comp/Media/Svg/Svg.svelte";
-import Hero from "@comp/Main/Hero/Hero.svelte";
 import Accordeon from "@comp/Common/Accordeon/Accordeon.svelte";
 import AccordeonItem from "@comp/Common/Accordeon/AccordeonItem.svelte";
 // Page specific components
@@ -116,20 +116,7 @@ const faqItems = [
 
 <BaseLayout title={t("site:pages.home.title")}>
 	<Page>
-		<Hero slot="hero" customTitle media client:load>
-			<Picture 
-				slot="bg-img"
-				src="/images/stock/code-1.webp"
-				alt="Placeholder Hero Image"
-				sizes="100vw"
-				widths={[320, 640, 1024, 1280, 1920]}
-				formats={['webp', 'avif', 'jpeg']}
-				aspectRatio={16 / 12}
-				fit="cover"
-				position="center"
-				class="w-full h-auto opacity-70 brightness-75 contrast-125 mix"
-			/>
-	
+		<Hero title="Mist Media" bgImg="/images/stock/code-1.webp" slot="hero" media>
 			<Picture 
 				slot="media"
 				src="/images/hero/DevicesShowcase-Light.png"
@@ -142,14 +129,6 @@ const faqItems = [
 				position="bottom"
 				class="w-fit max-w-md h-auto bg-transparent opacity-70 mix-blend-darken"
 			/>
-			<div slot="title">
-				<div class="">
-	
-				</div>
-				<Heading type="h1" size="sm" color="primary" client:load>
-					Hello
-				</Heading>
-			</div>
 		</Hero>
 
 		<Section name="our-services" title={ t("home:sections.services.title") }>
