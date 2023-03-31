@@ -1,27 +1,47 @@
 ---
-import { changeLanguage } from "i18next";
-import { getCollection } from "astro:content";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Section from "@comp/Base/Section.astro";
-import FormattedDate from "@comp/Utils/FormattedDate.astro";
 import { t, changeLanguage } from "i18next";
+import { getCollection } from "astro:content";
+
+// Astro components
+import BaseLayout 	from "@layouts/BaseLayout.astro";
+import Page 			from "@comp/Base/Page.astro";
+import Section 		from "@comp/Base/Section.astro";
+import FormattedDate from "@comp/Utils/FormattedDate.astro";
+// Svelte components
+import Hero 			from "@comp/Main/Hero/Hero.astro";
+import Card from "@comp/Common/Card/Card.svelte";
 
 changeLanguage("nl");
 
-const posts = (await getCollection("blog")).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+const posts = (await getCollection("blog"))
+	.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
 
 <BaseLayout title={t("site:pages.blog.title")}>
-	<Section name="blog" title="Mist Blog">
-		<ul>
-			{
-				posts.map((post) => (
-					<li>
-						<FormattedDate date={post.data.pubDate} />
-						<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-					</li>
-				))
-			}
-		</ul>
-	</Section>
+	<Page>
+		<Hero alt bgImg="/images/stock/webdev-2.webp" title="Mist Blog">
+			<span slot="subtitle">
+				Navigate through our Blog and find a post that suits your interests!
+			</span>
+		</Hero>
+
+		<Section name="blog" title={"Mist Blog"}>
+			<ul class="grid grid-cols-3 gap-8">
+				{posts.map((post) => (
+					<Card 
+						color="surface_alt" variant="fill"
+						hover active article block
+						title={post.data.title}
+						href={`/blog/${post.slug}/`}
+					>
+						<FormattedDate 
+							date={post.data.updatedDate?? post.data.pubDate} 
+							type={post.data.updatedDate ? "updated" : "published"} 
+						/>
+					</Card>
+				))}
+			</ul>
+		</Section>
+
+	</Page>
 </BaseLayout>
