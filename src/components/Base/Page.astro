@@ -1,10 +1,12 @@
 ---
 ---
 
-<div>
-   <slot name="hero" />
+<div class="min-h-screen">
+   <div>
+      <slot name="hero" />
+   </div>
+   
+   <main class="w-full">
+      <slot />
+   </main>
 </div>
-
-<main class="w-full">
-   <slot />
-</main>
