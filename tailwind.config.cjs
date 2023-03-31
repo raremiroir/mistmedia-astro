@@ -57,6 +57,8 @@ module.exports = {
             '2xs': ['8px', '10px'],
             '10xl': ['72px', '76px'],
             '11xl': ['80px', '84px'],
+				'title-5xl': "clamp(5rem, 4.4375rem + 3vw, 6.5rem)",
+				'title-4xl': "clamp(4rem, 3.625rem + 2vw, 5rem)",
 				'title-3xl': "clamp(3rem, 2rem + 4vw, 5rem)",
 				'title-2xl': "clamp(2.5rem, 1.375rem + 4.5vw, 4.75rem)",
 				'title-xl': "clamp(2rem, 0.75rem + 5vw, 4.5rem)",
