@@ -19,17 +19,20 @@ export default {
       "/": "home",
       "/about": "over-ons",
       "/contact": "contact",
+      "/blog": "blog",
     },
     en: {
       "/": "home",
       "/about": "about",
       "/contact": "contact",
+      "/blog": "blog",
     },
-    fr: {
-      "/": "accueil",
-      "/about": "a-propos",
-      "/contact": "contact",
-    },
+    // fr: {
+    //   "/": "accueil",
+    //   "/about": "a-propos",
+    //   "/contact": "contact",
+    //   "/blog": "blog",
+    // },
   },
 
   i18nextServer: {
