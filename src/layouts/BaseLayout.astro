@@ -2,12 +2,25 @@
   import BaseHead from '../components/Base/BaseHead.astro';
   import Header from '../components/Main/Header/Header.astro';
   import Footer from '../components/Main/Footer.astro';
-	import { SITE_TITLE, SITE_DESCRIPTION, widths } from '../consts';
+	import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+	import { widths } from '../consts/class';
+
+  export interface Props {
+    title: string;
+    description?: string;
+  }
+
+  const { title, description = '' } = Astro.props;
+
+  import i18next, { t } from 'i18next'
+  import { Trans } from 'astro-i18next/components'
 ---
 <!DOCTYPE html>
-<html lang='nl'>
+<html lang={i18next.language}>
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead 
+      title={`${SITE_TITLE} | ${title}`} 
+      description={description?? SITE_DESCRIPTION} />
   </head>
 
   <body class="min-h-screen">
