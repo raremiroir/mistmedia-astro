@@ -15,5 +15,13 @@
          "lang": "Engels",
          "name": "Verenigd Koninkrijk"
       }
+   },
+   "blog": {
+      "info": {
+         "dates": {
+            "created": "Gepubliceerd op",
+            "updated": "Laatst bijgewerkt op"
+         }
+      }
    }
 }

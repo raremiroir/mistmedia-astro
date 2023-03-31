@@ -1,4 +1,7 @@
 {
+   "btn": {
+      "switch_lang": "Change language"
+   },
    "geo": {
       "nl": {
          "lang": "Dutch",
@@ -11,6 +14,14 @@
       "en": {
          "lang": "English",
          "name": "United Kingdom"
+      }
+   },
+   "blog": {
+      "info": {
+         "dates": {
+            "created": "Published on",
+            "updated": "Last updated on"
+         }
       }
    }
 }
