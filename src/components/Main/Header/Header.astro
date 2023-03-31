@@ -1,12 +1,9 @@
 ---
    import i18next from 'i18next';
 	import LanguageSelector from './LanguageSelector.astro'
-   import Header from './Header.svelte';
 
    import type { NavItem } from '@tstype/components/header';
-	import { localizePath, detectLocaleFromPath } from 'astro-i18next';
-   import { baseLocale, locales } from '@utils/i18n';
-   import { locale } from '@stores/index';
+   import { baseLocale } from '@utils/i18n';
    import Button from '@comp/Common/Button/Button.svelte';
    import Svg from '@comp/Media/Svg/Svg.svelte';
    import HeaderLink from './HeaderLink.svelte';
