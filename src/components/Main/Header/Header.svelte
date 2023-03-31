@@ -1,14 +1,26 @@
-<script>
-	import HeaderLink from './HeaderLink.svelte';
-	import { LightSwitch } from '@skeletonlabs/skeleton';
-   import Svg from '../../Media/Svg/Svg.svelte';
-   import Button from '../../Common/Button/Button.svelte';
+<script lang="ts">
+	import { LightSwitch } 	from '@skeletonlabs/skeleton';
+   import Svg 					from '@comp/Media/Svg/Svg.svelte';
+   import Button 				from '@comp/Common/Button/Button.svelte';
+	import HeaderLink 		from './HeaderLink.svelte';
 
-export let currentPath = '';
-$: currentPath;
+	import type { NavItem } from '@tstype/components/header';
 
-export let klass = '';
-export let width = '';
+	export let currentPath = '';
+	$: currentPath;
+
+	export let navItems: NavItem[] = [
+		{ label: 'Home', href: '/' },
+		{ label: 'About', href: '/about' },
+		{ label: 'Cases', href: '/cases' },
+		{ label: 'Solutions', href: '/solutions' },
+		{ label: 'Blog', href: '/blog' },
+		{ label: 'Contact', href: '/contact' },
+	];
+
+
+	export let klass = '';
+	export let width = '';
 
 </script>
 <header class="
@@ -21,17 +33,15 @@ export let width = '';
 			py-6 {klass}">
 	<div class="flex flex-row {width} justify-between items-center mx-auto">
 		<Button variant="minimal" flat href="/">
-			<Svg logo width={150} />
+			<Svg logo size={150} />
 		</Button>
 		<nav class="flex flex-row gap-1 lg:gap-2">
-			<HeaderLink {currentPath} href="/">Home</HeaderLink>
-			<HeaderLink {currentPath} href="/about">About</HeaderLink>
-			<HeaderLink {currentPath} href="/cases">Cases</HeaderLink>
-			<HeaderLink {currentPath} href="/solutions">Solutions</HeaderLink>
-			<HeaderLink {currentPath} href="/blog">Blog</HeaderLink>
-			<HeaderLink {currentPath} href="/contact">Contact</HeaderLink>
+			{#each navItems as item}
+				<HeaderLink {currentPath} href={item.href}>{item.label}</HeaderLink>
+			{/each}
 		</nav>
 		<div>
+			<slot name="lang-selector"/>
 			<LightSwitch />
 		</div>
 	</div>
