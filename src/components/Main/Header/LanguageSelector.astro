@@ -27,11 +27,15 @@ const { languageMapping, ...attributes } = Astro.props;
 ---
 
 <script>
+  
   const triggerBtn = document.getElementById("lang_select_trigger");
   const langSelect = document.getElementById("lang_select");
-  triggerBtn?.addEventListener("click", () => {
-    langSelect?.classList.toggle("hidden");
-  });
+  // Toggle lang-select on click
+  triggerBtn?.addEventListener("click", () => langSelect?.classList.toggle("hidden"));
+  // Hide lang-select on click outside
+  
+
+
 </script>
 
 <div class="relative">
@@ -45,7 +49,7 @@ const { languageMapping, ...attributes } = Astro.props;
   
   <div 
     id="lang_select"
-    class="absolute top-12 -left-4 rounded-xl overflow-hidden"
+    class="absolute top-12 -left-4 rounded-xl overflow-hidden hidden"
     {...attributes}
   >
     {
