@@ -1,0 +1,16 @@
+{
+   "geo": {
+      "nl": {
+         "lang": "Nederlands",
+         "name": "België"
+      },
+      "fr": {
+         "lang": "Frans",
+         "name": "Frankrijk"
+      },
+      "en": {
+         "lang": "Engels",
+         "name": "Verenigd Koninkrijk"
+      }
+   }
+}
