@@ -9,11 +9,11 @@
       "@pages/*":   ["src/pages/*"],
       "@public/*":  ["src/public/*"],
       "@styles/*":  ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
+      "@utils/*":   ["src/utils/*"],
       "@tstype/*":  ["src/types/*"],
       "@content/*": ["src/content/*"],
       "@stores/*":  ["src/stores/*"],
-      "@consts/":   ["src/consts/*"]
+      "@const/*":   ["src/consts/*"],
     }
   }
 }
