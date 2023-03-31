@@ -1,4 +1,7 @@
 {
+   "btn": {
+      "switch_lang": "Verander taal"
+   },
    "geo": {
       "nl": {
          "lang": "Nederlands",
