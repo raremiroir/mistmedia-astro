@@ -1,11 +1,58 @@
 ---
+   import i18next from 'i18next';
 	import LanguageSelector from './LanguageSelector.astro'
    import Header from './Header.svelte';
 
-   const { klass, width } = Astro.props;
+   import type { NavItem } from '@tstype/components/header';
+	import { localizePath, detectLocaleFromPath } from 'astro-i18next';
+   import { baseLocale, locales } from '@utils/i18n';
+   import { locale } from '@stores/index';
+   import Button from '@comp/Common/Button/Button.svelte';
+   import Svg from '@comp/Media/Svg/Svg.svelte';
+   import HeaderLink from './HeaderLink.svelte';
+   import LightSwitch from './LightSwitch.svelte';
+   
+
    const { pathname } = Astro.url;
+   let currentLocaleSlug = i18next.language === baseLocale ? '' : i18next.language + '/';
+   const { width } = Astro.props;
+
+   const navItems:NavItem[] = [
+		{ label: 'Home', href: `/${currentLocaleSlug}` },
+		{ label: 'About', href: `/${currentLocaleSlug}about` },
+		{ label: 'Cases', href: `/${currentLocaleSlug}cases` },
+		{ label: 'Solutions', href: `/${currentLocaleSlug}solutions` },
+		{ label: 'Blog', href: `/${currentLocaleSlug}blog` },
+		{ label: 'Contact', href: `/${currentLocaleSlug}contact` },
+	];
+
+   const headerClass = `
+      flex flex-row w-full z-30
+      justify-between items-center
+      mb-8 fixed top-0 left-0 right-0
+      backdrop-blur-md
+      shadow-xl shadow-surface-900/10 dark:shadow-xl dark:shadow-primary-400/3
+		bg-surface-100/20	 dark:bg-surface-800/20 
+		py-6`;
 ---
 
-<Header client:load currentPath={pathname} klass={klass} width={width}>
-   <LanguageSelector slot="lang-selector" />
-</Header>
+<header class={headerClass}>
+   <div class={`${width} flex flex-row justify-between items-center mx-auto`}>
+      <Button client:load variant="minimal" color="surface_alt" shadow="none" href="/">
+			<Svg logo size={150} />
+		</Button>
+      
+      <nav class="flex flex-row gap-1 lg:gap-2">
+         {navItems.map(item => (
+            <HeaderLink client:load currentPath={pathname} href={item.href}>
+               {item.label}
+            </HeaderLink>
+         ))}
+      </nav>
+
+      <div class="flex flex-row gap-2 justify-end items-center">
+         <LanguageSelector />
+         <LightSwitch client:load />
+      </div>
+   </div>
+</header>
