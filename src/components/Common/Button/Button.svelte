@@ -5,9 +5,9 @@
    import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '../../../styles/theme';
 
    // Main btn props
+   export let id: string = '';
    export let href: string = '';
    export let ariaLabel: string = '';
-   export let title:boolean = false;
 
    // Main btn style props
    export let group: ButtonGroupType = '';         // '', vertical, horizontal
@@ -63,20 +63,22 @@
 
 {#if href}
    <a
+      {id}
       href="{href}"
       use:Ripple={ripple}
       class={btnClass}
-      aria-label={ariaLabel} title={title ? ariaLabel : ''}
+      aria-label={ariaLabel}
       {...$$props}
       >
       <slot/>
    </a>
 {:else}
    <button
+      {id}
       on:click {disabled} 
       use:Ripple={ripple}
       class={btnClass}
-      aria-label={ariaLabel} title={title ? ariaLabel : ''}
+      aria-label={ariaLabel}
       {...$$props}
       >
       <slot/>
