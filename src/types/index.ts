@@ -1,2 +1,3 @@
-import './components/header'
-import './components/slider'
+
+// i18n
+export type Locales = 'nl' | 'en' | 'fr';
