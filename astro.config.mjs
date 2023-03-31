@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
@@ -8,6 +7,7 @@ import image from "@astrojs/image";
 import partytown from "@astrojs/partytown";
 import astroI18next from "astro-i18next"
 import robotsTxt from "astro-robots-txt";
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,9 +39,9 @@ export default defineConfig({
   
   // Integrations
   integrations: [
-    mdx(), 
     sitemap(), 
     svelte(), 
+    mdx(), 
     tailwind({
       config: {
         applyBaseStyles: false,
