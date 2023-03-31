@@ -1,5 +1,5 @@
 <script lang="ts">
-   import type { TitleSizes, TitleTags } from './heading';
+   import type { TitleSizes, TitleTags } from '@tstype/components/heading';
    import { H1, H2, H3, H4, H5, H6, Subheader, Subtitle } from './index';
 
    const titles = {

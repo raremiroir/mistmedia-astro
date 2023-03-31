@@ -1,5 +1,5 @@
 <script lang="ts">
-   import type { TitleSizes } from "./heading";
+   import type { TitleSizes } from '@tstype/components/heading';
    export let fake = false;
 
    export let size:TitleSizes = "md"; // xxs, xs, sm, md, lg, xl

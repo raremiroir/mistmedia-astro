@@ -1,8 +1,8 @@
 <script lang="ts">
-   import type { TitleSizes } from "./heading";
+   import type { TitleSizes } from '@tstype/components/heading';
    export let fake = false;
 
-   export let size:TitleSizes = "" // xxs, xs, sm, md
+   export let size:TitleSizes = "" // xxs, xs, sm, md, lg
    export let color:string = ""
    export let weight:string = ""
    export let fontfam:string = ""
@@ -14,6 +14,8 @@
    $: sizeClass = size === 'xxs' ? 'text-title-lg'
                 : size === 'xs' ? 'text-title-xl'
                 : size === 'sm' ? 'text-title-2xl'
+                : size === 'lg' ? 'text-title-4xl'
+                : size === 'xl' ? 'text-title-5xl'
                 : 'text-title-3xl';
    $: colorClass = color ? color : 'text-black dark:text-white';
    $: weightClass = weight ? weight : 'font-black';
