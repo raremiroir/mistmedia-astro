@@ -29,6 +29,7 @@
     "astro-i18next": "^1.0.0-beta.21",
     "astro-icon": "^0.8.0",
     "astro-robots-txt": "^0.4.1",
+    "nanostores": "^0.7.4",
     "postcss-each": "^1.1.0",
     "postcss-nested": "^6.0.1",
     "svelte": "^3.57.0",
