@@ -20,8 +20,7 @@ if (entry === undefined) {
 // 4. (Optional) Render the entry to HTML in the template
 const { Content } = await entry.render();
 ---
-
 <BlogPost {...entry.data}>
-	<h1>{entry.data.title}</h1>
-	<Content />
+    <h1>{entry.data.title}</h1>
+    <Content />
 </BlogPost>
