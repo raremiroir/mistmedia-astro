@@ -1,23 +1,25 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro'
-import Page 		from '@comp/Base/Page.astro';
-import Section 	from '@comp/Base/Section.astro';
-
+import { t } from "i18next";
+import { changeLanguage } from "i18next";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Page from "@comp/Base/Page.astro";
+import Section from "@comp/Base/Section.astro";
 // Astro components
-import { Picture } from '@astrojs/image/components';
+import { Picture } from "@astrojs/image/components";
 // Svelte components
-import Box 			from '@comp/Base/Box.svelte';
-import Hero 		from '@comp/Main/Hero/Hero.svelte';
-import Heading 	from '@comp/Common/Heading/Heading.svelte';
-import Button 		from '@comp/Common/Button/Button.svelte';
-import Card 		from '@comp/Common/Card/Card.svelte';
-import Drawer 		from '@comp/Common/Drawer/Drawer.svelte';
-import Svg 			from '@comp/Media/Svg/Svg.svelte';
-// Page-specific Components
-import AboutSliderTechStack from './components/AboutSliderTechStack.svelte';
+import Box from "@comp/Base/Box.svelte";
+import Hero from "@comp/Main/Hero/Hero.svelte";
+import Heading from "@comp/Common/Heading/Heading.svelte";
+import Button from "@comp/Common/Button/Button.svelte";
+import Card from "@comp/Common/Card/Card.svelte";
+import Drawer from "@comp/Common/Drawer/Drawer.svelte";
+import Svg from "@comp/Media/Svg/Svg.svelte";
+import MistLogoAnim from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
+
+changeLanguage("nl");
 ---
 
-<BaseLayout>
+<BaseLayout title={t("site:pages.about.title")}>
 	<Page>
 		<Hero slot="hero" customTitle media client:load>
 			<Picture 
@@ -33,15 +35,10 @@ import AboutSliderTechStack from './components/AboutSliderTechStack.svelte';
 				class="w-full h-auto opacity-70 brightness-75 contrast-125 mix"
 			/>
 
-			<Svg 
-				slot="media" client:load 
-				animIcon="MistMediaIcon"
-				size={160}
-			/>
+			<div slot="media" class="w-1/3 mb-6">
+				<MistLogoAnim client:idle light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+			</div>
 			<div slot="title">
-				<div class="">
-	
-				</div>
 				<Heading type="h1" size="sm" color="primary" client:load>
 					About Us
 				</Heading>
@@ -135,10 +132,10 @@ import AboutSliderTechStack from './components/AboutSliderTechStack.svelte';
 		<Section 
 			name="about-difference" title="The Difference We Make"
 			subtitle="There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.">
-			<AboutSliderTechStack 
+			<!-- <AboutSliderTechStack 
             label="Slides about how we differ ourselves" 
-            client:only 
-         />
+            client:load
+         /> -->
 		</Section>
 	</Page>
 </BaseLayout>

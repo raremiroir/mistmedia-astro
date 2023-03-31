@@ -1,119 +1,121 @@
 ---
-
-// Main components
-import BaseLayout from '../layouts/BaseLayout.astro'
-import Page from '../components/Base/Page.astro';
-import Section from '../components/Base/Section.astro';
-// Svelte components
-import Box 				from '../components/Base/Box.svelte';
-import Button 			from '../components/Common/Button/Button.svelte';
-import Heading 		from '../components/Common/Heading/Heading.svelte';
-import Card 			from '../components/Common/Card/Card.svelte';
-import Svg 				from '../components/Media/Svg/Svg.svelte';
-import Hero 			from '../components/Main/Hero/Hero.svelte';
-import Accordeon 		from '../components/Common/Accordeon/Accordeon.svelte';
-import AccordeonItem from '../components/Common/Accordeon/AccordeonItem.svelte';
+import { changeLanguage } from "i18next";
+import { t, changeLanguage } from "i18next";
 // Astro components
-import { Picture } 	from '@astrojs/image/components';
-import { Icon } 		from 'astro-icon';
+import { Picture } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+// Main components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Page from "@comp/Base/Page.astro";
+import Section from "@comp/Base/Section.astro";
+// Svelte components
+import Box from "@comp/Base/Box.svelte";
+import Button from "@comp/Common/Button/Button.svelte";
+import Heading from "@comp/Common/Heading/Heading.svelte";
+import Card from "@comp/Common/Card/Card.svelte";
+import Svg from "@comp/Media/Svg/Svg.svelte";
+import Hero from "@comp/Main/Hero/Hero.svelte";
+import Accordeon from "@comp/Common/Accordeon/Accordeon.svelte";
+import AccordeonItem from "@comp/Common/Accordeon/AccordeonItem.svelte";
+// Page specific components
+import HomePortfolioSlider from "./components/HomePortfolioSlider.svelte";
+
+changeLanguage("nl");
 
 const servicesCards = [
-	{
-		title: 'Web Design & Development',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'ph:globe-simple-duotone'
-	},
-	{
-		title: 'Graphic Design & Branding',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'ph:paint-bucket-duotone'
-	},
-	{
-		title: 'SEO',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'ph:rocket-launch-duotone'
-	},
-	{
-		title: 'Social Media',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'ph:megaphone-simple-duotone'
-	},
-	{
-		title: '3D Visualisation',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'ph:cube-duotone'
-	},
-	{
-		title: 'Audio Visual',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'ph:film-slate-duotone'
-	}
-]
-
+    {
+        title: "Web Design & Development",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "ph:globe-simple-duotone"
+    },
+    {
+        title: "Graphic Design & Branding",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "ph:paint-bucket-duotone"
+    },
+    {
+        title: "SEO",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "ph:rocket-launch-duotone"
+    },
+    {
+        title: "Social Media",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "ph:megaphone-simple-duotone"
+    },
+    {
+        title: "3D Visualisation",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "ph:cube-duotone"
+    },
+    {
+        title: "Audio Visual",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "ph:film-slate-duotone"
+    }
+];
 const reviewCards = [
-	{
-		name: 'Big Boss',
-		job_title: 'Lorem ipsum dolor',
-		review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		avatar: 'https://i.pravatar.cc/300'
-	},
-	{
-		name: 'Someone Else',
-		job_title: 'Lorem ipsum dolor',
-		review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		avatar: 'https://i.pravatar.cc/300'
-	},
-	{
-		name: 'Important Person',
-		job_title: 'Lorem ipsum dolor',
-		review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		avatar: 'https://i.pravatar.cc/300'
-	},
-]
-
+    {
+        name: "Big Boss",
+        job_title: "Lorem ipsum dolor",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        avatar: "https://i.pravatar.cc/300"
+    },
+    {
+        name: "Someone Else",
+        job_title: "Lorem ipsum dolor",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        avatar: "https://i.pravatar.cc/300"
+    },
+    {
+        name: "Important Person",
+        job_title: "Lorem ipsum dolor",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        avatar: "https://i.pravatar.cc/300"
+    },
+];
 const ctaCards = [
-	{
-		title: 'Contact 1',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'DevicesResponsive'
-	},
-	{
-		title: 'Contact 2',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'DevicesResponsive'
-	},
-	{
-		title: 'Contact 3',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-		icon: 'DevicesResponsive'
-	}
-]
-
+    {
+        title: "Contact 1",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "DevicesResponsive"
+    },
+    {
+        title: "Contact 2",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "DevicesResponsive"
+    },
+    {
+        title: "Contact 3",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+        icon: "DevicesResponsive"
+    }
+];
 const faqItems = [
-	{
-		question: 'Question 1',
-		answer: 'This is an answer.',
-		icon: 'ph:gear-six-duotone'
-	},
-	{
-		question: 'Question 2',
-		answer: 'This is an answer.',
-		icon: 'ph:gear-six-duotone'
-	},
-	{
-		question: 'Question 3',
-		answer: 'This is an answer.',
-		icon: 'ph:gear-six-duotone'
-	},
-	{
-		question: 'Question 4',
-		answer: 'This is an answer.',
-		icon: 'ph:gear-six-duotone'
-	}
-]
+    {
+        question: "Question 1",
+        answer: "This is an answer.",
+        icon: "ph:gear-six-duotone"
+    },
+    {
+        question: "Question 2",
+        answer: "This is an answer.",
+        icon: "ph:gear-six-duotone"
+    },
+    {
+        question: "Question 3",
+        answer: "This is an answer.",
+        icon: "ph:gear-six-duotone"
+    },
+    {
+        question: "Question 4",
+        answer: "This is an answer.",
+        icon: "ph:gear-six-duotone"
+    }
+];
 ---
 
-<BaseLayout>
+<BaseLayout title={t("site:pages.home.title")}>
 	<Page>
 		<Hero slot="hero" customTitle media client:load>
 			<Picture 
@@ -151,7 +153,7 @@ const faqItems = [
 			</div>
 		</Hero>
 
-		<Section name="our-services" title="The Things We Do">
+		<Section name="our-services" title={ t("home:sections.services.title") }>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
 					<><Card client:idle direction="row" block hover active title={item.title}>
@@ -182,7 +184,10 @@ const faqItems = [
 		</Section>
 		
 		<Section alt name="portfolio" title="The Things We Have Done">
-			Portfolio here
+			Coming very soon!
+			<!-- <HomePortfolioSlider 
+            client:load
+         /> -->
 		</Section>
 
 		<Section name="portfolio" title="The Things They Say About Us">
