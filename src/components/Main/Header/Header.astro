@@ -1,8 +1,11 @@
 ---
-import Header from './Header.svelte';
+	import LanguageSelector from './LanguageSelector.astro'
+   import Header from './Header.svelte';
 
-const { klass, width } = Astro.props;
-const { pathname } = Astro.url;
+   const { klass, width } = Astro.props;
+   const { pathname } = Astro.url;
 ---
 
-<Header client:load currentPath={pathname} klass={klass} width={width} />
+<Header client:load currentPath={pathname} klass={klass} width={width}>
+   <LanguageSelector slot="lang-selector" />
+</Header>
