@@ -21,6 +21,8 @@
     <BaseHead 
       title={`${SITE_TITLE} | ${title}`} 
       description={description?? SITE_DESCRIPTION} />
+
+    <slot name="head"/>
   </head>
 
   <body class="min-h-screen">
