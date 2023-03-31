@@ -1,5 +1,4 @@
 ---
-import { changeLanguage } from "i18next";
 import { t, changeLanguage } from "i18next";
 // Astro components
 import { Picture } from "@astrojs/image/components";
@@ -153,7 +152,7 @@ const faqItems = [
 			</div>
 		</Hero>
 
-		<Section name="our-services" title={ t("home:sections.services.title") }>
+		<Section name="our-services" title={`${t("home:sections.services.title")}`}>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
 					<><Card client:idle direction="row" block hover active title={item.title}>
@@ -184,10 +183,10 @@ const faqItems = [
 		</Section>
 		
 		<Section alt name="portfolio" title="The Things We Have Done">
-			<HomePortfolioSlider 
-            label="Slides about how we differ ourselves" 
+			Coming very soon!
+			<!-- <HomePortfolioSlider 
             client:load
-         />
+         /> -->
 		</Section>
 
 		<Section name="portfolio" title="The Things They Say About Us">

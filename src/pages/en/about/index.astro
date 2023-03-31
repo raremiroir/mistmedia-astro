@@ -1,4 +1,5 @@
 ---
+import { t, changeLanguage } from "i18next";
 import { changeLanguage } from "i18next";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Page from "@comp/Base/Page.astro";
@@ -13,11 +14,12 @@ import Button from "@comp/Common/Button/Button.svelte";
 import Card from "@comp/Common/Card/Card.svelte";
 import Drawer from "@comp/Common/Drawer/Drawer.svelte";
 import Svg from "@comp/Media/Svg/Svg.svelte";
+import MistLogoAnim from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
 
 changeLanguage("en");
 ---
 
-<BaseLayout>
+<BaseLayout title={t("site:pages.about.title")}>
 	<Page>
 		<Hero slot="hero" customTitle media client:load>
 			<Picture 
@@ -33,15 +35,10 @@ changeLanguage("en");
 				class="w-full h-auto opacity-70 brightness-75 contrast-125 mix"
 			/>
 
-			<Svg 
-				slot="media" client:load 
-				animIcon="MistMediaIcon"
-				size={160}
-			/>
+			<div slot="media" class="w-1/3 mb-6">
+				<MistLogoAnim client:idle light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+			</div>
 			<div slot="title">
-				<div class="">
-	
-				</div>
 				<Heading type="h1" size="sm" color="primary" client:load>
 					About Us
 				</Heading>
