@@ -10,6 +10,12 @@ export const slider = `
    `;
 
 
+export const classes = {
+      transition: 'transition-all duration-200 ease-out',
+      flex: {
+            center: 'flex justify-center items-center',
+      }
+}
 // Form styles
 export const cForm = {
       input: {
@@ -18,7 +24,7 @@ export const cForm = {
             border       : 'border-2 border-transparent',
             rounding     : 'rounded-lg',
             bg           : 'bg-surface-300 dark:bg-surface-700 checked:bg-surface-300 checked:dark:bg-surface-700 aria-checked:bg-surface-300 aria-checked:dark:bg-surface-700',
-            flex         : 'flex items-center',
+            flex         : 'flex items-start',
             
             inputBase    : 'input peer',
             placeholder  : 'placeholder:text-transparent focus:placeholder:text-surface-600 dark:focus:placeholder:text-surface-400 placeholder:italic',
@@ -37,7 +43,33 @@ export const cForm = {
             labelPosFocus: 'peer-focus:-top-[10px] peer-focus:scale-95',
             labelPosValue: '-top-[10px] scale-95',
             
-            clearBase    : 'h-fit aspect-square bg-transparent justify-center cursor-pointer mb-0.5 mr-2',
+            clearBase    : 'h-fit aspect-square bg-transparent justify-center cursor-pointer mt-1 mr-2',
             clearAbsolute: 'absolute z-1 right-0',
+      }
+}
+
+// COMPONENTS
+
+// Toggle
+export const cToggle = {
+      size: {
+            md: 'h-6 w-12'
+      },
+      border: 'ring-[1px] ring-surface-500/30 rounded-token',
+      thumb: {
+            bg: 'bg-surface-900 dark:bg-surface-50 rounded-full',
+            pos: {
+                  on: 'translate-x-full group-active/toggle:translate-x-4',
+                  off: 'translate-x-[1px] group-active/toggle:translate-x-0'
+            },
+            size: {
+                  md: 'h-6 w-6 group-active/toggle:w-8 scale-[0.8]'
+            },
+            icon: {
+                  base: 'h-auto aspect-square outline-[1px]',
+                  size: {
+                        md: 'w-4'
+                  }
+            }
       }
 }
