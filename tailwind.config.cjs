@@ -324,9 +324,9 @@ module.exports = {
 
 	// Define plugins
 	plugins: [
-		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')(), 
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/forms"),
 		require("@tailwindcss/line-clamp"),
+		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')(), 
 	],
 }
