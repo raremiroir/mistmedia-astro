@@ -6,7 +6,7 @@ import FormRow from "@comp/Form/FormRow.svelte";
    import ToggleCheck from "@comp/Form/ToggleCheck.svelte";
 </script>
 
-<form class="w-full flex flex-col gap-4 py-4">
+<form method="post" class="w-full flex flex-col gap-4 py-4">
 
    <!-- Name -->
    <FormRow>
