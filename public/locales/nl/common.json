@@ -16,6 +16,13 @@
          "name": "Verenigd Koninkrijk"
       }
    },
+   "about": {
+      "address": {
+         "street": "Vekestraat 34",
+         "city": "2000 Antwerpen",
+         "country": "België"
+      }
+   },
    "blog": {
       "info": {
          "dates": {

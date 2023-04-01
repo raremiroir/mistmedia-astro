@@ -16,6 +16,13 @@
          "name": "United Kingdom"
       }
    },
+   "about": {
+      "address": {
+         "street": "Vekestraat 34",
+         "city": "2000 Antwerp",
+         "country": "Belgium"
+      }
+   },
    "blog": {
       "info": {
          "dates": {
