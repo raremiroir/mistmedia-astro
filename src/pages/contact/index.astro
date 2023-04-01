@@ -5,6 +5,9 @@ import Page from '@comp/Base/Page.astro';
 import Hero from '@comp/Main/Hero/Hero.astro';
 
 import Map from '@comp/Media/Map/Map.svelte';
+import Section from '@comp/Base/Section.astro';
+import Card from '@comp/Common/Card/Card.svelte';
+import Link from '@comp/Common/Button/Link.svelte';
 ---
 
 <BaseLayout title={t('site:pages.contact.title')}>
@@ -13,8 +16,43 @@ import Map from '@comp/Media/Map/Map.svelte';
 	   src={`https://maps.googleapis.com/maps/api/js?key=${import.meta.env.GOOGLE_MAPS_API}&callback=initMap`}>
 	</script>
    <Page>
+      <div class="fixed inset-0 w-screen h-screen -z-2">
+         <Map client:load/>
+      </div>
 
-      <Map client:only/>
+   <Section name="contact-text" title="Contact Us!">
+      <div class="grid grid-cols-2 gap-32 bg-transparent self-center h-144">
+            <Card 
+               client:load fillheight
+               title="Mist Media" footer
+               block>
+               Whether it is a question, comment, critique, inquiry, anything at all. 
+               Do not hesitate to contact us in any case!<br/>
+               We're here to answer everything you throw at us.<br/><br/>
+               We'll do our best to respond within 24 hours.
+
+               <div slot="footer" class="w-full flex justify-between">
+                  <span>
+                     {t('about.address.street')}<br/>
+                     {t('about.address.city')}<br/>
+                     {t('about.address.country')}
+                  </span>
+                  <span>
+                     <Link href="mailto:miro@mistmedia.be">miro@mistmedia.be</Link>
+                     <Link href="phone:0032484340391">+324 84 34 03 91</Link>
+                  </span>
+               </div>
+            </Card>
+            <Card 
+               client:load fillheight
+               title="Mist Media" footer
+               block>
+               
+
+
+            </Card>
+         </div>
+      </Section>
       
    </Page>
 </BaseLayout>
