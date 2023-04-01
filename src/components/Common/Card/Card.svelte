@@ -21,6 +21,7 @@
    export let shadow:ShadowProp = 'bevel';
    
    export let block:boolean = false;
+   export let fillHeight:boolean = false;
 
    let klass:string = '';
    export { klass as class };
@@ -42,56 +43,62 @@
    const transition = 'transition duration-300 ease-in-out';
 
    // Anchor or Div
-   const outerWrapComp = href ? Anchor : Div;
-   const outerWrapProps = href ? { href } : {}
+   $: outerWrapComp = href ? Anchor : Div;
+   $: outerWrapProps = href ? { href } : {}
    // Article or Div
-   const innerWrapComp = article ? Article : Div;
+   $: innerWrapComp = article ? Article : Div;
 </script>
 
 
 <svelte:component 
    this={outerWrapComp} {outerWrapProps} {...$$props} 
    tabindex="0"
+   title=""
    class="
       antialiased
-      { cardStyle }
+      { cardStyle } backdrop-blur-sm
       overflow-hidden group relative
+      { fillHeight ? 'h-full' : '' }
 ">
    <svelte:component 
       this={innerWrapComp} {...$$props}
+      title=""
       class="
          flex z-2 {transition}
-         { direction === 'row' ? 'flex-row items-center justify-start pl-6 gap-2 h-full' : 'flex-col'}
+         h-full
+         { direction === 'row' ? 'flex-row items-center justify-start pl-6 gap-2' : 'flex-col'}
    ">
       <!-- Image -->
       <slot name="media"/>
       
       <!-- Content -->
-      <div class="flex flex-col gap-2 h-full { direction === 'row' ? 'p-6' : 'p-8' }">
-         <!-- Header -->
-         <header class="">
-            <slot name="title">
-               <Heading 
-                  type="h3" size="xs" fontfam='font-body'
-                  color="{ boxGen.color(color, variant, hover, active) } !bg-transparent !shadow-none">
-                  { title }
-               </Heading>
-            </slot>
-         </header>
-         
-         <!-- Body -->
-         <section class="{ article ? 'line-clamp-4' : ''}">
-            <slot>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dignissimos recusandae, quos 
-               accusantium, sed voluptates nobis qui facilis ad sint maxime? Cupiditate tempora nesciunt dignissimos 
-               vitae, commodi eum possimus quia.
-            </slot>
-         </section>
+      <div class="flex flex-col gap-4 justify-between h-full { direction === 'row' ? 'p-6' : 'p-8' }">
+         <div class="flex flex-col gap-4">
+            <!-- Header -->
+            <header class="">
+               <slot name="title">
+                  <Heading 
+                     type="h3" size="xs" fontfam='font-body'
+                     color="{ boxGen.color(color, variant, hover, active) } !bg-transparent !shadow-none">
+                     { title }
+                  </Heading>
+               </slot>
+            </header>
+            
+            <!-- Body -->
+            <section class="{ article ? 'line-clamp-4' : ''}">
+               <slot>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dignissimos recusandae, quos 
+                  accusantium, sed voluptates nobis qui facilis ad sint maxime? Cupiditate tempora nesciunt dignissimos 
+                  vitae, commodi eum possimus quia.
+               </slot>
+            </section>
+         </div>
    
          <!-- Footer -->
          {#if footer}
-            <footer class="card-footer">
-               (footer)
+            <footer class="card-footer w-full p-0 mt-8">
+               <slot name="footer"/>
             </footer>
          {/if}
       </div>
