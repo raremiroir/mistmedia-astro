@@ -11,16 +11,22 @@
 	// Slide styles
 	import '@splidejs/svelte-splide/css/sea-green'; // Sea green theme
 
+	// Svelte head import
+	import SvelteHead from './SvelteHead.svelte';
+
+
+
 	export interface Props {
 		title: string;
 		description: string;
 		image?: string;
 	}
-	
 	const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	
 	const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 ---
+
+<SvelteHead client:load />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
