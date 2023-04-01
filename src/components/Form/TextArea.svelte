@@ -8,6 +8,8 @@
 
    import { cForm } from '@const/class';
 
+   export let rows:number = 6;
+   export let noResize:boolean = false;
  
    // Value / type
    export let value = '';
@@ -29,18 +31,20 @@
 <label 
    class="{wrapClass}">
    <textarea 
-      {name} {placeholder}
-      class="{inputClass}"
+      {rows} {name} {placeholder}
+      class="{inputClass} min-h-[2rem] { noResize ? 'resize-none' : '' }"
       bind:value/>
-   <div 
-      class="{clearClass}" 
-      on:click={() => clear()}
-      on:keydown={(e) => e.key === 'Enter' && clear()}
-   >
-      <Button square variant="minimal" color="error" size="xs" shadow="none" rounded="circle">
-         <Icon icon="material-symbols:close-rounded" class="h-4 w-auto"></Icon>
-      </Button>
-   </div>
+   {#if value}
+      <div 
+         class="{clearClass}" 
+         on:click={() => clear()}
+         on:keydown={(e) => e.key === 'Enter' && clear()}
+      >
+         <Button square variant="minimal" color="error" size="xs" shadow="none" rounded="circle">
+            <Icon icon="material-symbols:close-rounded" class="h-4 w-auto"></Icon>
+         </Button>
+      </div>
+   {/if}
    <span class="{labelClass}">
       {label}
    </span>
