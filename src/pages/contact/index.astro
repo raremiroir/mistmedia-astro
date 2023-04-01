@@ -9,6 +9,8 @@ import Section from '@comp/Base/Section.astro';
 import Card from '@comp/Common/Card/Card.svelte';
 import Link from '@comp/Common/Button/Link.svelte';
 import ContactForm from '@comp/Pages/Contact/ContactForm.svelte';
+
+import { ADDRESS } from '@const/index';
 ---
 
 <BaseLayout title={t('site:pages.contact.title')}>
@@ -28,16 +30,16 @@ import ContactForm from '@comp/Pages/Contact/ContactForm.svelte';
                color="surface"
                title="Mist Media" footer
                block hover>
-               Whether it is a question, comment, critique, inquiry, anything at all. 
-               Do not hesitate to contact us in any case!<br/>
-               We're here to answer everything you throw at us.<br/><br/>
-               We'll do our best to respond within 24 hours.
+               {t("contact.text[0]")}
+               {t("contact.text[1]")}<br/>
+               {t("contact.text[2]")}<br/><br/>
+               {t("contact.text[3]")}
 
                <div slot="footer" class="w-full flex justify-between">
                   <span>
-                     {t('about.address.street')}<br/>
-                     {t('about.address.city')}<br/>
-                     {t('about.address.country')}
+                     {ADDRESS.street}<br/>
+                     {t('geo.nl.antwerp')}<br/>
+                     {t('geo.nl.belgium')}
                   </span>
                   <span>
                      <Link 

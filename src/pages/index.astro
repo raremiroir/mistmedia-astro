@@ -9,8 +9,6 @@ import Page from "@comp/Base/Page.astro";
 import Section from "@comp/Base/Section.astro";
 import Hero from "@comp/Main/Hero/Hero.astro";
 // Svelte components
-import Box from "@comp/Base/Box.svelte";
-import Button from "@comp/Common/Button/Button.svelte";
 import Heading from "@comp/Common/Heading/Heading.svelte";
 import Card from "@comp/Common/Card/Card.svelte";
 import Svg from "@comp/Media/Svg/Svg.svelte";
@@ -120,7 +118,7 @@ const faqItems = [
 			<Picture 
 				slot="media"
 				src="/images/hero/DevicesShowcase-Light.png"
-				alt="Placeholder Hero Image"
+				alt={t("home:img.alt.default")}
 				sizes="(min-width: 600px;) 400w, (min-width: 800px;) 600w, (min-width: 1200px;) 800w"
 				widths={[400, 600, 800]}
 				formats={['webp', 'avif', 'png']}
@@ -145,14 +143,14 @@ const faqItems = [
 			</div>
 		</Section>
 		
-		<Section alt name="portfolio" title="The Things We Have Done">
+		<Section alt name="portfolio" title={`${t("home:sections.portfolio.title")}`}>
 			Coming very soon!
 			<!-- <HomePortfolioSlider 
             client:load
          /> -->
 		</Section>
 
-		<Section name="portfolio" title="The Things They Say About Us">
+		<Section name="portfolio" title={`${t("home:sections.portfolio.reviews")}`}>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{reviewCards.map((item) => (
 					<><Card client:idle block hover>
@@ -183,7 +181,7 @@ const faqItems = [
 			</div>
 		</Section>
 
-		<Section alt name="cta" title="Let's Get In Touch!">
+		<Section alt name="cta" title={`${t("home:cta.title")}`}>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{ctaCards.map((item) => (
 					<><Card client:idle block hover active>
@@ -199,7 +197,7 @@ const faqItems = [
 			</div>
 		</Section>
 
-		<Section name="faq" title="Frequently Asked Questions">
+		<Section name="faq" title={`${t("home:faq.title")}`}>
 			<Accordeon client:load>
 				{faqItems.map((item, index) => (
 					<AccordeonItem key={index} title={item.question} icon={item.icon ? true : false} client:load>

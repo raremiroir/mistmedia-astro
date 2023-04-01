@@ -25,8 +25,7 @@ changeLanguage("nl");
 				<MistLogoAnim client:idle light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
 			</div>
 			<p slot="subtitle">
-				We are a young, creative and venturous start-up company, expertised in everything surrounding the 
-				creation and publication of accessible web apps, desinging graphics and visualizing 3D models.
+				{t("about:intro.desc")}
 			</p>
 		</Hero>
 
@@ -38,7 +37,7 @@ changeLanguage("nl");
 					size="none">
 					<Picture 
 						src="/images/team/MiroStorm-Color.png"
-						alt="Miro Storm - Mist Media Founder"
+						alt={`Miro Storm - ${t("about:miro.title")}`}
 						sizes="(min-width: 600px;) 400w, (min-width: 800px;) 600w, (min-width: 1200px;) 800w"
 						widths={[400, 600, 800]}
 						formats={['webp', 'avif', 'png']}
@@ -51,13 +50,12 @@ changeLanguage("nl");
 				<div class="flex flex-col justify-start gap-4">
 					<Card color="surface" klass="col-span-3 sm:row-span-1">
 						<Heading type="h3" size="xs" slot="title">
-							Nice to meet you!<br />
-							I'm Miro; Designer, Developer, Creator
+							{t("about:miro.hello")}<br />
+							{t("about:miro.i_am")}
 						</Heading>
 						<p>
-							I love to design, develop and optimize. But most importantly, I love to learn.
-							Learning from people has always been my number one priority. <br/>
-							And with my next project, I’d love to learn something from you too!
+							{t("about:miro.desc[0]")}<br/>
+							{t("about:miro.desc[1]")}
 						</p>
 					</Card>
 					<!-- Buttons -->
@@ -104,19 +102,14 @@ changeLanguage("nl");
 		</Section>
 
 		<Section 
-			name="about-difference" title="The Difference We Make"
-			subtitle="There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.">
+			name="about-difference" title={`${t("about:values.title")}`}
+			subtitle={`${t("about:values.subtitle")}`}>
 			<div class="w-full grid grid-cols-1 md:grid-cols-2">
-				
+				<!-- <AboutSliderTechStack 
+					label="Slides about how we differ ourselves" 
+					client:load
+				/> -->
 			</div>
-		</Section>
-		<Section 
-			name="about-difference" title="The Difference We Make"
-			subtitle="There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.">
-			<!-- <AboutSliderTechStack 
-            label="Slides about how we differ ourselves" 
-            client:load
-         /> -->
 		</Section>
 	</Page>
 </BaseLayout>
