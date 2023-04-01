@@ -2,39 +2,46 @@
    export let label:string = '';
    export let name:string = '';
    export let placeholder:string = '';
-   // export let type:string = 'text';
 
-   let value:string = '';
+   import Button from '@comp/Common/Button/Button.svelte';
+   import Icon from '@iconify/svelte'
+
+   import { cForm } from '@const/class';
+
+ 
+   // Value / type
+   export let value = '';
    $: value;
 
-   const cTransition = 'transition-all duration-200 ease-out';
+   // Clear input value
+   const clear = () => value = '';
+
+   // Classes
+   $: wrapClass  = `${cForm.input.wrapBase} ${cForm.input.transition} ${cForm.input.flex}`;
+   $: inputClass = `${cForm.input.inputBase} ${cForm.input.transition} ${cForm.input.bg} ${cForm.input.border} ${cForm.input.rounding} 
+                    ${cForm.input.placeholder} ${cForm.input.text}`
+   $: clearClass = `${cForm.input.clearBase} ${cForm.input.clearAbsolute} ${cForm.input.flex}`
+   $: labelClass = `${cForm.input.transition} ${cForm.input.labelBase} ${cForm.input.labelAbsolute} ${cForm.input.labelPadding}
+                    ${value ? `${cForm.input.labelActiveBg} ${cForm.input.labelPosValue}` : cForm.input.labelPosDef}
+                    ${cForm.input.labelPosFocus} ${cForm.input.labelBg}`
 </script>
 
 <label 
-   class="label w-full group relative {cTransition} cursor-text !bg-transparent">
+   class="{wrapClass}">
    <input 
       type="text" {name} {placeholder} bind:value
-      class="
-         input variant-form-material peer
-         {cTransition}
-         !rounded-lg 
-         placeholder:text-transparent focus:placeholder:text-surface-600 dark:focus:placeholder:text-surface-400
-         placeholder:italic
-         !bg-transparent 
-         text-bold text-primary-900 dark:text-primary-100 focus:text-black dark:focus:text-white
-         border-2 border-transparent
-         focus:border-primary-500 
-
-      " 
+      class="{inputClass}" 
    />
-   <span class="
-         absolute z-2 {cTransition}
-         px-1 left-1 py-0 leading-none
-         { value ? '-top-[10px] scale-95' : 'top-[10px]'}
-         peer-focus:-top-[14px] peer-focus:scale-95
-         bg-transparent
-         peer-focus:bg-white dark:peer-focus:bg-surface-600
-         ">
+   <div 
+      class="{clearClass}" 
+      on:click={() => clear()}
+      on:keydown={(e) => e.key === 'Enter' && clear()}
+   >
+      <Button square variant="minimal" color="error" size="xs" shadow="none" rounded="circle">
+         <Icon icon="material-symbols:close-rounded" class="h-4 w-auto"></Icon>
+      </Button>
+   </div>
+   <span class="{labelClass}">
       {label}
    </span>
 </label>
