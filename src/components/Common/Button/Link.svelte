@@ -1,30 +1,41 @@
-<script>
+<script lang="ts">
+   import PopupHover from "@comp/Utils/Popup/PopupHover.svelte";
+   import type { PopupSettings } from "@skeletonlabs/skeleton";
+
    export let klass = '';
    export let href = '';
    export let target = '';
    export let rel = '';
 
-   export let color = 'text-primary-500 dark:text-primary-400 hover:text-primary-300 dark:hover:text-primary-200';
+   export let color = 'text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200';
 
+   export let popup = '';
+   export let popupPlacement:PopupSettings['placement'] = 'top';
 
-   const transition = 'transition-all duration-200 ease-out';
-   const textClass = 'text-clamp-lg min-w-fit max-w-[60%] whitespace-nowrap overflow-hidden no-underline'
+   const cTransition = 'transition-all duration-200 ease-out';
+   const cText = 'text-clamp-lg min-w-fit max-w-[60%] whitespace-nowrap overflow-hidden no-underline'
+   const cFlex = 'flex flex-row gap-2 items-center justify-start';
+   
+   const cAfter = 'after:absolute after:right-2 after:bottom-1';
+   const cActiveAfter = 'active:after:left-0 active:after:-bottom-0.5 active:after:w-full active:after:h-full';
+   const cHoverAfter = 'hover:after:bg-primary/25';
+
+   const linkClass = `unstyled relative group ${color} ${cTransition} ${cText} ${cFlex} ${cAfter} ${cActiveAfter} ${cHoverAfter} ${klass}`;
 </script>
 
-
-<a {href} {target} {rel} 
-   class="
-      unstyled group relative { transition } { textClass } { color }
-      hover:after:bg-primary/25
-      after:absolute after:right-2 after:bottom-1
-      active:after:left-0 active:after:-bottom-0.5 
-      active:after:w-full active:after:h-full
-      flex flex-row gap-2 items-center justify-start
-      {klass}
-      ">
-   <slot name="icon" />
-   <slot/>
-</a>
+{#if popup}
+   <PopupHover id={href} text={popup} placement={popupPlacement}>
+      <a {href} {target} {rel} class={linkClass}>
+         <slot name="icon" />
+         <slot/>
+      </a>
+   </PopupHover>
+{:else}
+   <a {href} {target} {rel} class={linkClass}>
+      <slot name="icon" />
+      <slot/>
+   </a>
+{/if}
 
 <style>
    a::after {
