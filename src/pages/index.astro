@@ -17,7 +17,7 @@ import Svg from "@comp/Media/Svg/Svg.svelte";
 import Accordeon from "@comp/Common/Accordeon/Accordeon.svelte";
 import AccordeonItem from "@comp/Common/Accordeon/AccordeonItem.svelte";
 // Page specific components
-import HomePortfolioSlider from "./components/HomePortfolioSlider.svelte";
+import HomePortfolioSlider from "@comp/Pages/Home/HomePortfolioSlider.svelte";
 
 changeLanguage("nl");
 
@@ -131,7 +131,7 @@ const faqItems = [
 			/>
 		</Hero>
 
-		<Section name="our-services" title={ t("home:sections.services.title") }>
+		<Section name="our-services" title={ `${t("home:sections.services.title")}` }>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
 					<><Card client:idle direction="row" block hover active title={item.title}>
