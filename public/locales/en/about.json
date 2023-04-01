@@ -1,0 +1,44 @@
+{
+   "intro": {
+      "desc": "We are a young, creative and venturous start-up company, expertised in everything surrounding the creation and publication of accessible web apps, desinging graphics and visualising 3D models."
+   },
+   "miro": {
+      "title": "Founder / Developer / Designer",
+      "hello": "Nice to meet you!",
+      "i_am": "I'm Miro; Designer, Developer, Creator.",
+      "desc": [
+         "I love to design, develop and optimise. But most importantly, I love to learn. Learning from people has always been my number one priority.", 
+         "And with my next project, I’d love to learn something from you too!"
+      ],
+      "more": {
+         "title": "More about me",
+         "title_alt": "More about myself"
+      }
+   },
+   "what_we_do": {
+      "title": "What we do",
+      "subtitle": "What do we keep ourselves busy with?"
+   },
+   "values": {
+      "title": "The difference we make",
+      "subtitle": "There's a few fundamental values we hold on to, just so we can equip you with the best possible solution for your project.",
+      "items": [
+         {
+            "title": "Multimedial Polyvalence",
+            "desc": "We specialise in creating web apps, as well as designing graphics and animating 3D models. We can provide you with everything you need to bring any multimedia project to fruition."
+         },
+         {
+            "title": "Transparancy",
+            "desc": "We are a young start-up, but we have plenty of experience in the industry already. We are transparent in our methods and price, and communicate clearly and concisely with our customers."
+         },
+         {
+            "title": "Efficiency",
+            "desc": "Quality, speed and price are of great importance to us. We strive for an efficient workflow so that we can offer our customers the most accurate price and guarantee the swiftest, highest-quality delivery possible."
+         },
+         {
+            "title": "Creativity",
+            "desc": "Creative thinking is very important to us. We aim for an original and unique approach so that we can offer our customers a product that stands out from the rest."
+         }
+      ]
+   }
+}

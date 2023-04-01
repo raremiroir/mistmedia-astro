@@ -6,7 +6,8 @@
    "geo": {
       "nl": {
          "lang": "Nederlands",
-         "name": "België"
+         "name": "België",
+         "antwerp": "Antwerpen"
       },
       "fr": {
          "lang": "Frans",
@@ -17,12 +18,25 @@
          "name": "Verenigd Koninkrijk"
       }
    },
-   "about": {
-      "address": {
-         "street": "Vekestraat 34",
-         "city": "2000 Antwerpen",
-         "country": "België"
-      }
+   "form": {
+      "input": {
+         "first_name": "Voornaam",
+         "last_name": "Achternaam",
+         "email": "E-mail",
+         "organisation": "Organisatie",
+         "subject": "Onderwerp",
+         "message": "Bericht",
+         "submit": {
+            "default": "Verzenden",
+            "send": {
+               "default": "Bericht Verzenden",
+               "sending": "Verzenden...",
+               "success": "Bericht verzonden!",
+               "error": "Bericht niet verzonden!"
+            }
+         }
+      },
+      "accept_terms": "Ik ga akkoord met het <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacybeleid</a> en de <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">algemene voorwaarden</a>."
    },
    "blog": {
       "info": {

@@ -3,10 +3,29 @@
       "switch_lang": "Change language",
       "more_info": "More info"
    },
+   "contact": {
+      "cta": "Contact us",
+      "subtitle": "If you have any questions, please contact us by email or phone.",
+      "text": [
+         "Whether it is a question, comment, critique, inquiry, anything at all.",
+         "Do not hesitate to contact us in any case!",
+         "We are always happy to hear from you.",
+         "We'll do our best to respond within 24 hours."
+      ],
+      "mail": {
+         "cta": "Mail us",
+         "text": "If you have any questions, please contact us by email."
+      },
+      "call": {
+         "cta": "Call us",
+         "text": "If you have any questions which cannot be answered by email, or for extremely urgent matters, please call us."
+      }
+   },
    "geo": {
       "nl": {
          "lang": "Dutch",
-         "name": "Belgium"
+         "name": "Belgium",
+         "antwerp": "Antwerp"
       },
       "fr": {
          "lang": "French",
@@ -17,12 +36,25 @@
          "name": "United Kingdom"
       }
    },
-   "about": {
-      "address": {
-         "street": "Vekestraat 34",
-         "city": "2000 Antwerp",
-         "country": "Belgium"
-      }
+   "form": {
+      "input": {
+         "first_name": "Given Name",
+         "last_name": "Surname",
+         "email": "Email",
+         "organisation": "Organisation",
+         "subject": "Subject",
+         "message": "Message",
+         "submit": {
+            "default": "Submit",
+            "send": {
+               "default": "Send Message",
+               "sending": "Sending...",
+               "success": "Message sent!",
+               "error": "Message not sent!"
+            }
+         }
+      },
+      "accept_terms": "I have read and accept the <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacy policy</a> and the <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">terms of service</a>."
    },
    "blog": {
       "info": {

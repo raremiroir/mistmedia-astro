@@ -1,4 +1,9 @@
 {
+   "img": {
+      "alt": {
+         "default": "Mist Media - Web Design, Web Development, SEO, Social Media, Graphic Design"
+      }
+   },
    "cta": {
       "title": "Ready to kick off?",
       "learn_more": {
@@ -37,8 +42,8 @@
       ]
    },
    "reviews": {
-      "title": "Lees wat onze klanten zeggen",
-      "subtitle": "Hieronder vindt u een aantal recensies van onze klanten. Als u een recensie wilt achterlaten, neem dan contact met ons op.",
+      "title": "What our customers say",
+      "subtitle": "Below are some of our customers' reviews. If you would like to leave a review, please contact us.",
       "items": [
          {
             "name": "John Doe",
@@ -63,15 +68,11 @@
    "sections": {
       "services": {
          "title": "What we do",
-         "subtitle": "Hieronder vindt je een lijst met de diensten die we aanbieden. Als je een dienst wilt aanvragen, neem dan contact met ons op."
+         "subtitle": "Below is a list of the services we offer. If you would like to request a service, please contact us."
       },
       "portfolio": {
          "title": "What we've made",
-         "subtitle": "Neem een kijkje naar onze portfolio om een idee te krijgen van de dingen die we hebben gemaakt."
-      },
-      "reviews": {
-         "title": "What our customers say",
-         "subtitle": "Enkele recensies van onze klanten. Als je een recensie wilt achterlaten, neem dan contact met ons op."
+         "subtitle": "Take a look at our portfolio to get a taste of the things we have made."
       }
    }
 }

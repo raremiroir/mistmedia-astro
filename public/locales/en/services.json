@@ -1,37 +1,37 @@
 {
    "graphic_design": {
-      "title": "Grafisch Ontwerp",
-      "subtitle": "Graphics met onderscheid",
-      "description": "Wij ontwerpen grafische elementen die uw merk onderscheiden van de rest. Van logo's tot flyers, van visitekaartjes tot advertenties. Wij ontwerpen het allemaal."
+      "title": "Graphic Design",
+      "subtitle": "Graphics with character",
+      "description": "We design graphics that make your brand stand out from the rest. From logos to flyers, business cards to advertisements. We design it all."
    },
    "web_design": {
-      "title": "Webontwikkeling",
-      "subtitle": "Websites met aandacht voor detail",
-      "description": "Jouw online aanwezigheid is énorm belangrijk, anno 2023. Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+      "title": "Web Development",
+      "subtitle": "Websites with an eye for detail",
+      "description": "Your online presence is extremely important in 2023. We design websites that are not just attractive, but that also perform flawlessly. From simple websites to complex web shops."
    },
    "seo": {
       "title": "SEO",
-      "subtitle": "Zichtbaarheid op het internet",
-      "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet. Door middel van zoekmachine optimalisatie zorgen wij ervoor dat jouw website hoog in de zoekresultaten komt."
+      "subtitle": "Visibility on the web",
+      "description": "We make sure your website is easily findable on the internet. Through search engine optimisation, we ensure that your website is ranked high in the search results."
    },
    "social_media": {
       "title": "Social Media",
-      "subtitle": "Online aanwezigheid",
-      "description": "Wij zorgen ervoor dat jouw online aanwezigheid een boost krijgt. Door middel van social media marketing zorgen wij ervoor dat jouw bedrijf goed zichtbaar wordt op het internet."
+      "subtitle": "Online presence",
+      "description": "We make your online presence get the boost it needs. Through social media marketing, we ensure that your company achieves great exposure on the internet."
    },
    "photography": {
-      "title": "Fotografie",
-      "subtitle": "Foto's met een verhaal",
-      "description": "Wij zorgen ervoor dat jouw bedrijf op een professionele manier wordt vastgelegd. Dit kunnen zowel foto's als video's zijn, die ook geïntegreerd kunnen worden in jouw website of graphics."
+      "title": "Photography",
+      "subtitle": "Pictures with a plot",
+      "description": "We make sure your business is captured in a professional way. These can be both photos and videos, which can also be integrated into your website and/or graphics."
    },
    "3d_visualization": {
-      "title": "3D Visualisatie",
-      "subtitle": "Een nieuwe dimensie",
-      "description": "Van kleine, didactische animaties tot printbare 3D modellen. Wij zorgen ervoor dat jouw producten, prototypes en animaties op een professionele en natuurlijke manier worden weergegeven."
+      "title": "3D Visualisation",
+      "subtitle": "Another dimension",
+      "description": "From small, didactic animations to printable 3D models. We make sure your products, prototypes and animations are displayed in a professional and natural way."
    },
    "branding": {
-      "title": "Huisstijl",
-      "subtitle": "Een sterk merk",
-      "description": "Wij zorgen ervoor dat jouw bedrijf een sterk merk wordt. Door middel van een professionenele, universele huisstijl zorgen wij ervoor dat jouw bedrijf een herkenbare identiteit krijgt."
+      "title": "Branding",
+      "subtitle": "A powerful brand",
+      "description": "We make sure your company develops a solid trademark. Through a professional, universal corporate design, we ensure that your business acquires a recognisable identity."
    }
 }

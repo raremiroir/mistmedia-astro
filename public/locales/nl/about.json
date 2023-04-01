@@ -1,6 +1,19 @@
 {
    "intro": {
-      "intro_desc": "Wij zijn een jonge, creatieve en ondernemende start-up, met expertise in alles wat de creatie en publicatie van toegankelijke web apps betreft, maar ook op vlak van grafisch ontwerp en het creëren en animeren van 3D modellen."
+      "desc": "Wij zijn een jonge, creatieve en ondernemende start-up, met expertise in alles wat de creatie en publicatie van toegankelijke web apps betreft, maar ook op vlak van grafisch ontwerp en het creëren en animeren van 3D modellen."
+   },
+   "miro": {
+      "title": "Oprichter / Developer / Designer",
+      "hello": "Aangename kennismaking!",
+      "i_am": "Ik ben Miro; Ontwerper, Ontwikkelaar, Creator.",
+      "desc": [
+         "Ik hou van ontwerpen, ontwikkelen en optimaliseren. Maar ik hou nog meer van leren. Leren van mensen is altijd mijn topprioriteit geweest.",
+         "Bij mijn volgende project leer ik dan ook graag wat van jou!"
+      ],
+      "more": {
+         "title": "Meer over mezelf",
+         "title_alt": "Meer over mij"
+      }
    },
    "what_we_do": {
       "title": "Wat we doen",

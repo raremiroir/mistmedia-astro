@@ -1,4 +1,9 @@
 {
+   "img": {
+      "alt": {
+         "default": "Mist Media - Webdesign, Web Development, SEO, Social Media, Grafisch Ontwerp"
+      }
+   },
    "cta": {
       "title": "Zin om te beginnen?",
       "learn_more": {
@@ -37,8 +42,8 @@
       ]
    },
    "reviews": {
-      "title": "Lees wat onze klanten zeggen",
-      "subtitle": "Hieronder vindt u een aantal recensies van onze klanten. Als u een recensie wilt achterlaten, neem dan contact met ons op.",
+      "title": "Wat onze klanten zeggen",
+      "subtitle": "Hieronder vindt u een aantal recensies van onze klanten. Als je graag een recensie zou willen achterlaten, neem dan contact met ons op.",
       "items": [
          {
             "name": "John Doe",
@@ -68,10 +73,6 @@
       "portfolio": {
          "title": "Wat we al gedaan hebben",
          "subtitle": "Neem een kijkje naar onze portfolio om een idee te krijgen van de dingen die we hebben gemaakt."
-      },
-      "reviews": {
-         "title": "Wat onze klanten zeggen",
-         "subtitle": "Enkele recensies van onze klanten. Als je een recensie wilt achterlaten, neem dan contact met ons op."
       }
    }
 }
