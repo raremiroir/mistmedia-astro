@@ -1,0 +1,73 @@
+---
+import { t } from 'i18next'
+
+// Astro components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Page from '@comp/Base/Page.astro';
+import Section from '@comp/Base/Section.astro';
+import Hero from '@comp/Main/Hero/Hero.astro';
+import { Picture } from '@astrojs/image/components';
+// Svelte components
+import Link from '@comp/Common/Button/Link.svelte';
+// Page specific components
+import CaseCard from '@comp/Pages/Cases/CaseCard.astro';
+
+
+const casesCards = [
+   {
+      href: '/',
+      label: 'Get to know more about this project',
+      title: 'Trixolutions LMS',
+      tags: ['Client', 'Web Design', 'Web Development', 'Web Management'],
+      imgSrc: '/images/stock/code-1.webp',
+      imgAlt: 'Placeholder Card Image',
+      content: 'As Trixolutions upgraded from an exclusively physical service to a hybrid online learning trajectory, they were in need of an easy-to-manage, yet scalable platform to invite their participants on and manage their education from there. We came up with the Trixolutions Hybrid Teamcoaching Trajectory, and created an online Learning Management System so their students could get a large part of the learning experience from behind their computers and smartphones.'
+   },
+   {
+      href: '/',
+      label: 'Get to know more about this project',
+      title: 'Trixolutions LMS',
+      tags: ['Client', 'Web Design', 'Web Development', 'Web Management'],
+      imgSrc: '/images/stock/code-1.webp',
+      imgAlt: 'Placeholder Card Image',
+      content: 'With the expansion of Trixolutions to the Netherlands, a new site was needed. As the offer of services varies from country to country, we couldn’t just attach this part to the .be-website. Trixolutions.nl was created, and the Hybrid Learning Management System is also available in the Netherlands now.'
+   },
+   {
+      href: '/',
+      label: 'Get to know more about this project',
+      title: 'Trixolutions LMS',
+      tags: ['Client', 'Web Design', 'Web Development', 'Web Management'],
+      imgSrc: '/images/stock/code-1.webp',
+      imgAlt: 'Placeholder Card Image',
+      content: 'With the expansion of Trixolutions to the Netherlands, a new site was needed. As the offer of services varies from country to country, we couldn’t just attach this part to the .be-website. Trixolutions.nl was created, and the Hybrid Learning Management System is also available in the Netherlands now.'
+   },
+]
+---
+
+<BaseLayout title={t('site:pages.cases.title')}>
+   <Page>
+      <Hero alt bgImg="/images/stock/webdev-2.webp" title="Cases">
+			<span slot="subtitle">
+				We're proud to present a growing selection of cases we have worked on in the past.
+			</span>
+		</Hero>
+
+   <Section name="trixolutions-cases" title="">
+      <ul class="w-full flex flex-col gap-16">
+
+         {casesCards.map(card => (
+            <li class="w-11/12 h-80 even:self-end">
+               <CaseCard
+                  href={card.href} label={card.label}
+                  title={card.title} tags={card.tags}
+                  imgSrc={card.imgSrc} imgAlt={card.imgAlt}>
+                  {card.content}
+               </CaseCard>
+            </li>
+         ))}
+
+      </ul>
+   </Section>
+      
+   </Page>
+</BaseLayout>

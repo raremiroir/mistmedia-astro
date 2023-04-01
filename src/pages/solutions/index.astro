@@ -1,0 +1,26 @@
+---
+import { t } from 'i18next'
+
+// Astro components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Page from '@comp/Base/Page.astro';
+import Section from '@comp/Base/Section.astro';
+import Hero from '@comp/Main/Hero/Hero.astro';
+// Svelte components
+import Card from '@comp/Common/Card/Card.svelte';
+import Link from '@comp/Common/Button/Link.svelte';
+---
+
+<BaseLayout title={t('site:pages.solutions.title')}>
+   <Page>
+      <Hero alt bgImg="/images/stock/webdev-2.webp" title="Solutions">
+			<span slot="subtitle">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, officiis!
+			</span>
+		</Hero>
+
+   <Section name="solution" title="Solution 1">
+   </Section>
+      
+   </Page>
+</BaseLayout>
