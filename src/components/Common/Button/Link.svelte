@@ -8,7 +8,7 @@
 
 
    const transition = 'transition-all duration-200 ease-out';
-   const textClass = 'text-clamp-md lg:text-clamp-lg min-w-fit max-w-[60%] whitespace-nowrap overflow-hidden no-underline'
+   const textClass = 'text-clamp-lg min-w-fit max-w-[60%] whitespace-nowrap overflow-hidden no-underline'
 </script>
 
 
