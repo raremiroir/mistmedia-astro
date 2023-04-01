@@ -24,8 +24,9 @@ import Link from '@comp/Common/Button/Link.svelte';
       <div class="grid grid-cols-2 gap-32 bg-transparent self-center h-144">
             <Card 
                client:load fillheight
+               color="surface"
                title="Mist Media" footer
-               block>
+               block hover>
                Whether it is a question, comment, critique, inquiry, anything at all. 
                Do not hesitate to contact us in any case!<br/>
                We're here to answer everything you throw at us.<br/><br/>
@@ -38,15 +39,26 @@ import Link from '@comp/Common/Button/Link.svelte';
                      {t('about.address.country')}
                   </span>
                   <span>
-                     <Link href="mailto:miro@mistmedia.be">miro@mistmedia.be</Link>
-                     <Link href="phone:0032484340391">+324 84 34 03 91</Link>
+                     <Link 
+                        client:load popup="Mail us!" 
+                        popupPlacement="top"
+                        href="mailto:miro@mistmedia.be">
+                        miro@mistmedia.be
+                     </Link>
+                     <Link 
+                        client:load popup="Call us!" 
+                        popupPlacement="bottom"
+                        href="phone:0032484340391">
+                        +324 84 34 03 91
+                     </Link>
                   </span>
                </div>
             </Card>
             <Card 
                client:load fillheight
-               title="Mist Media" footer
-               block>
+               color="surface"
+               title="Contact Us!" footer
+               block hover>
                
 
 
