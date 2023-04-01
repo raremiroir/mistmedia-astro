@@ -130,7 +130,7 @@ const boxGen = {
 
       // Define other styles
       base_class += props.style?.block ? ' w-full' : ' w-fit';
-      base_class += " transition duration-200 ease-in-out"
+      base_class += " transition-all duration-300 ease-in-out"
 
       // Return class
       return `${base_class} ${props.classes}`;
