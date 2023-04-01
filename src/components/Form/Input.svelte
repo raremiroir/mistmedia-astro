@@ -32,15 +32,17 @@
       type="text" {name} {placeholder} bind:value
       class="{inputClass}" 
    />
-   <div 
-      class="{clearClass}" 
-      on:click={() => clear()}
-      on:keydown={(e) => e.key === 'Enter' && clear()}
-   >
-      <Button square variant="minimal" color="error" size="xs" shadow="none" rounded="circle">
-         <Icon icon="material-symbols:close-rounded" class="h-4 w-auto"></Icon>
-      </Button>
-   </div>
+   {#if value}
+      <div 
+         class="{clearClass}" 
+         on:click={() => clear()}
+         on:keydown={(e) => e.key === 'Enter' && clear()}
+      >
+         <Button square variant="minimal" color="error" size="xs" shadow="none" rounded="circle">
+            <Icon icon="material-symbols:close-rounded" class="h-4 w-auto"></Icon>
+         </Button>
+      </div>
+   {/if}
    <span class="{labelClass}">
       {label}
    </span>
