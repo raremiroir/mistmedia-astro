@@ -1,6 +1,7 @@
 <script>
    import FormRow from "@comp/Form/FormRow.svelte";
    import Input from "@comp/Form/Input.svelte";
+   import TextArea from "@comp/Form/TextArea.svelte";
 </script>
 
 <form class="w-full flex flex-col gap-4 py-4">
@@ -37,7 +38,6 @@
          label="Organization" 
          name="organization" 
          placeholder="e.g. John Doe Inc."
-         type="text"
       />
    </FormRow>
 
@@ -47,7 +47,15 @@
          label="Subject" 
          name="subject" 
          placeholder="e.g. I have a question about..."
-         type="text"
+      />
+   </FormRow>
+
+   <!-- Message -->
+   <FormRow>
+      <TextArea 
+         label="Message" 
+         name="message" 
+         placeholder="Your message here..."
       />
    </FormRow>
 
