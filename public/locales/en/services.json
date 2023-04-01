@@ -1,37 +1,40 @@
 {
-   "graphic_design": {
-      "title": "Graphic Design",
-      "subtitle": "Graphics with character",
-      "description": "We design graphics that make your brand stand out from the rest. From logos to flyers, business cards to advertisements. We design it all."
-   },
-   "web_design": {
-      "title": "Web Development",
-      "subtitle": "Websites with an eye for detail",
-      "description": "Your online presence is extremely important in 2023. We design websites that are not just attractive, but that also perform flawlessly. From simple websites to complex web shops."
-   },
-   "seo": {
-      "title": "SEO",
-      "subtitle": "Visibility on the web",
-      "description": "We make sure your website is easily findable on the internet. Through search engine optimisation, we ensure that your website is ranked high in the search results."
-   },
-   "social_media": {
-      "title": "Social Media",
-      "subtitle": "Online presence",
-      "description": "We make your online presence get the boost it needs. Through social media marketing, we ensure that your company achieves great exposure on the internet."
-   },
-   "photography": {
-      "title": "Photography",
-      "subtitle": "Pictures with a plot",
-      "description": "We make sure your business is captured in a professional way. These can be both photos and videos, which can also be integrated into your website and/or graphics."
-   },
-   "3d_visualization": {
-      "title": "3D Visualisation",
-      "subtitle": "Another dimension",
-      "description": "From small, didactic animations to printable 3D models. We make sure your products, prototypes and animations are displayed in a professional and natural way."
-   },
-   "branding": {
-      "title": "Branding",
-      "subtitle": "A powerful brand",
-      "description": "We make sure your company develops a solid trademark. Through a professional, universal corporate design, we ensure that your business acquires a recognisable identity."
+   "title": "Our Solutions",
+   "services": {
+      "graphic_design": {
+         "title": "Graphic Design",
+         "subtitle": "Graphics with character",
+         "description": "We design graphics that make your brand stand out from the rest. From logos to flyers, business cards to advertisements. We design it all."
+      },
+      "web_design": {
+         "title": "Web Development",
+         "subtitle": "Websites with an eye for detail",
+         "description": "Your online presence is extremely important in 2023. We design websites that are not just attractive, but that also perform flawlessly. From simple websites to complex web shops."
+      },
+      "seo": {
+         "title": "SEO",
+         "subtitle": "Visibility on the web",
+         "description": "We make sure your website is easily findable on the internet. Through search engine optimisation, we ensure that your website is ranked high in the search results."
+      },
+      "social_media": {
+         "title": "Social Media",
+         "subtitle": "Online presence",
+         "description": "We make your online presence get the boost it needs. Through social media marketing, we ensure that your company achieves great exposure on the internet."
+      },
+      "photography": {
+         "title": "Photography",
+         "subtitle": "Pictures with a plot",
+         "description": "We make sure your business is captured in a professional way. These can be both photos and videos, which can also be integrated into your website and/or graphics."
+      },
+      "3d_visualization": {
+         "title": "3D Visualisation",
+         "subtitle": "Another dimension",
+         "description": "From small, didactic animations to printable 3D models. We make sure your products, prototypes and animations are displayed in a professional and natural way."
+      },
+      "branding": {
+         "title": "Branding",
+         "subtitle": "A powerful brand",
+         "description": "We make sure your company develops a solid trademark. Through a professional, universal corporate design, we ensure that your business acquires a recognisable identity."
+      }
    }
 }
