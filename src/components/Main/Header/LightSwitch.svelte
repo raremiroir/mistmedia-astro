@@ -7,8 +7,7 @@
 		} from "@skeletonlabs/skeleton";
    import { onMount } from "svelte";
 
-	type OnKeyDownEvent = KeyboardEvent & { currentTarget: EventTarget & HTMLDivElement };
-
+	import type { OnKeyDownEvent } from "@tstype/components/toggle";
 	// Props
 	export let bgLight: string = "bg-surface-50";
 	export let bgDark: string = "bg-surface-900";
@@ -55,7 +54,7 @@
 	// State
 	$: trackBg = $modeCurrent ? bgLight : bgDark;
 	$: thumbBg = $modeCurrent ? bgDark : bgLight;
-	$: thumbPosition = $modeCurrent ? "translate-x-full group-active:translate-x-4" : "translate-x-0.5";
+	$: thumbPosition = $modeCurrent ? "translate-x-full group-active:translate-x-4" : "translate-x-[1px]";
 	$: iconFill = $modeCurrent ? fillLight : fillDark;
 	// Reactive
 	$: classesTrack = `${track} ${trackBg} ${width} ${height} ${rounded} ${ring} ${transition} ${$$props.class ?? ''}`;
