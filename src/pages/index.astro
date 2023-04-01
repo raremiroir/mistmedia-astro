@@ -134,7 +134,7 @@ const faqItems = [
 		<Section name="our-services" title={ `${t("home:sections.services.title")}` }>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
-					<><Card client:idle direction="row" block hover active title={item.title}>
+					<><Card client:idle direction="row" centerRow block hover active title={item.title}>
 						<Icon 
 							slot="media" name={item.icon} 
 							class="text-surface-900 group-hover:text-primary-800 dark:text-surface-50 dark:group-hover:text-primary-400 transition-all duration-300 ease-out w-20 h-auto" 
@@ -143,22 +143,6 @@ const faqItems = [
 					</Card></>
 				))}
 			</div>
-
-			<Card hover active title="Card Title">
-				<Picture 
-					slot="media"
-					src="/images/stock/code-1.webp"
-					alt="Placeholder Card Image"
-					sizes="(min-width: 300px;) 240w, (min-width: 600px;) 360w, (min-width: 900;) 540w"
-					widths={[240, 360, 540]}
-					formats={['webp', 'avif', 'jpeg']}
-					aspectRatio={16 / 12}
-					fit="cover"
-					position="center"
-					class="w-full h-auto opacity-70 brightness-75 contrast-125"
-				/>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae tempora mollitia ullam cumque doloribus quasi unde fugiat ex placeat temporibus aperiam quos nulla necessitatibus et ratione repellat totam dolores, ad ducimus optio iure exercitationem. Illum aut fugit molestiae ut ducimus?
-			</Card>
 		</Section>
 		
 		<Section alt name="portfolio" title="The Things We Have Done">
