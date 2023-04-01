@@ -1,7 +1,9 @@
 <script>
-   import FormRow from "@comp/Form/FormRow.svelte";
+   import Button from "@comp/Common/Button/Button.svelte";
+import FormRow from "@comp/Form/FormRow.svelte";
    import Input from "@comp/Form/Input.svelte";
    import TextArea from "@comp/Form/TextArea.svelte";
+   import ToggleCheck from "@comp/Form/ToggleCheck.svelte";
 </script>
 
 <form class="w-full flex flex-col gap-4 py-4">
@@ -56,8 +58,22 @@
          label="Message" 
          name="message" 
          placeholder="Your message here..."
+         rows="8" noResize
       />
    </FormRow>
 
+   <!-- Accept terms -->
+   <FormRow>
+      <ToggleCheck 
+         label="I have read and accept the privacy policy and terms of service." 
+         name="accept_terms" 
+         required size="sm"
+      />
+   </FormRow>
 
+   <FormRow align="justify-end items-center">
+      <Button type="submit" variant="fill" color="surface_dark" size="lg">
+         Send Message
+      </Button>
+   </FormRow>
 </form>
