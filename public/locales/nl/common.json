@@ -3,6 +3,24 @@
       "switch_lang": "Verander taal",
       "more_info": "Meer info"
    },
+   "contact": {
+      "cta": "Conteer ons",
+      "subtitle": "Mocht je vragen hebben, neem dan contact met ons op via e-mail of telefoon.",
+      "text": [
+         "Of het nu een vraag, commentaar, kritiek, onderzoek, of wat dan ook is.",
+         "Aarzel in geen geval om ons te contacteren!",
+         "We zijn altijd blij om van je te horen.",
+         "We doen ons uiterste best om binnen 24 uur te reageren."
+      ],
+      "mail": {
+         "cta": "Mail ons",
+         "text": "Als je vragen hebt, neem dan contact met ons op via e-mail."
+      },
+      "call": {
+         "cta": "Bel ons",
+         "text": "Voor zeer dringende zaken of voor vragen die niet per e-mail kunnen worden beantwoord, kan je ons bellen."
+      }
+   },
    "geo": {
       "nl": {
          "lang": "Nederlands",
