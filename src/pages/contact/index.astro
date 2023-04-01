@@ -8,6 +8,7 @@ import Map from '@comp/Media/Map/Map.svelte';
 import Section from '@comp/Base/Section.astro';
 import Card from '@comp/Common/Card/Card.svelte';
 import Link from '@comp/Common/Button/Link.svelte';
+import ContactForm from '@comp/Pages/Contact/ContactForm.svelte';
 ---
 
 <BaseLayout title={t('site:pages.contact.title')}>
@@ -60,7 +61,7 @@ import Link from '@comp/Common/Button/Link.svelte';
                title="Contact Us!" footer
                block hover>
                
-
+               <ContactForm client:load/>
 
             </Card>
          </div>
