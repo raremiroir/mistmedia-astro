@@ -176,10 +176,10 @@ t("home:faq.items").forEach((item) => {
 		<Section name="faq" title={`${t("home:faq.title")}`}>
 			<Accordeon client:load>
 				{faqItems.map((item, index) => (
-					<AccordeonItem key={index} title={item.question} icon={item.icon ? true : false} client:load>
+					<><AccordeonItem key={index} title={item.question} icon={item.icon ? true : false} client:load>
 						<Icon name={item.icon} slot="icon" />
 						{item.answer}
-					</AccordeonItem>
+					</AccordeonItem></>
 				))}
 			</Accordeon>
 		</Section>
