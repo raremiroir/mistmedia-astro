@@ -4,6 +4,23 @@
          "default": "Mist Media - Web Design, Web Development, SEO, Social Media, Graphic Design"
       }
    },
+   "hero": {
+      "typewriter": [
+         "Design Graphics",
+         "Design Websites",
+         "Develop Websites",
+         "Visualise 3D Models",
+         "Animate 3D Models",
+         "Create Multimedia",
+         "Create Websites",
+         "Deploy Websites",
+         "Deliver Graphics",
+         "Optimise Websites",
+         "Promote Websites",
+         "Design Logos",
+         "Love Working Together"
+      ]
+   },
    "cta": {
       "title": "Ready to kick off?",
       "learn_more": {

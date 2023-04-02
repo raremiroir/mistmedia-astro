@@ -4,6 +4,23 @@
          "default": "Mist Media - Webdesign, Web Development, SEO, Social Media, Grafisch Ontwerp"
       }
    },
+   "hero": {
+      "typewriter": [
+         "Ontwerpen Graphics",
+         "Ontwerpen Websites",
+         "Ontwikkelen Websites",
+         "Visualiseren 3D Modellen",
+         "Animeren 3D Models",
+         "Creëren Multimedia",
+         "Creëren Websites",
+         "Lanceren Websites",
+         "Leveren Graphics",
+         "Optimaliseren Websites",
+         "Promoten Websites",
+         "Ontwerpen Logos",
+         "Werken Graag Samen"
+      ]
+   },
    "cta": {
       "title": "Zin om te beginnen?",
       "learn_more": {
