@@ -1,5 +1,7 @@
 import type { AstroI18nextConfig } from "astro-i18next";
 
+const { COUNTRY = "nl" } = process.env;
+
 export default {
   defaultLocale: "nl",
   locales: [
@@ -8,7 +10,12 @@ export default {
     // "fr",
   ],
   fallbackLocale: "nl",
-  showDefaultLocale: false, // might disable later
+  showDefaultLocale: false, // might enable later
+  returnObjects: true,
+
+  backend: {
+    loadPath: "./src/public/locales/{{lng}}/{{ns}}.json",
+  },
   
   // optional
   namespaces: ["common", "site", "home", "about", "services"],
@@ -42,7 +49,22 @@ export default {
   },
 
   i18nextServer: {
+    returnObjects: true,
     debug: true,
+    lng: COUNTRY,
+    fallbackLng: "nl",
+    preload: ["nl", "en"],
+    ns: ["common", "site", "home", "about", "services"],
+    defaultNS: "common",
   },
-
+  i18nextClient: {
+    returnObjects: true,
+    debug: false,
+    lng: COUNTRY,
+    fallbackLng: "nl",
+    preload: ["nl", "en"],
+    ns: ["common", "site", "home", "about", "services"],
+    defaultNS: "common",
+    load: "languageOnly",
+  }
 };
