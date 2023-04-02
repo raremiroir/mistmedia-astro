@@ -44,6 +44,9 @@
    export let svg = '';
    export let animIcon = '';
 
+   export let dark = '';
+   export let light = '';
+
    export let animProps: AnimIconProps = {
       dark: 'fill-primary-800 dark:fill-primary-400',
       norm: 'fill-primary-600',
@@ -73,6 +76,8 @@
        }
        : logo ? {
          width: size,
+         dark: dark,
+         light: light,
        } : {}
 </script>
 
