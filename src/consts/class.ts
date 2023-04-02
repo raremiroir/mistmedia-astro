@@ -73,3 +73,18 @@ export const cToggle = {
             }
       }
 }
+
+// Splide
+export const cSplide = {
+      wrap: `mt-16`,
+      options: {
+            drag: `cursor-grab active:cursor-grabbing`,
+      },
+      slide: {
+            solo_img: {
+                  base: 'bg-transparent opacity-60',
+                  hover: 'hover:opacity-80 hover:scale-110',
+                  active: 'active:scale-95 cursor-pointer',
+            }
+      }
+}
