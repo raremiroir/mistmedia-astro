@@ -17,6 +17,8 @@
    export let leading: string = '';
    export let shadow: string = '';
 
+   export let capitalize: boolean = false;
+
    export let fake: boolean = false;
 
    export let klass: string = '';
@@ -27,7 +29,7 @@
 <svelte:component this={titleComp}
       {size} {color} {shadow}
       {weight} {fontfam} {leading}
-      {fake} klass={klass}
+      {fake} klass={`${capitalize && 'capitalize'} ${klass}`}
    >     
       <slot/>
 </svelte:component>
