@@ -18,7 +18,7 @@ import AccordeonItem from "@comp/Common/Accordeon/AccordeonItem.svelte";
 import HomePortfolioSlider from "@comp/Pages/Home/HomePortfolioSlider.svelte";
 
 // Consts
-import { SERVICES } from "@const/index";
+import { ICONS } from "@const/index";
 
 
 changeLanguage("nl");
@@ -30,7 +30,7 @@ Object.keys(t("services:services")).forEach((key) => {
 		  title: t(`services:services.${key}.title`),
 		  subtitle: t(`services:services.${key}.subtitle`),
 		  description: t(`services:services.${key}.description`),
-		  icon: SERVICES.icons[key]
+		  icon: ICONS.services[key]
 	 })
 });
 
