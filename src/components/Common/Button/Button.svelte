@@ -16,6 +16,9 @@
    export let active: boolean = false;
    export let loading: boolean = false;
 
+   export let capitalize: boolean = false;
+   export let uppercase: boolean = false;
+
    export let ripple: boolean = false;
    export let square: boolean = false;
    
@@ -31,7 +34,8 @@
    export let block:boolean = false;
 
    // Extra classes
-   export let klass:string = '';
+   let klass:string = '';
+   export { klass as class };
 
    const btnStyle = boxGen.full({
       variant: active? 'ghost' : variant,
@@ -52,7 +56,7 @@
    const groupClass = group ? group === 'horizontal' ? 'btn-group' : 'btn-group-vertical' : '';
    
    // Parse classes to btnClass
-   let btnClass = `btn ${groupClass} ${transition} overflow-hidden 
+   let btnClass = `btn ${groupClass} ${transition} overflow-hidden ${capitalize ? 'capitalize' : uppercase ? 'uppercase' : ''} 
                   font-semibold tracking-wide active:!scale-[97%] ${btnStyle}`;
 
    // Define extra classes
