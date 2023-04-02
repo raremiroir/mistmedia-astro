@@ -1,5 +1,5 @@
 ---
-import { t, changeLanguage } from "i18next";
+import i18next, { t, changeLanguage } from "i18next";
 // Astro components
 import { Picture } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
@@ -13,12 +13,14 @@ import Heading from "@comp/Common/Heading/Heading.svelte";
 import Card from "@comp/Common/Card/Card.svelte";
 // Page specific components
 import HomePortfolioSlider from "@comp/Pages/Home/HomePortfolioSlider.svelte";
+import HeroTypeWriter from "@comp/Pages/Home/HeroTypeWriter.svelte";
 // Common Section Components
 import CallToAction from "@comp/Pages/Common/CallToAction.astro";
 import Faq from "@comp/Pages/Common/Faq.astro";
 
 // Consts
 import { ICONS } from "@const/index";
+import HomeHeroPicture from "@comp/Pages/Home/HomeHeroPicture.astro";
 
 
 changeLanguage("nl");
@@ -51,19 +53,14 @@ t("home:reviews.items").forEach((review, key) => {
 <BaseLayout title={t("site:pages.home.title")}>
 	<Page>
 		<!-- HERO -->
-		<Hero title="Mist Media" bgImg="/images/stock/code-1.webp" slot="hero" media>
-			<Picture 
+		<Hero customTitle title="Mist Media" bgImg="/images/stock/code-1.webp" slot="hero" media>
+			<HomeHeroPicture 
 				slot="media"
 				src="/images/hero/DevicesShowcase-Light.png"
-				alt={t("home:img.alt.default")}
-				sizes="(min-width: 600px;) 400w, (min-width: 800px;) 600w, (min-width: 1200px;) 800w"
-				widths={[400, 600, 800]}
-				formats={['webp', 'avif', 'png']}
-				aspectRatio={1.172}
-				fit="contain"
-				position="bottom"
-				class="w-fit max-w-md h-auto bg-transparent opacity-70 mix-blend-darken"
+				alt={t("home:img.alt.default")} 
 			/>
+			<HeroTypeWriter lang={i18next.language} client:load slot='title'/>
+			
 		</Hero>
 		<!-- END HERO -->
 
