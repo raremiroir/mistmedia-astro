@@ -1,22 +1,28 @@
 ---
 import { t, changeLanguage } from "i18next";
 // Astro components
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Page from "@comp/Base/Page.astro";
-import Section from "@comp/Base/Section.astro";
-import Hero from "@comp/Main/Hero/Hero.astro";
-import { Icon } from "astro-icon";
-import { Picture } from "@astrojs/image/components";
+import BaseLayout 	from "@layouts/BaseLayout.astro";
+import Page 			from "@comp/Base/Page.astro";
+import Section 		from "@comp/Base/Section.astro";
+import Hero 			from "@comp/Main/Hero/Hero.astro";
+import { Icon } 		from "astro-icon";
+import { Picture } 	from "@astrojs/image/components";
 // Svelte components
-import Box from "@comp/Base/Box.svelte";
-import Heading from "@comp/Common/Heading/Heading.svelte";
-import Button from "@comp/Common/Button/Button.svelte";
-import Card from "@comp/Common/Card/Card.svelte";
-import Drawer from "@comp/Common/Drawer/Drawer.svelte";
-import Svg from "@comp/Media/Svg/Svg.svelte";
-import MistLogoAnim from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
+import Box 				from "@comp/Base/Box.svelte";
+import Heading 		from "@comp/Common/Heading/Heading.svelte";
+import Button 			from "@comp/Common/Button/Button.svelte";
+import Card 			from "@comp/Common/Card/Card.svelte";
+import Drawer 			from "@comp/Common/Drawer/Drawer.svelte";
+import Svg 				from "@comp/Media/Svg/Svg.svelte";
+import MistLogoAnim 	from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
 // Page specific components
 import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
+import LinkedInBtn 	from "@comp/Pages/About/SocialBtns/LinkedInBtn.astro";
+import GithubBtn 		from "@comp/Pages/About/SocialBtns/GithubBtn.astro";
+import FacebookBtn 	from "@comp/Pages/About/SocialBtns/FacebookBtn.astro";
+import InstagramBtn 	from "@comp/Pages/About/SocialBtns/InstagramBtn.astro";
+// Common Section components
+import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
 
 changeLanguage("nl");
 
@@ -83,36 +89,12 @@ t("about:values.items").forEach((value) => {
 								{t("about:miro.more.title")}
 							</Button>
 							<span slot="title" class="capitalize">{t("about:miro.more.title_alt")}</span>
-						</Drawer>
+					</Drawer>
 
-						<!-- LinkedIn Icon -->
-						<!-- <Button 
-							color="bg-[#0072b1] shadow-[#00507A]" 
-							size="square-xl" 
-							hoverFx>
-								<Icon icon="animLinkedIn" animSize="40" normColor="fill-primary-d1 dark:fill-secondary-d1" darkColor="fill-primary-l3 dark:fill-secondary-d3"/>
-						</Button> -->
-						<!-- GitHub Icon -->
-						<!-- <Button 
-							color="bg-secondary-d2 dark:bg-secondary-d3" 
-							size="square-xl" 
-							hoverFx>
-								<Icon icon="animGithub" animSize="40" normColor="fill-primary-d3 dark:fill-secondary-d1" strokeDarkColor="stroke-primary-l3 dark:stroke-secondary-l3"/>
-						</Button> -->
-						<!-- Facebook Icon -->
-						<!-- <Button 
-							color="bg-[#3b5998] shadow-[#2E4476]" 
-							size="square-xl" 
-							hoverFx>
-								<Icon icon="animFacebook" animSize="40" normColor="fill-primary-l3 dark:fill-secondary-l3" darkColor="fill-primary-l3 dark:fill-secondary-l3"/>
-						</Button> -->
-						<!-- Instagram Icon -->
-						<!-- <Button 
-							color="bg-gradient-to-tr from-[#fbad50] via-[#cd486b] to-[#8a3ab9]" 
-							size="square-xl" 
-							hoverFx>
-								<Icon icon="animInsta" animSize="40" normColor="fill-secondary/50 dark:fill-primary/50" darkColor="fill-primary-l3 dark:fill-secondary-d3"/>
-						</Button> -->
+					<LinkedInBtn />
+					<GithubBtn />
+					<!-- <FacebookBtn /> -->
+					<!-- <InstagramBtn /> -->
 					</div>
 				</div>
 			</div>
@@ -141,6 +123,10 @@ t("about:values.items").forEach((value) => {
 			<AboutTechStackMarquee slot="append" />
 		</Section>
 		<!-- END VALUES -->
+
+		<!-- CTA -->
+		<CallToAction />
+		<!-- END CTA -->
 
 	</Page>
 </BaseLayout>
