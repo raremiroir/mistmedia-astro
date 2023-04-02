@@ -25,11 +25,16 @@ export type ColorPalette = {
    surface_dark: ColorShades;
 }
 
-export type ColorProp = "primary" | "secondary" | "tertiary" | "success" | "warning" | "error" | "surface" | "surface_alt" | "surface_dark";
+export type ColorProp = "primary" | "secondary" | "tertiary" | "success" | "warning" | "error" | "surface" | "surface_alt" | "surface_dark" | "custom";
 export type VariantProp = "fill" | "outline" | "ghost" | "soft" | "minimal";
 export type SizeProp = "none" | "xs" | "sm" | "md" | "lg" | "xl";
 export type RoundedProp = "none" | "sm" | "md" | "lg" | "circle" | "tile-sm" | "tile" | "tile-lg";
 export type ShadowProp = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'bevel';
+
+export const isColorProp = (prop: string) => {
+	return prop === "primary" || prop === "secondary" || prop === "tertiary" || prop === "success" || prop === "warning" || prop === "error" || prop === "surface" || prop === "surface_alt" || prop === "surface_dark";
+}
+
 
 export type ThemeVariant = {
    baseStyles: string;

@@ -34,15 +34,14 @@
    export let block:boolean = false;
 
    // Extra classes
-   let klass:string = '';
-   export { klass as class };
+   export let klass:string = '';
 
    const btnStyle = boxGen.full({
       variant: active? 'ghost' : variant,
-      color: active? 'primary' : color,
+      color: color === 'custom' ? color : active ? 'primary' : color,
       size: size,
       hover: true,
-      active: true,
+      active: active,
       style: {
          rounded: rounded,
          shadow: shadow,
@@ -56,7 +55,7 @@
    const groupClass = group ? group === 'horizontal' ? 'btn-group' : 'btn-group-vertical' : '';
    
    // Parse classes to btnClass
-   let btnClass = `btn ${groupClass} ${transition} overflow-hidden ${capitalize ? 'capitalize' : uppercase ? 'uppercase' : ''} 
+   let btnClass = `btn group ${groupClass} ${transition} overflow-hidden ${capitalize ? 'capitalize' : uppercase ? 'uppercase' : ''} 
                   font-semibold tracking-wide active:!scale-[97%] ${btnStyle}`;
 
    // Define extra classes

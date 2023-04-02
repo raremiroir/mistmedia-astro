@@ -21,31 +21,35 @@ export type ThemeProps = {
 
 const boxGen = {
    color: (color: ColorProp, variant: VariantProp, hover: boolean = false, active: boolean = false) => {
-      switch (variant) {
-         case 'fill':
-            return ` ${theme.colors.bg[color].default} ${theme.on[color]} !border-none
-                     ${hover ? theme.colors.bg[color].hover : ''}
-                     ${active ? theme.colors.bg[color].active : ''}`;
-         case 'outline':
-            return ` ${theme.colors.border[color].default} ${theme.colors.text[color].default} bg-transparent
-                     ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.text[color].hover} ${theme.colors.border[color].hover}` : ''}
-                     ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.text[color].active} ${theme.colors.border[color].active}` : ''}`;
-         case 'ghost':
-            return ` ${theme.colors.bg[color].default_alt} ${theme.colors.border[color].default} ${theme.colors.text[color].default}
-                     ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.border[color].hover} ${theme.colors.text[color].hover}` : ''}
-                     ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.border[color].active} ${theme.colors.text[color].active}` : ''}`;
-         case 'soft':
-            return ` ${theme.colors.bg[color].default_alt} ${theme.colors.text[color].default} !border-none
-                     ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.text[color].hover}` : ''}
-                     ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.text[color].active}` : ''}`;
-         case 'minimal':
-            return ` bg-transparent border-transparent
-                     ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.text[color].hover}` : ''}
-                     ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.text[color].active}` : ''}`;
-         default:
-            return ` bg-surface-200 text-black border-transparent
-                     ${hover ? `hover:bg-surface-300` : ''}
-                     ${active ? `active:bg-surface-400` : ''}`;
+      if (color === 'custom') {
+         return;
+      } else {
+         switch (variant) {
+            case 'fill':
+               return ` ${theme.colors.bg[color].default} ${theme.on[color]} !border-none
+                        ${hover ? theme.colors.bg[color].hover : ''}
+                        ${active ? theme.colors.bg[color].active : ''}`;
+            case 'outline':
+               return ` ${theme.colors.border[color].default} ${theme.colors.text[color].default} bg-transparent
+                        ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.text[color].hover} ${theme.colors.border[color].hover}` : ''}
+                        ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.text[color].active} ${theme.colors.border[color].active}` : ''}`;
+            case 'ghost':
+               return ` ${theme.colors.bg[color].default_alt} ${theme.colors.border[color].default} ${theme.colors.text[color].default}
+                        ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.border[color].hover} ${theme.colors.text[color].hover}` : ''}
+                        ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.border[color].active} ${theme.colors.text[color].active}` : ''}`;
+            case 'soft':
+               return ` ${theme.colors.bg[color].default_alt} ${theme.colors.text[color].default} !border-none
+                        ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.text[color].hover}` : ''}
+                        ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.text[color].active}` : ''}`;
+            case 'minimal':
+               return ` bg-transparent border-transparent
+                        ${hover ? `${theme.colors.bg[color].hover_alt} ${theme.colors.text[color].hover}` : ''}
+                        ${active ? `${theme.colors.bg[color].active_alt} ${theme.colors.text[color].active}` : ''}`;
+            default:
+               return ` bg-surface-200 text-black border-transparent
+                        ${hover ? `hover:bg-surface-300` : ''}
+                        ${active ? `active:bg-surface-400` : ''}`;
+         }
       }
    },
    size: (size: SizeProp) => {
@@ -73,6 +77,7 @@ const boxGen = {
       }
    },
    shadow: function(shadow: ShadowProp, color: ColorProp, hover: boolean = false, active: boolean = false) {
+      
       switch (shadow) {
          case 'none': return ` shadow-none`; 
          case 'sm': 
@@ -92,6 +97,7 @@ const boxGen = {
                      ${ hover ? 'hover:shadow-3xl hover:shadow-current/30' : ''}
                      ${ active ? 'active:shadow-current/40' : '' }`;
          case 'bevel':
+            if (color === 'custom') return ` shadow-md-noblur hover:shadow-lg-noblur`;
             return ` shadow-md-noblur ${theme.colors.shadow[color].default}
                      ${ hover ? `hover:shadow-lg-noblur ${theme.colors.shadow[color].hover}` : ''}
                      ${ active ? `${theme.colors.shadow[color].active}` : '' }`;
