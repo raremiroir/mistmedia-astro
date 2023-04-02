@@ -1,0 +1,17 @@
+---
+
+export interface Props {
+   cols?: number;
+   rows?: number;
+   gap?: string;
+}
+
+// Classes
+
+
+const { cols, rows, gap } = Astro.props;
+---
+
+<div class="">
+   <slot/>
+</div>
