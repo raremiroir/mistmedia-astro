@@ -1,0 +1,66 @@
+---
+import { Splide } from '@splidejs/splide';
+import { Image } from '@astrojs/image/components';
+import { cSplide } from '@const/class';
+
+import Slide from '@comp/Common/Slider/Slide.astro';
+import SlideTrack from '@comp/Common/Slider/SlideTrack.astro';
+
+import { TECHSTACK } from '@const/index';
+
+const sliderClass = `splide ${cSplide.options.drag} ${cSplide.wrap}`
+const slideClass = `splide__slide ${cSplide.slide.solo_img.base} ${cSplide.slide.solo_img.hover} ${cSplide.slide.solo_img.active}`
+---
+
+<script define:vars={Splide}>
+   document.addEventListener( 'DOMContentLoaded', function () {
+      var splide = new Splide( '#splide', {
+         arrows: false,
+         type   : 'loop',
+         drag: 'free',
+         focus: 'center',
+         perPage: 8,
+         gap: '2rem',
+         autoScroll: {
+            speed: 0.5,
+            pauseOnHover: true,
+         },
+         width: '100%',
+         padding: {
+            left: '0',
+            right: '0',
+         },
+         breakpoints: {
+            640: {
+               perPage: 6,
+            },
+            768: {
+               perPage: 7,
+            },
+         },
+      } );
+      splide.mount( window.splide.Extensions );
+   });
+</script>
+
+<div 
+   id="splide" class={sliderClass}
+   role="group" aria-label="Example"> 
+
+   <SlideTrack>
+      {Object.values(TECHSTACK).map((brand) => (
+         <><Slide type="solo_img" active hover>
+               <Image 
+                  src={brand.svg}
+                  format="svg"
+                  alt={brand.name}
+                  height={80}
+                  aspectRatio={1}
+                  fit={'contain'}
+                  background={'transparent'}
+               />
+         </Slide></>
+      ))}
+   </SlideTrack>
+
+</div>
