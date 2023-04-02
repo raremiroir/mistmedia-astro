@@ -26,8 +26,6 @@
 	const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 ---
 
-<SvelteHead client:load />
-
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -59,3 +57,5 @@
 
 <!-- Styles / Fonts -->
 <link rel="stylesheet" href="https://use.typekit.net/kqt8vef.css">
+
+<SvelteHead client:load />
