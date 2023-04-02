@@ -3,6 +3,11 @@
       "switch_lang": "Verander taal",
       "more_info": "Meer info"
    },
+   "footer": {
+      "copyright": {
+         "rights_reserved": "Alle rechten voorbehouden."
+      }
+   },
    "contact": {
       "cta": "Contacteer ons",
       "subtitle": "Mocht je vragen hebben, neem dan contact met ons op via e-mail of telefoon.",
@@ -19,6 +24,10 @@
       "call": {
          "cta": "Bel ons",
          "text": "Voor zeer dringende zaken of voor vragen die niet per e-mail kunnen worden beantwoord, kan je ons bellen."
+      },
+      "socials": {
+         "title": "Volg ons op sociale media",
+         "text": "Volg ons op sociale media om op de hoogte te blijven van onze laatste nieuwtjes!"
       }
    },
    "geo": {

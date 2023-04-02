@@ -3,6 +3,11 @@
       "switch_lang": "Change language",
       "more_info": "More info"
    },
+   "footer": {
+      "copyright": {
+         "rights_reserved": "All rights reserved."
+      }
+   },
    "contact": {
       "cta": "Contact us",
       "subtitle": "If you have any questions, please contact us by email or phone.",
@@ -19,6 +24,10 @@
       "call": {
          "cta": "Call us",
          "text": "If you have any questions which cannot be answered by email, or for extremely urgent matters, please call us."
+      },
+      "socials": {
+         "title": "Get in touch on social media",
+         "text": "Follow us on social media to stay up to date with the latest news and developments!"
       }
    },
    "geo": {
