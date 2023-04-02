@@ -1,7 +1,8 @@
 ---
-  import BaseHead from '../components/Base/BaseHead.astro';
-  import Header from '../components/Main/Header/Header.astro';
-  import Footer from '../components/Main/Footer.astro';
+  import BaseHead from '@comp/Base/BaseHead.astro';
+  import BaseHeadSvelte from '@comp/Base/BaseHeadSvelte.svelte';
+  import Header from '@comp/Main/Header/Header.astro';
+  import Footer from '@comp/Main/Footer.astro';
 	import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	import { widths } from '../consts/class';
 
@@ -21,6 +22,7 @@
     <BaseHead 
       title={`${SITE_TITLE} | ${title}`} 
       description={description?? SITE_DESCRIPTION} />
+    <BaseHeadSvelte client:load />
 
     <slot name="head"/>
   </head>
