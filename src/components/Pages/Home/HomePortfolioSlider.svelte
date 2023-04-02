@@ -3,7 +3,6 @@
    import type { SliderProps } from "component-slider";
    import { slider } from "src/consts/class";
 
-   import SlideBase from "@comp/Common/Slider/SlideBase.svelte";
    import SlidePage from "@comp/Common/Slider/SlidePage.svelte";
    import Card from "@comp/Common/Card/Card.svelte";
 
