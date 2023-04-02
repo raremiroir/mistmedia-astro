@@ -7,13 +7,14 @@ export interface Props {
    subtitle?: string;
    klass?: string;
    alt?: boolean;
+   transparent?: boolean;
    fullWidthPrepend?: boolean;
    fullWidthAppend?: boolean;
 }
 
 const { 
    name, title, subtitle, 
-   alt, klass, 
+   alt, transparent, klass,
    fullWidthPrepend = false,
    fullWidthAppend = false,
 } = Astro.props;
@@ -25,7 +26,9 @@ const sectionClass = `
    pb-12 md:pb-16 
    pt-6 md:pt-8 
    px-1 xs:px-2 sm:px-4 md:px-0
+   ${ transparent ? 'bg-transparent' : `
    ${ alt ? 'bg-surface-100 dark:bg-surface-800' : 'bg-white/50 dark:bg-surface-700' }
+   `}
    ${klass}
 `;
 ---
