@@ -1,4 +1,5 @@
 ---
+import { t } from 'i18next';
 // Svelte components
 import Heading 	from '../Common/Heading/Heading.svelte'
 import Button 		from '../Common/Button/Button.svelte'
@@ -51,7 +52,7 @@ const footerLinks = [
 				type="h3" size="sm" 
 				color="text-surface-400"
 				klass="hidden sm:flex items-center">
-            Connect with our Socials!
+            {t("contact.socials.title")}
          </Heading>
          <div class="flex justify-center gap-4">
 				{ socialIcons.map((item) => (
@@ -80,11 +81,10 @@ const footerLinks = [
    
       <!-- Links -->
       <div class="grid grid-cols-2 lg:grid-cols-4 w-full gap-y-12 lg:gap-y-0">
-         <Heading 
-				type="h3" color="text-surface-200 dark:text-surface-100" client:idle
-				klass="order-first flex items-center justify-center lg:items-start lg:justify-start">
-				Brand
-			</Heading>
+         
+			<div class="h-full flex items-start">
+				<Svg client:idle logo size={250} dark="fill-surface-400" light="fill-surface-300" />
+			</div>
 
 			{ footerLinks.map((col) => (
 				<div class="
@@ -117,7 +117,7 @@ const footerLinks = [
 				border-t-2 border-surface-200/40
 				pt-6 opacity-70 
 				text-surface-200 dark:text-surface-100">
-			&copy; {today.getFullYear()} Mist Media. All rights reserved.
+			&copy; {today.getFullYear()} Mist Media. {t("footer.copyright.rights_reserved")}
 		</span>
    </div>
 </footer>
