@@ -16,10 +16,22 @@ import Svg from "@comp/Media/Svg/Svg.svelte";
 import MistLogoAnim from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
 
 changeLanguage("nl");
+
+// Value Cards
+let valueCards:{[key:string]:string}[] = [];
+/* @ts-ignore */
+t("about:values.items").forEach((value) => {
+	 valueCards.push({
+		  title: value.title,
+		  description: value.desc,
+		  icon: 'DevicesResponsive'
+	 })
+});
 ---
 
 <BaseLayout title={t("site:pages.about.title")}>
 	<Page>
+		<!-- HERO -->
 		<Hero slot="hero" title="About Us" bgImg="/images/stock/webdev-2.webp" media>
 			<div slot="media" class="w-1/3 mb-6">
 				<MistLogoAnim client:idle light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
@@ -28,8 +40,10 @@ changeLanguage("nl");
 				{t("about:intro.desc")}
 			</p>
 		</Hero>
+		<!-- END HERO -->
 
-		<Section name="about-me" title="">
+		<!-- ABOUT ME -->
+		<Section name="about-me" title="" alt>
 			<div class="w-full h-fit flex flex-row gap-4 sm:gap-6 mx-auto">
 				<Box 
 					class="h-full"
@@ -54,18 +68,18 @@ changeLanguage("nl");
 							{t("about:miro.i_am")}
 						</Heading>
 						<p>
-							{t("about:miro.desc[0]")}<br/>
-							{t("about:miro.desc[1]")}
+							{t("about:miro.desc.0")}<br/>
+							{t("about:miro.desc.1")}
 						</p>
 					</Card>
 					<!-- Buttons -->
 					<div class="flex flex-row gap-4 col-span-12 sm:col-span-8 sm:row-span-1">
 						<!-- About Me -->
 						<Drawer id="drawer_about-me" client:load>
-							<Button slot="trigger" color="surface_alt" size='xl'>
-								More About Me
+							<Button slot="trigger" color="surface_alt" size='xl' capitalize>
+								{t("about:miro.more.title")}
 							</Button>
-							<span slot="title">More About Myself</span>
+							<span slot="title" class="capitalize">{t("about:miro.more.title_alt")}</span>
 						</Drawer>
 
 						<!-- LinkedIn Icon -->
@@ -100,16 +114,17 @@ changeLanguage("nl");
 				</div>
 			</div>
 		</Section>
+		<!-- END ABOUT ME -->
 
+		<!-- VALUES -->
 		<Section 
 			name="about-difference" title={`${t("about:values.title")}`}
 			subtitle={`${t("about:values.subtitle")}`}>
 			<div class="w-full grid grid-cols-1 md:grid-cols-2">
-				<!-- <AboutSliderTechStack 
-					label="Slides about how we differ ourselves" 
-					client:load
-				/> -->
+				
 			</div>
 		</Section>
+		<!-- END VALUES -->
+
 	</Page>
 </BaseLayout>

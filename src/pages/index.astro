@@ -17,103 +17,62 @@ import AccordeonItem from "@comp/Common/Accordeon/AccordeonItem.svelte";
 // Page specific components
 import HomePortfolioSlider from "@comp/Pages/Home/HomePortfolioSlider.svelte";
 
+// Consts
+import { SERVICES } from "@const/index";
+
+
 changeLanguage("nl");
 
-const servicesCards = [
-    {
-        title: "Web Design & Development",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "ph:globe-simple-duotone"
-    },
-    {
-        title: "Graphic Design & Branding",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "ph:paint-bucket-duotone"
-    },
-    {
-        title: "SEO",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "ph:rocket-launch-duotone"
-    },
-    {
-        title: "Social Media",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "ph:megaphone-simple-duotone"
-    },
-    {
-        title: "3D Visualisation",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "ph:cube-duotone"
-    },
-    {
-        title: "Audio Visual",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "ph:film-slate-duotone"
-    }
-];
-const reviewCards = [
-    {
-        name: "Big Boss",
-        job_title: "Lorem ipsum dolor",
-        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        avatar: "https://i.pravatar.cc/300"
-    },
-    {
-        name: "Someone Else",
-        job_title: "Lorem ipsum dolor",
-        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        avatar: "https://i.pravatar.cc/300"
-    },
-    {
-        name: "Important Person",
-        job_title: "Lorem ipsum dolor",
-        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        avatar: "https://i.pravatar.cc/300"
-    },
-];
-const ctaCards = [
-    {
-        title: "Contact 1",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "DevicesResponsive"
-    },
-    {
-        title: "Contact 2",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "DevicesResponsive"
-    },
-    {
-        title: "Contact 3",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-        icon: "DevicesResponsive"
-    }
-];
-const faqItems = [
-    {
-        question: "Question 1",
-        answer: "This is an answer.",
-        icon: "ph:gear-six-duotone"
-    },
-    {
-        question: "Question 2",
-        answer: "This is an answer.",
-        icon: "ph:gear-six-duotone"
-    },
-    {
-        question: "Question 3",
-        answer: "This is an answer.",
-        icon: "ph:gear-six-duotone"
-    },
-    {
-        question: "Question 4",
-        answer: "This is an answer.",
-        icon: "ph:gear-six-duotone"
-    }
-];
+let servicesCards:{[key:string]:string}[] = [];
+/* @ts-ignore */
+Object.keys(t("services:services")).forEach((key) => {
+	 servicesCards.push({
+		  title: t(`services:services.${key}.title`),
+		  subtitle: t(`services:services.${key}.subtitle`),
+		  description: t(`services:services.${key}.description`),
+		  icon: SERVICES.icons[key]
+	 })
+});
+
+let reviewCards:{[key:string]:string}[] = [];
+/* @ts-ignore */
+t("home:reviews.items").forEach((review, key) => {
+	 reviewCards.push({
+		  name: review.name,
+		  company: review.company,
+		  job_title: review.job_title,
+		  review: review.review,
+		  avatar: 'https://i.pravatar.cc/100'
+		//   avatar: AVATARS.reviews[key]
+	 })
+});
+
+let ctaCards:{[key:string]:string}[] = [];
+/* @ts-ignore */
+Object.keys(t("home:cta")).forEach((key) => {
+	if (key !== 'title') {
+		ctaCards.push({
+			title: t(`home:cta.${key}.title`),
+			subtitle: t(`home:cta.${key}.subtitle`),
+			icon: 'DevicesResponsive'
+		})
+	}
+});
+
+let faqItems:{[key:string]:string}[] = [];
+/* @ts-ignore */
+t("home:faq.items").forEach((item) => {
+	 faqItems.push({
+		  question: item.question,
+		  answer: item.answer,
+		  icon: 'ph:gear-six-duotone'
+	 })
+});
 ---
 
 <BaseLayout title={t("site:pages.home.title")}>
 	<Page>
+		<!-- HERO -->
 		<Hero title="Mist Media" bgImg="/images/stock/code-1.webp" slot="hero" media>
 			<Picture 
 				slot="media"
@@ -128,29 +87,42 @@ const faqItems = [
 				class="w-fit max-w-md h-auto bg-transparent opacity-70 mix-blend-darken"
 			/>
 		</Hero>
+		<!-- END HERO -->
 
+		<!-- SERVICES -->
 		<Section name="our-services" title={ `${t("home:sections.services.title")}` }>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
-					<><Card client:idle direction="row" centerRow block hover active title={item.title}>
+					<><Card client:idle direction="row" centerRow block hover active>
+						<Heading slot="title" type="h3" size="xxs" weight="font-bold">
+							{item.title}
+						</Heading>
 						<Icon 
 							slot="media" name={item.icon} 
-							class="text-surface-900 group-hover:text-primary-800 dark:text-surface-50 dark:group-hover:text-primary-400 transition-all duration-300 ease-out w-20 h-auto" 
+							class={`
+								text-surface-900 group-hover:text-primary-800 
+								dark:text-surface-50 dark:group-hover:text-primary-400 
+								transition-all duration-300 ease-out 
+								w-40 h-auto`} 
 						/>
 						{item.description}
 					</Card></>
 				))}
 			</div>
 		</Section>
+		<!-- END SERVICES -->
 		
+		<!-- PORTFOLIO -->
 		<Section alt name="portfolio" title={`${t("home:sections.portfolio.title")}`}>
 			Coming very soon!
 			<!-- <HomePortfolioSlider 
             client:load
          /> -->
 		</Section>
+		<!-- END PORTFOLIO -->
 
-		<Section name="portfolio" title={`${t("home:sections.portfolio.reviews")}`}>
+		<!-- REVIEWS -->
+		<Section name="reviews" title={`${t("home:reviews.title")}`}>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{reviewCards.map((item) => (
 					<><Card client:idle block hover>
@@ -180,7 +152,9 @@ const faqItems = [
 				))}
 			</div>
 		</Section>
+		<!-- END REVIEWS -->
 
+		<!-- CTA -->
 		<Section alt name="cta" title={`${t("home:cta.title")}`}>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{ctaCards.map((item) => (
@@ -191,12 +165,14 @@ const faqItems = [
 								{item.title}
 							</Heading>
 						</div>
-						{item.description}
+						{item.subtitle}
 					</Card></>
 				))}
 			</div>
 		</Section>
+		<!-- END CTA -->
 
+		<!-- FAQ -->
 		<Section name="faq" title={`${t("home:faq.title")}`}>
 			<Accordeon client:load>
 				{faqItems.map((item, index) => (
@@ -207,5 +183,6 @@ const faqItems = [
 				))}
 			</Accordeon>
 		</Section>
+		<!-- END FAQ -->
 	</Page>
 </BaseLayout>
