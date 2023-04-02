@@ -1,5 +1,5 @@
 <script lang="ts">
-   import PopupHover from "@comp/Utils/Popup/PopupHover.svelte";
+   import Popup from "@comp/Utils/Popup/Popup.svelte";
    import type { PopupSettings } from "@skeletonlabs/skeleton";
 
    export let klass = '';
@@ -24,12 +24,13 @@
 </script>
 
 {#if popup}
-   <PopupHover id={href} text={popup} placement={popupPlacement}>
+   <Popup id={href} placement={popupPlacement}>
       <a {href} {target} {rel} class={linkClass}>
          <slot name="icon" />
          <slot/>
       </a>
-   </PopupHover>
+      <span slot="popup" class="text-md">{popup}</span>
+   </Popup>
 {:else}
    <a {href} {target} {rel} class={linkClass}>
       <slot name="icon" />
