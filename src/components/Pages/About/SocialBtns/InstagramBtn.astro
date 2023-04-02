@@ -1,0 +1,19 @@
+---
+import Button from "@comp/Common/Button/Button.svelte";
+import Svg from "@comp/Media/Svg/Svg.svelte";
+---
+<Button
+   color="custom"
+   klass="bg-gradient-to-tr border-[#cd486b] from-[#fbad50] via-[#cd486b] to-[#8a3ab9] shadow-[#cd486b66] hover:shadow-[#fbae5057]"
+   size="xs" square active ripple
+>
+   <Svg
+      client:load
+      animIcon="InstagramIcon"
+      size={36}
+      animProps={{
+         norm: 'fill-surface-900/10',
+         dark: 'fill-surface-50',
+      }}
+   />
+</Button>

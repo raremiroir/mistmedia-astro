@@ -1,0 +1,19 @@
+---
+import Button from "@comp/Common/Button/Button.svelte";
+import Svg from "@comp/Media/Svg/Svg.svelte";
+---
+<Button
+   color="custom"
+   klass="bg-[#3b5998] border-[#3b5998] shadow-[#2E4476] hover:shadow-[#2e4476c0]"
+   size="xs" square active ripple
+>
+   <Svg
+      client:load
+      animIcon="FacebookIcon"
+      size={36}
+      animProps={{
+         norm: 'fill-surface-100',
+         dark: 'fill-surface-50',
+      }}
+   />
+</Button>

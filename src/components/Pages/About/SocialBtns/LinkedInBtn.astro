@@ -1,0 +1,19 @@
+---
+import Button from "@comp/Common/Button/Button.svelte";
+import Svg from "@comp/Media/Svg/Svg.svelte";
+---
+<Button
+   color="custom"
+   klass="bg-[#0072b1] border-[#0072b1] shadow-[#00507A] hover:shadow-[#004f7ac2]"
+   size="xs" square active ripple
+>
+   <Svg
+      client:load
+      animIcon="LinkedInIcon"
+      size={36}
+      animProps={{
+         dark: 'fill-surface-50 dark:fill-surface-300',
+         norm: 'fill-surface-300 dark:fill-surface-50',
+      }}
+   />
+</Button>
