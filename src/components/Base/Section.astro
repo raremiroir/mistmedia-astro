@@ -7,9 +7,16 @@ export interface Props {
    subtitle?: string;
    klass?: string;
    alt?: boolean;
+   fullWidthPrepend?: boolean;
+   fullWidthAppend?: boolean;
 }
 
-const { name, klass, title, subtitle, alt } = Astro.props;
+const { 
+   name, title, subtitle, 
+   alt, klass, 
+   fullWidthPrepend = false,
+   fullWidthAppend = false,
+} = Astro.props;
 
 
 const sectionClass = `
@@ -26,6 +33,15 @@ const sectionClass = `
 <section
    id={name}
    class={sectionClass}>
+
+   {
+      fullWidthPrepend && (
+         <div class="w-full">
+            <slot name="prepend" />
+         </div>
+      )
+   }
+
    <div class={widths}>
 
       <!-- Section Title -->
@@ -48,4 +64,13 @@ const sectionClass = `
          <slot/>
       </div>
    </div>
+
+   {
+      fullWidthAppend && (
+         <div class="w-full">
+            <slot name="append" />
+         </div>
+      )
+   }
+
 </section>
