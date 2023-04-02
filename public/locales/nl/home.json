@@ -23,17 +23,17 @@
    },
    "cta": {
       "title": "Zin om te beginnen?",
-      "learn_more": {
-         "title": "Meer informatie",
-         "subtitle": "Leer meer over onze diensten"
+      "contact_us": {
+         "title": "Contacteer Ons!",
+         "subtitle": "Aarzel zeker niet om ons een berichtje te sturen als u vragen heeft of als u een offerte wilt aanvragen. We horen graag van je!"
       },
       "check_services": {
          "title": "Bekijk onze diensten",
-         "subtitle": "Ontdek hoe wij u kunnen helpen"
+         "subtitle": "Ontdek hoe we je kunnen helpen om je doelen te bereiken. We bieden een breed scala aan diensten aan."
       },
       "calculate_price": {
          "title": "Prijscalculator",
-         "subtitle": "Bereken een prijsschatting voor uw project met onze prijscalculator"
+         "subtitle": "Bereken een prijsschatting voor uw project met onze prijscalculator. Het is gratis en vrijblijvend."
       }
    },
    "faq": {
