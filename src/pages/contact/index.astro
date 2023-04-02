@@ -23,33 +23,34 @@ import { ADDRESS } from '@const/index';
          <Map client:load/>
       </div>
 
-   <Section name="contact-text" title="Contact Us!">
-      <div class="grid grid-cols-2 gap-32 bg-transparent self-center min-h-[50vh] h-fit">
+      <Section name="contact-text" title={`${t("contact.cta")}!`}>
+         <div class="grid grid-cols-2 gap-32 bg-transparent self-center min-h-[50vh] h-fit">
+            <!-- Card Left -->
             <Card 
                client:load fillheight
                color="surface"
                title="Mist Media" footer
                block hover>
-               {t("contact.text[0]")}
-               {t("contact.text[1]")}<br/>
-               {t("contact.text[2]")}<br/><br/>
-               {t("contact.text[3]")}
+               {t("contact.text.0")}<br/>
+               {t("contact.text.1")}<br/>
+               {t("contact.text.2")}<br/><br/>
+               {t("contact.text.3")}
 
                <div slot="footer" class="w-full flex justify-between">
                   <span>
                      {ADDRESS.street}<br/>
                      {t('geo.nl.antwerp')}<br/>
-                     {t('geo.nl.belgium')}
+                     {t('geo.nl.name')}
                   </span>
                   <span>
                      <Link 
-                        client:load popup="Mail us!" 
+                        client:load popup={`${t("contact.mail.cta")}!`}
                         popupPlacement="top"
                         href="mailto:miro@mistmedia.be">
                         miro@mistmedia.be
                      </Link>
                      <Link 
-                        client:load popup="Call us!" 
+                        client:load popup={`${t("contact.call.cta")}!`} 
                         popupPlacement="bottom"
                         href="phone:0032484340391">
                         +324 84 34 03 91
@@ -57,14 +58,13 @@ import { ADDRESS } from '@const/index';
                   </span>
                </div>
             </Card>
+            <!-- Card Right -->
             <Card 
                client:load fillheight
                color="surface"
-               title="Contact Us!" footer
-               block hover>
-               
+               title={`${t("contact.cta")}!`} footer
+               block hover capitalize>
                <ContactForm client:load/>
-
             </Card>
          </div>
       </Section>
