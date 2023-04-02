@@ -18,7 +18,7 @@ const sectionClass = `
    pb-12 md:pb-16 
    pt-6 md:pt-8 
    px-1 xs:px-2 sm:px-4 md:px-0
-   ${ alt ? 'bg-surface-100 dark:bg-surface-800' : '' }
+   ${ alt ? 'bg-surface-100 dark:bg-surface-800' : 'bg-white/50 dark:bg-surface-700' }
    ${klass}
 `;
 ---
@@ -31,11 +31,11 @@ const sectionClass = `
       <!-- Section Title -->
       <div class="mt-0 mx-0 mb-8 py-0 pr-0 pl-8 border-l-4 border-primary-700 dark:border-primary-600/40">
          <slot name="title">
-            <Heading type="h2" size="xs">
+            <Heading client:load type="h2" size="xs" klass="capitalize">
                {title}
             </Heading>
             { subtitle && (
-               <Heading type="subheader" size="xs" klass="text-surface-400 dark:text-surface-600 italic">
+               <Heading client:load type="subheader" size="xs" klass="text-surface-400 dark:text-surface-600 italic">
                   {subtitle}
                </Heading>
             )}
