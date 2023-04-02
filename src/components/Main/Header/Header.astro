@@ -8,6 +8,7 @@
    import Svg from '@comp/Media/Svg/Svg.svelte';
    import HeaderLink from './HeaderLink.svelte';
    import LightSwitch from './LightSwitch.svelte';
+   import Menu from '@comp/Common/Menu/Menu.svelte';
    
 
    const { pathname } = Astro.url;
@@ -15,12 +16,51 @@
    const { width } = Astro.props;
 
    const navItems:NavItem[] = [
-		{ label: 'Home', href: `/${currentLocaleSlug}` },
-		{ label: 'About', href: `/${currentLocaleSlug}about` },
-		{ label: 'Cases', href: `/${currentLocaleSlug}cases` },
-		{ label: 'Solutions', href: `/${currentLocaleSlug}solutions` },
-		{ label: 'Blog', href: `/${currentLocaleSlug}blog` },
-		{ label: 'Contact', href: `/${currentLocaleSlug}contact` },
+		{ 
+         label: 'Home', 
+         href: `/${currentLocaleSlug}` },
+		{ 
+         label: 'About', 
+         href: `/${currentLocaleSlug}about` 
+      },
+		{ 
+         label: 'Cases', 
+         href: `/${currentLocaleSlug}cases` 
+      },
+		{ 
+         label: 'Solutions', 
+         href: `/${currentLocaleSlug}solutions`,
+         items: [
+            {
+               label: 'Web Solutions',
+               href: `/${currentLocaleSlug}solutions/web`
+            },
+            {
+               label: 'Graphic Design',
+               href: `/${currentLocaleSlug}solutions/graphic-design`
+            },
+            {
+               label: 'Marketing',
+               href: `/${currentLocaleSlug}solutions/marketing`
+            },
+            {
+               label: '3D Visualisation',
+               href: `/${currentLocaleSlug}solutions/3d`
+            },
+            {
+               label: 'Audiovisual',
+               href: `/${currentLocaleSlug}solutions/audiovisual`
+            }
+         ]
+      },
+		{ 
+         label: 'Blog', 
+         href: `/${currentLocaleSlug}blog` 
+      },
+		{ 
+         label: 'Contact', 
+         href: `/${currentLocaleSlug}contact` 
+      },
 	];
 
    const headerClass = `
@@ -39,12 +79,29 @@
 			<Svg logo size={150} />
 		</Button>
       
-      <nav class="flex flex-row gap-1 lg:gap-2">
-         {navItems.map(item => (
-            <HeaderLink client:load currentPath={pathname} href={item.href}>
-               {item.label}
-            </HeaderLink>
-         ))}
+      <nav>
+         <ul class="flex flex-row gap-1 lg:gap-2">
+            {navItems.map(item => (
+
+               item.items ? (
+                  <><Menu client:load id="nav_menu" event="hover">
+                     <HeaderLink slot="trigger" currentPath={pathname} href={item.href}>
+                        {item.label}
+                     </HeaderLink>
+                     <ul>{item.items.map(dropdownItem => (
+                        <HeaderLink slot="trigger" currentPath={pathname} href={item.href}>
+                           {item.label}
+                        </HeaderLink>
+                     ))}</ul>
+                  </Menu></>
+               ) : (
+                  <><HeaderLink client:load currentPath={pathname} href={item.href}>
+                     {item.label}
+                  </HeaderLink></>
+               )
+
+            ))}
+         </ul>
       </nav>
 
       <div class="flex flex-row gap-2 justify-end items-center">
