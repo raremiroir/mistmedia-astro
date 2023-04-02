@@ -11,11 +11,11 @@ import Hero from "@comp/Main/Hero/Hero.astro";
 // Svelte components
 import Heading from "@comp/Common/Heading/Heading.svelte";
 import Card from "@comp/Common/Card/Card.svelte";
-import Svg from "@comp/Media/Svg/Svg.svelte";
-import Accordeon from "@comp/Common/Accordeon/Accordeon.svelte";
-import AccordeonItem from "@comp/Common/Accordeon/AccordeonItem.svelte";
 // Page specific components
 import HomePortfolioSlider from "@comp/Pages/Home/HomePortfolioSlider.svelte";
+// Common Section Components
+import CallToAction from "@comp/Pages/Common/CallToAction.astro";
+import Faq from "@comp/Pages/Common/Faq.astro";
 
 // Consts
 import { ICONS } from "@const/index";
@@ -44,28 +44,6 @@ t("home:reviews.items").forEach((review, key) => {
 		  review: review.review,
 		  avatar: 'https://i.pravatar.cc/100'
 		//   avatar: AVATARS.reviews[key]
-	 })
-});
-
-let ctaCards:{[key:string]:string}[] = [];
-/* @ts-ignore */
-Object.keys(t("home:cta")).forEach((key) => {
-	if (key !== 'title') {
-		ctaCards.push({
-			title: t(`home:cta.${key}.title`),
-			subtitle: t(`home:cta.${key}.subtitle`),
-			icon: 'DevicesResponsive'
-		})
-	}
-});
-
-let faqItems:{[key:string]:string}[] = [];
-/* @ts-ignore */
-t("home:faq.items").forEach((item) => {
-	 faqItems.push({
-		  question: item.question,
-		  answer: item.answer,
-		  icon: 'ph:gear-six-duotone'
 	 })
 });
 ---
@@ -155,34 +133,11 @@ t("home:faq.items").forEach((item) => {
 		<!-- END REVIEWS -->
 
 		<!-- CTA -->
-		<Section alt name="cta" title={`${t("home:cta.title")}`}>
-			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-				{ctaCards.map((item) => (
-					<><Card client:idle block hover active>
-						<div slot="title" class="flex items-center justify-start gap-3">
-							<Svg animIcon={item.icon} size={48} />
-							<Heading type="h3" size="xxs" klass="pt-2">
-								{item.title}
-							</Heading>
-						</div>
-						{item.subtitle}
-					</Card></>
-				))}
-			</div>
-		</Section>
+		<CallToAction />
 		<!-- END CTA -->
 
 		<!-- FAQ -->
-		<Section name="faq" title={`${t("home:faq.title")}`}>
-			<Accordeon client:load>
-				{faqItems.map((item, index) => (
-					<><AccordeonItem key={index} title={item.question} icon={item.icon ? true : false} client:load>
-						<Icon name={item.icon} slot="icon" />
-						{item.answer}
-					</AccordeonItem></>
-				))}
-			</Accordeon>
-		</Section>
+		<Faq />
 		<!-- END FAQ -->
 	</Page>
 </BaseLayout>

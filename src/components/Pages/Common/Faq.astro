@@ -1,0 +1,32 @@
+---
+import { t } from "i18next";
+// Astro components
+import { Icon } from "astro-icon";
+import Section from "@comp/Base/Section.astro";
+// Svelte components
+import Accordeon from "@comp/Common/Accordeon/Accordeon.svelte";
+import AccordeonItem from "@comp/Common/Accordeon/AccordeonItem.svelte";
+
+let faqItems:{[key:string]:string}[] = [];
+/* @ts-ignore */
+t("home:faq.items").forEach((item) => {
+	 faqItems.push({
+		  question: item.question,
+		  answer: item.answer,
+		  icon: 'ph:gear-six-duotone'
+	 })
+});
+---
+
+<!-- FAQ -->
+<Section name="faq" title={`${t("home:faq.title")}`}>
+   <Accordeon client:load>
+      {faqItems.map((item, index) => (
+         <><AccordeonItem key={index} title={item.question} icon={item.icon ? true : false} client:load>
+            <Icon name={item.icon} slot="icon" />
+            {item.answer}
+         </AccordeonItem></>
+      ))}
+   </Accordeon>
+</Section>
+<!-- END FAQ -->
