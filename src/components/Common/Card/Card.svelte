@@ -8,6 +8,7 @@
    export let article:boolean = false;
    export let href:string = ''
    export let title:string = '';
+   export let capitalize:boolean = false;
    export let label:string = '';
    export let labelledBy:string = '';
 
@@ -74,7 +75,7 @@
       class="
          flex z-2 {transition}
          h-full
-         { direction === 'row' ? `flex-row ${ centerRow ? 'ml-6' : '!items-start !justify-start'} gap-2` : 'flex-col'}
+         { direction === 'row' ? `flex-row ${ centerRow ? 'ml-6' : '!items-start !justify-start'}` : 'flex-col'}
    ">
       <!-- Image -->
       <slot name="media"/>
@@ -93,7 +94,7 @@
                {/if}
                <slot name="title">
                   <Heading 
-                     type="h3" size="xs" fontfam='font-body'
+                     type="h3" size="xs" fontfam='font-body' {capitalize}
                      color="{ boxGen.color(color, variant, hover, active) } {transition} !bg-transparent !shadow-none">
                      { title }
                   </Heading>
