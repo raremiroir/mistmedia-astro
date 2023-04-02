@@ -5,7 +5,7 @@ import svelte from "@astrojs/svelte";
 import vercel from "@astrojs/vercel/serverless";
 import image from "@astrojs/image";
 import partytown from "@astrojs/partytown";
-import astroI18next from "astro-i18next"
+import astroI18next from "astro-i18next";
 import robotsTxt from "astro-robots-txt";
 import mdx from '@astrojs/mdx';
 
@@ -18,7 +18,6 @@ export default defineConfig({
   themeColor: '#ffffff',
   favicon: '/favicon.ico',
   logo: '/logo.png',
-
   // Your site's social media links
   social: {
     twitter: 'https://twitter.com/example',
@@ -26,9 +25,8 @@ export default defineConfig({
     linkedin: '',
     instagram: '',
     youtube: '',
-    facebook: '',
+    facebook: ''
   },
-
   // ID's
   googleAnalytics: '',
   googleSearchConsole: '',
@@ -36,7 +34,6 @@ export default defineConfig({
   facebookPixel: '',
   vercel: '',
   sentry: '',
-  
   // Integrations
   integrations: [
     sitemap(), 
@@ -44,37 +41,21 @@ export default defineConfig({
     mdx(), 
     tailwind({
       config: {
-        applyBaseStyles: false,
+        applyBaseStyles: false
       }
     }), 
     image({
       serviceEntryPoint: '@astrojs/image/sharp'
     }), 
     astroI18next(),
-    partytown(), 
+    partytown(),
     robotsTxt()
   ],
-  
   output: "server",
   adapter: vercel(),
-
   vite: {
-    resolve: {
-      alias: {
-        $comp: './src/components',
-        $layouts: './src/layouts',
-        $pages: './src/pages',
-        $public: './public',
-        $utils: './src/utils',
-      }
-    },
     optimizeDeps: {
-      include: [
-        'lodash.get',
-        'lodash.isequal',
-        'lodash.clonedeep'
-      ]
+      include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep']
     }
   }
-  
 });
