@@ -43,11 +43,11 @@ t("about:values.items").forEach((value) => {
 		<!-- HERO -->
 		<Hero slot="hero" title="About Us" bgImg="/images/stock/webdev-2.webp" media>
 			<div slot="media" class="w-1/3 mb-6">
-				<MistLogoAnim client:idle light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+				<MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
 			</div>
-			<p slot="subtitle">
+			<span slot="subtitle">
 				{t("about:intro.desc")}
-			</p>
+			</span>
 		</Hero>
 		<!-- END HERO -->
 
