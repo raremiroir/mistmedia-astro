@@ -1,0 +1,27 @@
+---
+import { cSplide, classes } from '@const/class';
+
+export interface Props {
+   name?: string;
+   tip?: boolean;
+   type: 'solo_img'|'default';
+   hover: boolean;
+   active: boolean;
+}
+const { name, tip, type, hover, active } = Astro.props;
+
+const slideClass = `
+   splide__slide overflow-visible
+   ${classes.transition}
+   ${type === 'solo_img' && `
+      ${cSplide.slide.solo_img.base}
+      ${ hover && cSplide.slide.solo_img.hover}
+      ${ active && cSplide.slide.solo_img.active}
+   `}
+`;
+---
+
+
+<li class={slideClass} title={tip ? name : ''} aria-label={name?? ''}>
+   <slot/>
+</li>
