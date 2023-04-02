@@ -93,14 +93,14 @@
          <div class={ alt ? 'bg-surface-900 dark:bg-surface-300 mix-blend-overlay px-2 pt-1' : '' }>
             <Heading 
                type="subheader" 
-               size="lg" 
+               size="sm" 
                color={ alt ? 'text-white mix-blend-difference' : ''}
-               weight="font-semibold italic">
+               weight="font-regular">
                <slot name="subtitle"/>
             </Heading>
          </div>
 
-         <p>
+         <p class="unstyled">
             <slot/>
          </p>
       </div>
