@@ -45,6 +45,7 @@
     "postcss-import": "^15.1.0",
     "postcss-mixins": "^9.0.4",
     "postcss-nesting": "^11.2.2",
-    "postcss-simple-vars": "^7.0.1"
+    "postcss-simple-vars": "^7.0.1",
+    "svelte-typewriter": "^3.1.4"
   }
 }
