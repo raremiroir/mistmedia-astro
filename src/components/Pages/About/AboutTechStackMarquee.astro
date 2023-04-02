@@ -19,11 +19,12 @@ const slideClass = `splide__slide ${cSplide.slide.solo_img.base} ${cSplide.slide
          type   : 'loop',
          drag: 'free',
          focus: 'center',
-         perPage: 8,
+         perPage: 12,
          gap: '2rem',
          autoScroll: {
             speed: 0.5,
             pauseOnHover: true,
+            pauseOnFocus: false,
          },
          width: '100%',
          padding: {
@@ -49,7 +50,8 @@ const slideClass = `splide__slide ${cSplide.slide.solo_img.base} ${cSplide.slide
 
    <SlideTrack>
       {Object.values(TECHSTACK).map((brand) => (
-         <><Slide type="solo_img" active hover>
+         <><Slide type="solo_img" active hover name={brand.name} tip>
+            <a href={brand.url} target="_blank" aria-label={brand.name}>
                <Image 
                   src={brand.svg}
                   format="svg"
@@ -59,6 +61,7 @@ const slideClass = `splide__slide ${cSplide.slide.solo_img.base} ${cSplide.slide
                   fit={'contain'}
                   background={'transparent'}
                />
+            </a>
          </Slide></>
       ))}
    </SlideTrack>
