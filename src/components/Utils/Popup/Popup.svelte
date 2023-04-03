@@ -7,14 +7,17 @@
    export let placement: PopupSettings['placement'] = 'top';
    export let event: PopupSettings['event'] = 'hover';
    export let role:string = '';
-
    role = role?? event === 'hover' ? 'tooltip' : 'dialog';
+
+   export let bg: string = 'bg-primary-300/60 dark:bg-primary-900/60';
+   export let padding: string = 'px-4 py-2';
 
 
    let popupSettings: PopupSettings = {
       event: event,
       target: id,
       placement: placement,
+      closeQuery: '',
    }
 </script>
 
@@ -25,12 +28,11 @@
 <div 
    data-popup={id} {role}
    class="
-      arrow
-      bg-primary-300/60 dark:bg-primary-900/60
-      backdrop-blur-lg
-      px-4 py-2 rounded-lg
+      {bg} {padding} 
+      rounded-lg backdrop-blur-xl
       font-semibold
 ">
-   <div class="absolute w-2 h-2 rotate-45"/>
+   <!-- <div class="absolute w-2 h-2 rotate-45"/> -->
    <slot name="popup"/>
+   <div class="arrow {bg}" />
 </div>
