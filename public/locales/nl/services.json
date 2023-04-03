@@ -4,7 +4,41 @@
       "web": {
          "title": "Web Design & Ontwikkeling",
          "subtitle": "Websites met aandacht voor detail",
-         "description": "Jouw online aanwezigheid is énorm belangrijk, anno 2023. Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+         "description": "Jouw online aanwezigheid is énorm belangrijk, anno 2023. Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops.",
+         "features": {
+            "fast": {
+               "title": "Bliksemsnel",
+               "description": "Wij zorgen ervoor dat jouw website snel laadt, zodat je bezoekers niet weglopen."
+            },
+            "responsive": {
+               "title": "Mobiele Responsiveness",
+               "description": "Wij zorgen ervoor dat jouw website er goed uitziet op elk apparaat, van smartphone tot tablet, van desktop tot laptop."
+            },
+            "secure": {
+               "title": "Extreem Veilig",
+               "description": "Wij zorgen ervoor dat jouw website veilig is voor jouw bezoekers, zodat ze niet bang hoeven te zijn voor hackers."
+            },
+            "accessible": {
+               "title": "Toegankelijk",
+               "description": "Wij zorgen ervoor dat jouw website toegankelijk is voor iedereen, ongeacht hun beperking."
+            },
+            "uxui": {
+               "title": "UX/UI Design",
+               "description": "Wij zorgen ervoor dat jouw website een goede gebruikerservaring heeft, zodat je bezoekers niet weglopen."
+            },
+            "seo": {
+               "title": "SEO",
+               "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet, zodat je bezoekers niet weglopen."
+            },
+            "tech": {
+               "title": "Technische Expertise",
+               "description": "Door onze uitgebreide technische kennis zorgen wij ervoor dat jouw website van de laatste technologieën gebruik maakt."
+            },
+            "support": {
+               "title": "Ondersteuning",
+               "description": "Wij zorgen ervoor dat jouw website altijd up-to-date is, en dat je altijd ondersteuning krijgt wanneer je het nodig hebt"
+            }
+         }
       },
       "design": {
          "title": "Grafisch Ontwerp & Huisstijl",

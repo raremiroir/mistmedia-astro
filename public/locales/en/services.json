@@ -4,7 +4,41 @@
       "web": {
          "title": "Web Development & Design",
          "subtitle": "Websites with an eye for detail",
-         "description": "Your online presence is extremely important in 2023. We design websites that are not just attractive, but that also perform flawlessly. From simple websites to complex web shops."
+         "description": "Your online presence is extremely important in 2023. We design websites that are not just attractive, but that also perform flawlessly. From simple websites to complex web shops.",
+         "features": {
+            "fast": {
+               "title": "Lightning Fast",
+               "description": "We make sure your website loads as fast as possible. This is not only important for the user experience, but also for your SEO."
+            },
+            "responsive": {
+               "title": "Mobile-Focused Responsiveness",
+               "description": "Your website will be designed to look great on any device, from desktop to mobile, from tablet to smartwatch."
+            },
+            "secure": {
+               "title": "Extremely Secure",
+               "description": "Security is extremely important in 2023. We make sure your website is protected against hackers and other malicious attacks."
+            },
+            "accessible": {
+               "title": "Accessible",
+               "description": "Everyone should be able to use your website. We make sure your website is accessible for everyone, including people with disabilities."
+            },
+            "uxui": {
+               "title": "UX/UI Design",
+               "description": "A sleek, modern design is important for your website. We make sure your website is designed to be user-friendly and easy to navigate."
+            },
+            "seo": {
+               "title": "SEO",
+               "description": "Through advanced SEO-methods, we make sure your website is easily findable on the internet."
+            },
+            "tech": {
+               "title": "Cutting Edge Tech",
+               "description": "Our websites are built using the latest and most advanced technologies. This ensures that your website is future-proof and will always be up-to-date."
+            },
+            "support": {
+               "title": "Thorough Support",
+               "description": "We're here to help you. We provide thorough support for your website, from hosting to maintenance, from updates to security."
+            }
+         }
       },
       "design": {
          "title": "Graphic Design & Branding",
