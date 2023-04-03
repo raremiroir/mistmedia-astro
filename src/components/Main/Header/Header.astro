@@ -1,15 +1,19 @@
 ---
-   import i18next from 'i18next';
-	import LanguageSelector from './LanguageSelector.astro'
-
-   import type { NavItem } from '@tstype/components/header';
-   import { baseLocale } from '@utils/i18n';
-   import Button from '@comp/Common/Button/Button.svelte';
-   import Svg from '@comp/Media/Svg/Svg.svelte';
-   import HeaderLink from './HeaderLink.svelte';
-   import LightSwitch from './LightSwitch.svelte';
-   import Menu from '@comp/Common/Menu/Menu.svelte';
+   import i18next, { t }   from 'i18next';
+   import { baseLocale }   from '@utils/i18n';
    
+   import type { NavItem } from '@tstype/components/header';
+   // Astro components
+   import Menu             from '@comp/Common/Menu/Menu.svelte';
+	import LanguageSelector from './LanguageSelector.astro'
+   import Grid             from '@comp/Base/Grid.astro';
+   // Svelte components
+   import Button           from '@comp/Common/Button/Button.svelte';
+   import Svg              from '@comp/Media/Svg/Svg.svelte';
+   // Specific components
+   import HeaderLink       from './HeaderLink.svelte';
+   import LightSwitch      from './LightSwitch.svelte';
+import { Icon } from 'astro-icon';
 
    const { pathname } = Astro.url;
    let currentLocaleSlug = i18next.language === baseLocale ? '' : i18next.language + '/';
@@ -17,52 +21,43 @@
 
    const navItems:NavItem[] = [
 		{ 
-         label: 'Home', 
+         label: t('site:pages.home.title'), 
          href: `/${currentLocaleSlug}` },
 		{ 
-         label: 'About', 
-         href: `/${currentLocaleSlug}about` 
+         label: t('site:pages.about.title'), 
+         href: `/${currentLocaleSlug}${t('site:pages.about.slug')}` 
       },
 		{ 
-         label: 'Cases', 
-         href: `/${currentLocaleSlug}cases` 
+         label: t('site:pages.cases.title'), 
+         href: `/${currentLocaleSlug}${t('site:pages.cases.slug')}` 
       },
 		{ 
-         label: 'Solutions', 
-         href: `/${currentLocaleSlug}solutions`,
+         label: t('site:pages.solutions.title'), 
+         href: `/${currentLocaleSlug}${t('site:pages.solutions.slug')}`,
          items: [
-            {
-               label: 'Web Solutions',
-               href: `/${currentLocaleSlug}solutions/web`
-            },
-            {
-               label: 'Graphic Design',
-               href: `/${currentLocaleSlug}solutions/graphic-design`
-            },
-            {
-               label: 'Marketing',
-               href: `/${currentLocaleSlug}solutions/marketing`
-            },
-            {
-               label: '3D Visualisation',
-               href: `/${currentLocaleSlug}solutions/3d`
-            },
-            {
-               label: 'Audiovisual',
-               href: `/${currentLocaleSlug}solutions/audiovisual`
-            }
+            {  header: `${t('site:pages.solutions.title')}`,
+               items: [
+                  { label: t('site:pages.solutions.solutions.web.title'),    href: `/${currentLocaleSlug}${t('site:pages.solutions.slug')}/${t('site:pages.solutions.solutions.web.slug')}` },
+                  { label: t('site:pages.solutions.solutions.graphic.title'),   href: `/${currentLocaleSlug}${t('site:pages.solutions.slug')}/${t('site:pages.solutions.solutions.graphic.slug')}` },
+                  { label: t('site:pages.solutions.solutions.marketing.title'),        href: `/${currentLocaleSlug}${t('site:pages.solutions.slug')}/${t('site:pages.solutions.solutions.marketing.slug')}` },
+                  { label: t('site:pages.solutions.solutions.3d.title'), href: `/${currentLocaleSlug}${t('site:pages.solutions.slug')}/${t('site:pages.solutions.solutions.3d.slug')}` },
+                  { label: t('site:pages.solutions.solutions.video.title'),      href: `/${currentLocaleSlug}${t('site:pages.solutions.slug')}/${t('site:pages.solutions.solutions.video.slug')}` }
+            ]  },
+            // {
+            //    header: 'Services',
+            //    items: [
+            //       { label: 'SEO', href: `/${currentLocaleSlug}solutions/web#seo` },
+            //       { label: 'Advertising', href: `/${currentLocaleSlug}solutions/marketing#advertising` },
+            //       { label: 'Performance', href: `/${currentLocaleSlug}solutions/web#performance` },
+            //    ]
+            // },
          ]
       },
-		{ 
-         label: 'Blog', 
-         href: `/${currentLocaleSlug}blog` 
-      },
-		{ 
-         label: 'Contact', 
-         href: `/${currentLocaleSlug}contact` 
-      },
+		{ label: t('site:pages.blog.title'), href: `/${currentLocaleSlug}${t('site:pages.blog.slug')}` },
+		{ label: t('site:pages.contact.title'), href: `/${currentLocaleSlug}${t('site:pages.contact.slug')}` },
 	];
 
+   // Classes
    const headerClass = `
       flex flex-row w-full z-30
       justify-between items-center
@@ -80,19 +75,26 @@
 		</Button>
       
       <nav>
-         <ul class="flex flex-row gap-1 lg:gap-2">
+         <ul class="grid grid-cols-6 w-full gap-1 lg:gap-2">
             {navItems.map(item => (
 
                item.items ? (
-                  <><Menu client:load id="nav_menu" event="hover">
-                     <HeaderLink slot="trigger" currentPath={pathname} href={item.href}>
-                        {item.label}
-                     </HeaderLink>
-                     <ul>{item.items.map(dropdownItem => (
-                        <HeaderLink slot="trigger" currentPath={pathname} href={item.href}>
-                           {item.label}
-                        </HeaderLink>
-                     ))}</ul>
+                  <><Menu client:load id="nav_menu" event="click">
+                     <span slot="trigger">{item.label}</span>
+                     <div class="flex flex-col gap-2">
+                        {item.items.map(dropdownSection => (
+                           <div class="flex flex-col gap-1">
+                              <span class="text-md uppercase font-black text-primary-800 dark:text-primary-500">{dropdownSection.header}</span>
+                              <Grid>
+                                 {dropdownSection.items.map(dropdownItem => (
+                                    <HeaderLink size="sm" currentPath={pathname} href={dropdownItem.href} textStart>
+                                       {dropdownItem.label}
+                                    </HeaderLink>
+                                 ))}
+                              </Grid>
+                           </div>
+                        ))}   
+                     </div>
                   </Menu></>
                ) : (
                   <><HeaderLink client:load currentPath={pathname} href={item.href}>
