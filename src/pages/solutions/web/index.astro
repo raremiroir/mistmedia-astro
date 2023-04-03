@@ -1,5 +1,7 @@
 ---
 import { t, changeLanguage } from "i18next";
+import { ICONS } from "@const/index";
+import { IDify } from "@utils/formatters";
 // Astro components
 import BaseLayout 	from "@layouts/BaseLayout.astro";
 import Page 			from "@comp/Base/Page.astro";
@@ -21,14 +23,14 @@ import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
 
 changeLanguage("nl");
 
-// Value Cards
-let valueCards:{[key:string]:string}[] = [];
+// Feature Cards
+let featureCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
-t("about:values.items").forEach((value) => {
-	 valueCards.push({
-		  title: value.title,
-		  description: value.desc,
-		  icon: 'DevicesResponsive'
+Object.keys(t("services:services.web.features")).forEach((key) => {
+	 featureCards.push({
+		  title: t(`services:services.web.features.${key}.title`),
+		  description: t(`services:services.web.features.${key}.description`),
+		  icon: ICONS.features.web[key]
 	 })
 });
 ---
@@ -45,17 +47,24 @@ t("about:values.items").forEach((value) => {
 
 		<!-- FEATURES -->
 		<Section fullWidthAppend alt name="web-features">
-			<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-				{valueCards.map((value) => (
-					<><Card client:idle direction="row" centerRow block hover active>
-						<Heading slot="title" type="h3" size="xxs" weight="font-bold">
-							{value.title}
-						</Heading>
-						<Svg 
-							slot="media" animIcon={value.icon} client:load 
-						/>
-						{value.description}
-					</Card></>
+			<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
+				{featureCards.map((feature) => (
+					<><Drawer client:idle>
+						<Card 
+							slot="trigger" direction="row" 
+							centerRow fillHeight noBody 
+							block hover active 
+							media="animIcon" icon={feature.icon}
+							iconSize={40}
+						>
+							<Heading slot="title" type="h3" size="xxs" weight="font-bold">
+								<span class="mb-1">{feature.title}</span>
+							</Heading>
+						</Card>
+						<p>
+							{feature.description}
+						</p>
+					</Drawer></>
 				))}
 			</div>
 
