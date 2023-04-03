@@ -11,11 +11,11 @@
                "description": "Wij zorgen ervoor dat jouw website snel laadt, zodat je bezoekers niet weglopen."
             },
             "responsive": {
-               "title": "Mobiele Responsiveness",
+               "title": "Responsive",
                "description": "Wij zorgen ervoor dat jouw website er goed uitziet op elk apparaat, van smartphone tot tablet, van desktop tot laptop."
             },
             "secure": {
-               "title": "Extreem Veilig",
+               "title": "Veilig",
                "description": "Wij zorgen ervoor dat jouw website veilig is voor jouw bezoekers, zodat ze niet bang hoeven te zijn voor hackers."
             },
             "accessible": {
@@ -31,7 +31,7 @@
                "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet, zodat je bezoekers niet weglopen."
             },
             "tech": {
-               "title": "Technische Expertise",
+               "title": "Innovatie",
                "description": "Door onze uitgebreide technische kennis zorgen wij ervoor dat jouw website van de laatste technologieën gebruik maakt."
             },
             "support": {
