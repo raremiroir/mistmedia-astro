@@ -138,7 +138,7 @@ export const theme = {
 				active_alt: 'active:bg-error/40 dark:active:bg-error/30',
 			},
 			surface: {
-				default: 'bg-gray-50 dark:bg-surface-600/80',
+				default: 'bg-gray-50 dark:bg-surface-500/80',
 				default_alt: 'bg-white/40 dark:bg-black/40',
 				hover: 'hover:bg-surface-100 dark:hover:bg-surface-600',
 				hover_alt: 'hover:bg-white/50 dark:hover:bg-black/50',
@@ -146,7 +146,7 @@ export const theme = {
 				active_alt: 'active:bg-white/70 dark:active:bg-black/70',
 			},
 			surface_alt: {
-				default: 'bg-gray-50 dark:bg-surface-600/80',
+				default: 'bg-gray-50 dark:bg-surface-500/80',
 				default_alt: 'bg-white/40 dark:bg-black/40',
 				hover: 'hover:bg-primary-50 dark:hover:bg-primary-900/20',
 				hover_alt: 'hover:bg-primary/20 dark:hover:bg-primary-400/20',
