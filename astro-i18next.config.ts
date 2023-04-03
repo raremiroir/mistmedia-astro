@@ -65,7 +65,7 @@ export default {
 
   i18nextServer: {
     returnObjects: true,
-    debug: true,
+    debug: false,
     lng: COUNTRY,
     fallbackLng: "nl",
     preload: ["nl", "en"],
