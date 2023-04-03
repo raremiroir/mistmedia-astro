@@ -1,0 +1,90 @@
+---
+import { t, changeLanguage } from "i18next";
+// Astro components
+import BaseLayout 	from "@layouts/BaseLayout.astro";
+import Page 			from "@comp/Base/Page.astro";
+import Section 		from "@comp/Base/Section.astro";
+import Hero 			from "@comp/Main/Hero/Hero.astro";
+import { Icon } 		from "astro-icon";
+import { Picture } 	from "@astrojs/image/components";
+// Svelte components
+import Box 				from "@comp/Base/Box.svelte";
+import Heading 		from "@comp/Common/Heading/Heading.svelte";
+import Button 			from "@comp/Common/Button/Button.svelte";
+import Card 			from "@comp/Common/Card/Card.svelte";
+import Drawer 			from "@comp/Common/Drawer/Drawer.svelte";
+import Svg 				from "@comp/Media/Svg/Svg.svelte";
+// Page specific components
+import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
+// Common Section components
+import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
+
+changeLanguage("nl");
+
+// Value Cards
+let valueCards:{[key:string]:string}[] = [];
+/* @ts-ignore */
+t("about:values.items").forEach((value) => {
+	 valueCards.push({
+		  title: value.title,
+		  description: value.desc,
+		  icon: 'DevicesResponsive'
+	 })
+});
+---
+
+<BaseLayout title={t("site:pages.solutions.solutions.graphic.title")}>
+	<Page>
+		<!-- HERO -->
+		<Hero slot="hero" alt bgImg="/images/stock/webdev-2.webp" title="Graphic Design">
+			<span slot="subtitle">
+				We're proud to present a growing selection of cases we have worked on in the past.
+			</span>
+		</Hero>
+		<!-- END HERO -->
+
+		<!-- FEATURES -->
+		<Section fullWidthAppend alt name="web-features">
+			<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+				{valueCards.map((value) => (
+					<><Card client:idle direction="row" centerRow block hover active>
+						<Heading slot="title" type="h3" size="xxs" weight="font-bold">
+							{value.title}
+						</Heading>
+						<Svg 
+							slot="media" animIcon={value.icon} client:load 
+						/>
+						{value.description}
+					</Card></>
+				))}
+			</div>
+
+			<AboutTechStackMarquee slot="append" />
+		</Section>
+		<!-- END FEATURES -->
+
+		<!-- PORTFOLIO -->
+		<Section fullWidthAppend name="web-portfolio" title="A Look Through Our Work" subtitle="Navigate through a selection of projects we've worked on in the past.">
+			Slider here
+		</Section>
+		<!-- END PORTFOLIO -->
+
+		<!-- PRICING -->
+		<Section fullWidthAppend alt name="web-pricing" title="Transparent Pricing" subtitle="Because we both know that's what's important.">
+			Cards here
+		</Section>
+		<!-- END PRICING -->
+
+		<!-- PRICING CALCULATOR -->
+		<Section fullWidthAppend name="web-pricing-calculator" title="Estimate your Price" subtitle="Get an estimated price using our price calculation tool!">
+			Calculator here
+		</Section>
+		<!-- END PRICING -->
+
+		<!-- TODO: MAKE ALTERNATIVE CTA -->
+		<!-- CTA -->
+		<CallToAction />
+		<!-- END CTA -->
+
+	</Page>
+</BaseLayout>
