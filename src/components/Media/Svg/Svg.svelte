@@ -44,8 +44,8 @@
    export let svg = '';
    export let animIcon = '';
 
-   export let dark = '';
-   export let light = '';
+   export let dark = "fill-surface-600 dark:fill-surface-200";
+	export let light = "fill-surface-300 dark:fill-surface-400";
 
    export let animProps: AnimIconProps = {
       dark: 'fill-primary-800 dark:fill-primary-400',
