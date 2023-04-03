@@ -18,7 +18,8 @@ export interface Props extends astroHTML.JSX.SelectHTMLAttributes {
   languageMapping?: languageMapping;
 }
 
-const supportedLanguages = i18next.languages;
+// const supportedLanguages = i18next.languages;
+const supportedLanguages = ['nl', 'en'];
 const currentLanguage = i18next.language;
 
 const { pathname } = Astro.url;
