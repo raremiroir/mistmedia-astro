@@ -1,44 +1,63 @@
 <script lang="ts">
-   import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
-   import type { DrawerSettings } from '@skeletonlabs/skeleton';
-   import Button from '../Button/Button.svelte';
+   import Drawer from 'svelte-drawer-component'
+	import { onDestroy, setContext } from 'svelte';
+	import Heading from '@comp/Common/Heading/Heading.svelte';
+	import Icon from '@iconify/svelte'
+	import Button from '@comp/Common/Button/Button.svelte';
+   
+   import { animationTrigger } from '../../../stores';
 
-   export let id:string;
-   export let position:"left" | "top" | "right" | "bottom" | undefined = 'left' // left, right, top, bottom
+   let open = false;
 
-   export let width:string = 'w-[280px] md:w-[480px]'
-   export let padding:string = 'p-4'
-   export let rounded:string = 'rounded-2xl !shadow-2xl !shadow-black/70'
-   export let bg:string = 'bg-surface-50';
-   export let backdrop:string = 'bg-gradient-to-tr from-primary-500/50 via-tertiary-600/30 to-primary-800/30';
+   export let klass = '';
+   export let size = '600px';
+   export let placement:"left"|"top"|"right"|"bottom"|undefined = 'left';
+   export let duration = 0.3;
+   export let sub = false;
 
-   const drawerSettings: DrawerSettings = {
-      id: id,
-      // Properties
-      bgDrawer: `${bg} !z-99`,
-      bgBackdrop: backdrop,
-      width: width,
-      padding: padding,
-      rounded: rounded
-   }
+   $: if (!open)     { animationTrigger.set(false) } 
+      else if (open) { animationTrigger.set(true) }
 
-   const openDrawer = (settings:DrawerSettings) => drawerStore.open(settings);
-   const closeDrawer = () => drawerStore.close();
 </script>
 
 <div 
-   on:click={() => openDrawer(drawerSettings)}
-   on:keydown={(e) => { if (e.key === 'Enter') openDrawer(drawerSettings) }}
+   class="h-full m-0 p-0 {klass}" 
+   on:click={() => open = true}
+   on:keydown={e => { if (e.key === 'Enter' || e.key === ' ') open = true }}
 >
-   <slot name="trigger"/>
+   <slot name="trigger">
+      <button>trigger</button>
+   </slot>
 </div>
 
-<Drawer
-   {position}
-   duration={200}
-   client:load
-   {drawerStore}
-   {drawerSettings}
-   on:close={() => { closeDrawer() }}>
-   <slot/>   
+<Drawer 
+   { open } 
+   {size} {duration} {placement}
+   on:clickAway={() => open = false}
+   >
+   <div class="h-fit min-h-full w-full bg-surface-50 dark:bg-surface-600 p-8">
+      <div class="flex flex-row justify-between w-full">
+         <div class="flex flex-col gap-2 max-w-[90%]">
+            <Heading type="h3" size="lg" fake klass="underline">
+               <slot name="title"></slot>
+            </Heading>
+            {#if sub}
+               <slot name="sub"/>
+            {/if}
+         </div>
+         <Button color="error" on:click={() => open = false} on:keydown size="xs" square>
+            <Icon icon="material-symbols:close-rounded" class="w-6 h-6"/>
+         </Button>
+      </div>
+      <div class="mt-4">
+         <slot/>
+      </div>
+   </div>
 </Drawer>
+
+
+<style global>
+   .app .drawer .panel{
+      box-shadow: 0 0 12px 8px #00000036;
+   }
+</style>
