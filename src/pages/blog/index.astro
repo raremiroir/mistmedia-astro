@@ -19,7 +19,7 @@ const posts = (await getCollection("blog"))
 
 <BaseLayout title={t("site:pages.blog.title")}>
 	<Page>
-		<Hero alt bgImg="/images/stock/webdev-2.webp" title="Mist Blog">
+		<Hero slot="hero" alt bgImg="/images/stock/webdev-2.webp" title="Mist Blog">
 			<span slot="subtitle">
 				Navigate through our Blog and find a post that suits your interests!
 			</span>
