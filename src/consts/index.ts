@@ -26,7 +26,7 @@ export const ICONS: {[key:string]: {[key:string]: any}} = {
          secure: 'Security',
          accessible: 'Accessibility',
          uxui: 'CorporateBranding',
-         seo: 'LightWeight',     // might change later
+         seo: 'ArrowsGrow',
          tech: 'GearsTurning',
          support: 'QuestionMarks',
       }
