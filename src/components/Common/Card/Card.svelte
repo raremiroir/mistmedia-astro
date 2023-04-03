@@ -4,6 +4,9 @@
    import boxGen from '../../../styles/mist-theme'
    import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '../../../styles/theme';
    import Chip from '../Chip/Chip.svelte';
+   import Ripple from '@comp/actions/Ripple';
+   import Svg from '@comp/Media/Svg/Svg.svelte';
+   import Icon from '@iconify/svelte';
 
    export let article:boolean = false;
    export let href:string = ''
@@ -13,7 +16,14 @@
    export let labelledBy:string = '';
 
    export let tags:string[] = [];
+   export let noBody:boolean = false;
+   export let media:'none'|'animIcon'|'icon'|'custom' = 'none';
    export let footer:boolean = false;
+
+   export let icon:string = '';
+   export let iconSize:number = 40;
+   export let iconClass:string = 'w-8 h-8';
+   
 
    export let direction:'col'|'row' = 'col';
    export let centerRow:boolean = false;
@@ -57,11 +67,8 @@
 
 
 <svelte:component 
-   this={outerWrapComp} {...$$props} 
-   {href}
-   tabindex="0"
-   aria-label={label}
-   aria-labelledby={labelledBy}
+   this={outerWrapComp} {...$$props} {href}
+   tabindex="0" aria-label={label} aria-labelledby={labelledBy}
    title=""
    class="
       antialiased {transition} 
@@ -69,58 +76,65 @@
       overflow-hidden group relative
       { fillHeight ? 'h-full' : '' }
 ">
-   <svelte:component 
-      this={innerWrapComp} {...$$props}
-      title=""
-      class="
-         flex z-2 {transition}
-         h-full
-         { direction === 'row' ? `flex-row ${ centerRow ? 'ml-6' : '!items-start !justify-start'}` : 'flex-col'}
-   ">
-      <!-- Image -->
-      <slot name="media"/>
-      
-      <!-- Content -->
-      <div class="h-full flex flex-col gap-4 justify-between { direction === 'row' ? 'p-6' : 'p-8' }">
-         <div class="flex flex-col gap-4">
-            <!-- Header -->
-            <header class="">
-               {#if tags}
-                  <div class="flex flex-row gap-2 mb-4">
-                     {#each tags as tag}
-                        <Chip>{tag}</Chip>
-                     {/each}
-                  </div>
-               {/if}
-               <slot name="title">
-                  <Heading 
-                     type="h3" size="xs" fontfam='font-body' {capitalize}
-                     color="{ boxGen.color(color, variant, hover, active) } {transition} !bg-transparent !shadow-none">
-                     { title }
-                  </Heading>
-               </slot>
-            </header>
-            
-            <!-- Body -->
-            <section class="
-                     { article ? noClamp ? '' : 'line-clamp-4' : ''} {transition}
-                     text-surface-900 dark:text-surface-50
-                     group-hover:text-black dark:group-hover:text-white
-                     font-medium dark:font-normal">
-               <slot>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dignissimos recusandae, quos 
-                  accusantium, sed voluptates nobis qui facilis ad sint maxime? Cupiditate tempora nesciunt dignissimos 
-                  vitae, commodi eum possimus quia.
-               </slot>
-            </section>
-         </div>
-   
-         <!-- Footer -->
-         {#if footer}
-            <footer class="card-footer w-full p-0 flex items-center justify-end">
-               <slot name="footer"/>
-            </footer>
+   <svelte:component this={innerWrapComp} {...$$props} title="">
+      <div 
+         use:Ripple={active}
+         class="
+            flex z-2 {transition} h-full
+            { direction === 'row' ? `flex-row ${ centerRow ? 'ml-6 !items-center' : '!items-start !justify-start'}` : 'flex-col'}
+      ">
+         <!-- Image -->
+         {#if media !== 'none'}
+            {#if media === 'animIcon'}
+               <Svg animIcon={icon} size={iconSize} />
+            {:else if media === 'icon'}
+               <Icon class={iconClass} />
+            <slot name="media" class="h-full"/>
+            {:else if media === 'custom'}
+               <slot name="media" class="h-full"/>
+            {/if}
          {/if}
+         
+         <!-- Content -->
+         <div class="h-full flex flex-col gap-4 justify-between { direction === 'row' ? 'p-6' : 'p-8' }">
+            <div class="flex flex-col gap-4">
+               <!-- Header -->
+               <header class="">
+                  {#if tags.length > 0}
+                     <div class="flex flex-row gap-2 mb-4">
+                        {#each tags as tag}
+                           <Chip>{tag}</Chip>
+                        {/each}
+                     </div>
+                  {/if}
+                  <slot name="title">
+                     <Heading 
+                        type="h3" size="xs" fontfam='font-body' {capitalize}
+                        color="{ boxGen.color(color, variant, hover, active) } {transition} !bg-transparent !shadow-none">
+                        { title }
+                     </Heading>
+                  </slot>
+               </header>
+               
+               {#if !noBody}
+                  <!-- Body -->
+                  <section class="
+                           { article ? noClamp ? '' : 'line-clamp-4' : ''} {transition}
+                           text-surface-900 dark:text-surface-50
+                           group-hover:text-black dark:group-hover:text-white
+                           font-medium dark:font-normal">
+                     <slot/>
+                  </section>
+               {/if}
+            </div>
+      
+            <!-- Footer -->
+            {#if footer}
+               <footer class="card-footer w-full p-0 flex items-center justify-end">
+                  <slot name="footer"/>
+               </footer>
+            {/if}
+         </div>
       </div>
    </svelte:component>
 </svelte:component>
