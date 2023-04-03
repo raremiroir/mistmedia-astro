@@ -2,6 +2,7 @@
    import AccordeonTrigger from "./AccordeonTrigger.svelte";
    import AccordeonContent from "./AccordeonContent.svelte";
    import boxGen from "../../../styles/mist-theme";
+   import Ripple from "@comp/actions/Ripple";
 
    export let key = 0;
    export let title = 'Title';
@@ -25,12 +26,12 @@
 </script>
 
 <div
+   use:Ripple
    tabindex="-1"
-   class={accStyle}
+   class="{accStyle} overflow-hidden"
    on:click={() => open = !open }
    on:keydown={(e) => { if (e.key === 'Enter') { open = !open } }}
 >
-
    <AccordeonTrigger {open} {title} {icon} {key}>
       <slot name="icon" slot="icon"/>
    </AccordeonTrigger>

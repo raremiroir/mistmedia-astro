@@ -19,7 +19,7 @@
    export let capitalize: boolean = false;
    export let uppercase: boolean = false;
 
-   export let ripple: boolean = false;
+   export let ripple: boolean = true;
    export let square: boolean = false;
    
    export let icon: string = '';
