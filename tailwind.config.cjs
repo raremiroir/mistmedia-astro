@@ -66,7 +66,7 @@ module.exports = {
 				'title-md': "clamp(1.5rem, 1rem + 2vw, 2.5rem)",
 				'title-sm': "clamp(1.25rem, 0.875rem + 1.5vw, 2rem)",
 				'title-xs': "clamp(1rem, 0.75rem + 1.25vw, 1.75rem)",
-				'title-2xs': "clamp(1.2rem, 0.875rem + 0.6vw, 1.5rem)",
+				'title-2xs': "clamp(1rem, 0.875rem + 0.6vw, 1.5rem)",
 				'title-3xs': "clamp(0.875rem, 0.75rem + 0.5vw, 1.125rem)",
 				'title-4xs': "clamp(0.75rem, 0.5rem + 1vw, 1.25rem)",
 				'clamp-xs': "clamp(0.5rem, 0.4375rem + 0.3333vw, 0.6875rem)",
