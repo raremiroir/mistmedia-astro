@@ -4,22 +4,50 @@
 
    "pages": {
       "home": {
-         "title": "Home"
+         "title": "Home",
+         "slug": ""
       },
       "about": {
-         "title": "Over Ons"
+         "title": "Over Ons",
+         "slug": "over-ons"
       },
       "cases": {
-         "title": "Cases"
+         "title": "Cases",
+         "slug": "cases"
       },
       "solutions": {
-         "title": "Solutions"
+         "title": "Solutions",
+         "slug": "solutions",
+         "solutions": {
+            "web": {
+               "title": "Web",
+               "slug": "web"
+            },
+            "graphic": {
+               "title": "Grafisch Ontwerp",
+               "slug": "grafisch-ontwerp"
+            },
+            "marketing": {
+               "title": "Marketing",
+               "slug": "marketing"
+            },
+            "3d": {
+               "title": "3D Visualisatie",
+               "slug": "3d-visualisatie"
+            },
+            "video": {
+               "title": "Audio / Video",
+               "slug": "audiovisueel"
+            }
+         }
       },
       "blog": {
-         "title": "Mist Blog"
+         "title": "Mist Blog",
+         "slug": "blog"
       },
       "contact": {
-         "title": "Contact"
+         "title": "Contact",
+         "slug": "contact"
       }
    }
 }

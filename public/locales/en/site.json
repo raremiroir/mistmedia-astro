@@ -4,22 +4,50 @@
 
    "pages": {
       "home": {
-         "title": "Home"
+         "title": "Home",
+         "slug": ""
       },
       "about": {
-         "title": "About Us"
+         "title": "About Us",
+         "slug": "about"
       },
       "cases": {
-         "title": "Cases"
+         "title": "Cases",
+         "slug": "cases"
       },
       "solutions": {
-         "title": "Solutions"
+         "title": "Solutions",
+         "slug": "solutions",
+         "solutions": {
+            "web": {
+               "title": "Web",
+               "slug": "web"
+            },
+            "graphic": {
+               "title": "Graphic Design",
+               "slug": "graphic-design"
+            },
+            "marketing": {
+               "title": "Marketing",
+               "slug": "marketing"
+            },
+            "3d": {
+               "title": "3D Visualisation",
+               "slug": "3d-visualisation"
+            },
+            "video": {
+               "title": "Audio / Video",
+               "slug": "audiovisual"
+            }
+         }
       },
       "blog": {
-         "title": "Mist Blog"
+         "title": "Mist Blog",
+         "slug": "blog"
       },
       "contact": {
-         "title": "Contact"
+         "title": "Contact",
+         "slug": "contact"
       }
    }
 }
