@@ -10,7 +10,7 @@ export const ADDRESS = {
    lng: 4.410601398443491
 }
 
-export const ICONS: {[key:string]: {[key:string]: string}} = {
+export const ICONS: {[key:string]: {[key:string]: any}} = {
    services: {
       web:    'ph:globe-simple-duotone',
       design: 'ph:paint-bucket-duotone',
@@ -18,6 +18,18 @@ export const ICONS: {[key:string]: {[key:string]: string}} = {
       social: 'ph:megaphone-simple-duotone',
       av:     'ph:film-slate-duotone',
       '3d':   'ph:cube-duotone',
+   },
+   features: {
+      web: {
+         fast: 'LightningBolt',
+         responsive: 'DevicesResponsive',
+         secure: 'Security',
+         accessible: 'Accessibility',
+         uxui: 'CorporateBranding',
+         seo: 'LightWeight',     // might change later
+         tech: 'GearsTurning',
+         support: 'QuestionMarks',
+      }
    }
 }
 
