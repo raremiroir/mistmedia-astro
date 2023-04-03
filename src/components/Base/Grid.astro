@@ -1,17 +1,20 @@
 ---
-
 export interface Props {
    cols?: number;
    rows?: number;
    gap?: string;
 }
+const { cols, rows, gap } = Astro.props;
+
 
 // Classes
-
-
-const { cols, rows, gap } = Astro.props;
 ---
 
-<div class="">
+<ul class={` grid-rows
+   grid
+   ${cols ? `grid-cols-${cols}` : 'grid-cols-3'}
+   ${rows ? `grid-rows-${rows}` : ''}
+   ${gap ? `gap-${gap}` : 'gap-2'}
+`}>
    <slot/>
-</div>
+</ul>
