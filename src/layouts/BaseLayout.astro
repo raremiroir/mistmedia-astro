@@ -17,7 +17,7 @@
   import { Trans } from 'astro-i18next/components'
 ---
 <!DOCTYPE html>
-<html lang={i18next.language}>
+<html lang={i18next.language} class="!w-screen !max-w-full !overflow-x-hidden scroll-mx-0">
   <head>
     <BaseHead 
       title={`${SITE_TITLE} | ${title}`} 
@@ -27,7 +27,7 @@
     <slot name="head"/>
   </head>
 
-  <body class="min-h-screen">
+  <body class="min-h-screen !w-screen !max-w-full !overflow-x-hidden">
     <Header width={widths} />
     <div class='mx-auto'>
       <slot />
