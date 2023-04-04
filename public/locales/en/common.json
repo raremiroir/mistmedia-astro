@@ -51,6 +51,12 @@
          "last_name": "Surname",
          "email": "Email",
          "organisation": "Organisation",
+         "job": "Job Title",
+         "phone": "Telephone",
+         "country": "Country",
+         "city": "City",
+         "address": "Address",
+         "zip": "Postal Code",
          "subject": "Subject",
          "message": "Message",
          "submit": {
@@ -63,7 +69,26 @@
             }
          }
       },
-      "accept_terms": "I have read and accept the <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacy policy</a> and the <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">terms of service</a>."
+      "accept_terms": "I have read and accept the <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacy policy</a> and the <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">terms of service</a>.",
+      "validation": {
+         "required": "{item:string} is required.",
+         "required_def": "This field is required.",
+         "default_fixed": "{item:string} is invalid.",
+         "field_too_short": "{item:string} should be at least {min:number} characters long.",
+         "field_too_long": "{item:string} should be at most {max:number} characters long.",
+         "email_error": "This email address is invalid.",
+         "phone_error": "This phone number is invalid.",
+         "only_alpha": "{item:string} should not contain any special characters or numbers.",
+         "pick_one": "Pick an option.",
+         "terms_error": "You have to accept the {terms} and the {policy}.",
+         "captcha_error": "Just to make sure you're not a robot...",
+         "fill_out_all": "Please fill out all required fields before sending your message."
+      },
+      "actions": {
+         "reset_all": "Reset all fields",
+         "reset": "Reset field",
+         "optional": "Optional"
+      }
    },
    "blog": {
       "info": {

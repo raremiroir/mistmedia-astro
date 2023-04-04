@@ -51,6 +51,12 @@
          "last_name": "Achternaam",
          "email": "E-mail",
          "organisation": "Organisatie",
+         "job": "Functie",
+         "phone": "Telefoon",
+         "country": "Land",
+         "city": "Stad",
+         "address": "Adres",
+         "zip": "Postcode",
          "subject": "Onderwerp",
          "message": "Bericht",
          "submit": {
@@ -63,7 +69,26 @@
             }
          }
       },
-      "accept_terms": "Ik ga akkoord met het <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacybeleid</a> en de <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">algemene voorwaarden</a>."
+      "accept_terms": "Ik ga akkoord met het <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacybeleid</a> en de <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">algemene voorwaarden</a>.",
+      "validation": {
+         "required": "{item:string} is een verplicht veld.",
+         "required_def": "Dit is een verplicht veld.",
+         "default_fixed": "{item:string} is ongeldig.",
+         "field_too_short": "{item:string} moet minstens {min:number} letters lang zijn.",
+         "field_too_long": "{item:string} mag maximaal {max:number} letters lang zijn.",
+         "email_error": "Dit e-mailadres is ongeldig.",
+         "phone_error": "Dit telefoonnummer is ongeldig.",
+         "only_alpha": "{item:string} zou geen speciale karakters of nummers mogen bevatten.",
+         "pick_one": "Kies een optie.",
+         "terms_error": "Je moet de {terms} en de {policy} accepteren.",
+         "captcha_error": "Even bevestigen dat je geen robot bent...",
+         "fill_out_all": "Vul alle velden in alvorens je bericht te verzenden."
+      },
+      "actions": {
+         "reset_all": "Alle velden wissen",
+         "reset": "Veld wissen",
+         "optional": "Optioneel"
+      }
    },
    "blog": {
       "info": {
