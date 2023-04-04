@@ -23,7 +23,7 @@ import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
 // Import feature sidebar components
 import WebFeatAccessible from "@comp/Pages/Solutions/Web/Features/WebFeatAccessible.astro";
 import WebFeatFast from "@comp/Pages/Solutions/Web/Features/WebFeatFast.astro";
-import WebFeatLight from "@comp/Pages/Solutions/Web/Features/WebFeatLight.astro";
+import WebFeatResponsive from "@comp/Pages/Solutions/Web/Features/WebFeatResponsive.astro";
 import WebFeatSecure from "@comp/Pages/Solutions/Web/Features/WebFeatSecure.astro";
 import WebFeatUxUi from "@comp/Pages/Solutions/Web/Features/WebFeatUxUi.astro";
 import WebFeatSeo from "@comp/Pages/Solutions/Web/Features/WebFeatSeo.astro";
@@ -77,8 +77,8 @@ Object.keys(t("services:services.web.features")).forEach((key) => {
 										return <WebFeatAccessible />
 									case "fast":
 										return <WebFeatFast />
-									case "light":
-										return <WebFeatLight />
+									case "responsive":
+										return <WebFeatResponsive />
 									case "secure":
 										return <WebFeatSecure />
 									case "uxui":
