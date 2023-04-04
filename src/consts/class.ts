@@ -47,6 +47,15 @@ export const cForm = {
             clearAbsolute: 'absolute z-1 right-0',
       }
 }
+// Complete form styles
+export const cFormComplete = {
+      wrapClass: `${cForm.input.wrapBase} ${cForm.input.transition} ${cForm.input.flex}`,
+      inputClass: `${cForm.input.inputBase} ${cForm.input.transition} ${cForm.input.bg} ${cForm.input.border} 
+                   ${cForm.input.rounding} ${cForm.input.placeholder} ${cForm.input.text}`,
+      clearClass: `${cForm.input.clearBase} ${cForm.input.clearAbsolute} ${cForm.input.flex}`,
+      labelClass: `${cForm.input.transition} ${cForm.input.labelBase} ${cForm.input.labelAbsolute} ${cForm.input.labelPadding}
+                   ${cForm.input.labelPosFocus} ${cForm.input.labelBg}`
+}
 
 // COMPONENTS
 
