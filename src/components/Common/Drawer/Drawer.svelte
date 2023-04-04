@@ -5,7 +5,7 @@
 	import Icon from '@iconify/svelte'
 	import Button from '@comp/Common/Button/Button.svelte';
    
-   import { animationTrigger } from '../../../stores';
+   import { animationTrigger } from '@stores/index';
 
    let open = false;
 
@@ -15,15 +15,14 @@
    export let duration = 0.3;
    export let sub = false;
 
-   $: if (!open)     { animationTrigger.set(false) } 
-      else if (open) { animationTrigger.set(true) }
+   $: if (!open) { $animationTrigger = false } 
 
 </script>
 
 <div 
    class="h-full m-0 p-0 {klass}" 
-   on:click={() => open = true}
-   on:keydown={e => { if (e.key === 'Enter' || e.key === ' ') open = true }}
+   on:click={() => {open = true; $animationTrigger = true}}
+   on:keydown={e => { if (e.key === 'Enter' || e.key === ' ') {open = true; $animationTrigger = true} }}
 >
    <slot name="trigger">
       <button>trigger</button>
