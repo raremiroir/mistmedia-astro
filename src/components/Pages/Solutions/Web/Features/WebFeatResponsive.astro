@@ -1,0 +1,78 @@
+---
+import { Picture } from "@astrojs/image/components";
+import ContentWrap from "@comp/Base/ContentWrap.astro";
+import Link from "@comp/Common/Button/Link.svelte";
+import PieChart from "@comp/Media/Charts/PieChart/PieChart.svelte";
+
+
+const pieCharts = [
+   {
+      percentage: 62,
+      speed: 16,
+      text: "As of August 2022, 62.06% of all web traffic came from users with mobile devices.",
+   },
+   {
+      percentage: 85,
+      text: "85% of adult web users find that mobile design should be as good as, if not better than computer's design.",
+   },
+   {
+      percentage: 91,
+      text: "91% of small businesses do not have a responsive website.",
+   },
+   {
+      percentage: 88,
+      text: "88% of online consumers will not return to a website if they encounter a bad experience.",
+   },
+   {
+      percentage: 73,
+      speed: 14,
+      text: "73% of web designers believe the top reason users leave a website is because it's not responsive.",
+   },
+]
+
+---
+
+<ContentWrap>
+   <section class="grid grid-cols-2 gap-4">
+      <p>
+         Most internet users use their phone to visit the web. 
+         This is a standard to which all businesses and developers should adapt. 
+         For us, it's a basic feature, included in every website.
+      </p>
+      <div class="flex flex-row gap-4 items-center">
+         <PieChart client:load percentage={62} size={120} speed={16}/>
+         <p>
+            As of August 2022, 62.06% of all web traffic came from users with mobile devices.
+         </p>
+      </div>
+      <!-- <div class="flex flex-row gap-4 items-center">
+         <p>
+            85% of adult web users find that mobile design should be as good as, if not better than computer's design.
+         </p>
+         <PieChart client:load percentage={85} size={120}/>
+      </div>
+      <div class="flex flex-row gap-4 items-center">
+         <PieChart client:load percentage={91} size={120}/>
+         <p>
+            91% of small businesses do not have a responsive website.
+         </p>
+      </div>
+      <div class="flex flex-row gap-4 items-center">
+         <p>
+            88% of online consumers will not return to a website if they encounter a bad experience.
+         </p>
+         <PieChart client:load percentage={88} size={120}/>
+      </div>
+      <div class="flex flex-row gap-4 items-center">
+         <PieChart client:load percentage={73} size={120} speed={14}/>
+         <p>
+            73% of web designers believe the top reason users leave a website is because it's not responsive.
+         </p>
+      </div> -->
+      
+      <p>
+         It is recommended to aim for a load-time under half a second. <br/>
+         Half a second is our minimum guarantee. We use a relatively young, but impressive javascript framework to write your website.
+      </p>
+   </section>
+</ContentWrap>

@@ -1,0 +1,35 @@
+---
+import ContentWrap from "@comp/Base/ContentWrap.astro";
+import Blockquote from "@comp/Common/Blockquote/Blockquote.svelte";
+import Link from "@comp/Common/Button/Link.svelte";
+import Heading from "@comp/Common/Heading/Heading.svelte";
+
+---
+
+<ContentWrap>
+   <Heading type="h3" size="xs" weight="font-thin italic">
+      What is Web Accessibility?
+   </Heading>
+   <p>
+      Web Accessibility is when websites and web apps are designed and coded in 
+      such a way that people with disabilities can also use them properly.<br/>
+      <br/>
+      Currently, there are still way too many websites which are created with 
+      accessibility barriers, which makes is extremely difficult or even impossible 
+      for some people to use.<br/>
+      <br/>
+      For Mist Media, accessibilty means a website which is <strong>accessible from 
+      all browsers* and all devices and, most importantly, accessible for all people</strong>, 
+      no matter their age, knowledge about the web, social challenges or <strong>disabilities</strong> (temporal and permanent).<br/>
+      Mist Media guarantees your website to get an impressive accessibility score!
+   </p>
+
+   <Blockquote>
+      The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
+      <span slot="author">Tim Berners-Lee, inventor of the World Wide Web</span>
+   </Blockquote>
+   
+   <p>
+      For a more in-depth article about web accessibility, follow <Link href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank">this link.</Link>.
+   </p>
+</ContentWrap>
