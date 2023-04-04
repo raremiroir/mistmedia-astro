@@ -1,11 +1,9 @@
 <script>
-   import Heading from "@comp/Common/Heading/Heading.svelte";
-
    export let klass = '';
    export let size = 160;
    export let percent = 0;
-   export let bgColor = 'fill-surface-100 dark:fill-surface-900';
-   export let fgColor = 'stroke-primary/50 dark:stroke-primary-400/50';
+   export let bgColor = 'fill-primary-100 dark:fill-primary-900';
+   export let fgColor = 'stroke-primary/80 dark:stroke-primary-400/80';
 
    $: viewBox = `0 0 ${size} ${size}`;
    $: radius = size / 2;
@@ -21,6 +19,7 @@
          r={radius / 2}
          cx={radius} cy={radius}
          class="{bgColor} {fgColor}"
+         stroke-width={radius}
          stroke-dasharray={dashArray}
       />
    </svg>
