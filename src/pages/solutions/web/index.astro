@@ -1,21 +1,15 @@
 ---
 import { t, changeLanguage } from "i18next";
 import { ICONS } from "@const/index";
-import { IDify } from "@utils/formatters";
 // Astro components
 import BaseLayout 	from "@layouts/BaseLayout.astro";
 import Page 			from "@comp/Base/Page.astro";
 import Section 		from "@comp/Base/Section.astro";
 import Hero 			from "@comp/Main/Hero/Hero.astro";
-import { Icon } 		from "astro-icon";
-import { Picture } 	from "@astrojs/image/components";
 // Svelte components
-import Box 				from "@comp/Base/Box.svelte";
 import Heading 		from "@comp/Common/Heading/Heading.svelte";
-import Button 			from "@comp/Common/Button/Button.svelte";
 import Card 			from "@comp/Common/Card/Card.svelte";
 import Drawer 			from "@comp/Common/Drawer/Drawer.svelte";
-import Svg 				from "@comp/Media/Svg/Svg.svelte";
 // Page specific components
 import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
 // Common Section components
@@ -97,7 +91,7 @@ Object.keys(t("services:services.web.features")).forEach((key) => {
 				))}
 			</div>
 
-			<AboutTechStackMarquee slot="append" />
+			<!-- <AboutTechStackMarquee slot="append" /> -->
 		</Section>
 		<!-- END FEATURES -->
 
