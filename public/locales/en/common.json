@@ -70,6 +70,20 @@
          }
       },
       "accept_terms": "I have read and accept the <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacy policy</a> and the <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">terms of service</a>.",
+      "placeholders": {
+         "first_name": "John",
+         "last_name": "Doe",
+         "email": "john.doe@mail.com",
+         "organisation": "Company Inc.",
+         "job": "CEO",
+         "phone": "+32 123 45 67",
+         "country": "Belgium",
+         "city": "Antwerp",
+         "address": "Meir 1",
+         "zip": "2000",
+         "subject": "Subject",
+         "message": "Your message..."
+      },
       "validation": {
          "required": "{item:string} is required.",
          "required_def": "This field is required.",
