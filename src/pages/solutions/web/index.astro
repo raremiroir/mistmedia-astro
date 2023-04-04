@@ -20,6 +20,15 @@ import Svg 				from "@comp/Media/Svg/Svg.svelte";
 import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
 // Common Section components
 import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
+// Import feature sidebar components
+import WebFeatAccessible from "@comp/Pages/Solutions/Web/Features/WebFeatAccessible.astro";
+import WebFeatFast from "@comp/Pages/Solutions/Web/Features/WebFeatFast.astro";
+import WebFeatLight from "@comp/Pages/Solutions/Web/Features/WebFeatLight.astro";
+import WebFeatSecure from "@comp/Pages/Solutions/Web/Features/WebFeatSecure.astro";
+import WebFeatUxUi from "@comp/Pages/Solutions/Web/Features/WebFeatUxUi.astro";
+import WebFeatSeo from "@comp/Pages/Solutions/Web/Features/WebFeatSeo.astro";
+import WebFeatTech from "@comp/Pages/Solutions/Web/Features/WebFeatTech.astro";
+import WebFeatSupport from "@comp/Pages/Solutions/Web/Features/WebFeatSupport.astro";
 
 changeLanguage("nl");
 
@@ -28,9 +37,10 @@ let featureCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
 Object.keys(t("services:services.web.features")).forEach((key) => {
 	 featureCards.push({
-		  title: t(`services:services.web.features.${key}.title`),
-		  description: t(`services:services.web.features.${key}.description`),
-		  icon: ICONS.features.web[key]
+		key: key,
+		title: t(`services:services.web.features.${key}.title`),
+		description: t(`services:services.web.features.${key}.description`),
+		icon: ICONS.features.web[key]
 	 })
 });
 ---
@@ -61,9 +71,28 @@ Object.keys(t("services:services.web.features")).forEach((key) => {
 								<span class="mb-1">{feature.title}</span>
 							</Heading>
 						</Card>
-						<p>
-							{feature.description}
-						</p>
+						{() => {
+								switch (feature.key) {
+									case "accessible":
+										return <WebFeatAccessible />
+									case "fast":
+										return <WebFeatFast />
+									case "light":
+										return <WebFeatLight />
+									case "secure":
+										return <WebFeatSecure />
+									case "uxui":
+										return <WebFeatUxUi />
+									case "seo":
+										return <WebFeatSeo />
+									case "tech":
+										return <WebFeatTech />
+									case "support":
+										return <WebFeatSupport />
+									default:
+										return <></>
+								}
+						}}
 					</Drawer></>
 				))}
 			</div>
