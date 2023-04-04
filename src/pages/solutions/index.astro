@@ -9,6 +9,8 @@ import Hero from '@comp/Main/Hero/Hero.astro';
 // Svelte components
 import Card from '@comp/Common/Card/Card.svelte';
 import Link from '@comp/Common/Button/Link.svelte';
+
+export const prerender = true;
 ---
 
 <BaseLayout title={t('site:pages.solutions.title')}>
