@@ -7,7 +7,7 @@
 
    $: viewBox = `0 0 ${size} ${size}`;
    $: radius = size / 2;
-   $: halfCircumference = 2 * Math.PI * radius;
+   $: halfCircumference = Math.PI * radius;
    $: pieSize = halfCircumference * (percent / 100);
    $: dashArray = `0 ${halfCircumference - pieSize} ${pieSize}`;
 </script>
