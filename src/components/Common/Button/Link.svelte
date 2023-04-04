@@ -20,19 +20,19 @@
    const cActiveAfter = 'active:after:left-0 active:after:-bottom-0.5 active:after:w-full active:after:h-full';
    const cHoverAfter = 'hover:after:bg-primary/25';
 
-   const linkClass = `unstyled relative group ${color} ${cTransition} ${cText} ${cFlex} ${cAfter} ${cActiveAfter} ${cHoverAfter} ${klass}`;
+   const linkClass = `unstyled relative group ${cTransition} ${cText} ${cFlex} ${cAfter} ${cActiveAfter} ${cHoverAfter} ${color} ${klass}`;
 </script>
 
 {#if popup}
    <Popup id={href} placement={popupPlacement}>
-      <a {href} {target} {rel} class={linkClass}>
+      <a {href} {target} {rel} class={linkClass} style="font-size: inherit !important;">
          <slot name="icon" />
          <slot/>
       </a>
       <span slot="popup" class="text-md">{popup}</span>
    </Popup>
 {:else}
-   <a {href} {target} {rel} class={linkClass}>
+   <a {href} {target} {rel} class={linkClass} style="font-size: inherit !important;">
       <slot name="icon" />
       <slot/>
    </a>
