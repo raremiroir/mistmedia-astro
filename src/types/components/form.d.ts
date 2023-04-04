@@ -1,4 +1,11 @@
-
+// Turnstile
+export interface TokenValidateResponse {
+   'error-codes': string[];
+   success: boolean;
+   action: string;
+   cdata: string;
+}
+type TurnstileVersion = 'v0' | 'v1' | 'v2';
 
 // Email
 export interface SendEmailProps {
