@@ -1,0 +1,17 @@
+---
+
+export interface Props {
+   wrapper?: string
+}
+
+const { wrapper } = Astro.props
+
+const Wrapper = wrapper?? 'article'
+---
+
+
+<Wrapper>
+   <div class="flex flex-col gap-4">
+      <slot/>
+   </div>
+</Wrapper>
