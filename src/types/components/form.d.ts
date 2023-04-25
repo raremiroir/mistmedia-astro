@@ -38,7 +38,7 @@ export type ChosenInputs = {
    email?: InputItem;
    phone?: InputItem;
 
-   company?: InputItem;
+   organisation?: InputItem;
    job?: InputItem;
 
    subject?: InputItem;
