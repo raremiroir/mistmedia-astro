@@ -21,6 +21,7 @@ export default {
   namespaces: ["common", "site", "home", "about", "services"],
   defaultNamespace: "common",
 
+  load: ["server", "client"],
   routes: {
     nl: {
       "/": "home",
