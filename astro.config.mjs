@@ -8,6 +8,7 @@ import partytown from "@astrojs/partytown";
 import astroI18next from "astro-i18next";
 import robotsTxt from "astro-robots-txt";
 import mdx from '@astrojs/mdx';
+import prefetch from '@astrojs/prefetch';
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,6 +39,7 @@ export default defineConfig({
   integrations: [
     sitemap(), 
     svelte(), 
+    prefetch(),
     mdx(), 
     tailwind({
       config: {
@@ -55,7 +57,6 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     optimizeDeps: {
-      include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep']
     }
   }
 });
