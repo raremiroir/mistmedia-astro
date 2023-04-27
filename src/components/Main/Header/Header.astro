@@ -13,7 +13,7 @@
    // Specific components
    import HeaderLink       from './HeaderLink.svelte';
    import LightSwitch      from './LightSwitch.svelte';
-import { Icon } from 'astro-icon';
+   import { Icon } from 'astro-icon';
 
    const { pathname } = Astro.url;
    let currentLocaleSlug = i18next.language === baseLocale ? '' : i18next.language + '/';
@@ -61,21 +61,48 @@ import { Icon } from 'astro-icon';
    const headerClass = `
       flex flex-row w-full z-30
       justify-between items-center
+      transition-all duration-300 ease-out
       mb-8 fixed top-0 left-0 right-0
-      backdrop-blur-md
-      shadow-xl shadow-surface-900/10 dark:shadow-xl dark:shadow-primary-400/3
-		bg-surface-50/40	 dark:bg-slate-900/30 
+      backdrop-blur-md bg-white dark:bg-slate-900/30 
 		py-6`;
----
 
-<header class={headerClass}>
-   <div class={`${width} flex flex-row justify-between items-center mx-auto`}>
-      <Button client:load variant="minimal" color="surface_alt" shadow="none" href="/">
-			<Svg logo size={150} />
-		</Button>
-      
-      <nav>
-         <ul class="grid grid-cols-6 w-full gap-1 lg:gap-2">
+
+   const currentPath = Astro.url.pathname;
+---
+<script>
+window.addEventListener('scroll', () => {
+   let header = document.getElementById('header');
+if (!!header) {
+   if (window.scrollY > 10) {
+      header.classList.remove('py-6');
+      header.classList.add('py-4');
+      header.classList.remove('shadow-none');
+      header.classList.add('shadow-xl');
+      header.classList.add('shadow-primary-500/5');
+      header.classList.add('dark:shadow-primary-400/3');
+   } else {
+      header.classList.remove('py-4');
+      header.classList.add('py-6');
+      header.classList.remove('shadow-xl');
+      header.classList.remove('shadow-primary-500/5');
+      header.classList.remove('dark:shadow-primary-400/3');
+      header.classList.add('shadow-none');
+   }
+}
+});
+</script>
+
+<header id="header" class={headerClass}>
+   <div class={`${width} grid grid-cols-7 mx-auto`}>
+      <div class="col-span-1">
+         { currentPath !== '/' && (
+            <Button client:load variant="minimal" color="surface_alt" shadow="none" href="/">
+               <Svg logo size={150} />
+            </Button>
+         )}
+      </div>
+      <nav class="col-span-5">
+         <ul class="grid grid-cols-6 w-full gap-1 lg:gap-2 self-center">
             {navItems.map(item => (
 
                item.items ? (
@@ -106,7 +133,7 @@ import { Icon } from 'astro-icon';
          </ul>
       </nav>
 
-      <div class="flex flex-row gap-2 justify-end items-center">
+      <div class="col-span-1 self-center flex flex-row gap-2 justify-end items-center">
          <LanguageSelector />
          <LightSwitch client:load />
       </div>

@@ -41,12 +41,11 @@
 </script>
 
 <Heading type="h1" size="xl">
-   <span>Mist Media</span>
-   <span class="flex flex-row items-end !text-title-lg">
+   <span class="flex flex-row items-end !text-title-lg text-surface-700">
       <span>We&nbsp;</span>
       <TypeWriter mode="loopRandom" element="span" interval={80} wordInterval={1500} unwriteInterval={50}>
          {#each texts as text}
-           <span class="whitespace-nowrap">{text}</span>
+           <span class="whitespace-nowrap text-inherit">{text}</span>
          {/each}
       </TypeWriter>
    </span>

@@ -42,7 +42,7 @@ export const prerender = true;
 <BaseLayout title={t("site:pages.about.title")}>
 	<Page>
 		<!-- HERO -->
-		<Hero slot="hero" title="About Us" bgImg="/images/stock/webdev-2.webp" media>
+		<Hero slot="hero" title="About Us" media>
 			<div slot="media" class="w-1/3 mb-6">
 				<MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
 			</div>
@@ -86,7 +86,7 @@ export const prerender = true;
 					<div class="flex flex-row gap-4 col-span-12 sm:col-span-8 sm:row-span-1">
 						<!-- About Me -->
 						<Drawer client:load>
-							<Button slot="trigger" color="surface_alt" size='xl' capitalize>
+							<Button slot="trigger" color="surface_alt" size='xl' variant="fill" capitalize>
 								{t("about:miro.more.title")}
 							</Button>
 							<span slot="title" class="capitalize">{t("about:miro.more.title_alt")}</span>

@@ -38,7 +38,7 @@
       opacity?: string,
    }
 
-   export let size: number = 150;
+   export let size: number|'full' = 150;
 
    export let logo = false;
    export let svg = '';

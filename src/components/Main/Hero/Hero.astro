@@ -7,11 +7,9 @@
    import { Picture } from '@astrojs/image/components';
 
    export interface Props {
-      title: string;
-      bgImg: string;
+      title?: string;
       customTitle?: boolean;
       titleSize?: TitleSizes;
-      titleWidth?: string;
       alt?: boolean;
       media?: boolean;
       cardWidth?: string;
@@ -20,11 +18,9 @@
    }
 
    const { 
-      title, 
-      bgImg,
+      title = '', 
       customTitle = false, 
       titleSize = 'md', 
-      titleWidth = 'w-full', 
       alt = false, 
       media = false, 
       cardWidth = '', 
@@ -40,37 +36,15 @@
    const cardClass = alt ? ''
       : `flex flex-col sm:flex-row items-center justify-start
          gap-4 sm:gap-0 md:gap-2 lg:gap-8 
-         mx-auto px-6 pt-6 rounded-2xl overflow-hidden z-2
-         bg-surface-100/70 dark:bg-slate-600/60
-         backdrop-brightness-50 backdrop-blur-sm dark:backdrop-blur-md`
+         mx-auto px-6 pt-6 rounded-2xl overflow-hidden z-2`
 ---
 
 <div
    class={`w-full overflow-hidden relative
-         bg-surface-200/50 dark:bg-surface-700/50
          m-0 px-0 pt-36 pb-16 
+         bg-white dark:bg-slate-900
          flex justify-center items-center 
          ${transition} ${klass}`}>
-   <!-- Background Image -->
-   <div 
-      class="
-         absolute -z-1 top-0 
-         h-full flex items-center justify-center
-         w-full m-0 p-0 blur-sm
-         bg-surface-200 dark:bg-surface-700">
-        
-      <Picture 
-         src={bgImg}
-         alt={title}
-         sizes="100vw"
-         widths={[320, 640, 1024, 1280, 1920]}
-         formats={['webp', 'avif', 'jpeg']}
-         aspectRatio={16 / 12}
-         fit="cover"
-         position="center"
-         class="w-full h-auto opacity-70 brightness-75 contrast-125 mix"
-      />
-   </div>
    <!-- Middle Card -->
    <div class={`
          ${ cardClass }
@@ -83,7 +57,7 @@
 
       <div class="flex flex-col gap-2 w-full {titleWidth} pb-6"> 
          { customTitle ? 
-            <slot name="title">Custom Title Here</slot>
+            <slot name="title"></slot>
           : 
             <Heading type="h1" klass="w-full" size={alt ? 'xl' : titleSize}>
                {title}

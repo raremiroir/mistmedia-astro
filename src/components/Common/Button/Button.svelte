@@ -55,7 +55,7 @@
    const groupClass = group ? group === 'horizontal' ? 'btn-group' : 'btn-group-vertical' : '';
    
    // Parse classes to btnClass
-   let btnClass = `btn group ${groupClass} ${transition} overflow-hidden ${capitalize ? 'capitalize' : uppercase ? 'uppercase' : ''} 
+   let btnClass = `unstyled btn group ${groupClass} ${transition} overflow-hidden ${capitalize ? 'capitalize' : uppercase ? 'uppercase' : ''} 
                   font-semibold tracking-wide active:!scale-[97%] ${btnStyle}`;
 
    // Define extra classes

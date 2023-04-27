@@ -1,8 +1,8 @@
-<script>
-   export let width = 50;
+<script lang="ts">
+   export let width:number|'full' = 50;
    
    const ratio = 477 / 1155;
-   const height = width * ratio;
+   const height = width !== 'full' ? width * ratio : 0;
 	// Calculate bottom margin to compensate for the height of the logo
 	const marginBottom = -height * 0.65;
 
@@ -16,8 +16,11 @@
 <svg 
    viewBox="0 0 1155 477" 
    fill="none" 
-	width="{width}" heigth="{height}"
-	style="margin-bottom: {marginBottom}px"
+	style="
+		margin-bottom: {marginBottom}px;
+		width: {width === 'full' ? '100%' : `${width}px`};
+		height: {width === 'full' ? '100%' : `${height}px`};
+		"
    class="{klass}"
    xmlns="http://www.w3.org/2000/svg">
 

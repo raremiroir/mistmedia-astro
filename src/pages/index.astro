@@ -21,6 +21,7 @@ import Faq from "@comp/Pages/Common/Faq.astro";
 // Consts
 import { ICONS } from "@const/index";
 import HomeHeroPicture from "@comp/Pages/Home/HomeHeroPicture.astro";
+import Svg from "@/components/Media/Svg/Svg.svelte";
 
 
 changeLanguage("nl");
@@ -55,13 +56,18 @@ export const prerender = true;
 <BaseLayout title={t("site:pages.home.title")}>
 	<Page>
 		<!-- HERO -->
-		<Hero customTitle title="Mist Media" bgImg="/images/stock/code-1.webp" slot="hero" media>
-			<HomeHeroPicture 
+		<Hero customTitle slot="hero">
+			<!-- <HomeHeroPicture 
 				slot="media"
 				src="/images/hero/DevicesShowcase-Light.png"
 				alt={t("home:img.alt.default")} 
-			/>
-			<HeroTypeWriter lang={i18next.language} client:load slot='title'/>
+			/> -->
+			<div slot="title" class="flex flex-col gap-4">
+				<Svg size={'full'} logo class="!-mb-56" />
+				<div class="ml-32">
+					<HeroTypeWriter lang={i18next.language} client:load/>
+				</div>
+			</div>
 			
 		</Hero>
 		<!-- END HERO -->
