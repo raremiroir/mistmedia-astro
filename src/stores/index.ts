@@ -1,5 +1,5 @@
 import { atom } from 'nanostores'
-import { writable } from 'svelte/store';
+import { type Writable, writable } from 'svelte/store';
 /* ~~-~~ ~-~~-~ ~~-~~ */
 /* ~~-~~ STORES ~~-~~ */
 /* ~~-~~ ~-~~-~ ~~-~~ */
@@ -7,3 +7,6 @@ import { writable } from 'svelte/store';
 
 // Components
 export const animationTrigger = writable(false);
+
+
+export const fileErrors: Writable<string[]> = writable([]);
