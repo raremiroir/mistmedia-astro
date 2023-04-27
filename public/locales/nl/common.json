@@ -65,7 +65,9 @@
                "default": "Bericht Verzenden",
                "sending": "Verzenden...",
                "success": "Bericht verzonden!",
-               "error": "Bericht niet verzonden!"
+               "error": "Bericht niet verzonden!",
+               "message": "Bedankt voor je bericht! We doen ons uiterste best om binnen de 24 uur te reageren.",
+               "another_message": "Wil je nog een bericht sturen?"
             }
          }
       },
