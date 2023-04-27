@@ -45,6 +45,7 @@
    import { createForm } from 'svelte-forms-lib'
    // Import i18n
    import i18next, { t } from 'i18next';
+   import Input from './FormInput/Inputs/Input.svelte';
 
    /* ~~-~~ ~- -~ ~~-~~ */
    /* ~~-~~ PROPS ~~-~~ */
@@ -316,22 +317,22 @@
          <!-- Name -->
          <FormRow>
             <!-- First -->
-            <FormInput 
+            <Input 
                name="first_name"
                label={translations.name.first_name}
-               on:change={handleChange}
                bind:value={$form.first_name}
                bind:errors={$errors.first_name}
+               onChange={handleChange}
                placeholder={translations.placeholder.first_name}
                required={inputItems.name?.required}
             />
             <!-- Last -->
-            <FormInput 
+            <Input 
                name="last_name"
                label={translations.name.last_name}
-               on:change={handleChange}
                bind:value={$form.last_name}
                bind:errors={$errors.last_name}
+               onChange={handleChange}
                placeholder={translations.placeholder.last_name}
                required={inputItems.name?.required}
             />
@@ -341,25 +342,25 @@
          {#if inputItems.email || inputItems.phone || (inputItems.email && inputItems.phone)}
             <FormRow>
                {#if inputItems.email}
-                  <FormInput 
+                  <Input 
                      name="email" type="email"
                      label={translations.email}
-                     on:change={handleChange}
                      bind:value={$form.email}
                      bind:errors={$errors.email}
+                     onChange={handleChange}
                      placeholder={translations.placeholder.email}
-                     required={inputItems.email.required} 
+                     required={inputItems.email.required}
                   />
                {/if}
                {#if inputItems.phone}
-                  <FormInput 
+                  <Input 
                      name="phone"
                      label={translations.phone}
-                     on:change={handleChange}
                      bind:value={$form.phone}
                      bind:errors={$errors.phone}
+                     onChange={handleChange}
                      placeholder={translations.placeholder.phone}
-                     required={inputItems.phone.required} 
+                     required={inputItems.phone.required}
                   />
                {/if}
             </FormRow>
@@ -369,25 +370,25 @@
          {#if inputItems.organisation || inputItems.job || (inputItems.organisation && inputItems.job)}
             <FormRow>
                {#if inputItems.organisation}
-                  <FormInput 
+                  <Input 
                      name="organisation"
                      label={translations.organisation}
-                     on:change={handleChange}
                      bind:value={$form.organisation}
                      bind:errors={$errors.organisation}
+                     onChange={handleChange}
                      placeholder={translations.placeholder.organisation}
-                     required={inputItems.organisation.required} 
+                     required={inputItems.organisation.required}
                   />
                {/if}
                {#if inputItems.job}
-                  <FormInput 
+                  <Input 
                      name="job"
                      label={translations.job}
-                     on:change={handleChange}
                      bind:value={$form.job}
                      bind:errors={$errors.job}
+                     onChange={handleChange}
                      placeholder={translations.placeholder.job}
-                     required={inputItems.job.required} 
+                     required={inputItems.job.required}
                   />
                {/if}
             </FormRow>
@@ -396,29 +397,29 @@
          <!-- Subject -->
          {#if inputItems.subject}
             <FormRow>
-               <FormInput 
+               <Input 
                   name="subject"
                   label={translations.subject}
-                  on:change={handleChange}
                   bind:value={$form.subject}
                   bind:errors={$errors.subject}
+                  onChange={handleChange}
                   placeholder={translations.placeholder.subject}
-                  required={inputItems.subject.required} 
+                  required={inputItems.subject.required}
                />
             </FormRow>
          {/if}
          <!-- Message -->
          {#if inputItems.message}
             <FormRow>
-               <FormInput 
-                  name="message" type="textarea"
-                  rows={inputItems.message.rows?? 6}
+               <Input 
+                  name="message" textarea noResize 
+                  rows={inputItems.message.rows?? 8}
                   label={translations.message}
-                  on:change={handleChange}
                   bind:value={$form.message}
                   bind:errors={$errors.message}
+                  onChange={handleChange}
                   placeholder={translations.placeholder.message}
-                  required={inputItems.message.required} 
+                  required={inputItems.message.required}
                />
             </FormRow>
          {/if}
@@ -441,7 +442,7 @@
                bind:errors={$errors.turnstile_response} 
                bind:turnstileResponse={$form.turnstile_response} />
          </FormRow>
-         <!-- <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="compact" /> -->
+         <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="compact" />
    
          <!-- Errors -->
          <slot name="errors" />
