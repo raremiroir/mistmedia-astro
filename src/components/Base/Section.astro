@@ -1,5 +1,5 @@
 --- 
-import { widths } from "../../consts/class";
+import { gaps, widths } from "../../consts/class";
 import Heading from "../Common/Heading/Heading.svelte";
 export interface Props {
    name: string;
@@ -7,45 +7,64 @@ export interface Props {
    subtitle?: string;
    klass?: string;
    alt?: boolean;
+   compact?: boolean;
    transparent?: boolean;
    fullWidthPrepend?: boolean;
    fullWidthAppend?: boolean;
+
+   svg?: string;
+   img?: string;
 }
 
 const { 
    name, title, subtitle, 
    alt, transparent, klass,
+   compact, svg, img,
    fullWidthPrepend = false,
    fullWidthAppend = false,
 } = Astro.props;
 
 
+const bgColors = {
+   default: 'bg-white dark:bg-slate-900',
+   alt: 'bg-gray-100/10 dark:bg-slate-800'
+}
+
+
 const sectionClass = `
-   w-full mx-auto
-   flex flex-col gap-8 
-   pb-12 md:pb-16 
-   pt-6 md:pt-8 
-   px-1 xs:px-2 sm:px-4 md:px-0
-   ${ transparent ? 'bg-transparent' : `
-   ${ alt ? 'bg-white dark:bg-slate-900' : 'bg-white/80 dark:bg-slate-800' }
-   `}
+   w-full relative overflow-hidden
+   ${ !!transparent ? 'bg-transparent' : !!alt ? bgColors.alt : bgColors.default }
    ${klass}
 `;
+const bgImgClass = `absolute bottom-0 h-full w-full object-cover -z-1 opacity-20 mix-blend-multiply`;
+
+const innerWrapClass = `
+   ${widths} ${ compact ? 'py-6' : 'py-12 md:py-16' }
+   mx-auto flex flex-col ${gaps} z-1
+`
 ---
 
 <section
    id={name}
    class={sectionClass}>
 
+   {(!!svg || !!img) && (
+      // TODO: optimize this
+      <img 
+         src={svg?? img} alt=""
+         class={bgImgClass}
+      />
+   )}
+
    {
-      fullWidthPrepend && (
+      !!fullWidthPrepend && (
          <div class="w-full">
             <slot name="prepend" />
          </div>
       )
    }
 
-   <div class={widths}>
+   <div class={innerWrapClass}>
 
       <!-- Section Title -->
       <div class="mt-0 mx-0 mb-8 py-0 pr-0 pl-8 border-l-4 border-primary-700 dark:border-primary-600/40">
@@ -69,7 +88,7 @@ const sectionClass = `
    </div>
 
    {
-      fullWidthAppend && (
+      !!fullWidthAppend && (
          <div class="w-full">
             <slot name="append" />
          </div>
