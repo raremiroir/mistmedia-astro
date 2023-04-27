@@ -35,9 +35,9 @@
    import Alert          from '@comp/Utils/Alert/Alert.svelte';
    import Button         from '@comp/Common/Button/Button.svelte';
    import FormRow        from './Utils/FormRow.svelte';
-   import FormInput      from './FormInput/FormInput.svelte';
-   import ToggleCheck    from './FormInput/Inputs/ToggleCheck.svelte';
-   import Turnstile      from './FormInput/Inputs/Turnstile.svelte';
+   import ToggleCheck    from './Inputs/ToggleCheck.svelte';
+   import Turnstile      from './Inputs/Turnstile.svelte';
+   import Input          from './Inputs/Input.svelte';
 
    // Import utils
    import { fade }       from 'svelte/transition';
@@ -45,7 +45,6 @@
    import { createForm } from 'svelte-forms-lib'
    // Import i18n
    import i18next, { t } from 'i18next';
-   import Input from './FormInput/Inputs/Input.svelte';
 
    /* ~~-~~ ~- -~ ~~-~~ */
    /* ~~-~~ PROPS ~~-~~ */

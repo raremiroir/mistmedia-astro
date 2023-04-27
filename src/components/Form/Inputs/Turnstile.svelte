@@ -3,7 +3,7 @@
    import type { TurnstileSize, TurnstileTheme } from 'svelte-turnstile'
 	import type { TurnstileRetry } from 'svelte-turnstile/Turnstile.svelte';
 
-   import ValidationError from '../../Utils/ValidationError.svelte';
+   import ValidationError from '../Utils/ValidationError.svelte';
    
 
    const sitekey = import.meta.env.VITE_TURNSTILE_SITEKEY;

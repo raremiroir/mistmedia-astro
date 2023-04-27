@@ -4,7 +4,7 @@
    import { cForm, cFormComplete, classes } from "@/consts/class";
    import Button from "@/components/Common/Button/Button.svelte";
    import Icon from "@/components/Media/Icon/Icon.svelte";
-   import ValidationError from "../../Utils/ValidationError.svelte";
+   import ValidationError from "../Utils/ValidationError.svelte";
 
 
    export let value:any = '';
@@ -47,8 +47,6 @@
 
    let klass:string = '';
    export { klass as class };
-
-   export let width:string = 'w-full';
 
    // Handle value-type of input
    const handleInput = (e:any) => {
