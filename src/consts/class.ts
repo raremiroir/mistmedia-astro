@@ -11,9 +11,14 @@ export const slider = `
 
 
 export const classes = {
-      transition: 'transition-all duration-200 ease-out',
+      transition: {
+            fast: 'transition-all duration-200 ease-out',
+            default: 'transition-all duration-300 ease-out',
+            slow: 'transition-all duration-500 ease-in-out'
+      },
       flex: {
             center: 'flex justify-center items-center',
+            between: 'flex justify-between items-center'
       }
 }
 // Form styles
@@ -49,12 +54,12 @@ export const cForm = {
 }
 // Complete form styles
 export const cFormComplete = {
-      wrapClass: `${cForm.input.wrapBase} ${cForm.input.transition} ${cForm.input.flex}`,
+      wrapClass: `${cForm.input.wrapBase} ${cForm.input.transition} ${cForm.input.flex} ${classes.transition.default}`,
       inputClass: `${cForm.input.inputBase} ${cForm.input.transition} ${cForm.input.bg} ${cForm.input.border} 
-                   ${cForm.input.rounding} ${cForm.input.placeholder} ${cForm.input.text}`,
-      clearClass: `${cForm.input.clearBase} ${cForm.input.clearAbsolute} ${cForm.input.flex}`,
+                   ${cForm.input.rounding} ${cForm.input.placeholder} ${cForm.input.text} ${classes.transition.default}`,
+      clearClass: `${cForm.input.clearBase} ${cForm.input.clearAbsolute} ${cForm.input.flex} ${classes.transition.default}`,
       labelClass: `${cForm.input.transition} ${cForm.input.labelBase} ${cForm.input.labelAbsolute} ${cForm.input.labelPadding}
-                   ${cForm.input.labelPosFocus} ${cForm.input.labelBg}`
+                   ${cForm.input.labelPosFocus} ${cForm.input.labelBg} ${classes.transition.default}`
 }
 
 // COMPONENTS
