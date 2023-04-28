@@ -8,7 +8,7 @@ interface MistPortfolioBase {
 
 export interface MistPortfolioItem extends MistPortfolioBase {
    description: string|LocaleString;
-   images?: string[];
+   images: string[];
    slug?: string|LocaleString;
    tags?: string[];
 }
