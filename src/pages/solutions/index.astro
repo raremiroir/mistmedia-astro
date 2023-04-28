@@ -9,19 +9,43 @@ import Hero from '@comp/Main/Hero/Hero.astro';
 // Svelte components
 import Card from '@comp/Common/Card/Card.svelte';
 import Link from '@comp/Common/Button/Link.svelte';
+import db from '@/firebase';
+import { gaps } from '@/consts/class';
+import Button from '@/components/Common/Button/Button.svelte';
+import Typewriter from '@/components/Utils/Typewriter/Typewriter.svelte';
 
+const solutions = await db.doc.fetch.collection('solutions');
 export const prerender = true;
 ---
 
 <BaseLayout title={t('site:pages.solutions.title')}>
    <Page>
-      <Hero slot="hero" alt bgImg="/images/stock/webdev-2.webp" title="Solutions">
-			<span slot="subtitle">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, officiis!
-			</span>
-		</Hero>
+      <Hero slot="hero" alt title="Solutions">
+			<Typewriter 
+            client:idle 
+            text={'We bieden een breed scala aan oplossingen voor uw bedrijf.'}
+            mode="loopOnce" class="text-title-md font-mono" 
+         />
+      </Hero>
 
-   <Section name="solution" title="Solution 1">
+   <Section name="solutions">
+      <div class={`grid grid-cols-3 ${gaps}`}>
+         {solutions.map(solution => (
+            <Card 
+               fillHeight noClamp hover article block footer
+               href={solution.slug} color="surface_alt"
+               title={t(`services:solutions.${solution.id}.title`) || 'Title'}
+               image={solution.image}
+            >
+               {t(`services:solutions.${solution.id}.description`) || 'Description'}
+               <div slot="footer">
+                  <Button href={solution.slug} size="lg" color="primary" variant="ghost">
+                     Meer info
+                  </Button>
+               </div>
+            </Card>
+         ))}
+      </div>
    </Section>
       
    </Page>
