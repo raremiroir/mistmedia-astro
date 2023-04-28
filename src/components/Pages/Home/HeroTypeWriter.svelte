@@ -51,10 +51,3 @@
       </Typewriter>
    </span>
 </Title>
-
-<style global>
-   :root {
-      --cursor-width: 4px;
-      --cursor-color: #0f8a7d;
-   }
-</style>
