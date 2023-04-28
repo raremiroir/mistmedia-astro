@@ -5,7 +5,6 @@ import BaseLayout 	from "@layouts/BaseLayout.astro";
 import Page 			from "@comp/Base/Page.astro";
 import Section 		from "@comp/Base/Section.astro";
 import Hero 			from "@comp/Main/Hero/Hero.astro";
-import { Icon } 		from "astro-icon";
 import { Picture } 	from "@astrojs/image/components";
 // Svelte components
 import Box 				from "@comp/Base/Box.svelte";
@@ -18,6 +17,7 @@ import Svg 				from "@comp/Media/Svg/Svg.svelte";
 import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
 // Common Section components
 import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
+import Title from "@/components/Common/Title/Title.svelte";
 
 changeLanguage("nl");
 
@@ -36,7 +36,7 @@ t("about:values.items").forEach((value) => {
 <BaseLayout title={t("site:pages.solutions.solutions.graphic.title")}>
 	<Page>
 		<!-- HERO -->
-		<Hero slot="hero" alt bgImg="/images/stock/webdev-2.webp" title="Graphic Design">
+		<Hero slot="hero" alt title="Graphic Design">
 			<span slot="subtitle">
 				We're proud to present a growing selection of cases we have worked on in the past.
 			</span>
@@ -48,9 +48,9 @@ t("about:values.items").forEach((value) => {
 			<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
 				{valueCards.map((value) => (
 					<><Card client:idle direction="row" centerRow block hover active>
-						<Heading slot="title" type="h3" size="xxs" weight="font-bold">
+						<Title slot="title" h3 size="xs" weight="font-bold">
 							{value.title}
-						</Heading>
+						</Title>
 						<Svg 
 							slot="media" animIcon={value.icon} client:load 
 						/>
