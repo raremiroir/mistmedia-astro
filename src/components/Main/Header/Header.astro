@@ -93,15 +93,15 @@ if (!!header) {
 </script>
 
 <header id="header" class={headerClass}>
-   <div class={`w-full md:w-[95%] lg:w-11/12 xl:w-5/6 2xl:w-3/4 grid grid-cols-7 mx-auto`}>
+   <div class={`w-full md:w-[95%] lg:w-11/12 xl:w-5/6 2xl:w-3/4 grid grid-cols-8 gap-2 xl:gap-4 mx-auto`}>
       <div class="col-span-1 flex items-center justify-start">
          { currentPath !== '/' && (
             <Button client:load variant="minimal" color="surface_alt" shadow="none" href="/">
-               <Svg logo size='full' class="!-mb-7" />
+               <Svg logo size='full' />
             </Button>
          )}
       </div>
-      <nav class="col-span-5 flex items-center justify-center">
+      <nav class="col-span-6 flex items-center justify-center">
          <ul class="grid grid-cols-6 w-full gap-1 lg:gap-2">
             {navItems.map(item => (
 

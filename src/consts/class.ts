@@ -1,6 +1,6 @@
 
 export const widths =  'mx-auto w-full sm:w-[95%] md:w-11/12 lg:w-5/6 xl:w-3/4 2xl:w-2/3';
-export const gaps = 'gap-2 md:gap-4 2xl:gap-6';
+export const gaps = 'gap-2 md:gap-4 lg:gap-6 2xl:gap-8';
 
 export const slider = `
       w-full h-full max-h-120

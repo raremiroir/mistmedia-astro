@@ -22,6 +22,12 @@ import Faq from "@comp/Pages/Common/Faq.astro";
 import { ICONS } from "@const/index";
 import HomeHeroPicture from "@comp/Pages/Home/HomeHeroPicture.astro";
 import Svg from "@/components/Media/Svg/Svg.svelte";
+import MistLogo from "@/components/Media/Svg/svg-assets/MistLogo.svelte";
+import Title from "@/components/Common/Title/Title.svelte";
+import Logo from "@/components/Media/Logo/Logo.svelte";
+import LogoIcon from "@/components/Media/Logo/LogoIcon.svelte";
+import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
+import MistLogoAnim 	from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
 
 
 changeLanguage("nl");
@@ -56,19 +62,18 @@ export const prerender = true;
 <BaseLayout title={t("site:pages.home.title")}>
 	<Page>
 		<!-- HERO -->
-		<Hero customTitle slot="hero">
-			<!-- <HomeHeroPicture 
-				slot="media"
-				src="/images/hero/DevicesShowcase-Light.png"
-				alt={t("home:img.alt.default")} 
-			/> -->
-			<div slot="title" class="flex flex-col gap-4">
-				<Svg size={'full'} logo class="!-mb-56 2xl:!-mb-76" />
-				<div class="ml-32 2xl:ml-44">
+		<!-- HERO -->
+		<Hero slot="hero" customTitle media titleWidth="w-4/5">
+			<div slot="media" class="w-1/5 mb-6">
+				<MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+			</div>
+			<div slot="title" class="w-full flex flex-col gap-4">
+				<LogoLettering width="full" />
+				<!-- <Svg size={'full'} logo/> -->
+				<div class="">
 					<HeroTypeWriter lang={i18next.language} client:load/>
 				</div>
 			</div>
-			
 		</Hero>
 		<!-- END HERO -->
 
@@ -77,9 +82,9 @@ export const prerender = true;
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
 					<><Card client:idle direction="row" centerRow block hover active>
-						<Heading slot="title" type="h3" size="xxs" weight="font-bold">
+						<Title slot="title" h3 size="xs" weight="font-bold">
 							{item.title}
-						</Heading>
+						</Title>
 						<Icon 
 							slot="media" name={item.icon} 
 							class={`
@@ -122,12 +127,12 @@ export const prerender = true;
 								class="w-12 h-12 rounded-full "
 							/>
 							<div class="flex flex-col gap-0 items-start justify-center">
-								<Heading type="h3" size="xxs" klass="pt-2">
+								<Title h3 size="xs" class="pt-2">
 									{item.name}
-								</Heading>
-								<Heading type="subtitle" size="xxs" klass="italic">
+								</Title>
+								<Title h5 fake size="sm" class="italic">
 									{item.job_title}
-								</Heading>
+								</Title>
 							</div>
 						</div>
 						{item.review}

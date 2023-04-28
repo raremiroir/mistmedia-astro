@@ -9,15 +9,14 @@
 	let klass = '';
 	export { klass as class };
 
-	export let dark = "fill-surface-600 dark:fill-surface-200";
-	export let light = "fill-surface-300 dark:fill-surface-400";
+	export let dark = "fill-surface-900 dark:fill-white";
+	export let light = "fill-surface-400 dark:fill-surface-200";
 </script>
 
 <svg 
-   viewBox="0 0 1155 477" 
+   viewBox="0 0 1155 180" 
    fill="none" 
 	style="
-		margin-bottom: {marginBottom}px;
 		width: {width === 'full' ? '100%' : `${width}px`};
 		height: {width === 'full' ? '100%' : `${height}px`};
 		"

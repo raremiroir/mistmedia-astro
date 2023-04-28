@@ -23,6 +23,7 @@ import FacebookBtn 	from "@comp/Pages/About/SocialBtns/FacebookBtn.astro";
 import InstagramBtn 	from "@comp/Pages/About/SocialBtns/InstagramBtn.astro";
 // Common Section components
 import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
+import Title from "@/components/Common/Title/Title.svelte";
 
 changeLanguage("nl");
 
@@ -110,9 +111,9 @@ export const prerender = true;
 			<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
 				{valueCards.map((value) => (
 					<><Card client:idle direction="row" centerRow block hover active>
-						<Heading slot="title" type="h3" size="xxs" weight="font-bold">
+						<Title slot="title" h3 size="xs" weight="font-bold">
 							{value.title}
-						</Heading>
+						</Title>
 						<Svg 
 							slot="media" animIcon={value.icon} client:load 
 						/>

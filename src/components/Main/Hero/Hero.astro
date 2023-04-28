@@ -5,6 +5,7 @@
    import type { TitleSizes } from '@tstype/components/heading';
    import Heading from '../../Common/Heading/Heading.svelte';
    import { Picture } from '@astrojs/image/components';
+   import Title from '@/components/Common/Title/Title.svelte';
 
    export interface Props {
       title?: string;
@@ -12,6 +13,7 @@
       titleSize?: TitleSizes;
       alt?: boolean;
       media?: boolean;
+      titleWidth?: string;
       cardWidth?: string;
       customHeight?: string;
       klass?: string;
@@ -22,7 +24,8 @@
       customTitle = false, 
       titleSize = 'md', 
       alt = false, 
-      media = false, 
+      media = false,
+      titleWidth = '',
       cardWidth = '', 
       customHeight = '', 
       klass = '' 
@@ -35,7 +38,7 @@
 
    const cardClass = alt ? ''
       : `flex flex-col sm:flex-row items-center justify-start
-         ${gaps} mx-auto px-6 pt-6 rounded-2xl overflow-hidden z-2`
+         ${gaps} mx-auto`
 ---
 
 <div
@@ -54,13 +57,13 @@
          <slot name="media"></slot>
       )}
 
-      <div class="flex flex-col gap-2 w-full {titleWidth} pb-6"> 
+      <div class={`flex flex-col gap-2 w-full ${titleWidth} pb-6`}> 
          { customTitle ? 
             <slot name="title"></slot>
           : 
-            <Heading type="h1" klass="w-full" size={alt ? 'xl' : titleSize}>
+            <Title h1 class="w-full stroke-2 stoke-error" size={alt ? '2xl' : titleSize}>
                {title}
-            </Heading>
+            </Title>
          }
          
          <div class={ alt ? 'bg-surface-900 dark:bg-surface-300 mix-blend-overlay px-2 pt-1' : '' }>
