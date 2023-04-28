@@ -3,12 +3,12 @@
    
    // Svelte components
    import type { TitleSizes } from '@tstype/components/heading';
-   import Heading from '../../Common/Heading/Heading.svelte';
    import { Picture } from '@astrojs/image/components';
    import Title from '@/components/Common/Title/Title.svelte';
 
    export interface Props {
       title?: string;
+      noSub?: boolean;
       customTitle?: boolean;
       titleSize?: TitleSizes;
       alt?: boolean;
@@ -21,7 +21,8 @@
 
    const { 
       title = '', 
-      customTitle = false, 
+      customTitle = false,
+      noSub = false, 
       titleSize = 'md', 
       alt = false, 
       media = false,
@@ -43,9 +44,10 @@
 
 <div
    class={`w-full overflow-hidden relative
-         m-0 px-0 pt-32 pb-12 
+         m-0 px-0 
+         ${ alt ? 'pt-20 pb-0' : 'pt-32 pb-12' }
          bg-white dark:bg-slate-900
-         flex justify-center items-center 
+         flex justify-center items-center mix
          ${transition} ${klass}`}>
    <!-- Middle Card -->
    <div class={`
@@ -65,16 +67,14 @@
                {title}
             </Title>
          }
-         
-         <div class={ alt ? 'bg-surface-900 dark:bg-surface-300 mix-blend-overlay px-2 pt-1' : '' }>
-            <Heading 
-               type="subheader" 
-               size="sm" 
-               color={ alt ? 'text-white mix-blend-difference' : ''}
-               weight="font-regular">
-               <slot name="subtitle"/>
-            </Heading>
-         </div>
+
+         { !noSub && (
+            <div class='font-title'>
+               <Title h4 fake size="xs" weight="font-regular">
+                  <slot name="subtitle"/>
+               </Title>
+            </div>
+         )}
 
          <p class="unstyled">
             <slot/>
