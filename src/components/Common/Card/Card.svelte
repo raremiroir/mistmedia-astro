@@ -6,7 +6,7 @@
    import Chip from '../Chip/Chip.svelte';
    import Ripple from '@comp/actions/Ripple';
    import Svg from '@comp/Media/Svg/Svg.svelte';
-   import Icon from '@iconify/svelte';
+   import Icon from '@comp/Media/Icon/Icon.svelte';
 
    export let article:boolean = false;
    export let href:string = ''
@@ -76,7 +76,7 @@
       overflow-hidden group relative
       { fillHeight ? 'h-full' : '' }
 ">
-   <svelte:component this={innerWrapComp} {...$$props} title="">
+   <svelte:component this={innerWrapComp} {...$$props} title="" class="h-full">
       <div 
          use:Ripple={active}
          class="
@@ -88,7 +88,7 @@
             {#if media === 'animIcon'}
                <Svg animIcon={icon} size={iconSize} />
             {:else if media === 'icon'}
-               <Icon class={iconClass} />
+               <Icon {icon} class={iconClass} />
             <slot name="media" class="h-full"/>
             {:else if media === 'custom'}
                <slot name="media" class="h-full"/>
