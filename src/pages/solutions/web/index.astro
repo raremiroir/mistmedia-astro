@@ -29,11 +29,11 @@ changeLanguage("nl");
 // Feature Cards
 let featureCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
-Object.keys(t("services:services.web.features")).forEach((key) => {
+Object.keys(t("services:solutions.web.features")).forEach((key) => {
 	 featureCards.push({
 		key: key,
-		title: t(`services:services.web.features.${key}.title`),
-		description: t(`services:services.web.features.${key}.description`),
+		title: t(`services:solutions.web.features.${key}.title`),
+		description: t(`services:solutions.web.features.${key}.description`),
 		icon: ICONS.features.web[key]
 	 })
 });

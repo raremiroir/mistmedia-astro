@@ -34,11 +34,11 @@ changeLanguage("nl");
 
 let servicesCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
-Object.keys(t("services:services")).forEach((key) => {
+Object.keys(t("services:solutions")).forEach((key) => {
 	 servicesCards.push({
-		  title: t(`services:services.${key}.title`),
-		  subtitle: t(`services:services.${key}.subtitle`),
-		  description: t(`services:services.${key}.description`),
+		  title: t(`services:solutions.${key}.title`),
+		  subtitle: t(`services:solutions.${key}.subtitle`),
+		  description: t(`services:solutions.${key}.description`),
 		  icon: ICONS.services[key]
 	 })
 });
