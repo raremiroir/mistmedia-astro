@@ -1,8 +1,9 @@
 <script lang="ts">
-   import Heading from "@comp/Common/Heading/Heading.svelte";
-   import TypeWriter from "svelte-typewriter";
+
+   import Typewriter from "@/components/Utils/Typewriter/Typewriter.svelte";
 
    import { t } from 'i18next';
+   import Title from "@/components/Common/Title/Title.svelte";
    export let lang:string;
 
    $: texts = 
@@ -40,25 +41,20 @@
       ] : [];
 </script>
 
-<Heading type="h1" size="xl">
-   <span class="flex flex-row items-end !text-title-lg text-surface-700">
-      <span>We&nbsp;</span>
-      <TypeWriter 
-         mode="loopRandom" element="span" 
-         interval={80} wordInterval={1500} unwriteInterval={50}
-         
-      >
+<Title h1 fake size="xl">
+   <span class="flex flex-row items-end !text-title-lg !text-surface-700">
+      <span class="text-surface-700 dark:text-surface-200">We&nbsp;</span>
+      <Typewriter mode="loopRandom">
          {#each texts as text}
-           <span class="whitespace-nowrap text-inherit">{text}</span>
+           <span class="whitespace-nowrap">{text}</span>
          {/each}
-      </TypeWriter>
+      </Typewriter>
    </span>
-</Heading>
+</Title>
 
 <style global>
    :root {
       --cursor-width: 4px;
       --cursor-color: #0f8a7d;
    }
-
 </style>
