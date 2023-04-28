@@ -1,5 +1,5 @@
 <script lang="ts">
-	import title from "./title";
+	import title, { TitleSize } from "./title";
 	import type { TitleType } from "./title";
 
    // Can be any heading
@@ -12,7 +12,7 @@
    // Make it a span
    export let fake: boolean = false;
    // Pick a size (sm, md, lg, xl, 2xl)
-   export let size:'xs'|'sm'|'md'|'lg'|'xl'|'2xl' = '2xl'
+   export let size:TitleSize = '2xl'
    // Override color
    export let color: string = '';
    // Override weight
@@ -31,19 +31,15 @@
    let sizeClass: string = "text-4xl";
    let weightClass: string = "font-bold";
 
-   $: sizeClass = `${title.class.size({type, size})}`;
-   $: colorClass = color ? color : title.class.color(type);
-   $: weightClass = weight ? weight : title.class.weight(type);
-</script>
+   $: sizeClass = `${title[type].size[size]}`;
+   $: colorClass = color ? color : title[type].color;
+   $: weightClass = weight ? weight : title[type].weight;
+</script>   
 
 <svelte:element 
    this={compType}
-   class="unstyled p-0 leading-[1.1em] font-mono {sizeClass} {colorClass} {weightClass} {klass}">
+   class="unstyled p-0 leading-[1.1em] font-mono {sizeClass} {colorClass} {weightClass} {klass}"
+   style="{ h1? '--webkit-text-stroke: 1px var(--color-surface-700);' : '' }"
+>
    <slot>Title</slot>
 </svelte:element>
-
-<style global>
-   h1 {
-     -webkit-text-stroke: 4px #1d2329 !important;
-   }
-</style>
