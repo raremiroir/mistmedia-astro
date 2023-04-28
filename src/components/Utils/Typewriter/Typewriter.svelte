@@ -2,6 +2,8 @@
    import TypeWriter from 'svelte-typewriter';
    import type { TypewriterProps } from './typewriter';
 
+   export let text:string = 'Text here...';
+
    export let mode:TypewriterProps['mode'] = 'concurrent';
    export let element:TypewriterProps['element'] = 'span';
    export let delay:TypewriterProps['delay'] = 0;
@@ -22,5 +24,5 @@
 </script>
 
 <TypeWriter {...typewriterProps} >
-   <div class="{klass}"><slot>Text here...</slot></div>
+   <div class="{klass}"><slot>{text}</slot></div>
 </TypeWriter>
