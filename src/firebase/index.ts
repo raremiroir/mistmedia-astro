@@ -42,10 +42,10 @@ export const db = {
       console.log('🔥 Initializing Firebase...');
       app = initializeApp(firebaseConfig);
       firestore = getFirestore(app);
-      auth = getAuth(app);
-      analytics = getAnalytics(app);
-      await setPersistence(auth, browserSessionPersistence);
-      return { app, auth, firestore, analytics };
+      // auth = getAuth(app);
+      // analytics = getAnalytics(app); // TODO: add analytics
+      // await setPersistence(auth, browserSessionPersistence);
+      return { app, firestore,/* auth, analytics */ };
    },
    // DOCS
    doc: {
@@ -57,6 +57,13 @@ export const db = {
             const docSnapshot = await getDoc(doc( firestore, collection, id ))
             if (docSnapshot.exists()) { return docSnapshot.data(); } 
             else { console.error("🔥 No such document in Firestore Database!"); return null; }
+         },
+         collection: async (collectionRef: string) => {
+            const { firestore } = await db.init();
+            const colRef = collection(firestore, collectionRef);
+            const colSnapshot = await getDocs(colRef);
+            const colList = colSnapshot.docs.map(doc => doc.data());
+            return colList;
          },
          all: async (options: DbFetchProps) => {
             let orderByProp = options.orderBy?? 'id';
