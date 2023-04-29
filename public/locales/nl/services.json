@@ -2,6 +2,7 @@
    "title": "Onze Oplossingen",
    "solutions": {
       "web": {
+         "title_short": "Web",
          "title": "Web Design & Ontwikkeling",
          "subtitle": "Websites met aandacht voor detail",
          "description": "Jouw online aanwezigheid is énorm belangrijk, anno 2023. Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops.",
@@ -41,26 +42,31 @@
          }
       },
       "design": {
+         "title_short": "Graphisch Ontwerp",
          "title": "Grafisch Ontwerp & Huisstijl",
          "subtitle": "Een sterk merk",
          "description": "Wij ontwerpen grafische elementen die uw merk onderscheiden van de rest. Van logo's tot flyers, van visitekaartjes tot advertenties. Door middel van een professionenele, universele huisstijl zorgen wij ervoor dat jouw bedrijf een herkenbare identiteit krijgt."
       },
       "seo": {
+         "title_short": "SEO",
          "title": "Zoekmachine Optimalisatie",
          "subtitle": "Zichtbaarheid op het internet",
          "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet. Door middel van uitgebreide SEO-methodes zorgen wij ervoor dat jouw website hoog in de zoekresultaten komt."
       },
       "social": {
+         "title_short": "Marketing",
          "title": "Social Media Marketing",
          "subtitle": "Online aanwezigheid",
          "description": "Wij zorgen ervoor dat jouw online aanwezigheid een boost krijgt. Door middel van social media marketing zorgen wij ervoor dat jouw bedrijf goed zichtbaar wordt op het internet."
       },
       "av": {
+         "title_short": "Audio / Video",
          "title": "Audiovisuele Producties",
          "subtitle": "Vastleggen van jouw bedrijf",
          "description": "Wij zorgen ervoor dat jouw bedrijf op een professionele manier wordt vastgelegd. Dit kunnen zowel foto's als video's zijn, die ook geïntegreerd kunnen worden in jouw website of graphics."
       },
       "3d": {
+         "title_short": "3D Visualisatie",
          "title": "3D Visualisatie & Animatie",
          "subtitle": "Een nieuwe dimensie",
          "description": "Van kleine, didactische animaties tot printbare 3D modellen. Wij zorgen ervoor dat jouw producten, prototypes en animaties op een professionele en natuurlijke manier worden weergegeven."
