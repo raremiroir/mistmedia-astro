@@ -10,6 +10,6 @@ export interface TypewriterProps {
    element: string;              // The element to be used, defaults to 'span'
    wordInterval: number;         // (loop, loopOnce and loopRandom modes only) Sets the interval (in milliseconds) between each word
    unwriteInterval: number;      // (loop, loopOnce and loopRandom modes only) The interval (in milliseconds) between each letter unwrite, if not defined it uses interval
-   scrambleDuration: number;     // (scramble mode only) Sets the duration (in milliseconds) of the scramble animation
-   scrambleSlowdown: boolean;     // 	(scramble mode only) Enables/disables the slowdown effect right before the scramble animation ends (only works in scramble mode)
+   scrambleDuration?: number;     // (scramble mode only) Sets the duration (in milliseconds) of the scramble animation
+   scrambleSlowdown?: boolean;     // 	(scramble mode only) Enables/disables the slowdown effect right before the scramble animation ends (only works in scramble mode)
 }
