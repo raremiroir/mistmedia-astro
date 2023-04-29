@@ -16,8 +16,10 @@
    export let disabled:TypewriterProps['disabled'] = false;
    export let scrambleDuration:TypewriterProps['scrambleDuration'] = 3000;
    export let scrambleSlowdown:TypewriterProps['scrambleSlowdown'] = true;
-
-   const typewriterProps: TypewriterProps = { mode, element, delay, interval, wordInterval, unwriteInterval, cursor, keepCursorOnFinish, showCursorOnDelay, disabled, scrambleDuration, scrambleSlowdown }
+   
+   const typewriterProps: TypewriterProps = mode !== 'scramble' 
+      ? { mode, element, delay, interval, wordInterval, unwriteInterval, cursor, keepCursorOnFinish, showCursorOnDelay, disabled }
+      : { mode, element, delay, interval, wordInterval, unwriteInterval, cursor, keepCursorOnFinish, showCursorOnDelay, disabled, scrambleDuration, scrambleSlowdown }
 
    let klass = 'text-surface-700 dark:text-surface-200';
    export { klass as class };
