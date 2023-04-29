@@ -9,7 +9,6 @@ import Page from "@comp/Base/Page.astro";
 import Section from "@comp/Base/Section.astro";
 import Hero from "@comp/Main/Hero/Hero.astro";
 // Svelte components
-import Heading from "@comp/Common/Heading/Heading.svelte";
 import Card from "@comp/Common/Card/Card.svelte";
 // Page specific components
 import HomePortfolioSlider from "@comp/Pages/Home/HomePortfolioSlider.svelte";
@@ -20,12 +19,7 @@ import Faq from "@comp/Pages/Common/Faq.astro";
 
 // Consts
 import { ICONS } from "@const/index";
-import HomeHeroPicture from "@comp/Pages/Home/HomeHeroPicture.astro";
-import Svg from "@/components/Media/Svg/Svg.svelte";
-import MistLogo from "@/components/Media/Svg/svg-assets/MistLogo.svelte";
 import Title from "@/components/Common/Title/Title.svelte";
-import Logo from "@/components/Media/Logo/Logo.svelte";
-import LogoIcon from "@/components/Media/Logo/LogoIcon.svelte";
 import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
 import MistLogoAnim 	from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
 
@@ -115,22 +109,24 @@ export const prerender = true;
 				{reviewCards.map((item) => (
 					<><Card client:idle block hover>
 						<div slot="title" class="flex items-center justify-start gap-3">
-							<Picture 
-								src={item.avatar}
-								alt="Placeholder Avatar"
-								sizes="(min-width: 300px;) 30w, (min-width: 600px;) 45w, (min-width: 900;) 60w"
-								widths={[30, 45, 60]}
-								formats={['webp', 'avif', 'jpeg']}
-								aspectRatio={1}
-								fit="cover"
-								position="center"
-								class="w-12 h-12 rounded-full "
-							/>
-							<div class="flex flex-col gap-0 items-start justify-center">
+							<div class="w-1/5">
+								<Picture 
+									src={item.avatar}
+									alt="Placeholder Avatar"
+									sizes="(min-width: 300px;) 30w, (min-width: 600px;) 45w, (min-width: 900;) 60w"
+									widths={[30, 45, 60]}
+									formats={['webp', 'avif', 'jpeg']}
+									aspectRatio={1}
+									fit="cover"
+									position="center"
+									class="w-12 rounded-full aspect-square"
+								/>
+							</div>
+							<div class="w-4/5 flex flex-col gap-0 items-start justify-center">
 								<Title h3 size="xs" class="pt-2">
 									{item.name}
 								</Title>
-								<Title h5 fake size="sm" class="italic">
+								<Title h6 fake size="xs" class="italic">
 									{item.job_title}
 								</Title>
 							</div>

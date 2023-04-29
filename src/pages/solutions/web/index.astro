@@ -50,11 +50,12 @@ Object.keys(t("services:solutions.web.features")).forEach((key) => {
 		<!-- END HERO -->
 
 		<!-- FEATURES -->
-		<Section fullWidthAppend alt name="web-features">
+		<Section fullWidthAppend name="web-features">
 			<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
 				{featureCards.map((feature) => (
 					<><Drawer client:idle>
 						<Card 
+							padding="p-4" gap="gap-4"
 							slot="trigger" direction="row" 
 							centerRow fillHeight noBody 
 							block hover active 
@@ -62,7 +63,7 @@ Object.keys(t("services:solutions.web.features")).forEach((key) => {
 							iconSize={40}
 						>
 							<Title slot="title" h3 size="xs" weight="font-bold">
-								<span class="mb-1">{feature.title}</span>
+								<div class="h-full flex items-center justify-start">{feature.title}</div>
 							</Title>
 						</Card>
 						{() => {
@@ -96,19 +97,22 @@ Object.keys(t("services:solutions.web.features")).forEach((key) => {
 		<!-- END FEATURES -->
 
 		<!-- PORTFOLIO -->
-		<Section fullWidthAppend name="web-portfolio" title="A Look Through Our Work" subtitle="Navigate through a selection of projects we've worked on in the past.">
+		<Section fullWidthAppend alt name="web-portfolio" title="A Look Through Our Work" subtitle="Navigate through a selection of projects we've worked on in the past.">
+
+			
+
 			Slider here
 		</Section>
 		<!-- END PORTFOLIO -->
 
 		<!-- PRICING -->
-		<Section fullWidthAppend alt name="web-pricing" title="Transparent Pricing" subtitle="Because we both know that's what's important.">
+		<Section fullWidthAppend name="web-pricing" title="Transparent Pricing" subtitle="Because we both know that's what's important.">
 			Cards here
 		</Section>
 		<!-- END PRICING -->
 
 		<!-- PRICING CALCULATOR -->
-		<Section fullWidthAppend name="web-pricing-calculator" title="Estimate your Price" subtitle="Get an estimated price using our price calculation tool!">
+		<Section fullWidthAppend alt name="web-pricing-calculator" title="Estimate your Price" subtitle="Get an estimated price using our price calculation tool!">
 			Calculator here
 		</Section>
 		<!-- END PRICING -->

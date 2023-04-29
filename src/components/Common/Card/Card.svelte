@@ -7,6 +7,7 @@
    import Ripple from '@comp/actions/Ripple';
    import Svg from '@comp/Media/Svg/Svg.svelte';
    import Icon from '@comp/Media/Icon/Icon.svelte';
+   import Title from '@comp/Common/Title/Title.svelte';
 
    export let article:boolean = false;
    export let href:string = ''
@@ -36,12 +37,16 @@
    export let active:boolean = false;
    export let rounded:RoundedProp = 'tile';
    export let shadow:ShadowProp = 'bevel';
+
+   export let padding:string = 'p-6';
+   export let gap:string = 'gap-4'; 
    
    export let block:boolean = false;
    export let fillHeight:boolean = false;
 
    let klass:string = '';
    export { klass as class };
+   export let mediaClass: string = '';
 
    const cardStyle = boxGen.full({
       variant: variant,
@@ -54,7 +59,7 @@
          shadow: shadow,
          block: block,
       },
-      classes: klass
+      classes: ''
    });
 
    const transition = 'transition-all duration-300 ease-in-out';
@@ -74,32 +79,35 @@
       antialiased {transition} 
       { cardStyle } backdrop-blur-sm
       overflow-hidden group relative
-      { fillHeight ? 'h-full' : '' }
+      { fillHeight ? 'h-full' : '' } 
+      { klass }
 ">
    <svelte:component this={innerWrapComp} {...$$props} title="" class="h-full">
       <div 
          use:Ripple={active}
          class="
-            flex z-2 {transition} h-full
-            { direction === 'row' ? `flex-row ${ centerRow ? 'ml-6 !items-center' : '!items-start !justify-start'}` : 'flex-col'}
+            flex z-2 {transition} h-full {padding} {gap}
+            { direction === 'row' ? `flex-row ${ centerRow ? '!items-center' : '!items-start !justify-start'}` : 'flex-col'}
       ">
          <!-- Image -->
          {#if media !== 'none'}
-            {#if media === 'animIcon'}
-               <Svg animIcon={icon} size={iconSize} />
-            {:else if media === 'icon'}
-               <Icon {icon} class={iconClass} />
-            <slot name="media" class="h-full"/>
-            {:else if media === 'custom'}
+            <div class="{mediaClass}">
+               {#if media === 'animIcon'}
+                  <Svg animIcon={icon} size={iconSize} />
+               {:else if media === 'icon'}
+                  <Icon {icon} class={iconClass} />
                <slot name="media" class="h-full"/>
-            {/if}
+               {:else if media === 'custom'}
+                  <slot name="media" class="h-full"/>
+               {/if}
+            </div>
          {/if}
          
          <!-- Content -->
-         <div class="h-full flex flex-col gap-4 justify-between { direction === 'row' ? 'p-6' : 'p-8' }">
-            <div class="flex flex-col gap-4">
+         <div class="h-full flex flex-col justify-between {gap}">
+            <div class="flex flex-col h-full">
                <!-- Header -->
-               <header class="">
+               <header class="h-full">
                   {#if tags.length > 0}
                      <div class="flex flex-row gap-2 mb-4">
                         {#each tags as tag}
@@ -108,11 +116,11 @@
                      </div>
                   {/if}
                   <slot name="title">
-                     <Heading 
-                        type="h3" size="xs" fontfam='font-body' {capitalize}
+                     <Title 
+                        h3 size="xs" class="{capitalize ? 'capitalize' : '' }"
                         color="{ boxGen.color(color, variant, hover, active) } {transition} !bg-transparent !shadow-none">
                         { title }
-                     </Heading>
+                     </Title>
                   </slot>
                </header>
                
