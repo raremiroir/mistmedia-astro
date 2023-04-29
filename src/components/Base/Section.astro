@@ -67,20 +67,22 @@ const innerWrapClass = `
    <div class={innerWrapClass}>
 
       <!-- Section Title -->
-      <div class="mt-0 mx-0 mb-8 py-0 pr-0 pl-8 border-l-4 border-primary-700 dark:border-primary-600/40">
-         <slot name="title">
-            <Heading client:load type="h2" size="xs" klass="capitalize">
-               {title}
-            </Heading>
-            { subtitle && (
-               <Heading client:load type="subheader" size="xs" klass="text-surface-400 dark:text-surface-600 italic">
-                  {subtitle}
+      {title && (
+         <div class="mt-0 mx-0 mb-8 py-0 pr-0 pl-8 border-l-4 border-primary-700 dark:border-primary-600/40">
+            <slot name="title">
+               <Heading client:load type="h2" size="xs" klass="capitalize">
+                  {title}
                </Heading>
-            )}
-         </slot>
-         <slot name="title"/>
-      </div>
-      
+               { subtitle && (
+                  <Heading client:load type="subheader" size="xs" klass="text-surface-400 dark:text-surface-600 italic">
+                     {subtitle}
+                  </Heading>
+               )}
+            </slot>
+            <slot name="title"/>
+         </div>
+      )}
+
       <!-- Section Content -->
       <div class="m-0 flex flex-col gap-8">
          <slot/>
