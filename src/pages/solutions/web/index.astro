@@ -7,9 +7,9 @@ import Page 			from "@comp/Base/Page.astro";
 import Section 		from "@comp/Base/Section.astro";
 import Hero 			from "@comp/Main/Hero/Hero.astro";
 // Svelte components
-import Heading 		from "@comp/Common/Heading/Heading.svelte";
 import Card 			from "@comp/Common/Card/Card.svelte";
 import Drawer 			from "@comp/Common/Drawer/Drawer.svelte";
+import Title from "@/components/Common/Title/Title.svelte";
 // Page specific components
 import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
 // Common Section components
@@ -61,9 +61,9 @@ Object.keys(t("services:solutions.web.features")).forEach((key) => {
 							media="animIcon" icon={feature.icon}
 							iconSize={40}
 						>
-							<Heading slot="title" type="h3" size="xxs" weight="font-bold">
+							<Title slot="title" h3 size="xs" weight="font-bold">
 								<span class="mb-1">{feature.title}</span>
-							</Heading>
+							</Title>
 						</Card>
 						{() => {
 								switch (feature.key) {
