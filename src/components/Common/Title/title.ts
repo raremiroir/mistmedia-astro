@@ -36,7 +36,7 @@ export const title: TitleProps = {
    },
    h3: {
       size: {
-         xs: 'text-title-xs',
+         xs: 'text-title-2xs',
          sm: 'text-title-sm',
          md: 'text-title-md',
          lg: 'text-title-lg',
@@ -72,11 +72,11 @@ export const title: TitleProps = {
    },
    h6: {
       size: {
-         xs: 'text-title-4xs',
-         sm: 'text-title-3xs',
-         md: 'text-title-2xs',
-         lg: 'text-title-xs',
-         xl: 'text-title-sm',
+         xs: 'text-clamp-md',
+         sm: 'text-title-lg',
+         md: 'text-title-xl',
+         lg: 'text-title-2xl',
+         xl: 'text-title-3xl',
          '2xl': 'text-title-md'
       },
       color: 'text-surface-700 dark:text-surface-100',

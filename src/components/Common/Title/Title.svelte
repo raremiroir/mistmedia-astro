@@ -38,7 +38,7 @@
 
 <svelte:element 
    this={compType}
-   class="unstyled p-0 leading-[1.1em] font-mono {sizeClass} {colorClass} {weightClass} {klass}"
+   class="unstyled p-0 leading-[1.1em] h-full w-full font-mono {sizeClass} {colorClass} {weightClass} {klass}"
    style="{ h1? '--webkit-text-stroke: 1px var(--color-surface-700);' : '' }"
 >
    <slot>Title</slot>
