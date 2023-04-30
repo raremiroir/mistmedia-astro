@@ -1,6 +1,5 @@
 <script lang="ts">
    import { Div, Article, Anchor } from '../../Base/Raw'
-   import Heading from '../../Common/Heading/Heading.svelte'
    import boxGen from '../../../styles/mist-theme'
    import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '../../../styles/theme';
    import Chip from '../Chip/Chip.svelte';
@@ -46,7 +45,10 @@
 
    let klass:string = '';
    export { klass as class };
+   export let innerClass: string = '';
    export let mediaClass: string = '';
+   export let contentClass: string = '';
+   export let innerContentClass: string = '';
 
    const cardStyle = boxGen.full({
       variant: variant,
@@ -86,8 +88,8 @@
       <div 
          use:Ripple={active}
          class="
-            flex z-2 {transition} h-full {padding} {gap}
-            { direction === 'row' ? `flex-row ${ centerRow ? '!items-center' : '!items-start !justify-start'}` : 'flex-col'}
+            flex z-2 {transition} h-full {innerClass}
+            { direction === 'row' ? `flex-row ${ centerRow ? '!items-center' : '!items-start !justify-start'}` : `flex-col`}
       ">
          <!-- Image -->
          {#if media !== 'none'}
@@ -104,10 +106,10 @@
          {/if}
          
          <!-- Content -->
-         <div class="h-full flex flex-col justify-between {gap}">
-            <div class="flex flex-col h-full">
+         <div class="h-full flex flex-col justify-between {gap} {padding} {contentClass}">
+            <div class="flex flex-col min-h-full {gap} {innerContentClass}">
                <!-- Header -->
-               <header class="h-full">
+               <header class="">
                   {#if tags.length > 0}
                      <div class="flex flex-row gap-2 mb-4">
                         {#each tags as tag}
@@ -118,7 +120,7 @@
                   <slot name="title">
                      <Title 
                         h3 size="xs" class="{capitalize ? 'capitalize' : '' }"
-                        color="{ boxGen.color(color, variant, hover, active) } {transition} !bg-transparent !shadow-none">
+                        color="{ boxGen.color(color, variant, false, false) } {transition} !bg-transparent !shadow-none">
                         { title }
                      </Title>
                   </slot>
