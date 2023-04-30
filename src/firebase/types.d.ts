@@ -33,3 +33,7 @@ export interface DbFetchFileProps {
    id: DbProps['id'];
    refType?: 'default' | 'gs' | 'https' | 'download';
 }
+export interface DbUploadFileProps extends DbProps {
+   file: File;
+   meta?: { [key: string]: string; };
+}

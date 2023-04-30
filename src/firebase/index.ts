@@ -18,7 +18,7 @@ import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDoc
 
 import { deleteObject, getMetadata, getStorage, list, listAll, ref, updateMetadata, uploadBytes } from 'firebase/storage';
 import type { FirebaseStorage, FullMetadata, SettableMetadata, StorageReference } from 'firebase/storage';
-import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps } from "./types";
+import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps, DbUploadFileProps } from "./types";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -35,6 +35,7 @@ let app: FirebaseApp;
 let auth: Auth
 let firestore: Firestore;
 let analytics: Analytics;
+let storage: FirebaseStorage;
    
 export const db = {
    // Initialize Firebase
@@ -42,10 +43,11 @@ export const db = {
       console.log('🔥 Initializing Firebase...');
       app = initializeApp(firebaseConfig);
       firestore = getFirestore(app);
+      storage = getStorage(app);
       // auth = getAuth(app);
       // analytics = getAnalytics(app); // TODO: add analytics
       // await setPersistence(auth, browserSessionPersistence);
-      return { app, firestore,/* auth, analytics */ };
+      return { app, firestore, storage, /* auth, analytics */ };
    },
    // DOCS
    doc: {
@@ -138,12 +140,47 @@ export const db = {
 
    // STORAGE
    storage: {
-      // upload: async (options: DbFetchFileProps) => {
-      //    const { id, refType } = options;
-      // }
+      // FETCH
+      fetch: {
+         ref: async (props: DbFetchFileProps) => {
+            const { storage } = await db.init();
+            switch (props.refType) {
+               case 'gs':    return ref(storage, `gs://${props.id}`);
+               case 'https': return ref(storage, `https://firebasestorage.googleapis.com/b/bucket/o/${props.id}`);
+               default:      return ref(storage, props.id);
+            }
+         },
+         meta: async (id: string) => {
+            const { storage } = await db.init();
+            const fileRef = ref(storage, id);
+            const fileMeta = await getMetadata(fileRef);
+            return fileMeta;
+         }
+      },
+      // UPLOAD
+      upload: async (props: DbUploadFileProps) => {
+         const { storage } = await db.init();
+         const name:string = props.collection ? `${props.collection}/${props.id}` : props.id;
+         const fileRef = ref(storage, name);
+         uploadBytes(fileRef, props.file).then((snapshot) => { console.log('🔥 Image uploaded!') })
 
-   },
-
+         const customMeta = props.meta ? props.meta : {};
+         const newMeta: SettableMetadata = { 
+            cacheControl: 'public, max-age=31536000',
+            contentType: props.file.type,
+            customMetadata: customMeta 
+         };
+         updateMetadata(fileRef, newMeta);
+      },
+      // DELETE
+      delete: async (id: string) => {
+         const { storage } = await db.init();
+         const storRef = ref(storage, id);
+         deleteObject(storRef)
+            .then(() => { console.log('🔥 Image deleted!'); })
+            .catch((err) => { console.error(err); })
+         },
+   }
 }
 
 export default db;
