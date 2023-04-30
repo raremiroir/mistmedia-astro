@@ -1,5 +1,18 @@
 {
    "title": "Onze Oplossingen",
+   "main": {
+      "subtitle": "Wij bieden een breed scala aan oplossingen voor jouw bedrijf.",
+      "description": "Wij bieden een breed scala aan oplossingen voor jouw bedrijf. Van webdesign tot grafisch ontwerp, van zoekmachine optimalisatie tot social media marketing. Wij zorgen ervoor dat jouw bedrijf een herkenbare identiteit krijgt, en dat je online zichtbaar bent.",
+      "sections": {
+         "services": {
+            "title": "Wat we voor jou kunnen doen"
+         },
+         "portfolio": {
+            "title": "Neem een kijkje in ons portfolio",
+            "subtitle": "Navigeer door een selectie van onze projecten, en ontdek wat we voor jou kunnen doen."
+         }
+      }
+   },
    "solutions": {
       "web": {
          "title_short": "Web",
@@ -39,13 +52,68 @@
                "title": "Ondersteuning",
                "description": "Wij zorgen ervoor dat jouw website altijd up-to-date is, en dat je altijd ondersteuning krijgt wanneer je het nodig hebt"
             }
+         },
+         "services": {
+            "webdev": {
+               "title": "Web Ontwikkeling",
+               "description": "Wij ontwikkelen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+            },
+            "webdesign": {
+               "title": "Web Design",
+               "description": "Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+            },
+            "webhosting": {
+               "title": "Web Hosting",
+               "description": "Wij zorgen ervoor dat jouw website altijd online is, en dat je altijd ondersteuning krijgt wanneer je het nodig hebt."
+            },
+            "websecurity": {
+               "title": "Web Security",
+               "description": "Wij zorgen ervoor dat jouw website veilig is voor jouw bezoekers, zodat ze niet bang hoeven te zijn voor hackers."
+            },
+            "webseo": {
+               "title": "Web SEO",
+               "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet, zodat je bezoekers niet weglopen."
+            },
+            "webaccessibility": {
+               "title": "Web Accessibility",
+               "description": "Wij zorgen ervoor dat jouw website toegankelijk is voor iedereen, ongeacht hun beperking."
+            },
+            "emailhosting": {
+               "title": "E-mail Hosting",
+               "description": "Wij zorgen ervoor dat jouw e-mail altijd online is, en dat je altijd ondersteuning krijgt wanneer je het nodig hebt."
+            },
+            "platforms": {
+               "title": "Platforms",
+               "description": "Wij ontwikkelen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+            }
          }
       },
       "design": {
          "title_short": "Graphisch Ontwerp",
          "title": "Grafisch Ontwerp & Huisstijl",
          "subtitle": "Een sterk merk",
-         "description": "Wij ontwerpen grafische elementen die uw merk onderscheiden van de rest. Van logo's tot flyers, van visitekaartjes tot advertenties. Door middel van een professionenele, universele huisstijl zorgen wij ervoor dat jouw bedrijf een herkenbare identiteit krijgt."
+         "description": "Wij ontwerpen grafische elementen die uw merk onderscheiden van de rest. Van logo's tot flyers, van visitekaartjes tot advertenties. Door middel van een professionenele, universele huisstijl zorgen wij ervoor dat jouw bedrijf een herkenbare identiteit krijgt.",
+         "features": {
+
+         },
+         "services": {
+            "branding": {
+               "title": "Huisstijl",
+               "description": ""
+            },
+            "logo": {
+               "title": "Logo",
+               "description": ""
+            },
+            "printed": {
+               "title": "Drukwerk",
+               "description": "Flyers, posters, kaartjes, ... <br/>Alles is mogelijk bij ons."
+            },
+            "editorial": {
+               "title": "Redactionele Vormgeving",
+               "description": ""
+            }
+         }
       },
       "seo": {
          "title_short": "SEO",

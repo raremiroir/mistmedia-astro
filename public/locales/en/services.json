@@ -1,5 +1,18 @@
 {
    "title": "Our Solutions",
+   "main": {
+      "subtitle": "We offer a wide range of solutions for your business.",
+      "description": "We offer a wide range of solutions for your business. From web development to graphic design, from SEO to social media marketing. We make sure your business is ready for the future.",
+      "sections": {
+         "services": {
+            "title": "What can we do for you?"
+         },
+         "portfolio": {
+            "title": "A look through our portfolio",
+            "subtitle": "Navigate through a selection of projects we've worked on in the past."
+         }
+      }
+   },
    "solutions": {
       "web": {
          "title_short": "Web",
@@ -39,13 +52,68 @@
                "title": "Thorough Support",
                "description": "We're here to help you. We provide thorough support for your website, from hosting to maintenance, from updates to security."
             }
+         },
+         "services": {
+            "webdev": {
+               "title": "Web Ontwikkeling",
+               "description": "Wij ontwikkelen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+            },
+            "webdesign": {
+               "title": "Web Design",
+               "description": "Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+            },
+            "webhosting": {
+               "title": "Web Hosting",
+               "description": "Wij zorgen ervoor dat jouw website altijd online is, en dat je altijd ondersteuning krijgt wanneer je het nodig hebt."
+            },
+            "websecurity": {
+               "title": "Web Security",
+               "description": "Wij zorgen ervoor dat jouw website veilig is voor jouw bezoekers, zodat ze niet bang hoeven te zijn voor hackers."
+            },
+            "webseo": {
+               "title": "Web SEO",
+               "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet, zodat je bezoekers niet weglopen."
+            },
+            "webaccessibility": {
+               "title": "Web Accessibility",
+               "description": "Wij zorgen ervoor dat jouw website toegankelijk is voor iedereen, ongeacht hun beperking."
+            },
+            "emailhosting": {
+               "title": "E-mail Hosting",
+               "description": "Wij zorgen ervoor dat jouw e-mail altijd online is, en dat je altijd ondersteuning krijgt wanneer je het nodig hebt."
+            },
+            "platforms": {
+               "title": "Platforms",
+               "description": "Wij ontwikkelen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops."
+            }
          }
       },
       "design": {
          "title_short": "Graphic Design",
          "title": "Graphic Design & Branding",
          "subtitle": "A powerful brand",
-         "description": "We design graphics that make your brand stand out from the rest. From logos to flyers, from business cards to advertisements. Through a professional, universal corporate design, we ensure that your business acquires a recognisable identity."
+         "description": "We design graphics that make your brand stand out from the rest. From logos to flyers, from business cards to advertisements. Through a professional, universal corporate design, we ensure that your business acquires a recognisable identity.",
+         "features": {
+
+         },
+         "services": {
+            "branding": {
+               "title": "Branding",
+               "description": ""
+            },
+            "logo": {
+               "title": "Logo",
+               "description": ""
+            },
+            "printed": {
+               "title": "Printer Matter",
+               "description": "Flyers, posters, cards, ... <br/>We design it all."
+            },
+            "editorial": {
+               "title": "Editorial Design",
+               "description": ""
+            }
+         }
       },
       "seo": {
          "title_short": "SEO",
