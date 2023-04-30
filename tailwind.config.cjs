@@ -1,3 +1,6 @@
+const plugin = require("tailwindcss/plugin");
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: 'class',
@@ -48,9 +51,9 @@ module.exports = {
 		extend: {
 			// Extend Font Family
          fontFamily: {
-            'body': ['quasimoda', "Segoe UI", '-apple-system', 'BlinkMacSystemFont', 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
-            'title': ['Josefin Sans', "Segoe UI", '-apple-system', 'BlinkMacSystemFont', 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
-            'titlemono': ['attribute-mono', 'monospace'],
+            'body': ['quasimoda', ...defaultTheme.fontFamily.sans],
+            'title': ['Josefin Sans', ...defaultTheme.fontFamily.sans],
+            'titlemono': ['attribute-mono', ...defaultTheme.fontFamily.mono],
          },
          // Extend Font Size
          fontSize: {
@@ -327,5 +330,23 @@ module.exports = {
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/forms"),
 		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')(), 
+		plugin(({ matchVariant }) => {
+			matchVariant(
+			  "nth",
+			  (value) => {
+				 return `&:nth-child(${value})`;
+			  },
+			  {
+				 values: {
+					DEFAULT: 'n', // Default value for `nth:`
+					'2n': '2n', // `nth-2n:utility` will generate `:nth-child(2n)` CSS selector
+					'3n': '3n',
+					'4n': '4n',
+					'5n': '5n',
+					'6n': '6n',
+				 }
+			  }
+			)
+		 }),
 	],
 }
