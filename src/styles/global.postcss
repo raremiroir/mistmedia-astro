@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
    --cursor-width: 4px;
@@ -17,7 +17,6 @@ body {
 a {
    text-decoration: none !important;
 }
-
 
 /* Remove input background on webkit autoselect */
 input::-webkit-autofill,
@@ -36,4 +35,9 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Drawer styles */
+.app .drawer .panel {
+   box-shadow: 0 0 12px 8px #00000036;
 }
