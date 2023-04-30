@@ -2,12 +2,21 @@
    export let size = 100
    export let norm = 'fill-accent-d1'
    export let dark = 'fill-accent-d3'
+
+   export let light = ''
+   export let strokeDark = ''
+   export let bgColor = 'bg-transparent'
+   export let darkBgColor = 'dark:bg-transparent'
+   export let opacity = ''
+
+	let klass = '';
+	export { klass as class };
 </script>
 
 <svg 
    width="{size}" height="{size}" viewBox="0 0 120 120" 
    xmlns="http://www.w3.org/2000/svg"
-   class="bg-transparent group">
+   class="group {klass} {opacity} {bgColor} {light} {darkBgColor} {strokeDark}">
 	<g id="Facebook">
 		<path
 			id="f"

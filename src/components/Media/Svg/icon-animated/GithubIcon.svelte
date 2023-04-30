@@ -2,15 +2,23 @@
    export let size = 100
    export let strokeDark = 'stroke-accent-d3 stroke-[6px] fill-transparent'
    export let norm = 'fill-accent-d1'
-
    export let transition = 'transition-all duration-500 ease-in-out'
+	
+   export let darkBgColor = ''
+   export let bgColor = ''
+   export let light = ''
+   export let dark = ''
+   export let opacity = ''
+
+	let klass = '';
+	export { klass as class };
 
 </script>
 
 <svg 
-   width="{size}" height="{size}" viewBox="0 0 120 120" 
+   width="{size}" height="{size}" viewBox="0 0 120 120"
    xmlns="http://www.w3.org/2000/svg"
-   class="bg-transparent group opacity-70">
+   class="bg-transparent group opacity-70 {klass}">
 	<g id="Default-Accent">
 		<g id="Outline">
 			<path

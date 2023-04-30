@@ -3,12 +3,21 @@
    export let norm = 'fill-accent-d1'
    export let dark = 'fill-accent-d3'
    export let transition = 'transition-all duration-500 ease-in-out'
+
+   export let light = ''
+   export let strokeDark = ''
+   export let bgColor = 'bg-transparent'
+   export let darkBgColor = 'dark:bg-transparent'
+   export let opacity = ''
+
+   let klass = '';
+	export { klass as class };
 </script>
 
 <svg 
    width="{size}" height="{size}" viewBox="0 0 120 120" 
    xmlns="http://www.w3.org/2000/svg"
-   class="bg-transparent group">
+   class="group {klass} {opacity} {bgColor} {light} {darkBgColor} {strokeDark}">
 	<g id="Default-Accent">
 		<g id="n" 
          class="opacity-70 group-hover:animate-[wiggle_1s_ease-in-out_reverse]">
