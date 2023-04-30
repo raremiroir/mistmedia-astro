@@ -1,4 +1,11 @@
 ---
+import CallToAction from "../Pages/Common/CallToAction.astro";
+
+export interface Props {
+   cta?: boolean;
+}
+
+const { cta } = Astro.props;
 ---
 
 <div class="min-h-screen">
@@ -8,5 +15,7 @@
    
    <main class="w-full">
       <slot />
+
+      { cta && <CallToAction /> }
    </main>
 </div>
