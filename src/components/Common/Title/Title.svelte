@@ -12,7 +12,7 @@
    // Make it a span
    export let fake: boolean = false;
    // Pick a size (sm, md, lg, xl, 2xl)
-   export let size:TitleSize = '2xl'
+   export let size:TitleSize|string = '2xl'
    // Override color
    export let color: string = '';
    // Override weight
@@ -31,7 +31,11 @@
    let sizeClass: string = "text-4xl";
    let weightClass: string = "font-bold";
 
-   $: sizeClass = `${title[type].size[size]}`;
+   $: if (size === 'xs' || size === 'sm' || size === 'md' || size === 'lg' || size === 'xl' || size === '2xl') {
+      sizeClass = `${title[type].size[size]}`;
+   } else {
+      sizeClass = size;
+   }
    $: colorClass = color ? color : title[type].color;
    $: weightClass = weight ? weight : title[type].weight;
 </script>   
