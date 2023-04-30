@@ -3,7 +3,7 @@ import { t } from "i18next";
 // Astro components
 import Section from "@comp/Base/Section.astro";
 // Svelte components
-import Heading from "@comp/Common/Heading/Heading.svelte";
+import Title from "@comp/Common/Title/Title.svelte";
 import Card from "@comp/Common/Card/Card.svelte";
 import Svg from "@comp/Media/Svg/Svg.svelte";
 
@@ -27,9 +27,9 @@ Object.keys(t("home:cta")).forEach((key) => {
          <><Card client:idle block hover active>
             <div slot="title" class="flex items-center justify-start gap-3">
                <Svg animIcon={item.icon} size={48} />
-               <Heading type="h3" size="xxs" klass="pt-2">
+               <Title h3 size="xs" class="pt-2">
                   {item.title}
-               </Heading>
+               </Title>
             </div>
             {item.subtitle}
          </Card></>

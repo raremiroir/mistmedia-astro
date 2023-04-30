@@ -1,7 +1,7 @@
 <script lang="ts">
    import Drawer from 'svelte-drawer-component'
 	import { onDestroy, setContext } from 'svelte';
-	import Heading from '@comp/Common/Heading/Heading.svelte';
+	import Title from '@comp/Common/Title/Title.svelte';
 	import Icon from '@iconify/svelte'
 	import Button from '@comp/Common/Button/Button.svelte';
    
@@ -37,9 +37,9 @@
    <div class="h-fit min-h-full w-full bg-surface-50 dark:bg-surface-600 p-8">
       <div class="flex flex-row justify-between w-full">
          <div class="flex flex-col gap-2 max-w-[90%]">
-            <Heading type="h3" size="lg" fake klass="underline">
+            <Title h3 size="lg" fake class="underline">
                <slot name="title"></slot>
-            </Heading>
+            </Title>
             {#if sub}
                <slot name="sub"/>
             {/if}
@@ -53,10 +53,3 @@
       </div>
    </div>
 </Drawer>
-
-
-<style global>
-   .app .drawer .panel{
-      box-shadow: 0 0 12px 8px #00000036;
-   }
-</style>

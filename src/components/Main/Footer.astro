@@ -1,7 +1,7 @@
 ---
 import { t } from 'i18next';
 // Svelte components
-import Heading 	from '../Common/Heading/Heading.svelte'
+import Title 	from '../Common/Title/Title.svelte'
 import Button 		from '../Common/Button/Button.svelte'
 import Link 		from '../Common/Button/Link.svelte'
 import Svg 			from '../Media/Svg/Svg.svelte'
@@ -47,13 +47,12 @@ const footerLinks = [
       <div class="
             w-full flex flex-row justify-center sm:justify-between align-center
             pb-6 border-b-2 border-surface-200/40">
-         <Heading 
-				client:idle
-				type="h3" size="sm" 
+         <Title
+				h3 size="sm" 
 				color="text-surface-400"
-				klass="hidden sm:flex items-center">
+				class="hidden sm:flex items-center">
             {t("contact.socials.title")}
-         </Heading>
+         </Title>
          <div class="flex justify-center gap-4">
 				{ socialIcons.map((item) => (
 					<Button 
@@ -91,12 +90,12 @@ const footerLinks = [
 						flex flex-col gap-4 lg:gap-2
 						items-center justify-start lg:items-start
 						last-of-type:order-first md:last-of-type:order-last">
-					<Heading 
-						type="h3" size="xxs"
+					<Title 
+						h3 size="xs"
 						color="text-surface-300 dark:text-surface-200" 
-						klass="capitalize" client:idle>
+						class="capitalize">
 						{col.title}
-					</Heading>
+					</Title>
 					<ul class="grid grid-cols-1 gap-4">
 						{ col.links.map((link) => (
 							<li class="list-none">

@@ -3,7 +3,6 @@ import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/Utils/FormattedDate.astro';
 import BaseLayout from './BaseLayout.astro';
 import Page from '@comp/Base/Page.astro';
-import Heading from '@comp/Common/Heading/Heading.svelte';
 import Hero from '@comp/Main/Hero/Hero.astro';
 import { widths } from '@const/class';
 
@@ -14,7 +13,7 @@ const { title, description, pubDate, updatedDate, heroImage, language, tags } = 
 
 <BaseLayout title={title} description={description}>
 	<Page>
-		<Hero bgImg={`${heroImage}`} title={title} alt slot="hero"/>
+		<Hero title={title} alt slot="hero"/>
 		<article>
 			<div class={`flex flex-col ${widths} py-2`}>
 				<FormattedDate date={pubDate} type="published" />

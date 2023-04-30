@@ -1,5 +1,5 @@
 <script lang="ts">
-   import Heading from '../../Common/Heading/Heading.svelte';
+   import Title from '../../Common/Title/Title.svelte';
 
    export let title:string;
    export let open:boolean = false;
@@ -28,11 +28,11 @@
                <slot name="icon"/>
             </div>
          {/if}
-         <Heading 
-            fake type="h3" size="xxs"
+         <Title 
+            fake h4 size="xs"
             color="text-surface-900 dark:text-surface-50 group-hover:text-primary-900 dark:group-hover:text-primary-400 {transition}">
             {title}
-         </Heading>
+         </Title>
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" 
             class="

@@ -8,7 +8,6 @@ import Hero 			from "@comp/Main/Hero/Hero.astro";
 import { Picture } 	from "@astrojs/image/components";
 // Svelte components
 import Box 				from "@comp/Base/Box.svelte";
-import Heading 		from "@comp/Common/Heading/Heading.svelte";
 import Button 			from "@comp/Common/Button/Button.svelte";
 import Card 			from "@comp/Common/Card/Card.svelte";
 import Drawer 			from "@comp/Common/Drawer/Drawer.svelte";
@@ -73,10 +72,10 @@ export const prerender = true;
 				</Box>
 				<div class="flex flex-col justify-start gap-4">
 					<Card color="surface" klass="col-span-3 sm:row-span-1">
-						<Heading type="h3" size="xs" slot="title">
+						<Title h3 size="xs" slot="title">
 							{t("about:miro.hello")}<br />
 							{t("about:miro.i_am")}
-						</Heading>
+						</Title>
 						<p>
 							{t("about:miro.desc.0")}<br/>
 							{t("about:miro.desc.1")}
