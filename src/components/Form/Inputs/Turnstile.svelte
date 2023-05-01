@@ -1,12 +1,12 @@
 <script lang="ts">
    import { Turnstile } from 'svelte-turnstile'
    import type { TurnstileSize, TurnstileTheme } from 'svelte-turnstile'
-	import type { TurnstileRetry } from 'svelte-turnstile/Turnstile.svelte';
+   import type { TurnstileProps } from 'svelte-turnstile/dist/Turnstile.svelte';
 
    import ValidationError from '../Utils/ValidationError.svelte';
    
 
-   const sitekey = import.meta.env.VITE_TURNSTILE_SITEKEY;
+   const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
    import { turnstile as dummyKeys } from '@/consts/dummy';
    const key = dummyKeys.public.pass; // sitekey in production
 
@@ -27,7 +27,7 @@
    export let name = 'turnstile_response'
 
    // should the widget automatically retry to obtain a token if it did not succeed (auto | never)
-   export let retry:TurnstileRetry = 'auto'
+   export let retry:TurnstileProps['retry'] = 'auto'
 
    export let description = '';
    export let errors:any = [];
