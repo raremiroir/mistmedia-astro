@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import type { AstroUserConfig } from 'astro';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
@@ -11,30 +12,30 @@ import mdx from '@astrojs/mdx';
 import prefetch from '@astrojs/prefetch';
 
 // https://astro.build/config
-export default defineConfig({
+const config: AstroUserConfig = {
   site: 'https://mistmedia.be',
-  title: 'Mist Media',
-  description: 'My site description',
-  lang: 'nl',
-  themeColor: '#ffffff',
-  favicon: '/favicon.ico',
-  logo: '/logo.png',
-  // Your site's social media links
-  social: {
-    twitter: 'https://twitter.com/example',
-    github: '',
-    linkedin: '',
-    instagram: '',
-    youtube: '',
-    facebook: ''
-  },
-  // ID's
-  googleAnalytics: '',
-  googleSearchConsole: '',
-  googleTagManager: '',
-  facebookPixel: '',
-  vercel: '',
-  sentry: '',
+  // title: 'Mist Media',
+  // description: 'My site description',
+  // lang: 'nl',
+  // themeColor: '#ffffff',
+  // favicon: '/favicon.ico',
+  // logo: '/logo.png',
+  // // Your site's social media links
+  // social: {
+  //   twitter: 'https://twitter.com/example',
+  //   github: '',
+  //   linkedin: '',
+  //   instagram: '',
+  //   youtube: '',
+  //   facebook: ''
+  // },
+  // // ID's
+  // googleAnalytics: '',
+  // googleSearchConsole: '',
+  // googleTagManager: '',
+  // facebookPixel: '',
+  // vercel: '',
+  // sentry: '',
   // Integrations
   integrations: [
     sitemap(), 
@@ -50,7 +51,11 @@ export default defineConfig({
       serviceEntryPoint: '@astrojs/image/sharp'
     }), 
     astroI18next(),
-    partytown(),
+    partytown({
+      config: {
+        // https://docs.partytown.app/configuration
+      }
+    }),
     robotsTxt()
   ],
   output: "server",
@@ -59,4 +64,7 @@ export default defineConfig({
     optimizeDeps: {
     }
   }
-});
+}
+
+
+export default defineConfig(config);
