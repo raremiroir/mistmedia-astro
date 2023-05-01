@@ -5,8 +5,5 @@ import { type Writable, writable } from 'svelte/store';
 /* ~~-~~ ~-~~-~ ~~-~~ */
 
 
-// Components
-export const animationTrigger = writable(false);
-
-
+export const animationTrigger: Writable<boolean> = writable(false);
 export const fileErrors: Writable<string[]> = writable([]);
