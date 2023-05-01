@@ -49,6 +49,7 @@
    export let mediaClass: string = '';
    export let contentClass: string = '';
    export let innerContentClass: string = '';
+   export let titleClass: string = '';
 
    const cardStyle = boxGen.full({
       variant: variant,
@@ -109,7 +110,7 @@
          <div class="h-full flex flex-col justify-between {gap} {padding} {contentClass}">
             <div class="flex flex-col min-h-full {gap} {innerContentClass}">
                <!-- Header -->
-               <header class="">
+               <header class="{titleClass}">
                   {#if tags.length > 0}
                      <div class="flex flex-row gap-2 mb-4">
                         {#each tags as tag}
