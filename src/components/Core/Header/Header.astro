@@ -7,12 +7,15 @@
    import Menu             from '@/components/Common/Menu/Menu.svelte';
 	import LanguageSelector from './LanguageSelector.astro'
    import Grid             from '@/components/Core/Grid/Grid.astro';
+   import { Icon }         from 'astro-icon';
    // Svelte components
    import Button           from '@/components/Common/Button/Button.svelte';
    import Svg              from '@/components/Media/Svg/Svg.svelte';
    // Specific components
    import HeaderLink       from './HeaderLink.svelte';
    import LightSwitch      from './LightSwitch.svelte';
+   import Hamburger from './Hamburger.svelte';
+import MobileMenu from './MobileMenu.svelte';
 
    const { pathname } = Astro.url;
    let currentLocaleSlug = i18next.language === baseLocale ? '' : i18next.language + '/';
@@ -63,36 +66,48 @@
       transition-all duration-300 ease-out
       mb-8 fixed top-0 left-0 right-0
       backdrop-blur-md bg-white dark:bg-slate-900/30 
-		py-6`;
+		py-4 lg:py-6`;
 
 
    const currentPath = Astro.url.pathname;
 ---
 <script>
-window.addEventListener('scroll', () => {
-   let header = document.getElementById('header');
-if (!!header) {
-   if (window.scrollY > 10) {
-      header.classList.remove('py-6');
-      header.classList.add('py-4');
-      header.classList.remove('shadow-none');
-      header.classList.add('shadow-xl');
-      header.classList.add('shadow-primary-500/5');
-      header.classList.add('dark:shadow-primary-400/3');
-   } else {
-      header.classList.remove('py-4');
-      header.classList.add('py-6');
-      header.classList.remove('shadow-xl');
-      header.classList.remove('shadow-primary-500/5');
-      header.classList.remove('dark:shadow-primary-400/3');
-      header.classList.add('shadow-none');
-   }
-}
-});
+   import { openMobile } from '@/stores'
+
+   window.addEventListener('scroll', () => {
+      let header = document.getElementById('header');
+      if (!!header) {
+         if (window.scrollY > 10) {
+            header.classList.remove('lg:py-6');
+            header.classList.remove('shadow-none');
+            header.classList.add('shadow-xl');
+            header.classList.add('shadow-primary-500/5');
+            header.classList.add('dark:shadow-primary-400/3');
+         } else {
+            header.classList.add('lg:py-6');
+            header.classList.remove('shadow-xl');
+            header.classList.remove('shadow-primary-500/5');
+            header.classList.remove('dark:shadow-primary-400/3');
+            header.classList.add('shadow-none');
+         }
+      }
+   });
+
+   openMobile.subscribe(value => {
+      if (!!value) {
+         document.body.classList.add('overflow-hidden');
+      } else {
+         document.body.classList.remove('overflow-hidden');
+      }
+   })
 </script>
 
 <header id="header" class={headerClass}>
-   <div class={`w-full md:w-[95%] lg:w-11/12 xl:w-5/6 2xl:w-3/4 grid grid-cols-8 gap-2 xl:gap-4 mx-auto`}>
+   <div class={`
+      w-[95%] lg:w-11/12 xl:w-5/6 2xl:w-3/4 
+      grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7
+      gap-2 xl:gap-4 
+      mx-auto`}>
       <div class="col-span-1 flex items-center justify-start">
          { currentPath !== '/' && (
             <Button client:load variant="minimal" color="surface_alt" shadow="none" href="/">
@@ -100,7 +115,8 @@ if (!!header) {
             </Button>
          )}
       </div>
-      <nav class="col-span-6 flex items-center justify-center">
+
+      <nav class="hidden lg:flex col-span-4 xl:col-span-5 pt-1 items-center justify-center">
          <ul class="grid grid-cols-6 w-full gap-1 lg:gap-2">
             {navItems.map(item => (
 
@@ -132,9 +148,14 @@ if (!!header) {
          </ul>
       </nav>
 
-      <div class="col-span-1 flex flex-row gap-2 justify-end items-center">
+      <div class="col-span-1 hidden lg:flex flex-row gap-2 justify-end items-center">
          <LanguageSelector />
          <LightSwitch client:load />
       </div>
    </div>
 </header>
+
+<Hamburger client:load />
+<MobileMenu navItems={navItems} pathname={pathname} client:load>
+   <LanguageSelector slot="langselect" />
+</MobileMenu>
