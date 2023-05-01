@@ -37,6 +37,7 @@ export type ChosenInputs = {
    name?: InputItem;
    email?: InputItem;
    phone?: InputItem;
+   password?: InputItem;
 
    organisation?: InputItem;
    job?: InputItem;

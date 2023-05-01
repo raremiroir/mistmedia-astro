@@ -57,7 +57,7 @@
    export let title:string = 'Form Title';
    export let submitText:string = 'Submit';
 
-   export let submitAction = (values:any) => {
+   export let submitAction = async (values:any) => {
       console.log(values);
    }
    export let inputItems: ChosenInputs = {
@@ -69,6 +69,7 @@
       message: { enabled: true, required: true, rows: 6 },
       turnstile_response: { enabled: true, required: true },
       accept_terms: { enabled: true, required: true },
+      password: { enabled: false, required: true },
    }
    $: inputItems
 
@@ -87,6 +88,7 @@
       message: 'Message',
       accept_terms: 'Accept Terms',
       turnstile_response: 'Turnstile Response',
+      password: 'Password',
       validation: {
          required: 'is required',
          only_alpha: 'can only contain letters',
@@ -219,6 +221,14 @@
       initValues.message = '';
    }
 
+   // Password validation schema
+   if (inputItems.password?.enabled) {
+      formValues.password = yup.string()
+         .min(3, `${translations.password} ${translations.validation.field_too_short}`);
+      initValues.password = '';
+      requiredValues.push('password');
+   }
+
    // Terms/conditions validation schema
    if (inputItems.accept_terms?.enabled) {
       formValues.accept_terms = yup.boolean()
@@ -261,7 +271,7 @@
          try {
             const res = await validateTurnstile(values.turnstile_response);
             if (res) {
-               submitAction(values);
+               await submitAction(values);
                success = true;
             } else {
                success = false;
@@ -314,28 +324,30 @@
       >
    
          <!-- Name -->
-         <FormRow>
-            <!-- First -->
-            <Input 
-               name="first_name"
-               label={translations.name.first_name}
-               bind:value={$form.first_name}
-               bind:errors={$errors.first_name}
-               onChange={handleChange}
-               placeholder={translations.placeholder.first_name}
-               required={inputItems.name?.required}
-            />
-            <!-- Last -->
-            <Input 
-               name="last_name"
-               label={translations.name.last_name}
-               bind:value={$form.last_name}
-               bind:errors={$errors.last_name}
-               onChange={handleChange}
-               placeholder={translations.placeholder.last_name}
-               required={inputItems.name?.required}
-            />
-         </FormRow>
+         {#if inputItems.name?.enabled}
+            <FormRow>
+               <!-- First -->
+               <Input 
+                  name="first_name"
+                  label={translations.name.first_name}
+                  bind:value={$form.first_name}
+                  bind:errors={$errors.first_name}
+                  onChange={handleChange}
+                  placeholder={translations.placeholder.first_name}
+                  required={inputItems.name?.required}
+               />
+               <!-- Last -->
+               <Input 
+                  name="last_name"
+                  label={translations.name.last_name}
+                  bind:value={$form.last_name}
+                  bind:errors={$errors.last_name}
+                  onChange={handleChange}
+                  placeholder={translations.placeholder.last_name}
+                  required={inputItems.name?.required}
+               />
+            </FormRow>
+         {/if}
    
          <!-- Email/Phone -->
          {#if inputItems.email || inputItems.phone || (inputItems.email && inputItems.phone)}
@@ -365,7 +377,22 @@
             </FormRow>
          {/if}
    
-         <!-- Orgaisation/Job -->
+         <!-- Password -->
+         {#if inputItems.password}
+            <FormRow>
+               <Input 
+                  name="password" type="password"
+                  label={translations.password}
+                  bind:value={$form.password}
+                  bind:errors={$errors.password}
+                  onChange={handleChange}
+                  placeholder={''}
+                  required={inputItems.password.required}
+               />
+            </FormRow>
+         {/if}
+   
+         <!-- Organisation/Job -->
          {#if inputItems.organisation || inputItems.job || (inputItems.organisation && inputItems.job)}
             <FormRow>
                {#if inputItems.organisation}
