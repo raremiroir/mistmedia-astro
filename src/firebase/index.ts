@@ -13,7 +13,7 @@ import {
    browserSessionPersistence
 } from 'firebase/auth';
 
-import type { Firestore } from 'firebase/firestore';
+import type { DocumentReference, Firestore } from 'firebase/firestore';
 import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDocs, getFirestore, limit, orderBy, query, setDoc, startAfter, startAt, updateDoc, where } from 'firebase/firestore';
 
 import { deleteObject, getMetadata, getStorage, list, listAll, ref, updateMetadata, uploadBytes } from 'firebase/storage';
@@ -66,6 +66,11 @@ export const db = {
             const colSnapshot = await getDocs(colRef);
             const colList = colSnapshot.docs.map(doc => doc.data());
             return colList;
+         },
+         fromRef: async (docRef: DocumentReference) => {
+            const docSnapshot = await getDoc(docRef);
+            if (docSnapshot.exists()) { return docSnapshot.data(); }
+            else { console.error("🔥 No such document in Firestore Database!"); return null; }
          },
          all: async (options: DbFetchProps) => {
             let orderByProp = options.orderBy?? 'id';
@@ -180,6 +185,30 @@ export const db = {
             .then(() => { console.log('🔥 Image deleted!'); })
             .catch((err) => { console.error(err); })
          },
+   },
+   custom: {
+      // FILTER
+      filter: {
+         by: {
+            categoryFromPortfolio: async (key: string) => {
+               try {
+                  var itemsList: any[] = [];
+                  const allPortfolio = await db.doc.fetch.collection(`portfolio`);
+                  allPortfolio.forEach((item) => {
+                     item.categories.forEach( async (category:any) => {
+                        var catSlug = category._key.path.segments[category._key.path.segments.length - 1];
+                        if (catSlug === key) {
+                           itemsList.push(item);
+                        };
+                     })
+                  });
+                  return itemsList;
+               } catch (error) {
+                  console.error(error);
+               }
+            }
+         }
+      }
    }
 }
 
