@@ -2,32 +2,19 @@
 import { t } from 'i18next'
 
 // Astro components
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Page from '@comp/Base/Page.astro';
 import Section from '@comp/Base/Section.astro';
-import Hero from '@comp/Main/Hero/Hero.astro';
 // Svelte components
 import Card from '@comp/Common/Card/Card.svelte';
-import Link from '@comp/Common/Button/Link.svelte';
 import db from '@/firebase';
 import { gaps } from '@/consts/class';
 import Button from '@/components/Common/Button/Button.svelte';
-import Typewriter from '@/components/Utils/Typewriter/Typewriter.svelte';
+import SolutionLayout from '@/layouts/SolutionLayout.astro';
 
 const solutions = await db.doc.fetch.collection('solutions');
 export const prerender = true;
 ---
 
-<BaseLayout title={t('site:pages.solutions.title')}>
-   <Page>
-      <Hero slot="hero" alt title="Solutions">
-			<Typewriter 
-            client:load 
-            text={'We bieden een breed scala aan oplossingen voor uw bedrijf.'}
-            mode="loopOnce" class="text-title-md font-mono" 
-         />
-      </Hero>
-
+<SolutionLayout title={t('site:pages.solutions.title')} subtitle={'We bieden een breed scala aan oplossingen voor uw bedrijf.'}>
    <Section name="solutions">
       <div class={`grid grid-cols-3 ${gaps}`}>
          {solutions.map(solution => (
@@ -47,6 +34,4 @@ export const prerender = true;
          ))}
       </div>
    </Section>
-      
-   </Page>
-</BaseLayout>
+</SolutionLayout>

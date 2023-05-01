@@ -1,19 +1,14 @@
 ---
 import { t, changeLanguage } from "i18next";
 import { ICONS } from "@const/index";
+import { gaps, classes } from "@/consts/class";
 // Astro components
-import BaseLayout 	from "@layouts/BaseLayout.astro";
-import Page 			from "@comp/Base/Page.astro";
 import Section 		from "@comp/Base/Section.astro";
-import Hero 			from "@comp/Main/Hero/Hero.astro";
+import Icon 			from "astro-icon";
 // Svelte components
 import Card 			from "@comp/Common/Card/Card.svelte";
 import Drawer 			from "@comp/Common/Drawer/Drawer.svelte";
 import Title from "@/components/Common/Title/Title.svelte";
-// Page specific components
-import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
-// Common Section components
-import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
 // Import feature sidebar components
 import WebFeatAccessible from "@comp/Pages/Solutions/Web/Features/WebFeatAccessible.astro";
 import WebFeatFast from "@comp/Pages/Solutions/Web/Features/WebFeatFast.astro";
@@ -23,104 +18,119 @@ import WebFeatUxUi from "@comp/Pages/Solutions/Web/Features/WebFeatUxUi.astro";
 import WebFeatSeo from "@comp/Pages/Solutions/Web/Features/WebFeatSeo.astro";
 import WebFeatTech from "@comp/Pages/Solutions/Web/Features/WebFeatTech.astro";
 import WebFeatSupport from "@comp/Pages/Solutions/Web/Features/WebFeatSupport.astro";
+import SolutionLayout from "@/layouts/SolutionLayout.astro";
+import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServices.astro";
 
-changeLanguage("nl");
+import db from "@/firebase";
+import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarquee.astro";
+import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
 
-// Feature Cards
-let featureCards:{[key:string]:string}[] = [];
-/* @ts-ignore */
-Object.keys(t("services:solutions.web.features")).forEach((key) => {
-	 featureCards.push({
-		key: key,
-		title: t(`services:solutions.web.features.${key}.title`),
-		description: t(`services:solutions.web.features.${key}.description`),
-		icon: ICONS.features.web[key]
-	 })
+const lang = "nl";
+const key = 'web'
+changeLanguage(lang);
+
+const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
+const services = await db.doc.fetch.collection(`solutions/${key}/services`);
+const features = await db.doc.fetch.collection(`solutions/${key}/features`);
+
+let featureCards:{[key: string]: string}[] = [];
+features.forEach((feature) => {
+   featureCards.push({
+      id: feature.id,
+      title: t(`services:solutions.${key}.features.${feature.id}.title`),
+      description: t(`services:solutions.${key}.features.${feature.id}.description`),
+      icon: feature.icon
+   })
 });
 ---
 
-<BaseLayout title={t("site:pages.solutions.solutions.web.title")}>
-	<Page>
-		<!-- HERO -->
-		<Hero slot="hero" alt title="Web Solutions">
-			<span slot="subtitle">
-				We're proud to present a growing selection of cases we have worked on in the past.
-			</span>
-		</Hero>
-		<!-- END HERO -->
+<SolutionLayout 
+title={`${t(`services:solutions.${key}.title`)}`}
+subtitle={`${t(`services:solutions.${key}.description`)}`}
+>
+	<!-- FEATURES -->
+	<Section name="features">
+		<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
+			{featureCards.map((feature) => (
+				<><Drawer client:idle>
+					<Card 
+						padding="p-4" gap="gap-4"
+						slot="trigger" direction="row" 
+						centerRow fillHeight noBody 
+						block hover active 
+						media="animIcon" icon={feature.icon}
+						iconSize={40}
+					>
+						<Title slot="title" h3 size="xs" weight="font-bold">
+							<div class="h-full flex items-center justify-start">{feature.title}</div>
+						</Title>
+					</Card>
+	
+					{() => {
+						if (!feature.id) 						return (<></>);
+						if (feature.id === 'accessible') return (<><WebFeatAccessible/></>);
+						if (feature.id === 'fast') 		return (<><WebFeatFast/></>);
+						if (feature.id === 'responsive') return (<><WebFeatResponsive/></>);
+						if (feature.id === 'secure') 		return (<><WebFeatSecure/></>);
+						if (feature.id === 'uxui') 		return (<><WebFeatUxUi/></>);
+						if (feature.id === 'seo') 			return (<><WebFeatSeo/></>);
+						if (feature.id === 'tech') 		return (<><WebFeatTech/></>);
+						if (feature.id === 'support') 	return (<><WebFeatSupport/></>);
+					}}
+				</Drawer></>
+			))}
+		</div>
+	</Section>
+	<!-- END FEATURES -->
 
-		<!-- FEATURES -->
-		<Section fullWidthAppend name="web-features">
-			<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
-				{featureCards.map((feature) => (
-					<><Drawer client:idle>
-						<Card 
-							padding="p-4" gap="gap-4"
-							slot="trigger" direction="row" 
-							centerRow fillHeight noBody 
-							block hover active 
-							media="animIcon" icon={feature.icon}
-							iconSize={40}
-						>
-							<Title slot="title" h3 size="xs" weight="font-bold">
-								<div class="h-full flex items-center justify-start">{feature.title}</div>
-							</Title>
-						</Card>
-						{() => {
-								switch (feature.key) {
-									case "accessible":
-										return <WebFeatAccessible />
-									case "fast":
-										return <WebFeatFast />
-									case "responsive":
-										return <WebFeatResponsive />
-									case "secure":
-										return <WebFeatSecure />
-									case "uxui":
-										return <WebFeatUxUi />
-									case "seo":
-										return <WebFeatSeo />
-									case "tech":
-										return <WebFeatTech />
-									case "support":
-										return <WebFeatSupport />
-									default:
-										return <></>
-								}
-						}}
-					</Drawer></>
-				))}
-			</div>
+	<!-- SERVICES -->
+	<SolutionServices key={key} services={services} />
+	<!-- END SERVICES -->	
 
-			<!-- <AboutTechStackMarquee slot="append" /> -->
-		</Section>
-		<!-- END FEATURES -->
-
-		<!-- PORTFOLIO -->
-		<Section fullWidthAppend alt name="web-portfolio" title="A Look Through Our Work" subtitle="Navigate through a selection of projects we've worked on in the past.">
-
+	<!-- PORTFOLIO -->
+	<Section fullWidthAppend name="portfolio" title={`${t(`services:main.sections.portfolio.title`)}`} subtitle={`${t(`services:main.sections.portfolio.subtitle`)}`}>
 			
+		<div class={`w-full grid ${gaps} grid-cols-3 grid-rows-[repeat(7,_minmax(0,_1fr))] min-h-[900px]`}>
+			{ portfolio.map((item) => (
+				<><div class={`
+					first-of-type:col-start-1 first-of-type:col-end-2 first-of-type:row-start-2 first-of-type:row-end-5
+					nth-2n:col-start-2 nth-2n:col-end-3 nth-2n:row-start-1 nth-2n:row-end-4
+					nth-3n:col-start-3 nth-3n:col-end-4 nth-3n:row-start-2 nth-3n:row-end-5
+					nth-4n:col-start-1 nth-4n:col-end-2 nth-4n:row-start-5 nth-4n:row-end-[8]
+					nth-5n:col-start-2 nth-5n:col-end-3 nth-5n:row-start-4 nth-5n:row-end-7
+				`}>
+					<Drawer client:idle placement="right">
+						<div slot="trigger" class="h-full w-full">
+							<SolutionPortfolioCard
+								title={item.title}
+								image={item.images.card}
+								description={item.description[lang]}
+							/>
+						</div>
+						<span slot="title">{item.title}</span>
+						{() => {
+							return <><div>
+								<span>{item.description[lang]}</span>
+								
+							</div></>
+						}}
+					</Drawer>
 
-			Slider here
-		</Section>
-		<!-- END PORTFOLIO -->
+				</div></>
+			))}
+		</div>
+	</Section>
+	<!-- END PORTFOLIO -->
 
-		<!-- PRICING -->
-		<Section fullWidthAppend name="web-pricing" title="Transparent Pricing" subtitle="Because we both know that's what's important.">
-			Cards here
-		</Section>
-		<!-- END PRICING -->
+	<!-- PRICING -->
+	<!-- <Section fullWidthAppend name="web-pricing" title="Transparent Pricing" subtitle="Because we both know that's what's important.">
+		Cards here
+	</Section> -->
+	<!-- END PRICING -->
 
-		<!-- PRICING CALCULATOR -->
-		<Section fullWidthAppend alt name="web-pricing-calculator" title="Estimate your Price" subtitle="Get an estimated price using our price calculation tool!">
-			Calculator here
-		</Section>
-		<!-- END PRICING -->
-
-		<!-- TODO: MAKE ALTERNATIVE CTA -->
-		<!-- CTA -->
-		<CallToAction />
-		<!-- END CTA -->
-
-	</Page>
-</BaseLayout>
+	<!-- PRICING CALCULATOR -->
+	<!-- <Section fullWidthAppend alt name="web-pricing-calculator" title="Estimate your Price" subtitle="Get an estimated price using our price calculation tool!">
+		Calculator here
+	</Section> -->
+	<!-- END PRICING -->
+</SolutionLayout>

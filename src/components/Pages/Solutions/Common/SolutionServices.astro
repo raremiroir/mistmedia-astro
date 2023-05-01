@@ -1,0 +1,49 @@
+---
+import { t } from "i18next";
+// ASTRO COMPONENTS
+import { Icon } from "astro-icon";
+// SVELTE COMPONENTS
+import Section from "@/components/Base/Section.astro";
+import Card from "@/components/Common/Card/Card.svelte";
+import Title from "@/components/Common/Title/Title.svelte";
+import { gaps, classes } from "@/consts/class";
+
+export interface Props {
+   key: string;
+   services: any[];
+}
+const { key, services } = Astro.props;
+
+
+---
+
+<!-- SERVICES -->
+<Section 
+   alt name="services" 
+   title={`${t(`services:main.sections.services.title`)}`}
+   subtitle={`${t(`services:main.solutions.${key}.description`)}`}>
+   <div class={`${gaps} grid grid-cols-3`}>
+
+      {services.map((service) => (
+
+         <Card icon={service.icon} >
+         <div slot="title" class="flex flex-row items-center justify-start gap-2">
+            <div class="w-1/6">
+               <Icon name={service.icon} class="text-primary w-full" />
+            </div>
+            <Title 
+                  h3 size="xs" class="capitalize w-5/6"
+               color={`${classes.transition.default} !bg-transparent !shadow-none`}>
+               {`${t(`services:solutions.${key}.services.${service.id}.title`)}`}
+            </Title>
+         </div>
+         <p>
+            {`${t(`services:solutions.${key}.services.${service.id}.description`)}`}
+         </p>
+         </Card>
+
+      ))}
+
+   </div>
+</Section>
+<!-- END SERVICES -->

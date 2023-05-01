@@ -1,0 +1,33 @@
+---
+  import BaseLayout from './BaseLayout.astro';
+  import Page from '@/components/Base/Page.astro';
+  import Hero from '@/components/Main/Hero/Hero.astro';
+  import Typewriter from '@/components/Utils/Typewriter/Typewriter.svelte';
+
+  export interface Props {
+    title: string;
+    subtitle?: string;
+    description?: string;
+  }
+
+  const { 
+    title, 
+    subtitle = '', 
+    description = '' 
+  } = Astro.props;
+---
+
+
+<BaseLayout title={title}>
+  <Page cta>
+    <Hero slot="hero" alt title={title}>
+			<Typewriter 
+            client:load 
+            text={subtitle} interval={8}
+            mode="loopOnce" class="unstyled !text-title-2xs font-mono" 
+         />
+      </Hero>
+
+      <slot />
+  </Page>
+</BaseLayout>
