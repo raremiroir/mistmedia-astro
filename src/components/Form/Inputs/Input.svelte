@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { DropZone } from "./form";
 	import Dropzone from "./Dropzone.svelte";
-   import { cForm, cFormComplete, classes } from "@/consts/class";
+   import { cForm, cFormComplete, classes } from "@/consts/style";
    import Button from "@/components/Common/Button/Button.svelte";
    import Icon from "@/components/Media/Icon/Icon.svelte";
    import ValidationError from "../Utils/ValidationError.svelte";

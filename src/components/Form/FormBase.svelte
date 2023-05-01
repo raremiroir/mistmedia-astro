@@ -32,8 +32,8 @@
    import type { ChosenInputs } from '@/types/components/form';
 
    // Import components
-   import Alert          from '@comp/Utils/Alert/Alert.svelte';
-   import Button         from '@comp/Common/Button/Button.svelte';
+   import Alert          from '@/components/Utils/Alert/Alert.svelte';
+   import Button         from '@/components/Common/Button/Button.svelte';
    import FormRow        from './Utils/FormRow.svelte';
    import ToggleCheck    from './Inputs/ToggleCheck.svelte';
    import Turnstile      from './Inputs/Turnstile.svelte';

@@ -1,6 +1,6 @@
 --- 
-import { gaps, widths } from "../../consts/class";
-import Title from "../Common/Title/Title.svelte";
+import { gaps, widths } from "@/consts/style";
+import Title from "@/components/Text/Title/Title.svelte";
 export interface Props {
    name: string;
    title?: string;
@@ -48,16 +48,16 @@ const innerWrapClass = `
    id={name}
    class={sectionClass}>
 
-   {(!!svg || !!img) && (
+   <!-- {(!!svg || !!img) && (
       // TODO: optimize this
       <img 
          src={svg?? img} alt=""
          class={bgImgClass}
       />
-   )}
+   )} -->
 
    {
-      !!fullWidthPrepend && (
+      fullWidthPrepend && (
          <div class="w-full">
             <slot name="prepend" />
          </div>
@@ -90,7 +90,7 @@ const innerWrapClass = `
    </div>
 
    {
-      !!fullWidthAppend && (
+      fullWidthAppend && (
          <div class="w-full">
             <slot name="append" />
          </div>

@@ -1,9 +1,9 @@
 <script lang="ts">
    import Drawer from 'svelte-drawer-component'
 	import { onDestroy, setContext } from 'svelte';
-	import Title from '@comp/Common/Title/Title.svelte';
+	import Title from '@/components/Text/Title/Title.svelte';
 	import Icon from '@iconify/svelte'
-	import Button from '@comp/Common/Button/Button.svelte';
+	import Button from '@/components/Common/Button/Button.svelte';
    
    import { animationTrigger } from '@stores/index';
 

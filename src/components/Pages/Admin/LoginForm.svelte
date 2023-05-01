@@ -1,5 +1,5 @@
 <script lang="ts">
-   import FormBase from "../Form/FormBase.svelte";
+   import FormBase from "../../Form/FormBase.svelte";
    import db from "@/firebase";
 </script>
 

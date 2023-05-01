@@ -1,5 +1,5 @@
 <script lang="ts">
-   import Title from '../../Common/Title/Title.svelte';
+   import Title from '@/components/Text/Title/Title.svelte';
 
    export let title:string;
    export let open:boolean = false;

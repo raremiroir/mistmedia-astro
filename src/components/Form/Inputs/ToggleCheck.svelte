@@ -1,7 +1,7 @@
 <script lang="ts">
    import Icon from '@iconify/svelte';
    import { SlideToggle } from '@skeletonlabs/skeleton';
-   import { cForm, cToggle, classes } from '@const/class';
+   import { cForm, cToggle, classes } from '@/consts/style';
 
    import type { OnKeyDownEvent } from '@tstype/components/toggle';
 

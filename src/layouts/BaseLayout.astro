@@ -1,10 +1,10 @@
 ---
-  import BaseHead from '@comp/Base/BaseHead.astro';
-  import BaseHeadSvelte from '@comp/Base/BaseHeadSvelte.svelte';
-  import Header from '@comp/Main/Header/Header.astro';
-  import Footer from '@comp/Main/Footer.astro';
+  import BaseHead from './Head/BaseHead.astro';
+  import BaseHeadSvelte from './Head/BaseHeadSvelte.svelte';
+  import Header from '@/components/Core/Header/Header.astro';
+  import Footer from '@/components/Core/Footer/Footer.astro';
 	import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-	import { widths } from '../consts/class';
+	import { widths } from '../consts/style';
 
   export interface Props {
     title: string;

@@ -5,23 +5,23 @@ import { Picture } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
 // Main components
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Page from "@comp/Core/Page/Page.astro";
-import Section from "@comp/Base/Section.astro";
-import Hero from "@comp/Main/Hero/Hero.astro";
+import Page from "@/components/Core/Page/Page.astro";
+import Section from "@/components/Core/Section/Section.astro";
+import Hero from "@/components/Common/Hero/Hero.astro";
 // Svelte components
-import Card from "@comp/Common/Card/Card.svelte";
+import Card from "@/components/Common/Card/Card.svelte";
 // Page specific components
-import HomePortfolioSlider from "@comp/Pages/Home/HomePortfolioSlider.svelte";
-import HeroTypeWriter from "@comp/Pages/Home/HeroTypeWriter.svelte";
+import HomePortfolioSlider from "@/components/Pages/Home/HomePortfolioSlider.svelte";
+import HeroTypeWriter from "@/components/Pages/Home/HeroTypeWriter.svelte";
 // Common Section Components
-import CallToAction from "@comp/Pages/Common/CallToAction.astro";
-import Faq from "@comp/Pages/Common/Faq.astro";
+import CallToAction from "@/components/Pages/Common/CallToAction.astro";
+import Faq from "@/components/Pages/Common/Faq.astro";
 
 // Consts
 import { ICONS } from "@const/index";
-import Title from "@/components/Common/Title/Title.svelte";
+import Title from "@/components/Text/Title/Title.svelte";
 import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
-import MistLogoAnim 	from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
+import MistLogoAnim 	from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
 
 
 changeLanguage("nl");

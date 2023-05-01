@@ -2,7 +2,7 @@
    import AccordeonTrigger from "./AccordeonTrigger.svelte";
    import AccordeonContent from "./AccordeonContent.svelte";
    import boxGen from "../../../styles/mist-theme";
-   import Ripple from "@comp/actions/Ripple";
+   import Ripple from "@/components/actions/Ripple";
 
    export let key = 0;
    export let title = 'Title';

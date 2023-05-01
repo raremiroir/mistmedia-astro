@@ -1,7 +1,7 @@
 <script lang='ts'>
    import type { PopupSettings } from '@skeletonlabs/skeleton';
-   import Popup from "@comp/Utils/Popup/Popup.svelte";
-   import Button from '@comp/Common/Button/Button.svelte';
+   import Popup from "@/components/Utils/Popup/Popup.svelte";
+   import Button from '@/components/Common/Button/Button.svelte';
    import Icon from '@iconify/svelte';
 
    export let id: string;

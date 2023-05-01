@@ -2,26 +2,26 @@
 import { t, changeLanguage } from "i18next";
 // Astro components
 import BaseLayout 	from "@layouts/BaseLayout.astro";
-import Page 			from "@comp/Core/Page/Page.astro";
-import Section 		from "@comp/Base/Section.astro";
-import Hero 			from "@comp/Main/Hero/Hero.astro";
+import Page 			from "@/components/Core/Page/Page.astro";
+import Section 		from "@/components/Core/Section/Section.astro";
+import Hero 			from "@/components/Common/Hero/Hero.astro";
 import { Picture } 	from "@astrojs/image/components";
 // Svelte components
-import Box 				from "@comp/Base/Box.svelte";
-import Button 			from "@comp/Common/Button/Button.svelte";
-import Card 			from "@comp/Common/Card/Card.svelte";
-import Drawer 			from "@comp/Common/Drawer/Drawer.svelte";
-import Svg 				from "@comp/Media/Svg/Svg.svelte";
-import MistLogoAnim 	from "@comp/Media/Svg/svg-assets/MistLogoAnim.svelte";
+import Box 				from "@/components/Core/Box.svelte";
+import Button 			from "@/components/Common/Button/Button.svelte";
+import Card 			from "@/components/Common/Card/Card.svelte";
+import Drawer 			from "@/components/Common/Drawer/Drawer.svelte";
+import Svg 				from "@/components/Media/Svg/Svg.svelte";
+import MistLogoAnim 	from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
 // Page specific components
-import AboutTechStackMarquee from "@comp/Pages/About/AboutTechStackMarquee.astro";
-import LinkedInBtn 	from "@comp/Pages/About/SocialBtns/LinkedInBtn.astro";
-import GithubBtn 		from "@comp/Pages/About/SocialBtns/GithubBtn.astro";
-import FacebookBtn 	from "@comp/Pages/About/SocialBtns/FacebookBtn.astro";
-import InstagramBtn 	from "@comp/Pages/About/SocialBtns/InstagramBtn.astro";
+import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarquee.astro";
+import LinkedInBtn 	from "@/components/Pages/About/SocialBtns/LinkedInBtn.astro";
+import GithubBtn 		from "@/components/Pages/About/SocialBtns/GithubBtn.astro";
+import FacebookBtn 	from "@/components/Pages/About/SocialBtns/FacebookBtn.astro";
+import InstagramBtn 	from "@/components/Pages/About/SocialBtns/InstagramBtn.astro";
 // Common Section components
-import CallToAction 	from "@comp/Pages/Common/CallToAction.astro";
-import Title from "@/components/Common/Title/Title.svelte";
+import CallToAction 	from "@/components/Pages/Common/CallToAction.astro";
+import Title from "@/components/Text/Title/Title.svelte";
 
 changeLanguage("nl");
 

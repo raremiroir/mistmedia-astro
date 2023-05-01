@@ -8,7 +8,7 @@
 	import { FileDropzone } from '@skeletonlabs/skeleton';
 	import Icon from '@/components/Media/Icon/Icon.svelte';
 	import { fade } from 'svelte/transition';
-   import { classes } from '@/consts/class';
+   import { classes } from '@/consts/style';
    // import db from '$src/lib/firebase';
 
 	export let name: string = 'image';

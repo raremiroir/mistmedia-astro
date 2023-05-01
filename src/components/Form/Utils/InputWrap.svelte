@@ -14,10 +14,10 @@
    // export let autocapitalize:boolean = false;
    // export let spellcheck:boolean = false;
 
-   import Button from '@comp/Common/Button/Button.svelte';
+   import Button from '@/components/Common/Button/Button.svelte';
    import Icon from '@iconify/svelte'
 
-   import { cForm, cFormComplete } from '@const/class';
+   import { cForm, cFormComplete } from '@/consts/style';
 
    // Clear input value
    const clear = () => value = '';

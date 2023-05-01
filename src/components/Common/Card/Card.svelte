@@ -1,12 +1,11 @@
 <script lang="ts">
-   import { Div, Article, Anchor } from '../../Base/Raw'
    import boxGen from '../../../styles/mist-theme'
    import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '../../../styles/theme';
    import Chip from '../Chip/Chip.svelte';
-   import Ripple from '@comp/actions/Ripple';
-   import Svg from '@comp/Media/Svg/Svg.svelte';
-   import Icon from '@comp/Media/Icon/Icon.svelte';
-   import Title from '@comp/Common/Title/Title.svelte';
+   import Ripple from '@/components/actions/Ripple';
+   import Svg from '@/components/Media/Svg/Svg.svelte';
+   import Icon from '@/components/Media/Icon/Icon.svelte';
+   import Title from '@/components/Text/Title/Title.svelte';
 
    export let article:boolean = false;
    export let href:string = ''
@@ -68,14 +67,20 @@
    const transition = 'transition-all duration-300 ease-in-out';
 
    // Anchor or Div
-   $: outerWrapComp = href ? Anchor : Div;
+   $: outerWrapComp = href ? 'a' : 'div';
    // Article or Div
-   $: innerWrapComp = article ? Article : Div;
+   $: innerWrapComp = article ? 'article' : 'div';
+
+   const outerWrapProps = href ? {
+      href: href,
+      target: href ? '_blank' : '',
+      rel: href ? 'noopener noreferrer' : '',
+   } : {};
 </script>
 
 
-<svelte:component 
-   this={outerWrapComp} {...$$props} {href}
+<svelte:element 
+   this={outerWrapComp} {...$$props} {...outerWrapProps}
    tabindex="0" aria-label={label} aria-labelledby={labelledBy}
    title=""
    class="
@@ -85,7 +90,7 @@
       { fillHeight ? 'h-full' : '' } 
       { klass }
 ">
-   <svelte:component this={innerWrapComp} {...$$props} title="" class="h-full">
+   <svelte:element this={innerWrapComp} {...$$props} title="" class="h-full">
       <div 
          use:Ripple={active}
          class="
@@ -147,5 +152,5 @@
             {/if}
          </div>
       </div>
-   </svelte:component>
-</svelte:component>
+   </svelte:element>
+</svelte:element>

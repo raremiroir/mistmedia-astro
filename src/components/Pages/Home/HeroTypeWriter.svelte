@@ -3,7 +3,7 @@
    import Typewriter from "@/components/Utils/Typewriter/Typewriter.svelte";
 
    import { t } from 'i18next';
-   import Title from "@/components/Common/Title/Title.svelte";
+   import Title from "@/components/Text/Title/Title.svelte";
    export let lang:string;
 
    $: texts = 

@@ -2,7 +2,7 @@
    import { t } from "i18next";
    
 	import type { ChosenInputs } from "@/types/components/form";
-   import FormBase from "@comp/Form/FormBase.svelte";
+   import FormBase from "@/components/Form/FormBase.svelte";
 
    import { mailToAdmin } from "@/utils/mail";
 

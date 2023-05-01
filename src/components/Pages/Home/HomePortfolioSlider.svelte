@@ -1,10 +1,10 @@
 <script lang="ts">
    import { Splide, SplideSlide } from '@splidejs/svelte-splide';
    import type { SliderProps } from "component-slider";
-   import { slider } from "src/consts/class";
+   import { slider } from "@/consts/style";
 
-   import SlidePage from "@comp/Common/Slider/SlidePage.svelte";
-   import Card from "@comp/Common/Card/Card.svelte";
+   import SlidePage from "@/components/Common/Slider/SlidePage.svelte";
+   import Card from "@/components/Common/Card/Card.svelte";
 
    const label = 'Portfolio Slider';
 

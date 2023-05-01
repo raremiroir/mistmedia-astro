@@ -2,9 +2,9 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/Utils/FormattedDate.astro';
 import BaseLayout from './BaseLayout.astro';
-import Page from '@comp/Core/Page/Page.astro';
-import Hero from '@comp/Main/Hero/Hero.astro';
-import { widths } from '@const/class';
+import Page from '@/components/Core/Page/Page.astro';
+import Hero from '@/components/Common/Hero/Hero.astro';
+import { widths } from '@/consts/style';
 
 type Props = CollectionEntry<'blog'>['data'];
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-   import Popup from "@comp/Utils/Popup/Popup.svelte";
+   import Popup from "@/components/Utils/Popup/Popup.svelte";
    import type { PopupSettings } from "@skeletonlabs/skeleton";
 
    export let klass = '';

@@ -5,7 +5,7 @@
    // import BoldDuotonePriceTagEuro from "./custom/BoldDuotonePriceTagEuro.svelte";
    // import BoldDuotoneScale from "./custom/BoldDuotoneScale.svelte";
 	// import BoldDuotoneMoneyBag from "./custom/BoldDuotoneMoneyBag.svelte";
-   import { classes } from "@/consts/class";
+   import { classes } from "@/consts/style";
 
    // const customIcons: any = {
    //    'pricetag': BoldDuotonePriceTagEuro,

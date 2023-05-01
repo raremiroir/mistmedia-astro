@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Button from "@comp/Common/Button/Button.svelte";
+	import Button from "@/components/Common/Button/Button.svelte";
    import type { SizeProp } from "@styles/theme";
 
 	export let href:string;
