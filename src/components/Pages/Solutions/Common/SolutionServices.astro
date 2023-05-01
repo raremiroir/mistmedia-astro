@@ -21,7 +21,7 @@ const { key, services } = Astro.props;
 <Section 
    alt name="services" 
    title={`${t(`services:main.sections.services.title`)}`}
-   subtitle={`${t(`services:main.solutions.${key}.description`)}`}>
+   subtitle={`${t(`services:solutions.${key}.description`)}`}>
    <div class={`${gaps} grid grid-cols-3`}>
 
       {services.map((service) => (
