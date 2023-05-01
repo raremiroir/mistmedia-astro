@@ -24,6 +24,7 @@ import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServic
 import db from "@/firebase";
 import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarquee.astro";
 import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
+import SolutionFeatureCard from "@/components/Pages/Solutions/Common/SolutionFeatureCard.astro";
 
 const lang = "nl";
 const key = 'web'
@@ -53,18 +54,11 @@ subtitle={`${t(`services:solutions.${key}.description`)}`}
 		<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
 			{featureCards.map((feature) => (
 				<><Drawer client:idle>
-					<Card 
-						padding="p-4" gap="gap-4"
-						slot="trigger" direction="row" 
-						centerRow fillHeight noBody 
-						block hover active 
-						media="animIcon" icon={feature.icon}
-						iconSize={40}
-					>
-						<Title slot="title" h3 size="xs" weight="font-bold">
-							<div class="h-full flex items-center justify-start">{feature.title}</div>
-						</Title>
-					</Card>
+					<SolutionFeatureCard 
+						slot="trigger"
+						title={feature.title}
+						icon={feature.icon}
+					/>
 	
 					{() => {
 						if (!feature.id) 						return (<></>);
@@ -115,7 +109,6 @@ subtitle={`${t(`services:solutions.${key}.description`)}`}
 							</div></>
 						}}
 					</Drawer>
-
 				</div></>
 			))}
 		</div>

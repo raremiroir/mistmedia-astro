@@ -1,0 +1,23 @@
+---
+import Card from "@/components/Common/Card/Card.svelte";
+import Title from "@/components/Common/Title/Title.svelte";
+
+export interface Props {
+   title: string;
+   icon: string;
+}
+
+const { title, icon } = Astro.props
+---
+
+<Card
+   padding="pl-2" gap="gap-4" direction="row"
+   innerClass="p-2"
+   centerRow fillHeight noBody block hover active
+   media="animIcon" icon={icon} iconSize={40}
+   titleClass="h-full"
+>
+   <Title slot="title" h3 size="2xs" weight="font-bold">
+      <div class="h-full flex items-center justify-start">{title}</div>
+   </Title>
+</Card>
