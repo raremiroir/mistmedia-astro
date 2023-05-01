@@ -30,6 +30,7 @@
       message: t('form.input.message'),
       accept_terms: t('form.accept_terms'),
       turnstile_response: t('form.turnstile_response'),
+      password: '',
       validation: {
          required: t('form.validation.required'),
          only_alpha: t('form.validation.only_alpha'),
