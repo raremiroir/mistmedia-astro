@@ -10,7 +10,9 @@ import type { Auth } from 'firebase/auth';
 import { 
    getAuth, 
    setPersistence,
-   browserSessionPersistence
+   browserSessionPersistence,
+   signInWithEmailAndPassword,
+   signOut
 } from 'firebase/auth';
 
 import type { DocumentReference, Firestore } from 'firebase/firestore';
@@ -19,49 +21,22 @@ import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDoc
 import { deleteObject, getMetadata, getStorage, list, listAll, ref, updateMetadata, uploadBytes } from 'firebase/storage';
 import type { FirebaseStorage, FullMetadata, SettableMetadata, StorageReference } from 'firebase/storage';
 import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps, DbUploadFileProps } from "./types";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: import.meta.env.FIREBASE_API_KEY,
-  authDomain: import.meta.env.FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.FIREBASE_APP_ID,
-  measurementId: import.meta.env.FIREBASE_MEASUREMENT_ID
-};
-
-let app: FirebaseApp;
-let auth: Auth
-let firestore: Firestore;
-let analytics: Analytics;
-let storage: FirebaseStorage;
+import { dbApp, dbAuth, dbFirestore, dbStorage } from "@/stores/db";
    
 export const db = {
-   // Initialize Firebase
-   init: async () => {
-      console.log('🔥 Initializing Firebase...');
-      app = initializeApp(firebaseConfig);
-      firestore = getFirestore(app);
-      storage = getStorage(app);
-      // auth = getAuth(app);
-      // analytics = getAnalytics(app); // TODO: add analytics
-      // await setPersistence(auth, browserSessionPersistence);
-      return { app, firestore, storage, /* auth, analytics */ };
-   },
    // DOCS
    doc: {
       // FETCH
       fetch: {
          single: async (options: DbProps) => {
             const { collection, id } = options;
-            const { firestore } = await db.init();
+            const firestore = dbFirestore;
             const docSnapshot = await getDoc(doc( firestore, collection, id ))
             if (docSnapshot.exists()) { return docSnapshot.data(); } 
             else { console.error("🔥 No such document in Firestore Database!"); return null; }
          },
          collection: async (collectionRef: string) => {
-            const { firestore } = await db.init();
+            const firestore = dbFirestore;
             const colRef = collection(firestore, collectionRef);
             const colSnapshot = await getDocs(colRef);
             const colList = colSnapshot.docs.map(doc => doc.data());
@@ -82,7 +57,7 @@ export const db = {
             let endBeforeProp = options.endBefore?? '';
             let whereProp = options.where?? { field: '', operator: '==', value: '' };
             
-            const { firestore } = await db.init();
+            const firestore = dbFirestore;
             const colRef = collection(firestore, options.collection);
             const q = query(
                colRef, 
@@ -102,26 +77,26 @@ export const db = {
       // INSERT
       insert: async (options: DbInsertProps) => {
          const { collection, id, values } = options;
-         const { firestore } = await db.init();
+         const firestore = dbFirestore;
          await setDoc(doc(firestore, collection, id), values);
       },
       // DELETE
       delete: {
          single: async (options: DbProps) => {
             const { collection, id } = options;
-            const { firestore } = await db.init();
+            const firestore = dbFirestore;
             await deleteDoc(doc(firestore, collection, id));
          },
          soft: async (options: DbProps) => {
             const { collection, id } = options;
-            const { firestore } = await db.init();
+            const firestore = dbFirestore;
             await updateDoc(doc(firestore, collection, id), {
                deleted_at: Timestamp.fromDate(new Date())
             });
          },
          soft_undo: async (options: DbProps) => {
             const { collection, id } = options;
-            const { firestore } = await db.init();
+            const firestore = dbFirestore;
             await updateDoc(doc(firestore, collection, id), {
                deleted_at: null
             });
@@ -130,13 +105,13 @@ export const db = {
       // UPDATE'
       update: async (options: DbInsertProps) => {
          const { collection, id, values } = options;
-         const { firestore } = await db.init();
+         const firestore = dbFirestore;
          await updateDoc(doc( firestore, collection, id ), values);
       },
       // EXISTS
       exists: async (options: DbProps) => {
          const { collection, id } = options;
-         const { firestore } = await db.init();
+         const firestore = dbFirestore;
          const docSnapshot = await getDoc(doc(firestore, collection, id));
          return docSnapshot.exists();
       },
@@ -148,7 +123,7 @@ export const db = {
       // FETCH
       fetch: {
          ref: async (props: DbFetchFileProps) => {
-            const { storage } = await db.init();
+            const storage = dbStorage
             switch (props.refType) {
                case 'gs':    return ref(storage, `gs://${props.id}`);
                case 'https': return ref(storage, `https://firebasestorage.googleapis.com/b/bucket/o/${props.id}`);
@@ -156,7 +131,7 @@ export const db = {
             }
          },
          meta: async (id: string) => {
-            const { storage } = await db.init();
+            const storage = dbStorage;
             const fileRef = ref(storage, id);
             const fileMeta = await getMetadata(fileRef);
             return fileMeta;
@@ -164,7 +139,7 @@ export const db = {
       },
       // UPLOAD
       upload: async (props: DbUploadFileProps) => {
-         const { storage } = await db.init();
+         const storage = dbStorage;
          const name:string = props.collection ? `${props.collection}/${props.id}` : props.id;
          const fileRef = ref(storage, name);
          uploadBytes(fileRef, props.file).then((snapshot) => { console.log('🔥 Image uploaded!') })
@@ -179,7 +154,7 @@ export const db = {
       },
       // DELETE
       delete: async (id: string) => {
-         const { storage } = await db.init();
+         const storage = dbStorage;
          const storRef = ref(storage, id);
          deleteObject(storRef)
             .then(() => { console.log('🔥 Image deleted!'); })
@@ -209,7 +184,18 @@ export const db = {
             }
          }
       }
-   }
+   },
+   // AUTH
+   auth: {
+      signIn: async (email: string, password: string) => {
+         const auth = dbAuth;
+         return signInWithEmailAndPassword(auth, email, password);
+      },
+      signOut: async () => {
+         const auth = dbAuth;
+         return signOut(auth);
+      }
+   },
 }
 
 export default db;
