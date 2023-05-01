@@ -26,5 +26,5 @@
 </script>
 
 <TypeWriter {...typewriterProps} >
-   <div class="{klass}"><slot>{text}</slot></div>
+   <div class="unstyled {klass}"><slot><span>{text}</span></slot></div>
 </TypeWriter>

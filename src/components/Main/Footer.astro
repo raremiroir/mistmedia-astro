@@ -45,10 +45,10 @@ const footerLinks = [
    <div class={`${widths} flex flex-col gap-6`}>
       <!-- Socials -->
       <div class="
-            w-full flex flex-row justify-center sm:justify-between align-center
+            w-full flex flex-row items-center justify-center sm:justify-between align-center
             pb-6 border-b-2 border-surface-200/40">
          <Title
-				h3 size="sm" 
+				h3 size="xs" 
 				color="text-surface-400"
 				class="hidden sm:flex items-center">
             {t("contact.socials.title")}
@@ -91,12 +91,12 @@ const footerLinks = [
 						items-center justify-start lg:items-start
 						last-of-type:order-first md:last-of-type:order-last">
 					<Title 
-						h3 size="xs"
+						h3 size="2xs" noFill
 						color="text-surface-300 dark:text-surface-200" 
 						class="capitalize">
 						{col.title}
 					</Title>
-					<ul class="grid grid-cols-1 gap-4">
+					<ul class="flex flex-col items-start justify-start gap-4">
 						{ col.links.map((link) => (
 							<li class="list-none">
 								<Link href={link.link}>

@@ -1,17 +1,18 @@
-export type TitleType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export type TitleSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+import type { TitleSizes, TitleTags } from "@/types/components/heading";
 
 export type TitleProps = {
-   [key in TitleType]: {
-      size: {[key in TitleSize]: string};
+   [key in TitleTags]: {
+      size: {[key in TitleSizes]: string};
       color: string;
       weight: string;
+      family: string;
    }
 }
 
 export const title: TitleProps = {
    h1: {
       size: {
+         '2xs': 'text-title-md',
          xs: 'text-title-lg',
          sm: 'text-title-xl',
          md: 'text-title-2xl',
@@ -21,9 +22,11 @@ export const title: TitleProps = {
       },
       color: 'text-surface-900 dark:text-white',
       weight: 'font-bold',
+      family: 'font-titlemono'
    },
    h2: {
       size: {
+         '2xs': 'text-title-sm',
          xs: 'text-title-md',
          sm: 'text-title-lg',
          md: 'text-title-xl',
@@ -33,10 +36,12 @@ export const title: TitleProps = {
       },
       color: 'text-surface-900 dark:text-surface-50',
       weight: 'font-bold',
+      family: 'font-titlemono'
    },
    h3: {
       size: {
-         xs: 'text-title-2xs',
+         '2xs': 'text-title-2xs',
+         xs: 'text-title-xs',
          sm: 'text-title-sm',
          md: 'text-title-md',
          lg: 'text-title-lg',
@@ -45,21 +50,25 @@ export const title: TitleProps = {
       },
       color: 'text-surface-800 dark:text-surface-50',
       weight: 'font-bold',
+      family: 'font-titlemono'
    },
    h4: {
       size: {
-         xs: 'text-title-2xs',
-         sm: 'text-title-xs',
-         md: 'text-title-sm',
-         lg: 'text-title-md',
-         xl: 'text-title-lg',
-         '2xl': 'text-title-xl'
+         '2xs': 'text-title-2xs',
+         xs: 'text-title-xs',
+         sm: 'text-title-sm',
+         md: 'text-title-md',
+         lg: 'text-title-lg',
+         xl: 'text-title-xl',
+         '2xl': 'text-title-2xl'
       },
       color: 'text-surface-800 dark:text-surface-50',
       weight: 'font-medium',
+      family: 'font-body'
    },
    h5: {
       size: {
+         '2xs': 'text-title-4xs',
          xs: 'text-title-3xs',
          sm: 'text-title-2xs',
          md: 'text-title-xs',
@@ -68,10 +77,12 @@ export const title: TitleProps = {
          '2xl': 'text-title-lg'
       },
       color: 'text-surface-700 dark:text-surface-100',
-      weight: 'font-medium'
+      weight: 'font-medium',
+      family: 'font-body'
    },
    h6: {
       size: {
+         '2xs': 'text-clamp-sm',
          xs: 'text-clamp-md',
          sm: 'text-title-lg',
          md: 'text-title-xl',
@@ -80,7 +91,8 @@ export const title: TitleProps = {
          '2xl': 'text-title-md'
       },
       color: 'text-surface-700 dark:text-surface-100',
-      weight: 'font-medium'
+      weight: 'font-medium',
+      family: 'font-body'
    },
 }
 

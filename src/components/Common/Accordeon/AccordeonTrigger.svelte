@@ -29,7 +29,7 @@
             </div>
          {/if}
          <Title 
-            fake h4 size="xs"
+            h3 size="2xs" family="font-body"
             color="text-surface-900 dark:text-surface-50 group-hover:text-primary-900 dark:group-hover:text-primary-400 {transition}">
             {title}
          </Title>
@@ -37,7 +37,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" 
             class="
                w-8 h-8 {transition} 
-               { open ? 'rotate-0' : 'rotate-180' } 
+               { open ? 'rotate-0' : '-rotate-180' } 
                text-surface-900 group-hover:text-primary-800 
                dark:text-surface-50 dark:group-hover:text-primary-400" 
             viewBox="0 0 256 256">

@@ -62,7 +62,7 @@
          { customTitle ? 
             <slot name="title"></slot>
           : 
-            <Title h1 class="w-full stroke-2 stoke-error" size={alt ? 'xl' : titleSize}>
+            <Title h1 class="w-full stroke-2 stoke-error" size={alt ? 'xs' : titleSize}>
                {title}
             </Title>
          }
@@ -71,7 +71,7 @@
             <div class='font-title'>
                <Title 
                   h4 fake 
-                  size="!text-[5vw]"
+                  size="2xs"
                   weight="font-regular">
                   <slot name="subtitle"/>
                </Title>

@@ -42,7 +42,7 @@
 </script>
 
 <Title h1 fake size="xl">
-   <span class="flex flex-row items-end !text-title-lg !text-surface-700">
+   <span class="flex flex-row items-end !text-title-sm !leading-none !text-surface-700">
       <span class="text-surface-700 dark:text-surface-200">We&nbsp;</span>
       <Typewriter mode="loopRandom">
          {#each texts as text}
