@@ -100,7 +100,7 @@
          <div 
             class="{cFormComplete.clearClass}" 
             on:click={() => clear()}
-            on:keydown={(e) => e.key === 'Enter' && clear()}
+            on:keydown={() => {}}
          >
             <Button square variant="minimal" color="error" size="xs" shadow="none" rounded="circle">
                <Icon icon="material-symbols:close-rounded" width="w-4" color="text-inherit"/>
