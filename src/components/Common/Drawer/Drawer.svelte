@@ -37,7 +37,7 @@
    <div class="h-fit min-h-full w-full bg-surface-50 dark:bg-surface-600 p-8">
       <div class="flex flex-row justify-between w-full">
          <div class="flex flex-col gap-2 max-w-[90%]">
-            <Title h3 size="md" fake class="underline" color="!text-gray-800">
+            <Title h3 size="xs" fake class="underline" color="!text-gray-800">
                <slot name="title"></slot>
             </Title>
             {#if sub}
