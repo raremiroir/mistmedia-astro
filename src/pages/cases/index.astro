@@ -1,5 +1,6 @@
 ---
 import { t } from 'i18next'
+import { gaps } from '@/consts/style'
 
 // Astro components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -11,6 +12,13 @@ import { Picture } from '@astrojs/image/components';
 import Link from '@/components/Common/Button/Link.svelte';
 // Page specific components
 import CaseCard from '@/components/Pages/Cases/CaseCard.astro';
+import db from '@/firebase';
+import SolutionPortfolioCard from '@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro';
+import Drawer from '@/components/Common/Drawer/Drawer.svelte';
+
+const lang = "nl";
+const cases = await db.doc.fetch.collection('portfolio');
+console.log(cases);
 
 
 const casesCards = [
@@ -48,26 +56,44 @@ export const prerender = true;
 
 <BaseLayout title={t('site:pages.cases.title')}>
    <Page>
-      <Hero slot="hero" alt bgImg="/images/stock/webdev-2.webp" title="Cases">
+      <Hero slot="hero" alt title="Cases">
 			<span slot="subtitle">
 				We're proud to present a growing selection of cases we have worked on in the past.
 			</span>
 		</Hero>
 
    <Section name="trixolutions-cases" title="">
-      <ul class="w-full flex flex-col gap-16">
+      <ul class={`w-full grid ${gaps} grid-cols-3 grid-rows-[repeat(7,_minmax(0,_1fr))] min-h-[900px]`}>
 
-         {casesCards.map(card => (
-            <li class="w-11/12 h-80 even:self-end">
-               <CaseCard
-                  href={card.href} label={card.label}
-                  title={card.title} tags={card.tags}
-                  imgSrc={card.imgSrc} imgAlt={card.imgAlt}>
-                  {card.content}
-               </CaseCard>
-            </li>
-         ))}
+         { cases.map((item) => (
+            item.enabled && (
+               <><div class={` col-span-1 row-span-3 `}>
+                  <Drawer client:idle placement="right">
+                     <div slot="trigger" class="h-full w-full">
+                        <SolutionPortfolioCard
+                           title={item.title}
+                           image={item.images.card}
+                           description={item.description[lang]}
+                        />
+                     </div>
+                     <span slot="title">{item.title}</span>
+                     {() => {
+                        return <><div>
+                           <span>{item.description[lang]}</span>
+                           
+                        </div></>
+                     }}
+                  </Drawer>
+               </div></>
+            )
+			))}
 
+<!-- <CaseCard
+   href={card.href} label={card.label}
+   title={card.title} tags={card.tags}
+   imgSrc={card.imgSrc} imgAlt={card.imgAlt}>
+   {card.content}
+</CaseCard> -->
       </ul>
    </Section>
       
