@@ -46,7 +46,7 @@
       on:turnstile-callback={(e) => {
          turnstileResponse = e.detail.token
       }}
-      siteKey={key}
+      siteKey="{key}"
       {size} {action} {theme} {retry}
       {forms} formsField={name}
    />
