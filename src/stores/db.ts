@@ -6,6 +6,8 @@ import { getFirestore, type Firestore } from "firebase/firestore";
 import { getStorage, type FirebaseStorage } from "firebase/storage";
 import { initializeApp, getApp, getApps } from "firebase/app";
 
+import type { User } from "firebase/auth";
+export const userStore: WritableAtom<User | null> = atom(null);
 
 const app = initializeApp({
    apiKey: import.meta.env.FIREBASE_API_KEY || 'AIzaSyDA4oxpqeQ5DnA0gWcIyFrSuGVOaz1ph_M',
@@ -20,6 +22,5 @@ const app = initializeApp({
 export const dbApp: FirebaseApp = !!getApps() ? getApp('app') : app;
 console.log(dbApp);
 export const dbAuth: Auth = getAuth(dbApp);
-await setPersistence(dbAuth, browserSessionPersistence);
 export const dbFirestore: Firestore = getFirestore(dbApp);
 export const dbStorage: FirebaseStorage = getStorage(dbApp);

@@ -21,7 +21,7 @@ import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDoc
 import { deleteObject, getMetadata, getStorage, list, listAll, ref, updateMetadata, uploadBytes } from 'firebase/storage';
 import type { FirebaseStorage, FullMetadata, SettableMetadata, StorageReference } from 'firebase/storage';
 import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps, DbUploadFileProps } from "./types";
-import { dbApp, dbAuth, dbFirestore, dbStorage } from "@/stores/db";
+import { dbApp, dbAuth, dbFirestore, dbStorage, userStore } from "@/stores/db";
    
 export const db = {
    // DOCS
@@ -159,8 +159,33 @@ export const db = {
          deleteObject(storRef)
             .then(() => { console.log('🔥 Image deleted!'); })
             .catch((err) => { console.error(err); })
-         },
+      },
    },
+   // AUTH
+   auth: {
+      signIn: async (email: string, password: string) => {
+         signInWithEmailAndPassword(dbAuth, email, password).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(`🔥 ${errorCode}: ${errorMessage}`);
+         });
+         userStore.set(dbAuth.currentUser);
+         setPersistence(dbAuth, browserSessionPersistence);
+      },
+      signOut: async () => {
+         userStore.set(null);
+         return signOut(dbAuth);
+      },
+      isSignedIn: async () => {
+         const user = dbAuth.currentUser;
+         if (user) {
+            userStore.set(user);
+            setPersistence(dbAuth, browserSessionPersistence);
+            return true;
+         } else { return false; }
+      },
+   },
+   // CUSTOM
    custom: {
       // FILTER
       filter: {
@@ -183,17 +208,6 @@ export const db = {
                }
             }
          }
-      }
-   },
-   // AUTH
-   auth: {
-      signIn: async (email: string, password: string) => {
-         const auth = dbAuth;
-         return signInWithEmailAndPassword(auth, email, password);
-      },
-      signOut: async () => {
-         const auth = dbAuth;
-         return signOut(auth);
       }
    },
 }

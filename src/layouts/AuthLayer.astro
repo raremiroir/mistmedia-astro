@@ -1,9 +1,8 @@
 ---
    import LoginForm from "@/components/Pages/Admin/LoginForm.svelte";
-   import { user } from "@/stores/auth"; 
    import type { User } from "firebase/auth";
    import Section from "@/components/Core/Section/Section.astro";
-   import { dbAuth } from "@/stores/db";
+   import { dbAuth, userStore } from "@/stores/db";
 
    const auth = dbAuth;
    auth.onIdTokenChanged(async (newUser: User | null) => {
@@ -16,7 +15,7 @@
             maxAge: token ? 60 * 60 * 24 * 7 : 0, // 7 days
             httpOnly: true,
          });
-         user.set(newUser);
+         userStore.set(newUser);
       }
       // console.log(token);
       if (token && !tokenCurrentlySet) {
@@ -28,24 +27,24 @@
       if (auth.currentUser) {
          await auth.currentUser.getIdToken(true);
       }
-   }, 10 * 60 * 1000) // 10 minutes
+   }, 30 * 60 * 1000) // 30 minutes
 ---
 
 <script>
-   import { user } from "@/stores/auth";
+   import { userStore } from "@/stores/db";
 
    const notLoggedInDiv = document.getElementById('not-logged-in');
    const loggedInDiv = document.getElementById('logged-in');
-   if (loggedInDiv && notLoggedInDiv) {
-      user.subscribe((user) => {
-         if (user) {
+   if (notLoggedInDiv && loggedInDiv) {
+      userStore.subscribe((user) => {
+         if (user !== null) {
             notLoggedInDiv.classList.add('hidden');
             loggedInDiv.classList.remove('hidden');
-            console.log('logged in');
-         } else {
+            // console.log('logged in');
+         } else if (user === null) {
             notLoggedInDiv.classList.remove('hidden');
             loggedInDiv.classList.add('hidden');
-            console.log('not logged in');
+            // console.log('not logged in');
          }
       })
    }
