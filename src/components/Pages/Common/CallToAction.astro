@@ -14,7 +14,8 @@ Object.keys(t("home:cta")).forEach((key) => {
 		ctaCards.push({
 			title: t(`home:cta.${key}.title`),
 			subtitle: t(`home:cta.${key}.subtitle`),
-			icon: 'DevicesResponsive'
+			icon: 'DevicesResponsive',
+         link: ''
 		})
 	}
 });
@@ -24,7 +25,7 @@ Object.keys(t("home:cta")).forEach((key) => {
 <Section alt name="cta" title={`${t("home:cta.title")}`}>
    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       {ctaCards.map((item) => (
-         <><Card client:idle block hover active>
+         <><a class="unstyled" href={item.link}><Card client:idle block hover active>
             <div slot="title" class="flex items-center justify-start gap-3">
                <Svg animIcon={item.icon} size={48} />
                <Title h3 size="xs" class="pt-2">
@@ -32,7 +33,7 @@ Object.keys(t("home:cta")).forEach((key) => {
                </Title>
             </div>
             {item.subtitle}
-         </Card></>
+         </Card></a></>
       ))}
    </div>
 </Section>
