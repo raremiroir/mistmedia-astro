@@ -4,6 +4,8 @@ import Section from "@/components/Core/Section/Section.astro";
 import Hero from "@/components/Common/Hero/Hero.astro";
 import AuthLayer from "@/layouts/AuthLayer.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import MainPanel from "@/components/Pages/Admin/Panels/MainPanel.svelte";
+import Button from "@/components/Common/Button/Button.svelte";
 
 ---
 
@@ -11,12 +13,22 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
    <Page>
       <Hero title="Admin Panel" />
       <AuthLayer>
-         
-         <Section name="panel">
-            Welcome!
-         </Section>
-
-
+         <div class="flex flex-col gap-2 bg-inherit">
+            <div class="">
+               <Button
+                  client:load
+                  icon="" size="md"
+                  color="error" variant="ghost"
+               >
+                  Sign out
+               </Button>
+            </div>
+            <Section name="panel">
+               
+               <MainPanel client:load />
+   
+            </Section>
+         </div>
       </AuthLayer>
    </Page>
 </BaseLayout>
