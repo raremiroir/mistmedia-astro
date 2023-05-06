@@ -1,6 +1,5 @@
 <script lang="ts" context="module">
-   const siteUrl = import.meta.env.PUBLIC_SITE_URL;
-
+   const siteUrl = import.meta.env.SITE_URL;
    export const validateTurnstile = async (turnstile_response:any) => {
 
       const turnstileData = JSON.stringify({ turnstile_response });
@@ -25,11 +24,11 @@
 
 <script lang="ts">
    // Import the environment variables
-   const siteUrl = import.meta.env.PUBLIC_SITE_URL;
-   const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+   const siteUrl = import.meta.env.SITE_URL;
+   const turnstileSiteKey = import.meta.env.PUBLIC_TS_SITEKEY;
 
    // Import types
-   import type { ChosenInputs } from '@/types/components/form';
+   import type { FormProps } from '@/types/components/form';
 
    // Import components
    import Alert          from '@/components/Utils/Alert/Alert.svelte';
@@ -45,14 +44,15 @@
    import { createForm } from 'svelte-forms-lib'
    // Import i18n
    import i18next, { t } from 'i18next';
+   import { getYupObject } from '@/lib/yup/schemas';
 
    /* ~~-~~ ~- -~ ~~-~~ */
    /* ~~-~~ PROPS ~~-~~ */
    /* ~~-~~ ~- -~ ~~-~~ */
-   export let extraSuccess = true;     // Extra prop for adding success condition from outside
-   $: extraSuccess;
+   // export let extraSuccess = true;     // Extra prop for adding success condition from outside
 
    let success = false;
+   $: success;
 
    export let title:string = 'Form Title';
    export let submitText:string = 'Submit';
@@ -60,35 +60,22 @@
    export let submitAction = async (values:any) => {
       console.log(values);
    }
-   export let inputItems: ChosenInputs = {
-      name: { enabled: true, required: true },
-      email: { enabled: true, required: true },
-      phone: { enabled: true, required: false },
-      organisation: { enabled: true, required: false },
-      subject: { enabled: true, required: true },
-      message: { enabled: true, required: true, rows: 6 },
-      turnstile_response: { enabled: true, required: true },
-      accept_terms: { enabled: true, required: true },
-      password: { enabled: false, required: true },
+   export let inputItems: FormProps = {
+      name: { required: true, first_name: '', last_name: '' },
+      email: { required: true, label: '' },
+      phone: { required: false, label: '' },
+      organisation: { required: false, label: '' },
+      subject: { required: true, label: '' },
+      message: { required: true, label: '' },
+      turnstile_response: { required: true, label: '' },
+      accept_terms: { required: true, label: '' },
+      password: { required: true, label: '' },
    }
    $: inputItems
 
 
    // TRANSLATIONS
-   export let translations = {
-      name: {
-         first_name: 'First Name',
-         last_name: 'Last Name',
-      },
-      email: 'Email',
-      phone: 'Phone',
-      organisation: 'Organisation',
-      job: 'Job Title',
-      subject: 'Subject',
-      message: 'Message',
-      accept_terms: 'Accept Terms',
-      turnstile_response: 'Turnstile Response',
-      password: 'Password',
+   export let translation = {
       validation: {
          required: 'is required',
          only_alpha: 'can only contain letters',
@@ -115,7 +102,7 @@
          button: 'Send another message?',
       }
    }
-   $: translations;
+   $: translation;
 
    /* ~~-~~ ~-~~ ~ ~~-~ ~~-~~ */
    /* ~~-~~ DEFINE FORM ~~-~~ */
@@ -127,136 +114,63 @@
    let requiredValues:any = [];
 
    // Name validation schema
-   if (inputItems.name?.enabled) {
-      formValues.first_name = yup.string()
-         .required(`${translations.name.first_name} ${translations.validation.required}`)
-         .matches(/^[A-Za-z]+(?:['-][A-Za-z]+)*$/, `${translations.name.first_name} ${translations.validation.only_alpha}`)
-         .min(2, `${translations.name.first_name} ${translations.validation.field_too_short}`)
-         .max(50, `${translations.name.first_name} ${translations.validation.field_too_long}`);
-      formValues.last_name = yup.string()
-         .required(`${translations.name.last_name} ${translations.validation.required}`)
-         .matches(/^[A-Za-z]+(?:['-][A-Za-z]+)*$/, `${translations.name.last_name} ${translations.validation.only_alpha}`)
-         .min(2, `${translations.name.last_name} ${translations.validation.field_too_short}`)
-         .max(50, `${translations.name.last_name} ${translations.validation.field_too_long}`);
-      
+   if (!!inputItems.name) {
       initValues.first_name = '';
       initValues.last_name = '';
       requiredValues.push('first_name', 'last_name');
    }
    // Email validation schema
-   if (inputItems.email?.enabled) {
-      formValues.email = yup.string()
-        .required(`${translations.email} ${translations.validation.required}`)
-        .email(`${translations.validation.email_error}`);
-      
+   if (!!inputItems.email) {
       initValues.email = '';
       requiredValues.push('email');
    }
    // Phone validation schema
-   if (inputItems.phone?.enabled) {
-      formValues.phone = yup.string()
-         .matches(/^((\+|00)\d{1,3})?[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,4}|^$/, `${translations.validation.phone_error}`)
-      if (inputItems.phone?.required) {
-         formValues.phone = formValues.phone.required(`${translations.phone} ${translations.validation.required}`);
-         requiredValues.push('phone');
-      } else {
-         formValues.phone = formValues.phone.optional();
-      }
-      initValues.phon = '';
+   if (!!inputItems.phone) {
+      if (inputItems.phone?.required) requiredValues.push('phone');
+      initValues.phone = '';
    }
    // Organisation validation schema
-   if (inputItems.organisation?.enabled) {
-      formValues.organisation = yup.string()
-         .max(50, `${translations.organisation} ${translations.validation.field_too_long}`);
-      if (inputItems.organisation.required) {
-         formValues.organisation = formValues.organisation
-            .min(2, `${translations.organisation} ${translations.validation.field_too_short}`)
-            .required(`${translations.organisation} ${translations.validation.required}`)
-         requiredValues.push('organisation');
-      } else {
-         formValues.organisation = formValues.organisation.optional();
-      }
+   if (!!inputItems.organisation) {
+      if (inputItems.organisation.required) requiredValues.push('organisation');
       initValues.organisation = '';
    }
    // Job Title validation schema
-   if (inputItems.job?.enabled) {
-      formValues.job = yup.string()
-         .max(50, `${translations.job} ${translations.validation.field_too_long}`);
-      if (inputItems.job.required) {
-         formValues.job = formValues.job
-            .min(2, `${translations.job} ${translations.validation.field_too_short}`)
-            .required(`${translations.job} ${translations.validation.required}`);
-         requiredValues.push('job');
-      } else {
-         formValues.job = formValues.job.optional();
-      }
+   if (!!inputItems.job) {
+      if (inputItems.job.required) requiredValues.push('job');
       initValues.job = '';
    }
    // Subject validation schema
-   if (inputItems.subject?.enabled) {
-      formValues.subject = yup.string()
-         .min(4, `${translations.subject} ${translations.validation.field_too_short}`)
-         .max(50, `${translations.subject} ${translations.validation.field_too_long}`);
-      if (inputItems.subject?.required) {
-         formValues.subject = formValues.subject.required(`${translations.subject} ${translations.validation.required}`);
-         requiredValues.push('subject');
-      } else {
-         formValues.subject = formValues.subject.optional();
-      }
-      
+   if (!!inputItems.subject) {
+      if (inputItems.subject.required) requiredValues.push('subject');
       initValues.subject = '';
    }
    // Message validation schema
-   if (inputItems.message?.enabled) {
-      formValues.message = yup.string()
-         .min(5, `${translations.message} ${translations.validation.field_too_short}`)
-         .max(1000, `${translations.message} ${translations.validation.field_too_long}`);
-      if (inputItems.message?.required) {
-         formValues.message = formValues.message.required(`${translations.message} ${translations.validation.required}`);
-         requiredValues.push('message');
-      } else {
-         formValues.message = formValues.message.optional();
-      }
-      
+   if (!!inputItems.message) {
+      if (inputItems.message.required) requiredValues.push('message');
       initValues.message = '';
    }
-
    // Password validation schema
-   if (inputItems.password?.enabled) {
-      formValues.password = yup.string()
-         .min(3, `${translations.password} ${translations.validation.field_too_short}`);
-      initValues.password = '';
+   if (!!inputItems.password) {
       requiredValues.push('password');
+      initValues.password = '';
    }
-
    // Terms/conditions validation schema
-   if (inputItems.accept_terms?.enabled) {
-      formValues.accept_terms = yup.boolean()
-         .oneOf([true], `${translations.validation.terms_error}`);
-      initValues.accept_terms = false;
+   if (!!inputItems.accept_terms) {
       requiredValues.push('accept_terms');
+      initValues.accept_terms = false;
    }
 
    // Language validation schema
    // @ts-ignore
-   formValues.language = yup.string().oneOf(['nl', 'fr', 'en']).default(() => i18next.language).required();
+   formValues.language = yup.string().oneOf(i18next.languages).default(() => i18next.language).required();
    initValues.language = i18next.language;
    $: $form.language = i18next.language;
 
    // Captcha validation schema
-   if (inputItems.turnstile_response?.enabled) {
-      formValues.turnstile_response = yup.string()
-         .matches(/^.*\S.*$/, `${translations.validation.turnstile_error}`);
-      initValues.turnstile_response = "";
-   }
+   if (inputItems.turnstile_response) initValues.turnstile_response = "";
 
    // Define the form schema
-   let validationSchema = yup.object().shape({});
-   Object.keys(formValues).forEach((key) => {
-      validationSchema = validationSchema.shape({
-         [key]: formValues[key]
-      });
-   })
+   let validationSchema = getYupObject(inputItems, translation.validation);
    validationSchema = validationSchema.shape({ language: formValues.language });
 
    // Form creation
@@ -268,18 +182,14 @@
       initialValues: initValues,
       validationSchema: validationSchema,
       onSubmit: async (values) => {
-         try {
-            const res = await validateTurnstile(values.turnstile_response);
+         await validateTurnstile(values.turnstile_response).then(res => {
             if (res) {
-               await submitAction(values);
+               submitAction(values);
                success = true;
-            } else {
-               success = false;
             }
-         } catch (error) {
-            console.log(error);
-            success = false;
-         }
+         }).catch(err => {
+            console.log(err);
+         })
       }
    })
 
@@ -293,29 +203,29 @@
 
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-</svelte:head>
+</svelte:head> -->
 
 <div class="my-2">
-   {#if success && extraSuccess}
-   
-      <div class="w-full" transition:fade|local={{ duration: 200 }}>
+   {#if success}
+
+      <div class="w-full" transition:fade={{ duration: 200 }}>
          <div 
             class="w-fit h-fit mx-auto my-0 p-0"
             on:click={() => resetForm()}
             on:keydown={(e) => { if (e.key === 'Enter' || e.key === 'Space') resetForm() }}>
-               <slot name="success">
-                  <Alert title="{translations.alert.title}" icon="mdi:email-sent">
-                     {translations.alert.message}
-                     <Button slot="actions" color="success" variant="fill">
-                        <span class="capitalize">{translations.alert.button}</span>
-                     </Button>
-                  </Alert>
-               </slot>
+            <Alert compact visible title="{translation.alert.title}" icon="mdi:email-sent">
+               {translation.alert.message}
+               <Button slot="actions" color="success" variant="fill">
+                  <span class="capitalize">{translation.alert.button}</span>
+               </Button>
+            </Alert>
          </div>
       </div>
-   {:else}
+   {:else if $isSubmitting}
+      Submitting...
+   {:else if !success && !$isSubmitting}
       <form 
          method="POST"
          novalidate {title} aria-label={title}
@@ -325,26 +235,26 @@
       >
    
          <!-- Name -->
-         {#if inputItems.name?.enabled}
+         {#if !!inputItems.name}
             <FormRow>
                <!-- First -->
                <Input 
                   name="first_name"
-                  label={translations.name.first_name}
+                  label={inputItems.name.first_name}
                   bind:value={$form.first_name}
                   bind:errors={$errors.first_name}
                   onChange={handleChange}
-                  placeholder={translations.placeholder.first_name}
+                  placeholder={translation.placeholder.first_name}
                   required={inputItems.name?.required}
                />
                <!-- Last -->
                <Input 
                   name="last_name"
-                  label={translations.name.last_name}
+                  label={inputItems.name.last_name}
                   bind:value={$form.last_name}
                   bind:errors={$errors.last_name}
                   onChange={handleChange}
-                  placeholder={translations.placeholder.last_name}
+                  placeholder={translation.placeholder.last_name}
                   required={inputItems.name?.required}
                />
             </FormRow>
@@ -356,22 +266,22 @@
                {#if inputItems.email}
                   <Input 
                      name="email" type="email"
-                     label={translations.email}
+                     label={inputItems.email.label}
                      bind:value={$form.email}
                      bind:errors={$errors.email}
                      onChange={handleChange}
-                     placeholder={translations.placeholder.email}
+                     placeholder={translation.placeholder.email}
                      required={inputItems.email.required}
                   />
                {/if}
                {#if inputItems.phone}
                   <Input 
                      name="phone"
-                     label={translations.phone}
+                     label={inputItems.phone.label}
                      bind:value={$form.phone}
                      bind:errors={$errors.phone}
                      onChange={handleChange}
-                     placeholder={translations.placeholder.phone}
+                     placeholder={translation.placeholder.phone}
                      required={inputItems.phone.required}
                   />
                {/if}
@@ -383,7 +293,7 @@
             <FormRow>
                <Input 
                   name="password" type="password"
-                  label={translations.password}
+                  label={inputItems.password.label}
                   bind:value={$form.password}
                   bind:errors={$errors.password}
                   onChange={handleChange}
@@ -399,22 +309,22 @@
                {#if inputItems.organisation}
                   <Input 
                      name="organisation"
-                     label={translations.organisation}
+                     label={inputItems.organisation.label}
                      bind:value={$form.organisation}
                      bind:errors={$errors.organisation}
                      onChange={handleChange}
-                     placeholder={translations.placeholder.organisation}
+                     placeholder={translation.placeholder.organisation}
                      required={inputItems.organisation.required}
                   />
                {/if}
                {#if inputItems.job}
                   <Input 
                      name="job"
-                     label={translations.job}
+                     label={inputItems.job.label}
                      bind:value={$form.job}
                      bind:errors={$errors.job}
                      onChange={handleChange}
-                     placeholder={translations.placeholder.job}
+                     placeholder={translation.placeholder.job}
                      required={inputItems.job.required}
                   />
                {/if}
@@ -426,11 +336,11 @@
             <FormRow>
                <Input 
                   name="subject"
-                  label={translations.subject}
+                  label={inputItems.subject.label}
                   bind:value={$form.subject}
                   bind:errors={$errors.subject}
                   onChange={handleChange}
-                  placeholder={translations.placeholder.subject}
+                  placeholder={translation.placeholder.subject}
                   required={inputItems.subject.required}
                />
             </FormRow>
@@ -441,11 +351,11 @@
                <Input 
                   name="message" textarea noResize 
                   rows={inputItems.message.rows?? 8}
-                  label={translations.message}
+                  label={inputItems.message.label}
                   bind:value={$form.message}
                   bind:errors={$errors.message}
                   onChange={handleChange}
-                  placeholder={translations.placeholder.message}
+                  placeholder={translation.placeholder.message}
                   required={inputItems.message.required}
                />
             </FormRow>
@@ -469,7 +379,7 @@
                bind:errors={$errors.turnstile_response} 
                bind:turnstileResponse={$form.turnstile_response} />
          </FormRow>
-         <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="compact" />
+         <!-- <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-size="compact" /> -->
    
          <!-- Errors -->
          <slot name="errors" />
