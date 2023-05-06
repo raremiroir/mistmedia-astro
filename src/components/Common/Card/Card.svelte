@@ -49,6 +49,7 @@
    export let contentClass: string = '';
    export let innerContentClass: string = '';
    export let titleClass: string = '';
+   export let bodyClass: string = '';
 
    const cardStyle = boxGen.full({
       variant: variant,
@@ -138,7 +139,7 @@
                            { article ? noClamp ? '' : 'line-clamp-4' : ''} {transition}
                            text-surface-900 dark:text-surface-50
                            group-hover:text-black dark:group-hover:text-white
-                           font-medium dark:font-normal">
+                           font-medium dark:font-normal {bodyClass}">
                      <slot/>
                   </section>
                {/if}
