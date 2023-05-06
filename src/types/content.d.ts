@@ -16,3 +16,15 @@ export interface MistPortfolioItem extends MistPortfolioBase {
 export interface MistPortfolioTag extends MistPortfolioBase {
    color: string;
 }
+
+// ====================================================
+
+export interface MistCase {
+   title: string;
+   description: LocaleString|string;
+   images: {
+      card: string;
+      website?: string;
+   }
+   enabled: boolean;
+}
