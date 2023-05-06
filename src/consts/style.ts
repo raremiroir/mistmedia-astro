@@ -33,11 +33,11 @@ export const cForm = {
             flex         : 'flex items-start',
             
             inputBase    : 'input peer',
-            placeholder  : 'placeholder:text-transparent focus:placeholder:text-surface-600 dark:focus:placeholder:text-surface-400 placeholder:italic',
-            text         : "text-bold text-black dark:text-white",
+            placeholder  : 'placeholder:!text-transparent focus:placeholder:text-surface-600 dark:focus:placeholder:text-surface-400 placeholder:italic',
+            text         : "text-bold !text-surface-900 dark:!text-surface-50 autofill:!text-primary-900 dark:autofill:!text-primary-100 ",
             
             labelBase    : 'leading-none',
-            labelBg      : `bg-transparent 
+            labelBg      : `bg-transparent rounded-lg
                              peer-focus:bg-gradient-to-b peer-focus:from-transparent peer-focus:via-surface-300 peer-focus:to-surface-300
                              dark:peer-focus:from-transparent dark:peer-focus:via-surface-700 dark:peer-focus:to-surface-700`,
             labelActiveBg: `bg-gradient-to-b from-transparent to-surface-300 
