@@ -317,6 +317,7 @@
       </div>
    {:else}
       <form 
+         method="POST"
          novalidate {title} aria-label={title}
          transition:fade|local={{duration: 200}}
          on:submit={handleSubmit}
