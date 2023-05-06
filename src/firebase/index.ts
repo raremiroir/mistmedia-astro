@@ -47,6 +47,11 @@ export const db = {
             if (docSnapshot.exists()) { return docSnapshot.data(); }
             else { console.error("🔥 No such document in Firestore Database!"); return null; }
          },
+         fromRefArray: async (docRefArray: DocumentReference[]) => {
+            const docSnapshotArray = await Promise.all(docRefArray.map(docRef => getDoc(docRef)));
+            const docDataArray = docSnapshotArray.map(docSnapshot => docSnapshot.data());
+            return docDataArray;
+         },
          all: async (options: DbFetchProps) => {
             let orderByProp = options.orderBy?? 'id';
             let orderDirectionProp = options.orderDirection?? 'asc';
@@ -169,8 +174,12 @@ export const db = {
             const errorMessage = error.message;
             console.error(`🔥 ${errorCode}: ${errorMessage}`);
          });
-         userStore.set(dbAuth.currentUser);
          setPersistence(dbAuth, browserSessionPersistence);
+         userStore.set(dbAuth.currentUser);
+
+         const tokenCurrentlySet = localStorage.getItem('token');
+         const token = await dbAuth.currentUser?.getIdToken();
+         if (tokenCurrentlySet !== token) { localStorage.setItem('token', token!); }
       },
       signOut: async () => {
          userStore.set(null);
