@@ -1,3 +1,5 @@
+import type { Locales } from "..";
+
 // Turnstile
 export interface TokenValidateResponse {
    'error-codes': string[];
@@ -17,46 +19,55 @@ export interface SendEmailProps {
 }
 
 // Input types
-export type InputItem = {
-   enabled: boolean;
-   disabled?: boolean;
-   placeholder?: string;
+export interface FormItem {
    required?: boolean;
+   label: string;
+   placeholder?: LocaleString;
+   disabled?: boolean;
 }
-export type InputItems = InputItem[];
+export type FormItems = FormItem[];
 
-export type TextareaItem = InputItem & {
+export type TextareaItem = FormItem & {
    rows?: number;
 }
-export type SelectItem = InputItem & {
+export type SelectItem = FormItem & {
    options: string[];
 }
 
-// Chosen form inputs
-export type ChosenInputs = {
-   name?: InputItem;
-   email?: InputItem;
-   phone?: InputItem;
-   password?: InputItem;
+export interface FormProps {
+   [key: string]: any;
+   name?: {
+      required?: boolean;
+      first_name: string;
+      last_name: string;
+   },
+   email?: FormItem;
+   phone?: FormItem;
 
-   organisation?: InputItem;
-   job?: InputItem;
+   organisation?: FormItem;
+   job?: FormItem;
+   
+   subject?: FormItem;
+   message?: {
+      required?: boolean;
+      label: string;
+      placeholder?: LocaleString;
+      disabled?: boolean;
+      rows?: number;
+   };
+   
+   turnstile_response?: FormItem;
+   accept_terms?: FormItem;
+   password?: FormItem;
+}
+export interface FormSchemaProps extends FormProps {
+   locale: Locales;
+}
 
-   subject?: InputItem;
-   message?: TextareaItem;
-   file?: InputItem;
-
-   address?: InputItem;
-   city?: InputItem;
-   state?: InputItem;
-   zip?: InputItem;
-   country?: SelectItem;
-
-   date?: InputItem;
-   time?: InputItem;
-   text?: InputItem;
-   number?: InputItem;
-
-   turnstile_response?: InputItem;
-   accept_terms?: InputItem;
+export type DropZone = {
+   accept?: string[];
+   multiple?: boolean;
+   maxFiles?: number;
+   maxSize?: number;
+   onDrop?: (files: FileList) => void;
 }
