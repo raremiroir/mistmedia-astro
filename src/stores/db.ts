@@ -20,7 +20,7 @@ const app = initializeApp({
 }, 'app');
 
 export const dbApp: FirebaseApp = !!getApps() ? getApp('app') : app;
-console.log(dbApp);
+// console.log(dbApp);
 export const dbAuth: Auth = getAuth(dbApp);
 export const dbFirestore: Firestore = getFirestore(dbApp);
 export const dbStorage: FirebaseStorage = getStorage(dbApp);

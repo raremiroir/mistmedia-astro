@@ -27,7 +27,6 @@
       let interval = setInterval(function(){
             if (otherPercent === percentage) {clearInterval(interval)}
             else {otherPercent += 1}
-            console.log(otherPercent);
          }, speed)
    }
 
