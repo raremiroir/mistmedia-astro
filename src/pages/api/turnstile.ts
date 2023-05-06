@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-const priv_key = import.meta.env.TURNSTILE_SECRETKEY;
+const priv_key = import.meta.env.TS_SECRET_KEY;
 import type { TokenValidateResponse, TurnstileVersion } from "@/types/components/form";
 import { turnstile as dummyKeys } from "@/consts/dummy";
 
@@ -43,7 +43,7 @@ export const post: APIRoute = async ({ request }) => {
          { status: 200 }
       )
    } catch (err) {
-      console.log('Captcha is invalid') // error
+      console.log('Captcha is invalid: ', err) // error
 
       return new Response(
          JSON.stringify({ message: 'Captcha is invalid', err }),

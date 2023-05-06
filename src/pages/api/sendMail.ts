@@ -2,9 +2,9 @@ import type { APIRoute } from "astro";
 
 import Mailgun from "mailgun-js";
 
-const MAILGUN_API_KEY = import.meta.env.MAILGUN_API_KEY;
-const MAILGUN_DOMAIN = import.meta.env.MAILGUN_DOMAIN;
-const MAILGUN_BASE_URL = import.meta.env.MAILGUN_BASE_URL;
+const MAILGUN_API_KEY = import.meta.env.MG_API_KEY;
+const MAILGUN_DOMAIN = import.meta.env.MG_DOMAIN;
+const MAILGUN_BASE_URL = import.meta.env.MG_BASE_URL;
 
 const mailgun = new Mailgun({
    apiKey: MAILGUN_API_KEY,

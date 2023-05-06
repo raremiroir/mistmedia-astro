@@ -6,7 +6,7 @@
    import ValidationError from '../Utils/ValidationError.svelte';
    
 
-   const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
+   const sitekey = import.meta.env.PUBLIC_TS_SITEKEY;
    import { turnstile as dummyKeys } from '@/consts/dummy';
    const key = dummyKeys.public.pass; // sitekey in production
 
