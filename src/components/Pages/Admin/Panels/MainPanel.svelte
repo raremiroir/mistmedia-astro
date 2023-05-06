@@ -4,7 +4,10 @@
    import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
    import { slide } from 'svelte/transition';
    let openedPanel: 'cases'|'blog' = 'cases';
-   import { locale } from '@/stores';
+   import { currentModal, currentModalItem, locale } from '@/stores';
+   import CaseCard from '../Cards/CaseCard.svelte';
+   import Modal from '@/components/Common/Modal/Modal.svelte';
+   import CaseDetail from '../Cards/CaseDetail.svelte';
 
 
    // CASES
@@ -29,6 +32,7 @@
 
    <div class="col-span-3">
       {#if openedPanel === 'cases'}
+
       <!-- <AdminCasesPanel /> -->
          <div class="flex flex-col gap-2" transition:slide={{axis: 'y', duration: 200}}>
             <span class="font-titlemono text-title-sm font-semibold underline">Cases</span>
@@ -37,35 +41,30 @@
             {:then cases}
                <div class="w-full flex flex-col gap-4" transition:slide={{axis: 'y', duration: 200}}>
                   {#each cases as item}
-                     <Card
-                        color="surface_dark"
-                        variant="ghost"
-                        block
-                        direction="row"
-                        media="custom"
-                        fillHeight
-                        mediaClass="w-1/3 h-50"
-                        contentClass="w-2/3"
-                     >
-                        <div slot="media" class="h-full w-full flex items-center justify-start">
-                           <img src={item.images.card} alt="" class="w-auto m-0 p-0 h-full object-cover" />
-                        </div>
-                        <div slot="title" class="w-full flex items-center justify-between">
-                           <span class="font-titlemono text-title-xs font-semibold underline">{item.title}</span>
-                           <div class="flex-end { item.enabled ? 'bg-success-900' : 'bg-error-900' } text-surface-50 px-1 rounded-md py-0">
-                              <span class="unstyled text-sm uppercase font-medium font-titlemono tracking-wide">
-                                 {#if item.enabled}Enabled{:else}Disabled{/if}
-                              </span>
-                           </div>
-                        </div>
-                        <p class="line-clamp-3">
-                           { typeof item.description === 'object' ? item.description[$locale] : item.description}
-                        </p>
-                     </Card>
+                     <CaseCard 
+                        images={item.images} bind:title={item.title}
+                        enabled={item.enabled} description={item.description}
+                     />
                   {/each}
+                  <Modal 
+                     noTrigger
+                     components={{
+                        caseDetail: {
+                           ref: CaseDetail,
+                           props: { item: {
+                              title: $currentModalItem.title,
+                              description: $currentModalItem.description,
+                              // images: $currentModalItem.images
+                           } },
+                           slot: ``
+                        }
+                     }}
+                     bind:component={$currentModal}
+                  />
                </div>
             {/await}
          </div>
+
       {:else if openedPanel === 'blog'}
          <!-- <AdminBlogPanel /> -->
          Blog
