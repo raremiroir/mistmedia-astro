@@ -4,11 +4,8 @@ import { ICONS } from "@const/index";
 import { gaps, classes } from "@/consts/style";
 // Astro components
 import Section 		from "@/components/Core/Section/Section.astro";
-import Icon 			from "astro-icon";
 // Svelte components
-import Card 			from "@/components/Common/Card/Card.svelte";
 import Drawer 			from "@/components/Common/Drawer/Drawer.svelte";
-import Title from "@/components/Text/Title/Title.svelte";
 // Import feature sidebar components
 import WebFeatResponsive from "@/components/Pages/Solutions/Web/Features/WebFeatResponsive.astro";
 import SolutionLayout from "@/layouts/SolutionLayout.astro";
@@ -85,6 +82,8 @@ features.forEach((feature) => {
 								title={item.title}
 								image={item.images.card}
 								description={item.description[lang]}
+								categories={item.categories}
+								tags={[]}
 							/>
 						</div>
 						<span slot="title">{item.title}</span>

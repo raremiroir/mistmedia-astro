@@ -6,16 +6,28 @@ import AuthLayer from "@/layouts/AuthLayer.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import MainPanel from "@/components/Pages/Admin/Panels/MainPanel.svelte";
 import Button from "@/components/Common/Button/Button.svelte";
-
+import { widths } from "@/consts/style";
 ---
+
+<script>
+import db from "@/firebase";
+
+   const signOutBtn = document.getElementById("sign-out-btn");
+   signOutBtn?.addEventListener("click", () => {
+      // localStorage.removeItem("token");
+      db.auth.signOut();
+      window.location.href = "/";
+   });
+</script>
 
 <BaseLayout title="admin">
    <Page>
       <Hero title="Admin Panel" />
       <AuthLayer>
-         <div class="flex flex-col gap-2 bg-inherit">
-            <div class="">
+         <div class="flex flex-col gap-2 bg-inherit bg-white dark:bg-slate-900">
+            <div class={`${widths} flex justify-end `}>
                <Button
+                  id="sign-out-btn"
                   client:load
                   icon="" size="md"
                   color="error" variant="ghost"

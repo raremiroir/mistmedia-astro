@@ -18,38 +18,6 @@ import Drawer from '@/components/Common/Drawer/Drawer.svelte';
 
 const lang = "nl";
 const cases = await db.doc.fetch.collection('portfolio');
-console.log(cases);
-
-
-const casesCards = [
-   {
-      href: '/',
-      label: 'Get to know more about this project',
-      title: 'Trixolutions LMS',
-      tags: ['Client', 'Web Design', 'Web Development', 'Web Management'],
-      imgSrc: '/images/stock/code-1.webp',
-      imgAlt: 'Placeholder Card Image',
-      content: 'As Trixolutions upgraded from an exclusively physical service to a hybrid online learning trajectory, they were in need of an easy-to-manage, yet scalable platform to invite their participants on and manage their education from there. We came up with the Trixolutions Hybrid Teamcoaching Trajectory, and created an online Learning Management System so their students could get a large part of the learning experience from behind their computers and smartphones.'
-   },
-   {
-      href: '/',
-      label: 'Get to know more about this project',
-      title: 'Trixolutions LMS',
-      tags: ['Client', 'Web Design', 'Web Development', 'Web Management'],
-      imgSrc: '/images/stock/code-1.webp',
-      imgAlt: 'Placeholder Card Image',
-      content: 'With the expansion of Trixolutions to the Netherlands, a new site was needed. As the offer of services varies from country to country, we couldn’t just attach this part to the .be-website. Trixolutions.nl was created, and the Hybrid Learning Management System is also available in the Netherlands now.'
-   },
-   {
-      href: '/',
-      label: 'Get to know more about this project',
-      title: 'Trixolutions LMS',
-      tags: ['Client', 'Web Design', 'Web Development', 'Web Management'],
-      imgSrc: '/images/stock/code-1.webp',
-      imgAlt: 'Placeholder Card Image',
-      content: 'With the expansion of Trixolutions to the Netherlands, a new site was needed. As the offer of services varies from country to country, we couldn’t just attach this part to the .be-website. Trixolutions.nl was created, and the Hybrid Learning Management System is also available in the Netherlands now.'
-   },
-]
 
 export const prerender = true;
 ---
@@ -63,17 +31,19 @@ export const prerender = true;
 		</Hero>
 
    <Section name="trixolutions-cases" title="">
-      <ul class={`w-full grid ${gaps} grid-cols-3 grid-rows-[repeat(7,_minmax(0,_1fr))] min-h-[900px]`}>
+      <ul class={`w-full grid ${gaps} grid-cols-2 min-h-[900px]`}>
 
-         { cases.map((item) => (
+         { cases.map( (item) => (
             item.enabled && (
-               <><div class={` col-span-1 row-span-3 `}>
-                  <Drawer client:idle placement="right">
+               <><div class={` col-span-1 `}>
+                  <Drawer client:load placement="right">
                      <div slot="trigger" class="h-full w-full">
                         <SolutionPortfolioCard
                            title={item.title}
                            image={item.images.card}
                            description={item.description[lang]}
+                           categories={ item.categories }
+                           tags={[]}
                         />
                      </div>
                      <span slot="title">{item.title}</span>
