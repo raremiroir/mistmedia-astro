@@ -1,36 +1,47 @@
 <script lang="ts">
    import { t } from "i18next";
    
-	import type { ChosenInputs } from "@/types/components/form";
+	import type { FormProps } from "@/types/components/form";
    import FormBase from "@/components/Form/FormBase.svelte";
 
    import { mailToAdmin } from "@/utils/mail";
 
-   let inputItems: ChosenInputs = {
-      name: { enabled: true, required: true, },
-      email: { enabled: true, required: true, },
-      organisation: { enabled: true, required: false, },
-      subject: { enabled: true, required: true, },
-      message: { enabled: true, required: true, rows: 6, },
-      accept_terms: { enabled: true, required: true },
-      turnstile_response: { enabled: true, required: true },
-   }
-
-
-   $: translations = {
-      name: {
+   let inputItems: FormProps = {
+      name: { 
+         required: true, 
          first_name: t('form.input.first_name'),
          last_name: t('form.input.last_name'),
       },
-      email: t('form.input.email'),
-      phone: t('form.input.phone'),
-      organisation: t('form.input.organisation'),
-      job: t('form.input.job'),
-      subject: t('form.input.subject'),
-      message: t('form.input.message'),
-      accept_terms: t('form.accept_terms'),
-      turnstile_response: t('form.turnstile_response'),
-      password: '',
+      email: { 
+         required: true, 
+         label: t('form.input.email'),
+      },
+      organisation: { 
+         required: false, 
+         label: t('form.input.organisation'),
+      },
+      subject: { 
+         required: true, 
+         label: t('form.input.subject'),
+      },
+      message: { 
+         required: true, 
+         label: t('form.input.message'),
+         rows: 6, 
+      },
+      accept_terms: { 
+         required: true,
+         label: t('form.accept_terms'),
+      },
+      turnstile_response: { 
+         required: true,
+         label: t('form.turnstile_response'),
+      },
+   }
+</script>
+
+<FormBase 
+   translation={{
       validation: {
          required: t('form.validation.required'),
          only_alpha: t('form.validation.only_alpha'),
@@ -56,17 +67,14 @@
          message: t('form.input.submit.send.message'),
          button: t('form.input.submit.send.another_message'),
       }
-   } 
-</script>
+   }}
 
-<FormBase 
-   {translations}
-   {inputItems}
+   inputItems={inputItems}
    title={`${t("contact.cta")}`}
    submitText={`${t("form.input.submit.default")}`}
-   submitAction={(values) => {
 
-      const subject = `Trixolutions.be: Nieuw bericht van ${values.first_name} ${values.last_name} - ${values.subject}`;
+   submitAction={async (values) => {
+      const subject = `Mistmedia.be: Nieuw bericht van ${values.first_name} ${values.last_name} - ${values.subject}`;
       const message = `
          <b><i>Nieuw bericht van:</i></b><br/>
          Voornaam: <b>${values.first_name}</b><br/>
@@ -79,7 +87,7 @@
          <br/>
          <hr/>
          <i>
-            Dit bericht werd automatisch verzonden vanaf <a href="https://trixolutions.be">Trixolutions.be</a>.<br/>
+            Dit bericht werd automatisch verzonden vanaf <a href="https://mistmedia.be">Trixolutions.be</a>.<br/>
             Om te reageren op de verzender, dien je een aparte email naar zijn/haar e-mailadres te sturen.
          </i>`;
       // mailToAdmin({ subject, message });
