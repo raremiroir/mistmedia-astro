@@ -4,17 +4,11 @@
    import Section from "@/components/Core/Section/Section.astro";
    import { dbAuth, userStore } from "@/stores/db";
 
-   const auth = dbAuth;
-   auth.onIdTokenChanged(async (newUser: User | null) => {
+   dbAuth.onIdTokenChanged(async (newUser: User | null) => {
       const tokenCurrentlySet = Astro.cookies.has("token") ? Astro.cookies.get("token") : undefined;
       const token = newUser ? await newUser.getIdToken() : undefined;
-      if (!!newUser) {
-         Astro.cookies.delete('token');
-         Astro.cookies.set( "token", token ?? "", { 
-            path: "/",
-            maxAge: token ? 60 * 60 * 24 * 7 : 0, // 7 days
-            httpOnly: true,
-         });
+      if (!!newUser && token) {
+         localStorage.setItem('token', token)
          userStore.set(newUser);
       }
       // console.log(token);
@@ -24,8 +18,8 @@
 
    });
    setInterval( async () => {
-      if (auth.currentUser) {
-         await auth.currentUser.getIdToken(true);
+      if (dbAuth.currentUser) {
+         await dbAuth.currentUser.getIdToken(true);
       }
    }, 30 * 60 * 1000) // 30 minutes
 ---
