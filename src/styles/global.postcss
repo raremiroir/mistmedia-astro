@@ -37,7 +37,28 @@ input:-webkit-autofill:active {
    transition: background-color 5000s ease-in-out 0s;
 }
 
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #253341;
+  background: transparent;
+  -webkit-text-fill-color: rgba(var(--color-surface-400)) !important;
+  -webkit-box-shadow: 0 0 0px 1000px #253341 inset;
+  box-shadow: 0 0 0px 1000px #253341 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  color: rgba(var(--color-surface-900)) !important;
+}
+
+
 /* Drawer styles */
 .app .drawer .panel {
    box-shadow: 0 0 12px 8px #00000036;
 }
+

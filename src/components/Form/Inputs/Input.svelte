@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { DropZone } from "./form";
 	import Dropzone from "./Dropzone.svelte";
    import { cForm, cFormComplete, classes } from "@/consts/style";
    import Button from "@/components/Common/Button/Button.svelte";
    import Icon from "@/components/Media/Icon/Icon.svelte";
    import ValidationError from "../Utils/ValidationError.svelte";
+   import type { DropZone } from "@/types/components/form";
 
 
    export let value:any = '';
@@ -74,7 +74,7 @@
       
       {#if !textarea && !dropzone}
          <input  
-            class="{cFormComplete.inputClass}"
+            class="unstyled {cFormComplete.inputClass}"
             {...inputProps}
             bind:value
             on:blur on:focus
@@ -82,8 +82,9 @@
             on:change={onChange} />
       {:else if textarea}
          <textarea 
-            class="{cFormComplete.inputClass} {noResize ? 'resize-none' : ''}"
-            {...inputProps}
+            class="{cFormComplete.inputClass} {noResize ? 'resize-none' : ''} 
+                  !text-black dark:!text-white autofill:text-black dark:autofill:!text-white"
+            {...inputProps} 
             bind:value
             on:blur on:focus
             on:change={onChange} {rows}
@@ -117,7 +118,7 @@
    {/if}
    <!-- Errors -->
    {#if !required}
-      <span class="unstyled text-primary-800/80 italic whitespace-nowrap text-clamp-sm pr-1">(Optioneel)</span>
+      <span class="unstyled text-primary-800/80 dark:text-primary-300/80 italic whitespace-nowrap text-clamp-sm pr-1">(Optioneel)</span>
    {:else if errors}
       <ValidationError error={errors} />
    {/if}
