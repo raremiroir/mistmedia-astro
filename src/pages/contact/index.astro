@@ -17,7 +17,7 @@ export const prerender = true;
 <BaseLayout title={t('site:pages.contact.title')}>
    <script 
       slot="head" defer async
-	   src={`https://maps.googleapis.com/maps/api/js?key=${import.meta.env.GOOGLE_MAPS_API}&callback=initMap`}>
+	   src={`https://maps.googleapis.com/maps/api/js?key=${import.meta.env.G_MAPS_API}&callback=initMap`}>
 	</script>
    <Page>
       <div class="fixed inset-0 w-screen h-screen -z-2">
@@ -61,7 +61,7 @@ export const prerender = true;
             </Card>
             <!-- Card Right -->
             <Card 
-               client:load fillheight
+               fillheight
                color="surface"
                title={`${t("contact.cta")}!`} footer
                block hover capitalize>
