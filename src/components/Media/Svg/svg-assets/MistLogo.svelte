@@ -24,7 +24,7 @@
    xmlns="http://www.w3.org/2000/svg">
 
    <!-- Logo -->
-	<g class="{dark} mix-blend-difference">
+	<g class="{dark}">
       <!-- First pillar top -->
 		<path d="M40,53.3V156l-20.5,11.8L0,179V33h19.5v0c0.2,0,0.3,0,0.5,0c10.9,0,19.7,8.8,20,19.8C40,53,40,53.2,40,53.3z"/>
       <!-- Second pillar top -->

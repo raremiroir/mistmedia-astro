@@ -5,13 +5,18 @@
    import type { TabProps } from '@skeletonlabs/skeleton/dist/components/Tab/Tab.svelte';
 
    export let justify: string = 'justify-center w-full'
-   export let flex: TabProps['flex'] = 'flex flex-row';
+   export let flex: TabProps['flex'] = 'flex-1 lg:flex-none';
    export let spacing: TabProps['spacing'] = 'gap-8';
-   export let border: string = 'border-b-2 border-primary-500/60 text-primary-800 font-semibold uppercase font-titlemono tracking-wide';
-   export let rounded: TabProps['rounded'] = 'rounded-tl-container-token rounded-tr-container-token';
+   export let border: string = 'font-semibold uppercase font-titlemono tracking-wide';
+   export let rounded: TabProps['rounded'] = '';
    export let padding: TabProps['padding'] = 'p-4';
-   export let active: TabProps['active'] = 'bg-primary-500/60';
-   export let hover: TabProps['hover'] = 'hover:bg-primary-500/20';
+   export let bg: string = 'bg-surface-100-800-token';
+   export let active: TabProps['active'] = 'variant-filled-primary';
+   export let hover: TabProps['hover'] = 'hover:variant-soft-primary';
+   
+   let klass = '';
+   export { klass as class };
+   const tabClass = `w-full ${bg} ${klass}`
 
    export let tabs: MistTabs = {
       tab1: {
@@ -27,7 +32,7 @@
 
 
 <TabGroup
-   class="w-full"
+   class="{tabClass}"
    {justify} {border} {rounded} 
    {flex} {padding} {spacing}
    {active} {hover} 
