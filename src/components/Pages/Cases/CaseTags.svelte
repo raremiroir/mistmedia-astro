@@ -9,7 +9,7 @@
       enabled: boolean;
    }[] = [];
 
-   console.log(categories);
+   // console.log(categories);
 
    export let tags: string[] = [];
 </script>

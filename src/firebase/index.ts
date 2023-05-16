@@ -20,7 +20,7 @@ export const db = {
          },
          collection: async (collectionRef: string) => {
             const colRef = collection(dbFirestore, collectionRef);
-            console.log(colRef);
+            // console.log(colRef);
             const colSnapshot = await getDocs(colRef);
             const colList = colSnapshot.docs.map(doc => doc.data());
             return colList;
