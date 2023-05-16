@@ -1,31 +1,4 @@
-<script lang="ts" context="module">
-   const siteUrl = import.meta.env.SITE_URL;
-   export const validateTurnstile = async (turnstile_response:any) => {
-
-      const turnstileData = JSON.stringify({ turnstile_response });
-      let success = false;
-
-      await fetch ('/api/turnstile', {
-         method: 'POST',
-         body: turnstileData,
-         headers: {
-            'Content-Type': 'application/json',
-         }
-      }).then(res => {
-         success = true
-      }).catch(err => {
-         console.error(err);
-         success = false;
-      })
-
-      return success;
-   }
-</script>
-
 <script lang="ts">
-   // Import the environment variables
-   const siteUrl = import.meta.env.SITE_URL;
-   const turnstileSiteKey = import.meta.env.PUBLIC_TS_SITEKEY;
 
    // Import types
    import type { FormProps } from '@/types/components/form';
@@ -50,6 +23,25 @@
    /* ~~-~~ PROPS ~~-~~ */
    /* ~~-~~ ~- -~ ~~-~~ */
    // export let extraSuccess = true;     // Extra prop for adding success condition from outside
+
+   export const validateTurnstile = async (turnstile_response:any) => {
+
+      const turnstileData = JSON.stringify({ turnstile_response });
+      console.log(turnstileData);
+      let success = false;
+
+      await fetch ('/api/turnstile', {
+         method: 'POST',
+         body: turnstileData,
+      }).then(res => {
+         success = true
+      }).catch(err => {
+         console.error(err);
+         success = false;
+      })
+
+      return success;
+   }
 
    let success = false;
    $: success;
@@ -182,13 +174,14 @@
       initialValues: initValues,
       validationSchema: validationSchema,
       onSubmit: async (values) => {
-         await validateTurnstile(values.turnstile_response).then(res => {
+         await validateTurnstile(values.turnstile_response).then(async (res) => {
+            console.log('res', res);
             if (res) {
-               submitAction(values);
+               await submitAction(values);
                success = true;
             }
          }).catch(err => {
-            console.log(err);
+            console.error(err);
          })
       }
    })
@@ -200,6 +193,8 @@
       });
       success = false;
    }
+
+   // $: console.log($form);
 
 </script>
 
@@ -215,12 +210,14 @@
             class="w-fit h-fit mx-auto my-0 p-0"
             on:click={() => resetForm()}
             on:keydown={(e) => { if (e.key === 'Enter' || e.key === 'Space') resetForm() }}>
-            <Alert compact visible title="{translation.alert.title}" icon="mdi:email-sent">
-               {translation.alert.message}
-               <Button slot="actions" color="success" variant="fill">
-                  <span class="capitalize">{translation.alert.button}</span>
-               </Button>
-            </Alert>
+            <slot name="success">
+               <Alert compact visible title="{translation.alert.title}" icon="mdi:email-sent">
+                  {translation.alert.message}
+                  <Button slot="actions" color="success" variant="fill">
+                     <span class="capitalize">{translation.alert.button}</span>
+                  </Button>
+               </Alert>
+            </slot>
          </div>
       </div>
    {:else if $isSubmitting}
