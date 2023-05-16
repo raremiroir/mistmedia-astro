@@ -1,27 +1,11 @@
-// Import the functions you need from the SDKs you need
-import type { FirebaseApp } from "firebase/app";
-import { initializeApp } from "firebase/app";
 
-// Add SDKs for Firebase
-import type { Analytics } from "firebase/analytics";
-import { getAnalytics } from "firebase/analytics";
+import type { DocumentReference } from 'firebase/firestore';
+import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDocs, limit, orderBy, query, setDoc, startAfter, startAt, updateDoc, where } from 'firebase/firestore';
 
-import type { Auth } from 'firebase/auth';
-import { 
-   getAuth, 
-   setPersistence,
-   browserSessionPersistence,
-   signInWithEmailAndPassword,
-   signOut
-} from 'firebase/auth';
-
-import type { DocumentReference, Firestore } from 'firebase/firestore';
-import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDocs, getFirestore, limit, orderBy, query, setDoc, startAfter, startAt, updateDoc, where } from 'firebase/firestore';
-
-import { deleteObject, getMetadata, getStorage, list, listAll, ref, updateMetadata, uploadBytes } from 'firebase/storage';
-import type { FirebaseStorage, FullMetadata, SettableMetadata, StorageReference } from 'firebase/storage';
+import { deleteObject, getMetadata, ref, updateMetadata, uploadBytes } from 'firebase/storage';
+import type { SettableMetadata } from 'firebase/storage';
 import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps, DbUploadFileProps } from "./types";
-import { dbApp, dbAuth, dbFirestore, dbStorage, userStore } from "@/stores/db";
+import { dbFirestore, dbStorage } from "./client";
    
 export const db = {
    // DOCS
@@ -30,14 +14,13 @@ export const db = {
       fetch: {
          single: async (options: DbProps) => {
             const { collection, id } = options;
-            const firestore = dbFirestore;
-            const docSnapshot = await getDoc(doc( firestore, collection, id ))
+            const docSnapshot = await getDoc(doc( dbFirestore, collection, id ))
             if (docSnapshot.exists()) { return docSnapshot.data(); } 
             else { console.error("🔥 No such document in Firestore Database!"); return null; }
          },
          collection: async (collectionRef: string) => {
-            const firestore = dbFirestore;
-            const colRef = collection(firestore, collectionRef);
+            const colRef = collection(dbFirestore, collectionRef);
+            console.log(colRef);
             const colSnapshot = await getDocs(colRef);
             const colList = colSnapshot.docs.map(doc => doc.data());
             return colList;
@@ -62,8 +45,7 @@ export const db = {
             let endBeforeProp = options.endBefore?? '';
             let whereProp = options.where?? { field: '', operator: '==', value: '' };
             
-            const firestore = dbFirestore;
-            const colRef = collection(firestore, options.collection);
+            const colRef = collection(dbFirestore, options.collection);
             const q = query(
                colRef, 
                orderBy(orderByProp, orderDirectionProp), 
@@ -82,27 +64,23 @@ export const db = {
       // INSERT
       insert: async (options: DbInsertProps) => {
          const { collection, id, values } = options;
-         const firestore = dbFirestore;
-         await setDoc(doc(firestore, collection, id), values);
+         await setDoc(doc(dbFirestore, collection, id), values);
       },
       // DELETE
       delete: {
          single: async (options: DbProps) => {
             const { collection, id } = options;
-            const firestore = dbFirestore;
-            await deleteDoc(doc(firestore, collection, id));
+            await deleteDoc(doc(dbFirestore, collection, id));
          },
          soft: async (options: DbProps) => {
             const { collection, id } = options;
-            const firestore = dbFirestore;
-            await updateDoc(doc(firestore, collection, id), {
+            await updateDoc(doc(dbFirestore, collection, id), {
                deleted_at: Timestamp.fromDate(new Date())
             });
          },
          soft_undo: async (options: DbProps) => {
             const { collection, id } = options;
-            const firestore = dbFirestore;
-            await updateDoc(doc(firestore, collection, id), {
+            await updateDoc(doc(dbFirestore, collection, id), {
                deleted_at: null
             });
          }
@@ -110,14 +88,12 @@ export const db = {
       // UPDATE'
       update: async (options: DbInsertProps) => {
          const { collection, id, values } = options;
-         const firestore = dbFirestore;
-         await updateDoc(doc( firestore, collection, id ), values);
+         await updateDoc(doc( dbFirestore, collection, id ), values);
       },
       // EXISTS
       exists: async (options: DbProps) => {
          const { collection, id } = options;
-         const firestore = dbFirestore;
-         const docSnapshot = await getDoc(doc(firestore, collection, id));
+         const docSnapshot = await getDoc(doc(dbFirestore, collection, id));
          return docSnapshot.exists();
       },
    },
@@ -128,25 +104,22 @@ export const db = {
       // FETCH
       fetch: {
          ref: async (props: DbFetchFileProps) => {
-            const storage = dbStorage
             switch (props.refType) {
-               case 'gs':    return ref(storage, `gs://${props.id}`);
-               case 'https': return ref(storage, `https://firebasestorage.googleapis.com/b/bucket/o/${props.id}`);
-               default:      return ref(storage, props.id);
+               case 'gs':    return ref(dbStorage, `gs://${props.id}`);
+               case 'https': return ref(dbStorage, `https://firebasestorage.googleapis.com/b/bucket/o/${props.id}`);
+               default:      return ref(dbStorage, props.id);
             }
          },
          meta: async (id: string) => {
-            const storage = dbStorage;
-            const fileRef = ref(storage, id);
+            const fileRef = ref(dbStorage, id);
             const fileMeta = await getMetadata(fileRef);
             return fileMeta;
          }
       },
       // UPLOAD
       upload: async (props: DbUploadFileProps) => {
-         const storage = dbStorage;
          const name:string = props.collection ? `${props.collection}/${props.id}` : props.id;
-         const fileRef = ref(storage, name);
+         const fileRef = ref(dbStorage, name);
          uploadBytes(fileRef, props.file).then((snapshot) => { console.log('🔥 Image uploaded!') })
 
          const customMeta = props.meta ? props.meta : {};
@@ -159,39 +132,10 @@ export const db = {
       },
       // DELETE
       delete: async (id: string) => {
-         const storage = dbStorage;
-         const storRef = ref(storage, id);
+         const storRef = ref(dbStorage, id);
          deleteObject(storRef)
             .then(() => { console.log('🔥 Image deleted!'); })
             .catch((err) => { console.error(err); })
-      },
-   },
-   // AUTH
-   auth: {
-      signIn: async (email: string, password: string) => {
-         signInWithEmailAndPassword(dbAuth, email, password).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error(`🔥 ${errorCode}: ${errorMessage}`);
-         });
-         setPersistence(dbAuth, browserSessionPersistence);
-         userStore.set(dbAuth.currentUser);
-
-         const tokenCurrentlySet = localStorage.getItem('token');
-         const token = await dbAuth.currentUser?.getIdToken();
-         if (tokenCurrentlySet !== token) { localStorage.setItem('token', token!); }
-      },
-      signOut: async () => {
-         userStore.set(null);
-         return signOut(dbAuth);
-      },
-      isSignedIn: async () => {
-         const user = dbAuth.currentUser;
-         if (user) {
-            userStore.set(user);
-            setPersistence(dbAuth, browserSessionPersistence);
-            return true;
-         } else { return false; }
       },
    },
    // CUSTOM
