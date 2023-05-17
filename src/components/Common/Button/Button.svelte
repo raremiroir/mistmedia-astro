@@ -66,7 +66,7 @@
 
 {#if href}
    <a
-      {id}
+      {id} type="button"
       href="{href}"
       use:Ripple={ripple}
       class={btnClass}
