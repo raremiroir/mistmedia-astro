@@ -42,6 +42,8 @@
    export let block:boolean = false;
    export let fillHeight:boolean = false;
 
+   export let id:string = '';
+
    let klass:string = '';
    export { klass as class };
    export let innerClass: string = '';
@@ -83,7 +85,7 @@
 <svelte:element 
    this={outerWrapComp} {...$$props} {...outerWrapProps}
    tabindex="0" aria-label={label} aria-labelledby={labelledBy}
-   title=""
+   title="" {id}
    class="
       antialiased {transition} 
       { cardStyle } backdrop-blur-sm
@@ -113,7 +115,11 @@
          {/if}
          
          <!-- Content -->
-         <div class="h-full flex flex-col justify-between {gap} {padding} {contentClass}">
+         <div class="
+                  h-full { direction === 'row' ? 'w-full' : '' }
+                  flex flex-col justify-between 
+                  {gap} {padding} {contentClass}"
+         >
             <div class="flex flex-col min-h-full {gap} {innerContentClass}">
                <!-- Header -->
                <header class="{titleClass}">
