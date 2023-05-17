@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format":"prettier --write --plugin-search-dir=. .",
+    "prettier:check":"prettier --check --plugin-search-dir=. ."
   },
   "dependencies": {
     "@astrojs/cloudflare": "^6.2.2",
@@ -55,6 +57,8 @@
     "postcss-mixins": "^9.0.4",
     "postcss-nesting": "^11.2.2",
     "postcss-simple-vars": "^7.0.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.8.1",
     "svelte-turnstile": "^0.4.1",
     "svelte-typewriter": "^3.1.4",
     "wrangler": "^2.14.0",
