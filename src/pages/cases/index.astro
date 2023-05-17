@@ -7,19 +7,18 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Page from '@/components/Core/Page/Page.astro';
 import Section from '@/components/Core/Section/Section.astro';
 import Hero from '@/components/Common/Hero/Hero.astro';
-import { Picture } from '@astrojs/image/components';
-// Svelte components
-import Link from '@/components/Common/Button/Link.svelte';
-// Page specific components
-import CaseCard from '@/components/Pages/Cases/CaseCard.astro';
 import db from '@/firebase';
-import SolutionPortfolioCard from '@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro';
 import Drawer from '@/components/Common/Drawer/Drawer.svelte';
+import SolutionPortfolioCard from '@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro';
+import Button from '@/components/Common/Button/Button.svelte';
 
 const lang = "nl";
-const cases = await db.doc.fetch.collection('portfolio');
+// export const prerender = true;
 
-export const prerender = true;
+const portfolio = await db.doc.fetch.collection('portfolio');
+const clients = await db.doc.fetch.collection('clients');
+// console.log('portfolio data:', portfolio);
+// console.log('clients data:', clients);
 ---
 
 <BaseLayout title={t('site:pages.cases.title')}>
@@ -31,39 +30,43 @@ export const prerender = true;
 		</Hero>
 
    <Section name="trixolutions-cases" title="">
-      <ul class={`w-full grid ${gaps} grid-cols-2 min-h-[900px]`}>
 
-         { cases.map( (item) => (
+      <ul class={`w-full grid grid-cols-2 ${gaps}`}>
+         { portfolio.map( (item, key) => (
             item.enabled && (
-               <><div class={` col-span-1 `}>
-                  <Drawer client:load placement="right">
+               <><div class={`col-span-1 `}>
+                  <Drawer 
+                     client:load 
+                     placement={(key % 2 == 0) && (key !== 0)  ? 'right' : 'left'}
+                  >
                      <div slot="trigger" class="h-full w-full">
-                        <SolutionPortfolioCard
-                           title={item.title}
-                           image={item.images.card}
-                           description={item.description[lang]}
-                           categories={ item.categories }
-                           tags={[]}
-                        />
+                        <SolutionPortfolioCard 
+                           lang={lang} 
+                           item={{
+                              enabled: item.enabled,
+                              id: item.id,
+                              title: item.title,
+                              description: item.description[lang],
+                              slug: item.slug,
+                              client: item.client,
+                              images: item.images,
+                              solution_type: item.solution_type,
+                              tags: item.tags,
+                           }} />
                      </div>
                      <span slot="title">{item.title}</span>
-                     {() => {
-                        return <><div>
-                           <span>{item.description[lang]}</span>
-                           
-                        </div></>
-                     }}
+
+                     <div class="flex flex-col gap-4">
+                        <span>{item.description[lang]}</span>
+
+                        <Button href={item.slug} target="_blank">
+                           {t('btn.visit_site')}
+                        </Button>
+                     </div>
                   </Drawer>
                </div></>
             )
 			))}
-
-<!-- <CaseCard
-   href={card.href} label={card.label}
-   title={card.title} tags={card.tags}
-   imgSrc={card.imgSrc} imgAlt={card.imgAlt}>
-   {card.content}
-</CaseCard> -->
       </ul>
    </Section>
       
