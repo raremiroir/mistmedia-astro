@@ -39,15 +39,6 @@ interface ImportMetaEnv {
    readonly FB_MESSAGING_SENDER_ID: string;
    readonly FB_APP_ID: string;
    readonly FB_MEASUREMENT_ID: string;
-
-   readonly FBA_PRIVATE_KEY_ID: string;
-   readonly FBA_PRIVATE_KEY: string;
-   readonly FBA_CLIENT_EMAIL: string;
-   readonly FBA_CLIENT_ID: string;
-   readonly FBA_AUTH_URI: string;
-   readonly FBA_TOKEN_URI: string;
-   readonly FBA_AUTH_PROVIDER_X509_CERT_URL: string;
-   readonly FBA_CLIENT_X509_CERT_URL: string;
 }
 
 interface ImportMeta {
