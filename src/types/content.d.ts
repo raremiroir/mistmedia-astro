@@ -1,15 +1,21 @@
+import type { DocumentReference, Timestamp } from "firebase/firestore";
 import type { LocaleString } from ".";
 
 
 interface MistPortfolioBase {
    id: string;
-   title: string|LocaleString;
+   title: string;
 }
 
 export interface MistPortfolioItem extends MistPortfolioBase {
-   description: string|LocaleString;
-   images: string[];
-   slug?: string|LocaleString;
+   enabled: boolean;
+   description: LocaleString;
+   images: {
+      id: string;
+      isMain: boolean;
+   }[];
+   slug: string|LocaleString;
+   categories?: DocumentReference[];
    tags?: string[];
 }
 
@@ -19,12 +25,13 @@ export interface MistPortfolioTag extends MistPortfolioBase {
 
 // ====================================================
 
-export interface MistCase {
-   title: string;
-   description: LocaleString|string;
-   images: {
-      card: string;
-      website?: string;
-   }
-   enabled: boolean;
+export interface MistClient {
+   id: string;
+   name: string;
+   description: string;
+   logo: string;
+   coverImage: string;
+   site: string;
+   portfolio: DocumentReference[];
+   client_since: Timestamp;
 }
