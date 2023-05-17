@@ -9,14 +9,15 @@ interface MistPortfolioBase {
 
 export interface MistPortfolioItem extends MistPortfolioBase {
    enabled: boolean;
-   description: LocaleString;
+   description: string;
    images: {
       id: string;
       isMain: boolean;
    }[];
-   slug: string|LocaleString;
-   categories?: DocumentReference[];
-   tags?: string[];
+   slug: string;
+   client: DocumentReference;
+   solution_type: DocumentReference;
+   tags: DocumentReference[];
 }
 
 export interface MistPortfolioTag extends MistPortfolioBase {
