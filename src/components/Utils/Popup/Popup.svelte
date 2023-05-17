@@ -30,7 +30,7 @@
    class="
       {bg} {padding} 
       rounded-lg backdrop-blur-xl
-      font-semibold
+      font-semibold z-99
 ">
    <!-- <div class="absolute w-2 h-2 rotate-45"/> -->
    <slot name="popup"/>
