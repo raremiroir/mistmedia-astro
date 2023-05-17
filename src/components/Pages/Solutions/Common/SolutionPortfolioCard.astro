@@ -26,7 +26,6 @@ const mainImageUrl = await getDownloadURL(mainImageRef);
 
 const clientDoc = await db.doc.fetch.fromRef(item.client);
 const solutionType = await db.doc.fetch.fromRef(solution_type);
-console.log(solutionType);
 ---
 
 <Card 
@@ -42,15 +41,14 @@ console.log(solutionType);
 >
    <div slot="media">
       <Picture 
-         class="w-full h-full object-cover object-center"
          src={mainImageUrl}
          alt={title}
          widths={[200, 500, 800]}
          sizes="(min-width: 300px;) 200w, (min-width: 600px;) 500w, (min-width: 900;) 800w"
          formats={['webp', 'avif', 'jpeg']}
-         aspectRatio={1}
+         aspectRatio={9/16}
          fit="cover" position="center"
-         class={`group-hover:blur-sm ${classes.transition.default}`}
+         class={`group-hover:blur-sm ${classes.transition.default} w-full h-full object-cover object-center`}
       />
    </div>
    
