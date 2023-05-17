@@ -2,6 +2,7 @@
    import { slide } from "svelte/transition";
 
    export let duration: number = 200;
+   export let delay: number = 200;
    export let axis: "x" | "y" = "y";
 
    export let visible: boolean = false;
@@ -11,7 +12,7 @@
 
 {#if visible}
    <div
-      in:slide={{delay: duration, duration, axis}}
+      in:slide={{delay, duration, axis}}
       out:slide={{duration, axis}}
    >
       <slot />
