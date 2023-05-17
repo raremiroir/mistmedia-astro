@@ -2,7 +2,21 @@
    "btn": {
       "switch_lang": "Change language",
       "more_info": "More info",
-      "read_more": "Read more"
+      "read_more": "Read more",
+      "visit_site": "Visit site",
+      "close": "Close",
+      "accept": "Accept",
+      "decline": "Decline",
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+   },
+   "cookies": {
+      "accept_all": "Accept all cookies",
+      "decline_all": "Decline all cookies",
+      "accept_necessary": "Accept necessary cookies",
+      "accept_analytics": "Accept analytics cookies",
+      "manage_cookies": "Manage cookies",
+      "msg": "We use cookies to ensure you get the best experience on our website. By using our website you agree to our <a href=\"https://www.{{domain}}/privacy\" target=\"_blank\">privacy policy</a> and our <a href=\"https://www.{{domain}}/terms\" target=\"_blank\">terms of service</a>."
    },
    "footer": {
       "copyright": {

@@ -2,7 +2,21 @@
    "btn": {
       "switch_lang": "Verander taal",
       "more_info": "Meer info",
-      "read_more": "Lees meer"
+      "read_more": "Lees meer",
+      "visit_site": "Bezoek website",
+      "close": "Sluiten",
+      "accept": "Accepteren",
+      "decline": "Weigeren",
+      "confirm": "Bevestigen",
+      "cancel": "Annuleren"
+   },
+   "cookies": {
+      "accept_all": "Alle cookies accepteren",
+      "decline_all": "Alle cookies weigeren",
+      "accept_necessary": "Noodzakelijke cookies accepteren",
+      "accept_analytics": "Analytische cookies accepteren",
+      "manage_cookies": "Beheer cookies",
+      "msg": "Deze website gebruikt cookies om je ervaring te verbeteren. We gaan ervan uit dat je hiermee akkoord gaat, maar je kan je afmelden als je dat wilt."
    },
    "footer": {
       "copyright": {
