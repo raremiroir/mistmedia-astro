@@ -32,10 +32,7 @@
    } = Astro.props;
 
    const innerWidth = cardWidth ? cardWidth : widths;
-
-   const transition = 'transition-all duration-300 ease-out';
-
-
+   
    const cardClass = alt ? ''
       : `flex flex-col sm:flex-row items-center justify-start
          ${gaps} mx-auto`
@@ -46,8 +43,7 @@
          m-0 px-0 
          ${ alt ? 'pt-32 pb-0' : 'pt-32 pb-12' }
          bg-white dark:bg-slate-900
-         flex justify-center items-center mix
-         ${transition} ${klass}`}>
+         flex justify-center items-center mix ${klass}`}>
    <!-- Middle Card -->
    <div class={`
          ${ cardClass }
