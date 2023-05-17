@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { setInitialClassState } from "@skeletonlabs/skeleton";
 	import { 
 		modeOsPrefers, modeUserPrefers, modeCurrent,
 		getModeOsPrefers, getModeUserPrefers, getModeAutoPrefers,
 		setModeUserPrefers, setModeCurrent
 		} from "@skeletonlabs/skeleton";
    import { onMount } from "svelte";
+	import { setInitialClassState } from "@skeletonlabs/skeleton";
 
 	import type { OnKeyDownEvent } from "@tstype/components/toggle";
 	// Props
@@ -60,13 +60,11 @@
 	$: classesTrack = `${track} ${trackBg} ${width} ${height} ${rounded} ${ring} ${transition} ${$$props.class ?? ''}`;
 	$: classesThumb = `${thumb} ${thumbBg} ${thumbPosition} ${height} ${rounded} ${transition}`;
 	$: classesIcon = `${icon} ${iconFill}`;
-</script>
 
-<svelte:head>
-		<script>
-			(setInitialClassState.toString())()
-		</script>
-</svelte:head>
+	onMount(() => {
+		setInitialClassState();
+	})
+</script>
 
 <div 
 	class="lightswitch-track {classesTrack} group"
