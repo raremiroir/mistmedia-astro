@@ -1,8 +1,8 @@
-import { initializeApp, type FirebaseApp } from "firebase/app";
+import { initializeApp, type FirebaseApp, FirebaseOptions } from "firebase/app";
 import { type Firestore, getFirestore } from "firebase/firestore";
 import { FirebaseStorage, getStorage } from "firebase/storage";
 
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
    apiKey: import.meta.env.FB_API_KEY,
    authDomain: import.meta.env.FB_AUTH_DOMAIN,
    projectId: import.meta.env.FB_PROJECT_ID,
