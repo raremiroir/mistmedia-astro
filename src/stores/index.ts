@@ -1,9 +1,9 @@
 import type { Locales } from '@/types';
+import type { MistPortfolioItem } from '@/types/content';
 import type { ModalSettings } from '@skeletonlabs/skeleton';
 import { atom } from 'nanostores'
 import type { WritableAtom } from 'nanostores'
 import { type Writable, writable } from 'svelte/store';
-import type { MistCase } from '../types/content';
 /* ~~-~~ ~-~~-~ ~~-~~ */
 /* ~~-~~ STORES ~~-~~ */
 /* ~~-~~ ~-~~-~ ~~-~~ */
@@ -32,11 +32,14 @@ export const modalSettings: WritableAtom<ModalSettings> = atom({
 // Active modal in modals component
 export const currentModal: WritableAtom<string|undefined> = atom('caseDetail');
 // Active modal item
-export const currentModalItem: WritableAtom<MistCase> = atom({
+export const currentModalItem: WritableAtom<MistPortfolioItem> = atom({
    description: '',
    enabled: false,
-   images: {
-      card: ''
-   },
    title: '',
 });
+
+// CASES
+// currently selected filters
+export const caseFilterTags: Writable<string[]> = writable([]);
+export const caseFilterSolutions: Writable<string[]> = writable([]);
+export const caseFilterClients: Writable<string[]> = writable([]);
