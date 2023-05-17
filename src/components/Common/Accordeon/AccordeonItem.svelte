@@ -8,6 +8,8 @@
    export let title = 'Title';
    export let icon = false;
 
+   export let customTrigger = false;
+
    const accStyle = boxGen.full({
       variant: 'fill',
       color: 'surface_alt',
@@ -32,9 +34,16 @@
    on:click={() => open = !open }
    on:keydown={(e) => { if (e.key === 'Enter') { open = !open } }}
 >
-   <AccordeonTrigger {open} {title} {icon} {key}>
-      <slot name="icon" slot="icon"/>
-   </AccordeonTrigger>
+
+   {#if customTrigger}
+      <AccordeonTrigger {open} {key}>
+         <slot name="trigger" />
+      </AccordeonTrigger>
+   {:else}
+      <AccordeonTrigger {open} {title} {icon} {key}>
+         <slot name="icon" slot="icon"/>
+      </AccordeonTrigger>
+   {/if}
 
    {#if open}
       <AccordeonContent {key}>
