@@ -10,6 +10,7 @@ import astroI18next from "astro-i18next";
 import robotsTxt from "astro-robots-txt";
 import mdx from '@astrojs/mdx';
 import prefetch from '@astrojs/prefetch';
+import { vitePreprocess } from '@astrojs/svelte';
 
 // https://astro.build/config
 const config: AstroUserConfig = {
@@ -38,14 +39,26 @@ const config: AstroUserConfig = {
   // sentry: '',
   // Integrations
   integrations: [
-    sitemap(), 
-    svelte(), 
+    sitemap({
+      i18n: {
+        defaultLocale: 'nl',
+        locales: {
+          'nl': 'https://mistmedia.be',
+          'en': 'https://mistmedia.be/en'
+        }
+      }
+    }), 
+    svelte({
+      preprocess: [
+        vitePreprocess()
+      ]
+    }), 
     prefetch(),
     mdx(), 
     tailwind({
       config: {
         applyBaseStyles: false
-      }
+      },
     }), 
     image({
       serviceEntryPoint: '@astrojs/image/sharp'
@@ -61,6 +74,9 @@ const config: AstroUserConfig = {
   output: "server",
   adapter: vercel(),
   vite: {
+    define:{
+      'process.env.VITE_BUILD_TIME':JSON.stringify(new Date().toISOString()),
+    },  
     optimizeDeps: {
     }
   }
