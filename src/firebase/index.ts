@@ -1,13 +1,32 @@
 
-import type { DocumentReference } from 'firebase/firestore';
-import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDocs, limit, orderBy, query, setDoc, startAfter, startAt, updateDoc, where } from 'firebase/firestore';
+import type { DocumentReference, Firestore } from 'firebase/firestore';
+import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDocs, getFirestore, limit, orderBy, query, setDoc, startAfter, startAt, updateDoc, where } from 'firebase/firestore';
 
-import { deleteObject, getMetadata, ref, updateMetadata, uploadBytes } from 'firebase/storage';
-import type { SettableMetadata } from 'firebase/storage';
+import { deleteObject, getMetadata, getStorage, ref, updateMetadata, uploadBytes } from 'firebase/storage';
+import type { FirebaseStorage, SettableMetadata } from 'firebase/storage';
 import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps, DbUploadFileProps } from "./types";
-import { dbFirestore, dbStorage } from "./client";
-   
+import { initializeApp, type FirebaseApp, type FirebaseOptions, getApp } from 'firebase/app';
+import type { MistClient } from '@/types/content';
+
+const firebaseConfig: FirebaseOptions = {
+   apiKey: import.meta.env.FB_API_KEY,
+   authDomain: import.meta.env.FB_AUTH_DOMAIN,
+   projectId: import.meta.env.FB_PROJECT_ID,
+   storageBucket: import.meta.env.FB_STORAGE_BUCKET,
+   messagingSenderId: import.meta.env.FB_MESSAGING_SENDER_ID,
+   appId: import.meta.env.FB_APP_ID,
+   measurementId: import.meta.env.FB_MEASUREMENT_ID,
+};
+
+const dbApp: FirebaseApp = initializeApp(firebaseConfig);
+const dbFirestore: Firestore = getFirestore(dbApp);
+const dbStorage: FirebaseStorage = getStorage(dbApp);
 export const db = {
+   // INIT
+   init: () => {
+      const app = getApp();
+      if (app) { return app; }
+   },
    // DOCS
    doc: {
       // FETCH
