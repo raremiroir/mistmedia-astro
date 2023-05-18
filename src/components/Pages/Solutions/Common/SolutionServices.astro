@@ -28,11 +28,11 @@ const { key, services } = Astro.props;
 
          <Card icon={service.icon} >
          <div slot="title" class="flex flex-row items-center justify-start gap-2">
-            <div class="w-1/6">
+            <div class="w-[10%]">
                <Icon name={service.icon} class="text-primary w-full" />
             </div>
             <Title 
-                  h3 size="xs" class="capitalize w-5/6"
+                  h3 size="xs" class="capitalize w-[90%]"
                color={`${classes.transition.default} !bg-transparent !shadow-none`}>
                {`${t(`services:solutions.${key}.services.${service.id}.title`)}`}
             </Title>
