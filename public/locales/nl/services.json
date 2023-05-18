@@ -94,20 +94,27 @@
          "subtitle": "Een sterk merk",
          "description": "Wij ontwerpen grafische elementen die uw merk onderscheiden van de rest. Van logo's tot flyers, van visitekaartjes tot advertenties. Door middel van een professionenele, universele huisstijl zorgen wij ervoor dat jouw bedrijf een herkenbare identiteit krijgt.",
          "features": {
-
+            "allinone": {
+               "title": "Alles-in-één",
+               "description": "Bij ons krijg je het volledige pakket, en wordt je totaal ontzorgd van je benodigde grafische elementen. We zorgen ervoor dat alles perfect op elkaar aansluit, dat je een professionele uitstraling hebt, en dat, indien nodig, je drukwerk tot bij je voordeur wordt geleverd."
+            },
+            "concepts": {
+               "title": "Meerdere Concepten",
+               "description": "Wij zorgen ervoor dat je meerdere concepten in meerdere stijlen en kleuren krijgt, zodat je kan kiezen welke het beste bij jouw bedrijf past."
+            },
+            "personal": {
+               "title": "Op Maat Gemaakt",
+               "description": "Jouw bedrijf is uniek, en dat moet je huisstijl ook zijn. Wij zorgen voor op maat gemaakte grafische elementen die perfect bij jouw gewenste stijl aansluiten."
+            }
          },
          "services": {
             "branding": {
-               "title": "Huisstijl",
-               "description": ""
-            },
-            "logo": {
-               "title": "Logo",
-               "description": ""
+               "title": "Huisstijl Vormgeven",
+               "description": "Wij zorgen ervoor dat jouw bedrijf een herkenbare identiteit krijgt, en dat je een professionele uitstraling hebt."
             },
             "printed": {
-               "title": "Drukwerk",
-               "description": "Flyers, posters, kaartjes, ... <br/>Alles is mogelijk bij ons."
+               "title": "Graphics voor Drukwerk",
+               "description": "Van visitekaarjtes, posters en flyers, tot advertenties en banners. <br/>Bij Mist Media is alles mogelijk."
             },
             "editorial": {
                "title": "Redactionele Vormgeving",
@@ -115,29 +122,124 @@
             }
          }
       },
-      "seo": {
-         "title_short": "SEO",
-         "title": "Zoekmachine Optimalisatie",
-         "subtitle": "Zichtbaarheid op het internet",
-         "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet. Door middel van uitgebreide SEO-methodes zorgen wij ervoor dat jouw website hoog in de zoekresultaten komt."
-      },
       "social": {
          "title_short": "Marketing",
          "title": "Social Media Marketing",
          "subtitle": "Online aanwezigheid",
-         "description": "Wij zorgen ervoor dat jouw online aanwezigheid een boost krijgt. Door middel van social media marketing zorgen wij ervoor dat jouw bedrijf goed zichtbaar wordt op het internet."
+         "description": "Wij zorgen ervoor dat jouw online aanwezigheid een boost krijgt. Door middel van social media marketing zorgen wij ervoor dat jouw bedrijf goed zichtbaar wordt op het internet.",
+         "features": {
+            "analysis": {
+               "title": "Gedetailleerde Analyse",
+               "description": "Wij zorgen ervoor dat je een gedetailleerde analyse krijgt van jouw online aanwezigheid, zodat je weet wat je moet verbeteren."
+            },
+            "strongbrand": {
+               "title": "Een Sterk Merk",
+               "description": "Branding en een huisstijl komen niet enkel terug op grafisch vlak, maar ook online. Mist Media zorgt ervoor dat jouw merk online sterk staat, en verbonden is met jouw website."
+            },
+            "results": {
+               "title": "Meetbare Resultaten",
+               "description": "Meten is weten, en dat is ook zo bij online marketing. Door middel van meetbare resultaten zorgen wij ervoor dat je weet wat er gebeurt met jouw online aanwezigheid."
+            }
+         },
+         "services": {
+            "analytics": {
+               "title": "Analytics",
+               "description": "Door bepaalde tools te integreren in jouw website, kunnen wij jouw online aanwezigheid grondig analyseren, en verbeteren waar nodig."
+            },
+            "seo": {
+               "title": "Zoekmachine Optimalisatie",
+               "description": "Door middel van geavanceerde SEO-technieken zorgen wij ervoor dat jouw website en online profielen makkelijk vindbaar zijn op het internet."
+            },
+            "ads": {
+               "title": "Ads & Campagnes",
+               "description": "Wij zorgen ervoor dat jouw bedrijf opvalt op het internet, door middel van advertenties en campagnes via Google en sociale media."
+            },
+            "smm": {
+               "title": "Social Media Marketing",
+               "description": "Wij zorgen ervoor dat jouw bedrijf een sterke en aantrekkelijke aanwezigheid heeft op sociale media, en dat je een hechte band opbouwt met je klanten."
+            }
+         }
       },
       "av": {
          "title_short": "Audio / Video",
          "title": "Audiovisuele Producties",
          "subtitle": "Vastleggen van jouw bedrijf",
-         "description": "Wij zorgen ervoor dat jouw bedrijf op een professionele manier wordt vastgelegd. Dit kunnen zowel foto's als video's zijn, die ook geïntegreerd kunnen worden in jouw website of graphics."
+         "description": "Wij zorgen ervoor dat jouw bedrijf op een professionele manier wordt vastgelegd. Dit kunnen zowel foto's als video's zijn, die ook geïntegreerd kunnen worden in jouw website of graphics.",
+         "features": {
+            "personal": {
+               "title": "Persoonlijke Aanpak",
+               "description": "Mist Media legt jouw bedrijf vast op een persoonlijke manier, zodat je een uniek en professioneel resultaat krijgt."
+            },
+            "polyvalent": {
+               "title": "Polyvalente Producties",
+               "description": "Of het nu gaat om evenementen, producten, of je huisstijl, Mist Media zorgt ervoor dat jij je geen zorgen hoeft te maken over de audiovisuele aspecten van jouw bedrijf of evenement."
+            },
+            "finish": {
+               "title": "Gedetailleerde Afwerking",
+               "description": "Je project wordt tot in de puntjes afgewerkt en geoptimaliseerd, zodat je een resultaat krijgt dat - letterlijk - gezien mag worden."
+            }
+         },
+         "services": {
+            "photo": {
+               "title": "Fotografie",
+               "description": "Mist Media komt ter plaatse om jouw bedrijf, evenement of producten fotografisch vast te leggen."
+            },
+            "video": {
+               "title": "Video",
+               "description": "Hierbij kan je denken aan aftermovies, productvideo's, of zelfs een bedrijfsfilm."
+            },
+            "montage": {
+               "title": "Montage & Editing",
+               "description": "We bewerken en monteren jouw foto's en video's. Dit kan gaan van kleurcorrecties en filters, tot volledige montage met muziek en effecten."
+            },
+            "vfx": {
+               "title": "Visual Effects",
+               "description": "We creëren effecten."
+            },
+            "subtitle": {
+               "title": "Ondertiteling",
+               "description": "We voorzien jouw video's van ondertiteling, zodat ze ook toegankelijk zijn voor doven, slechthorenden en/of anderstaligen."
+            },
+            "animation": {
+               "title": "Animatie",
+               "description": "We creëren animaties, zowel 2D als 3D. Dit kan gaan van een eenvoudige intro tot een korte animatiefilm."
+            }
+
+         }
       },
       "3d": {
          "title_short": "3D Visualisatie",
          "title": "3D Visualisatie & Animatie",
          "subtitle": "Een nieuwe dimensie",
-         "description": "Van kleine, didactische animaties tot printbare 3D modellen. Wij zorgen ervoor dat jouw producten, prototypes en animaties op een professionele en natuurlijke manier worden weergegeven."
+         "description": "Van kleine, didactische animaties tot printbare 3D modellen. Wij zorgen ervoor dat jouw producten, prototypes en animaties op een professionele en natuurlijke manier worden weergegeven.",
+         "features": {
+            "detail": {
+               "title": "Oog voor Detail",
+               "description": "Met onze perfectionistische aanpak zorgen wij ervoor dat jouw producten en animaties tot in de puntjes worden afgewerkt."
+            },
+            "realistic": {
+               "title": "Net Echt",
+               "description": "Onze animaties bevatten geen vreemde bewegingen, maar zijn realistisch en natuurlijk. Zo krijg je een resultaat dat er niet enkel goed uitziet, maar ook goed aanvoelt."
+            },
+            "finish": {
+               "title": "Afgewerkt met Zorg",
+               "description": "We integreren je merk en huisstijl in de animaties, en leveren onze producten af in verschillende formaten, zodat je ze meteen kan gebruiken."
+            }
+         },
+         "services": {
+            "model": {
+               "title": "3D Modellen",
+               "description": "We creëren 3D modellen van jouw producten, prototypes, of zelfs van jouw huisstijl."
+            },
+            "animation": {
+               "title": "3D Animaties",
+               "description": "Van korte, simpele animaties tot uitgebreidere projecten, Mist Media houdt zich er graag mee bezig."
+            },
+            "printing": {
+               "title": "3D Printing",
+               "description": "We printen jouw 3D modellen, zodat je ze ook in het echt kan bewonderen."
+            }
+         }
       }
    }
 }
