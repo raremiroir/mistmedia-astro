@@ -16,7 +16,7 @@ export interface MistPortfolioItem extends MistPortfolioBase {
    }[];
    slug: string;
    client: DocumentReference;
-   solution_type: DocumentReference;
+   solution_type: string;
    tags: DocumentReference[];
 }
 
