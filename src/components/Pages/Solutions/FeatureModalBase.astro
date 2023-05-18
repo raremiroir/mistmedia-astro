@@ -1,0 +1,15 @@
+---
+import ContentWrap from "@/components/Pages/ContentWrap.astro";
+import Quote from "@/components/Text/Quote/Quote.svelte";
+import Link from "@/components/Common/Button/Link.svelte";
+import Title from "@/components/Text/Title/Title.svelte";
+
+export interface Props {
+   content: string;
+}
+const { content } = Astro.props 
+---
+
+<ContentWrap>
+   <p set:html={content} />
+</ContentWrap>

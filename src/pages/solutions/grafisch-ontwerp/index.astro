@@ -24,6 +24,7 @@ import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServic
 import db from "@/firebase";
 import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarquee.astro";
 import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
+import FeatureModalBase from "@/components/Pages/Solutions/FeatureModalBase.astro";
 
 const lang = "nl";
 const key = 'design';
@@ -51,32 +52,32 @@ features.forEach((feature) => {
 
 	<!-- FEATURES -->
 	<Section name="features">
-		<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
+		<div class="w-full grid grid-cols-3 gap-8">
 			{featureCards.map((feature) => (
-				<><Drawer client:idle>
+				<><Drawer client:load>
 					<Card 
 						padding="p-4" gap="gap-4"
 						slot="trigger" direction="row" 
 						centerRow fillHeight noBody 
 						block hover active 
-						media="animIcon" icon={feature.icon}
-						iconSize={40}
+						media="icon" icon={feature.icon}
+						iconClass="w-8"
 					>
-						<Title slot="title" h3 size="xs" weight="font-bold">
-							<div class="h-full flex items-center justify-start">{feature.title}</div>
-						</Title>
+						<div slot="title" class="flex flex-row items-center justify-start gap-4">
+							<Icon name={feature.icon} class="w-8" />
+							<Title h3 size="xs" weight="font-bold">
+								<div class="h-full flex items-center justify-start">{feature.title}</div>
+							</Title>
+						</div>
 					</Card>
-	
+					
+					<span slot="title" class="flex flex-row items-center justify-start gap-4">
+						<Icon name={feature.icon} class="w-8" />
+						{feature.title}
+					</span>
 					{() => {
-						if (!feature.id) 						return (<></>);
-						if (feature.id === 'accessible') return (<><WebFeatAccessible/></>);
-						if (feature.id === 'fast') 		return (<><WebFeatFast/></>);
-						if (feature.id === 'responsive') return (<><WebFeatResponsive/></>);
-						if (feature.id === 'secure') 		return (<><WebFeatSecure/></>);
-						if (feature.id === 'uxui') 		return (<><WebFeatUxUi/></>);
-						if (feature.id === 'seo') 			return (<><WebFeatSeo/></>);
-						if (feature.id === 'tech') 		return (<><WebFeatTech/></>);
-						if (feature.id === 'support') 	return (<><WebFeatSupport/></>);
+						if (!feature.id) return (<></>);
+						else return (<><FeatureModalBase content={feature.description}/></>);
 					}}
 				</Drawer></>
 			))}
