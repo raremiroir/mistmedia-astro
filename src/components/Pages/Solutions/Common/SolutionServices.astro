@@ -7,10 +7,11 @@ import Section from "@/components/Core/Section/Section.astro";
 import Card from "@/components/Common/Card/Card.svelte";
 import Title from "@/components/Text/Title/Title.svelte";
 import { gaps, classes } from "@/consts/style";
+import type { DocumentData } from "firebase/firestore";
 
 export interface Props {
    key: string;
-   services: any[];
+   services: DocumentData[];
 }
 const { key, services } = Astro.props;
 
@@ -32,14 +33,12 @@ const { key, services } = Astro.props;
                <Icon name={service.icon} class="text-primary w-full" />
             </div>
             <Title 
-                  h3 size="xs" class="capitalize w-[90%]"
+                  h3 size="2xs" class="capitalize w-[90%]"
                color={`${classes.transition.default} !bg-transparent !shadow-none`}>
                {`${t(`services:solutions.${key}.services.${service.id}.title`)}`}
             </Title>
          </div>
-         <p>
-            {`${t(`services:solutions.${key}.services.${service.id}.description`)}`}
-         </p>
+         <p set:html={t(`services:solutions.${key}.services.${service.id}.description`)} />
          </Card>
 
       ))}
