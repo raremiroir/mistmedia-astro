@@ -25,6 +25,8 @@ import db from "@/firebase";
 import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarquee.astro";
 import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
 import FeatureModalBase from "@/components/Pages/Solutions/FeatureModalBase.astro";
+import FeaturesGrid from "@/components/Pages/Solutions/FeaturesGrid.astro";
+import type { FeatureCard } from "@/types/content";
 
 const lang = "nl";
 const key = 'design';
@@ -34,7 +36,7 @@ const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
 const services = await db.doc.fetch.collection(`solutions/${key}/services`);
 const features = await db.doc.fetch.collection(`solutions/${key}/features`);
 
-let featureCards:{[key: string]: string}[] = [];
+let featureCards:FeatureCard[] = [];
 features.forEach((feature) => {
    featureCards.push({
       id: feature.id,
@@ -51,38 +53,7 @@ features.forEach((feature) => {
 >
 
 	<!-- FEATURES -->
-	<Section name="features">
-		<div class="w-full grid grid-cols-3 gap-8">
-			{featureCards.map((feature) => (
-				<><Drawer client:load>
-					<Card 
-						padding="p-4" gap="gap-4"
-						slot="trigger" direction="row" 
-						centerRow fillHeight noBody 
-						block hover active 
-						media="icon" icon={feature.icon}
-						iconClass="w-8"
-					>
-						<div slot="title" class="flex flex-row items-center justify-start gap-4">
-							<Icon name={feature.icon} class="w-8" />
-							<Title h3 size="xs" weight="font-bold">
-								<div class="h-full flex items-center justify-start">{feature.title}</div>
-							</Title>
-						</div>
-					</Card>
-					
-					<span slot="title" class="flex flex-row items-center justify-start gap-4">
-						<Icon name={feature.icon} class="w-8" />
-						{feature.title}
-					</span>
-					{() => {
-						if (!feature.id) return (<></>);
-						else return (<><FeatureModalBase content={feature.description}/></>);
-					}}
-				</Drawer></>
-			))}
-		</div>
-	</Section>
+	<FeaturesGrid featureCards={featureCards} />
 	<!-- END FEATURES -->
 
 	<!-- SERVICES -->

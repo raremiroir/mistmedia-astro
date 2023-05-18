@@ -1,20 +1,19 @@
 ---
 import { t, changeLanguage } from "i18next";
-import { ICONS } from "@const/index";
-import { gaps, classes } from "@/consts/style";
+import { gaps } from "@/consts/style";
 // Astro components
 import Section 		from "@/components/Core/Section/Section.astro";
 // Svelte components
 import Drawer 			from "@/components/Common/Drawer/Drawer.svelte";
 // Import feature sidebar components
-import WebFeatResponsive from "@/components/Pages/Solutions/Web/Features/WebFeatResponsive.astro";
 import SolutionLayout from "@/layouts/SolutionLayout.astro";
 import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServices.astro";
 
 import db from "@/firebase";
 import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarquee.astro";
 import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
-import SolutionFeatureCard from "@/components/Pages/Solutions/Common/SolutionFeatureCard.astro";
+import FeaturesGrid from "@/components/Pages/Solutions/FeaturesGrid.astro";
+import type { FeatureCard } from "@/types/content";
 
 const lang = "nl";
 const key = '3d'
@@ -24,7 +23,7 @@ const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
 const services = await db.doc.fetch.collection(`solutions/${key}/services`);
 const features = await db.doc.fetch.collection(`solutions/${key}/features`);
 
-let featureCards:{[key: string]: string}[] = [];
+let featureCards:FeatureCard[] = [];
 features.forEach((feature) => {
    featureCards.push({
       id: feature.id,
@@ -41,22 +40,7 @@ features.forEach((feature) => {
 >
 	<!-- FEATURES -->
 	<Section name="features">
-		<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
-			{featureCards.map((feature) => (
-				<><Drawer client:idle>
-					<SolutionFeatureCard 
-						slot="trigger"
-						title={feature.title}
-						icon={feature.icon}
-					/>
-	
-					{() => {
-						if (!feature.id) 						return (<></>);
-						return (<><WebFeatResponsive/></>);
-					}}
-				</Drawer></>
-			))}
-		</div>
+		<FeaturesGrid featureCards={featureCards} />
 	</Section>
 	<!-- END FEATURES -->
 
