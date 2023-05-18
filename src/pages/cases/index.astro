@@ -10,10 +10,11 @@ import db from '@/firebase';
 import CaseGrid from '@/components/Pages/Cases/CaseGrid.astro';
 
 const lang = "nl";
-// export const prerender = true;
 
 const portfolio = await db.doc.fetch.collection('portfolio');
 // const clients = await db.doc.fetch.collection('clients');
+
+export const prerender = true;
 ---
 
 <BaseLayout title={t('site:pages.cases.title')}>
