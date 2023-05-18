@@ -167,12 +167,9 @@ export const db = {
                   var itemsList: any[] = [];
                   const allPortfolio = await db.doc.fetch.collection(`portfolio`);
                   allPortfolio.forEach((item) => {
-                     item.categories.forEach( async (category:any) => {
-                        var catSlug = category._key.path.segments[category._key.path.segments.length - 1];
-                        if (catSlug === key) {
-                           itemsList.push(item);
-                        };
-                     })
+                     if (item.solution_type === key) {
+                        itemsList.push(item);
+                     }
                   });
                   return itemsList;
                } catch (error) {
