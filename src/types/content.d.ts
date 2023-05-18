@@ -36,3 +36,10 @@ export interface MistClient {
    portfolio: DocumentReference[];
    client_since: Timestamp;
 }
+
+export interface FeatureCard {
+   id: string;
+   title: string;
+   description: string;
+   icon: string;
+}
