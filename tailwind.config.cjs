@@ -69,7 +69,7 @@ module.exports = {
 				'title-md':  "clamp(1.5rem,	1rem 		 + 3.5vw, 	 4rem)",
 				'title-sm':  "clamp(1.25rem,	0.875rem  + 2.5vw, 	 3rem)",
 				'title-xs':  "clamp(1rem, 	 	0.75rem 	 + 1.5vw, 	 1.8rem)",
-				'title-2xs': "clamp(0.875rem, 0.625rem  + 1.25vw, 	 1.25rem)",
+				'title-2xs': "clamp(0.875rem, 0.625rem  + 1.25vw, 	 1.5rem)",
 				'title-3xs': "clamp(0.75rem,  0.5rem 	 + 1vw, 		 1rem)",
 				'title-4xs': "clamp(0.5rem, 	0.375rem  + 0.8vw, 	 0.875rem)",
 				// might delete these
