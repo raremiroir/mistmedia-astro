@@ -25,7 +25,6 @@ const mainImageRef = await db.storage.fetch.ref({ id: mainImage.id });
 const mainImageUrl = await getDownloadURL(mainImageRef);
 
 const clientDoc = await db.doc.fetch.fromRef(item.client);
-const solutionType = await db.doc.fetch.fromRef(solution_type);
 ---
 
 <Card 
@@ -57,7 +56,7 @@ const solutionType = await db.doc.fetch.fromRef(solution_type);
       <CaseTags 
          client:load 
          clientTag={clientDoc?.name}
-         solutionTag={solutionType?.id}
+         solutionTag={solution_type}
          tags={tagsList} 
       /> 
    </div>
