@@ -14,6 +14,7 @@ import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarque
 import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
 import FeaturesGrid from "@/components/Pages/Solutions/FeaturesGrid.astro";
 import type { FeatureCard } from "@/types/content";
+import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 
 const lang = "nl";
 const key = '3d'
@@ -48,37 +49,7 @@ features.forEach((feature) => {
 
 	<!-- PORTFOLIO -->
 	<Section fullWidthAppend name="portfolio" title={`${t(`services:main.sections.portfolio.title`)}`} subtitle={`${t(`services:main.sections.portfolio.subtitle`)}`}>
-			
-		<div class={`w-full grid ${gaps} grid-cols-3 grid-rows-[repeat(7,_minmax(0,_1fr))] min-h-[900px]`}>
-			{ portfolio.map((item) => (
-				<><div class={`
-					first-of-type:col-start-1 first-of-type:col-end-2 first-of-type:row-start-2 first-of-type:row-end-5
-					nth-2n:col-start-2 nth-2n:col-end-3 nth-2n:row-start-1 nth-2n:row-end-4
-					nth-3n:col-start-3 nth-3n:col-end-4 nth-3n:row-start-2 nth-3n:row-end-5
-					nth-4n:col-start-1 nth-4n:col-end-2 nth-4n:row-start-5 nth-4n:row-end-[8]
-					nth-5n:col-start-2 nth-5n:col-end-3 nth-5n:row-start-4 nth-5n:row-end-7
-				`}>
-					<Drawer client:idle placement="right">
-						<div slot="trigger" class="h-full w-full">
-							<SolutionPortfolioCard
-								title={item.title}
-								image={item.images.card}
-								description={item.description[lang]}
-								categories={item.categories}
-								tags={[]}
-							/>
-						</div>
-						<span slot="title">{item.title}</span>
-						{() => {
-							return <><div>
-								<span>{item.description[lang]}</span>
-								
-							</div></>
-						}}
-					</Drawer>
-				</div></>
-			))}
-		</div>
+		<CaseGrid portfolio={portfolio} lang={lang} />
 	</Section>
 	<!-- END PORTFOLIO -->
 
