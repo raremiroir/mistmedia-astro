@@ -2,11 +2,12 @@
 import type { DocumentReference, Firestore } from 'firebase/firestore';
 import { Timestamp, collection, deleteDoc, doc, endAt, endBefore, getDoc, getDocs, getFirestore, limit, orderBy, query, setDoc, startAfter, startAt, updateDoc, where } from 'firebase/firestore';
 
-import { deleteObject, getMetadata, getStorage, ref, updateMetadata, uploadBytes } from 'firebase/storage';
+import { deleteObject, getDownloadURL, getMetadata, getStorage, listAll, ref, updateMetadata, uploadBytes } from 'firebase/storage';
 import type { FirebaseStorage, SettableMetadata } from 'firebase/storage';
 import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps, DbUploadFileProps } from "./types";
 import { initializeApp, type FirebaseApp, type FirebaseOptions, getApp } from 'firebase/app';
 import type { MistClient } from '@/types/content';
+import { marked } from 'marked';
 
 const firebaseConfig: FirebaseOptions = {
    apiKey: import.meta.env.FB_API_KEY,
@@ -133,6 +134,11 @@ export const db = {
             const fileRef = ref(dbStorage, id);
             const fileMeta = await getMetadata(fileRef);
             return fileMeta;
+         },
+         list: async (collectionRef: string) => {
+            const colRef = ref(dbStorage, collectionRef);
+            const colList = await listAll(colRef);
+            return colList;
          }
       },
       // UPLOAD
@@ -177,7 +183,66 @@ export const db = {
                }
             }
          }
-      }
+      },
+      // BLOG
+      blog: {
+         fetch: {
+            all: async () => {
+               const allPosts = await db.storage.fetch.list(`blog`);
+               const allPostsList = await Promise.all(allPosts.items.map( async (item) => {
+                  const meta = await getMetadata(item);
+                  const url = await getDownloadURL(item);
+                  const file = await fetch(url);
+                  const fileContent = await file.text();
+
+                  // Turn file content into usable markdown data
+                  const fileData: any = fileContent.split('---')[1].split('\n').filter(line => line !== '').reduce((acc, line) => {
+                     const [key, value] = line.split(': ');
+                     // @ts-ignore
+                     acc[key] = value;
+                     return acc;
+                  }, {});
+                  const fileText = fileContent.split('---')[2].split('\n').filter(line => line !== '').join('\n');
+                  const fileMd = marked.parse(fileText);
+
+                  return {
+                     content: fileMd,
+                     data: {
+                        slug: meta.name.split('.')[0] ?? '',
+                        title: fileData.title.replace(/"/g, '') ?? '',
+                        description: fileData.description.replace(/"/g, '') ?? '',
+                        pubDate: fileData.pubDate.replace(/"/g, '') ?? new Date(meta.timeCreated).toISOString(),
+                        heroImage: fileData.heroImage.replace(/"/g, '') ?? '',
+                        language: fileData.language?.replace(/"/g, '') ?? 'en',
+                        author: {
+                           name: fileData.author?.replace(/"/g, '') ?? 'Miro Storm',
+                           email: fileData.authorEmail?.replace(/"/g, '') ?? 'miro@mistmedia.be',
+                           image: fileData.authorImage?.replace(/"/g, '') ?? '/public/images/team/MiroStorm-Color.png',
+                           github: fileData.authorGithub?.replace(/"/g, '') ?? 'raremiroir',
+                           twitter: fileData.authorTwitter?.replace(/"/g, '') ?? 'mirostorm',
+                           linkedin: fileData.authorLinkedin?.replace(/"/g, '') ?? 'mistmedia',
+                           website: fileData.authorWebsite?.replace(/"/g, '') ?? 'https://mistmedia.be',
+                        }
+                     },
+                     meta: {
+                        url,
+                        id: meta.fullPath ?? '',
+                        name: meta.name ?? '',
+                        bucket: meta.bucket ?? '',
+                        size: meta.size ?? '',
+                        createdAt: meta.timeCreated ?? '',
+                        updatedAt: meta.updated ?? '',
+                        fileType: meta.contentType ?? '',
+                        customMetadata: meta.customMetadata ?? undefined,
+                        cacheControl: meta.cacheControl ?? '',
+                        contentLang: meta.contentLanguage ?? '',
+                     }
+                  }
+               }))
+               return allPostsList;
+            },
+         },
+      },
    },
 }
 

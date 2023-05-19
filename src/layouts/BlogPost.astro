@@ -5,21 +5,32 @@ import BaseLayout from './BaseLayout.astro';
 import Page from '@/components/Core/Page/Page.astro';
 import Hero from '@/components/Common/Hero/Hero.astro';
 import { widths } from '@/consts/style';
+import type { BlogPostType } from '@/types/blog';
 
-type Props = CollectionEntry<'blog'>['data'];
+// type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, language, tags } = Astro.props;
+export interface Props {
+	post: BlogPostType;
+}
+
+const { post } = Astro.props;
+
+const { content } = post;
+const { slug, title, description, pubDate, heroImage, language, author } = post.data;
+const { id, createdAt, updatedAt } = post.meta;
+
+const datePublished = new Date(pubDate);
 ---
 
 <BaseLayout title={title} description={description}>
 	<Page>
-		<Hero title={title} alt slot="hero"/>
-		<article>
-			<div class={`flex flex-col ${widths} py-2`}>
-				<FormattedDate date={pubDate} type="published" />
-				<FormattedDate date={updatedDate} type="updated" />
+		<Hero title={title} alt slot="hero">
+			<div class={`flex flex-col py-2`}>
+				<FormattedDate date={datePublished} type="published" />
+				<FormattedDate date={new Date(updatedAt)?? datePublished} type="updated" />
 			</div>
-			<hr class="border-t border-t-black"/>
+		</Hero>
+		<article>
 			<slot />
 		</article>
 	</Page>

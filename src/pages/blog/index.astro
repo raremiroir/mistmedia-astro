@@ -10,16 +10,22 @@ import FormattedDate from "@/components/Utils/FormattedDate.astro";
 import Hero 			from "@/components/Common/Hero/Hero.astro";
 // Svelte components
 import Card 			from "@/components/Common/Card/Card.svelte";
+import db from "@/firebase";
+import { getDownloadURL, getMetadata } from "firebase/storage";
 
 changeLanguage("nl");
 
 const posts = (await getCollection("blog"))
 	.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+const dbPosts = await db.custom.blog.fetch.all();
+
+console.log(dbPosts);
 ---
 
 <BaseLayout title={t("site:pages.blog.title")}>
 	<Page>
-		<Hero slot="hero" alt bgImg="/images/stock/webdev-2.webp" title="Mist Blog">
+		<Hero slot="hero" alt title="Mist Blog">
 			<span slot="subtitle">
 				Navigate through our Blog and find a post that suits your interests!
 			</span>
@@ -27,16 +33,16 @@ const posts = (await getCollection("blog"))
 
 		<Section name="blog" title={"Mist Blog"}>
 			<ul class="grid grid-cols-3 gap-8">
-				{posts.map((post) => (
+				{dbPosts.map((post) => (
 					<Card 
 						color="surface_alt" variant="fill"
 						hover active article block
 						title={post.data.title}
-						href={`/blog/${post.slug}/`}
+						href={`/blog/${post.data.slug}/`}
 					>
 						<FormattedDate 
-							date={post.data.updatedDate?? post.data.pubDate} 
-							type={post.data.updatedDate ? "updated" : "published"} 
+							date={new Date(post.meta.updatedAt)?? post.data.pubDate} 
+							type={post.meta.updatedAt ? "updated" : "published"} 
 						/>
 					</Card>
 				))}
