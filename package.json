@@ -8,8 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format":"prettier --write --plugin-search-dir=. .",
-    "prettier:check":"prettier --check --plugin-search-dir=. ."
+    "format": "prettier --write --plugin-search-dir=. .",
+    "prettier:check": "prettier --check --plugin-search-dir=. ."
   },
   "dependencies": {
     "@astrojs/cloudflare": "^6.2.2",
@@ -29,6 +29,7 @@
     "@splidejs/svelte-splide": "^0.2.9",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/marked": "^5.0.0",
     "@types/postcss-js": "^4.0.0",
     "astro": "^2.3.1",
     "astro-i18next": "^1.0.0-beta.21",
@@ -36,6 +37,7 @@
     "astro-robots-txt": "^0.5.0",
     "cloudflare": "^0.0.8",
     "firebase": "^9.21.0",
+    "marked": "^5.0.2",
     "nanostores": "^0.8.0",
     "postcss-each": "^1.1.0",
     "postcss-nested": "^6.0.1",
