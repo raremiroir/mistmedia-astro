@@ -8,7 +8,11 @@
    import Title from '@/components/Text/Title/Title.svelte';
 
    export let article:boolean = false;
+   
    export let href:string = ''
+   export let target:string = '';
+   export let rel:string = '';
+
    export let title:string = '';
    export let capitalize:boolean = false;
    export let label:string = '';
@@ -76,8 +80,8 @@
 
    const outerWrapProps = href ? {
       href: href,
-      target: href ? '_blank' : '',
-      rel: href ? 'noopener noreferrer' : '',
+      target: href ? target : '',
+      rel: href ? rel : '',
    } : {};
 </script>
 
