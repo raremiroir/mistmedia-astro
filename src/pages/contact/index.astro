@@ -11,6 +11,7 @@ import Link from '@/components/Common/Button/Link.svelte';
 import ContactForm from '@/components/Pages/Contact/ContactForm.svelte';
 
 import { ADDRESS } from '@const/index';
+import { gaps } from '@/consts/style';
 export const prerender = true;
 ---
 
@@ -25,39 +26,43 @@ export const prerender = true;
       </div>
 
       <Section name="contact-text" transparent>
-         <div class="mt-20 grid grid-cols-2 gap-32 bg-transparent self-center min-h-[50vh] h-fit">
+         <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-32 bg-transparent self-center min-h-[50vh] h-fit">
             <!-- Card Left -->
             <Card 
                client:load fillheight
                color="surface"
-               title="Mist Media" footer
-               block hover>
-               {t("contact.text.0")}<br/>
-               {t("contact.text.1")}<br/>
-               {t("contact.text.2")}<br/><br/>
-               {t("contact.text.3")}
+               title="Mist Media" block hover>
+               <div class={`flex flex-col w-full items-start justify-start ${gaps}`}>
+                  <p class="mb-12">
+                     {t("contact.text.0")}<br/>
+                     {t("contact.text.1")}<br/>
+                     {t("contact.text.2")}<br/><br/>
+                     {t("contact.text.3")}
+                  </p>
 
-               <div slot="footer" class="w-full flex justify-between">
-                  <span>
-                     {ADDRESS.street}<br/>
-                     {t('geo.nl.antwerp')}<br/>
-                     {t('geo.nl.name')}
-                  </span>
-                  <span>
-                     <Link 
-                        client:load popup={`${t("contact.mail.cta")}!`}
-                        popupPlacement="top"
-                        href="mailto:miro@mistmedia.be">
-                        miro@mistmedia.be
-                     </Link>
-                     <Link 
-                        client:load popup={`${t("contact.call.cta")}!`} 
-                        popupPlacement="bottom"
-                        href="phone:0032484340391">
-                        +324 84 34 03 91
-                     </Link>
-                  </span>
+                  <div class="w-full flex justify-between">
+                     <span>
+                        {ADDRESS.street}<br/>
+                        {t('geo.nl.antwerp')}<br/>
+                        {t('geo.nl.name')}
+                     </span>
+                     <span>
+                        <Link 
+                           client:load popup={`${t("contact.mail.cta")}!`}
+                           popupPlacement="left"
+                           href="mailto:miro@mistmedia.be">
+                           miro@mistmedia.be
+                        </Link>
+                        <Link 
+                           client:load popup={`${t("contact.call.cta")}!`} 
+                           popupPlacement="left"
+                           href="phone:0032484340391">
+                           +324 84 34 03 91
+                        </Link>
+                     </span>
+                  </div>
                </div>
+
             </Card>
             <!-- Card Right -->
             <Card 

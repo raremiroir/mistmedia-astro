@@ -38,12 +38,13 @@ import CaseCard from './CaseCard.svelte';
    /> -->
 
    <!-- CASES GRID -->
-   <ul class={`w-full grid grid-cols-2 ${gaps}`}>
+   <ul class={`w-full grid grid-cols-1 md:grid-cols-2 ${gaps}`}>
       { !noEnabledItems ? (
          portfolio.map( (item, key) => (
             item.enabled && (
                <><CaseCard 
                   client:load
+                  class={`w-11/12 md:w-full ${ (key % 2 !== 0) || (key === 0) ? 'place-self-start' : 'place-self-end' } mb-2`}
                   key={key}
                   title={item.title}
                   description={item.description[lang]}

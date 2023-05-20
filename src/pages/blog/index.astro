@@ -20,7 +20,7 @@ const posts = (await getCollection("blog"))
 
 const dbPosts = await db.custom.blog.fetch.all();
 
-console.log(dbPosts);
+// console.log(dbPosts);
 ---
 
 <BaseLayout title={t("site:pages.blog.title")}>
@@ -32,7 +32,7 @@ console.log(dbPosts);
 		</Hero>
 
 		<Section name="blog" title={"Mist Blog"}>
-			<ul class="grid grid-cols-3 gap-8">
+			<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{dbPosts.map((post) => (
 					<Card 
 						color="surface_alt" variant="fill"

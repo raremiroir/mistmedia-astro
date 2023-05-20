@@ -10,13 +10,16 @@
    export let slug: string;
    export let id: string;
 
+   let klass = '';
+   export { klass as class };
+
    // $: console.log('Selected tags: ', $caseFilterTags);
    // $: console.log('Selected solutions: ', $caseFilterSolutions);
    // $: console.log('Selected clients: ', $caseFilterClients);
 </script>
 
 <div 
-   class={`col-span-1 `}
+   class={`col-span-1 ${klass}`}
 >
    <Drawer 
       placement={(key % 2 == 0) && (key !== 0)  ? 'right' : 'left'}

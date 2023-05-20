@@ -31,20 +31,24 @@
 </script>
 
 <!-- Tags -->
-   <div class="flex flex-row gap-1">
-      <Tag class="{tagClass}" color="{tagColorClient}">
-         {clientTag}
-      </Tag>
-      <Tag 
-         class="{tagClass}" 
-         color="{tagColorSolution}"
-         element="a" href="/solutions/{solutionTag}"
-      >
-         {t(`services:solutions.${solutionTag}.title_short`)}
-      </Tag>
-      {#each tags as tag}
-         <Tag class="{tagClass}" color="{tagColor}">
-            {tag.title[$locale]}
+   <div class="flex flex-col md:flex-row gap-1">
+      <div class="flex flex-row gap-1">
+         <Tag class="{tagClass}" color="{tagColorClient}">
+            {clientTag}
          </Tag>
-      {/each}
+         <Tag
+            class="{tagClass}"
+            color="{tagColorSolution}"
+            element="a" href="/solutions/{solutionTag}"
+         >
+            {t(`services:solutions.${solutionTag}.title_short`)}
+         </Tag>
+      </div>
+      <div class="flex flex-row gap-1">
+         {#each tags as tag}
+            <Tag class="{tagClass}" color="{tagColor}">
+               {tag.title[$locale]}
+            </Tag>
+         {/each}
+      </div>
    </div>

@@ -55,7 +55,7 @@ export const prerender = true;
 		<Section name="about-me" title="" alt>
 			<div class="w-full h-fit flex flex-row gap-4 sm:gap-6 mx-auto">
 				<Box 
-					class="h-full"
+					class="h-full w-full max-w-sm hidden lg:flex"
 					client:load
 					size="none">
 					<Picture 
@@ -67,7 +67,7 @@ export const prerender = true;
 						aspectRatio={1}
 						fit="cover"
 						position="center"
-						class="h-full w-auto max-w-sm bg-transparent"
+						class="h-auto w-full max-w-sm bg-transparent" 
 					/>
 				</Box>
 				<div class="flex flex-col justify-start gap-4">
@@ -81,20 +81,40 @@ export const prerender = true;
 							{t("about:miro.desc.1")}
 						</p>
 					</Card>
-					<!-- Buttons -->
-					<div class="flex flex-row gap-4 col-span-12 sm:col-span-8 sm:row-span-1">
-						<!-- About Me -->
-						<Drawer client:load>
-							<Button slot="trigger" color="surface_alt" size='xl' variant="fill" capitalize>
-								{t("about:miro.more.title")}
-							</Button>
-							<span slot="title" class="capitalize">{t("about:miro.more.title_alt")}</span>
-					</Drawer>
-
-					<LinkedInBtn />
-					<GithubBtn />
-					<!-- <FacebookBtn /> -->
-					<!-- <InstagramBtn /> -->
+					<!-- Footer -->
+					<div class="flex gap-4 flex-row items-center justify-between">
+						<Box 
+							class="h-full lg:hidden"
+							client:load
+							size="none">
+							<Picture 
+								src="/images/team/MiroStorm-Color.png"
+								alt={`Miro Storm - ${t("about:miro.title")}`}
+								sizes="(min-width: 0px;) 80w, (min-width: 200px;) 120w, (min-width: 300px;) 180w"
+								widths={[80, 120, 180]}
+								formats={['webp', 'avif', 'png']}
+								aspectRatio={1}
+								fit="cover"
+								position="center"
+								class="h-auto w-44 sm:w-52 bg-transparent"
+							/>
+						</Box>
+						<!-- Buttons -->
+						<div class="w-full flex flex-col lg:flex-row gap-2 md:gap-4 col-span-12 sm:col-span-8 sm:row-span-1">
+							<!-- About Me -->
+							<Drawer client:load>
+								<Button slot="trigger" color="surface_alt" size='xl' variant="fill" capitalize block>
+									{t("about:miro.more.title")}
+								</Button>
+								<span slot="title" class="capitalize">{t("about:miro.more.title_alt")}</span>
+							</Drawer>
+							<div class="flex flex-row gap-2 md:gap-4">
+								<LinkedInBtn />
+								<GithubBtn />
+							</div>
+							<!-- <FacebookBtn /> -->
+							<!-- <InstagramBtn /> -->
+						</div>
 					</div>
 				</div>
 			</div>

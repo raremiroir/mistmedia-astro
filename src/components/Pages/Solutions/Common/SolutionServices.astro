@@ -23,11 +23,11 @@ const { key, services } = Astro.props;
    alt name="services" 
    title={`${t(`services:main.sections.services.title`)}`}
    subtitle={`${t(`services:solutions.${key}.description`)}`}>
-   <div class={`${gaps} grid grid-cols-3`}>
+   <div class={`gap-4 md:gap-4 lg:gap-6 2xl:gap-8 grid grid-cols-2 md:grid-cols-3`}>
 
       {services.map((service) => (
 
-         <Card icon={service.icon} >
+         <Card icon={service.icon}>
          <div slot="title" class="flex flex-row items-center justify-start gap-2">
             <div class="w-[10%]">
                <Icon name={service.icon} class="text-primary w-full" />

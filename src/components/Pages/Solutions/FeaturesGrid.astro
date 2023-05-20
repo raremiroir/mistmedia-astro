@@ -15,27 +15,27 @@ const { featureCards } = Astro.props;
 
 
 <Section name="features">
-   <div class="w-full grid grid-cols-3 gap-8">
+   <div class="w-full grid grid-cols-3 gap-4 md:gap-4 lg:gap-6 2xl:gap-8">
       {featureCards.map((feature) => (
          <><Drawer client:load>
             <Card 
-               padding="p-4" gap="gap-4"
+               padding="p-4" gap="gap-2 md:gap-4"
                slot="trigger" direction="row" 
                centerRow fillHeight noBody 
                block hover active 
                media="icon" icon={feature.icon}
-               iconClass="w-8"
+               iconClass="!w-8"
             >
-               <div slot="title" class="flex flex-row items-center justify-start gap-4">
-                  <Icon name={feature.icon} class="w-8" />
+               <div slot="title" class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-4">
+                  <Icon name={feature.icon} class="!w-8" />
                   <Title h3 size="xs" weight="font-bold">
-                     <div class="h-full flex items-center justify-start">{feature.title}</div>
+                     <div class="h-full flex items-center justify-center text-center md:text-start md:justify-start">{feature.title}</div>
                   </Title>
                </div>
             </Card>
             
-            <span slot="title" class="flex flex-row items-center justify-start gap-4">
-               <Icon name={feature.icon} class="w-8" />
+            <span slot="title" class="flex flex-row items-center justify-start gap-2 md:gap-4">
+               <Icon name={feature.icon} class="!w-8" />
                {feature.title}
             </span>
             {() => {

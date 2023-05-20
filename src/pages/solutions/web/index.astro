@@ -1,14 +1,9 @@
 ---
 import { t, changeLanguage } from "i18next";
-import { ICONS } from "@const/index";
-import { gaps, classes } from "@/consts/style";
 // Astro components
 import Section 		from "@/components/Core/Section/Section.astro";
-import Icon 			from "astro-icon";
 // Svelte components
-import Card 			from "@/components/Common/Card/Card.svelte";
 import Drawer 			from "@/components/Common/Drawer/Drawer.svelte";
-import Title from "@/components/Text/Title/Title.svelte";
 // Import feature sidebar components
 import WebFeatAccessible from "@/components/Pages/Solutions/Web/Features/WebFeatAccessible.astro";
 import WebFeatFast from "@/components/Pages/Solutions/Web/Features/WebFeatFast.astro";
@@ -23,7 +18,6 @@ import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServic
 
 import db from "@/firebase";
 import AboutTechStackMarquee from "@/components/Pages/About/AboutTechStackMarquee.astro";
-import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
 import SolutionFeatureCard from "@/components/Pages/Solutions/Common/SolutionFeatureCard.astro";
 import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 
