@@ -69,7 +69,7 @@ const config: AstroUserConfig = {
         // https://docs.partytown.app/configuration
       }
     }),
-    robotsTxt()
+    robotsTxt(),
   ],
   output: "server",
   adapter: vercel(),
@@ -79,6 +79,11 @@ const config: AstroUserConfig = {
     },  
     optimizeDeps: {
     }
+  },
+  markdown: {
+    remarkPlugins: [
+      
+    ]
   }
 }
 
