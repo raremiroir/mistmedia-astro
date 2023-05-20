@@ -5,6 +5,7 @@
    import Icon from "@/components/Media/Icon/Icon.svelte";
    import ValidationError from "../Utils/ValidationError.svelte";
    import type { DropZone } from "@/types/components/form";
+   import { currentForm } from "@/stores";
 
 
    export let value:any = '';
@@ -108,8 +109,8 @@
             </Button>
          </div>
       {/if}
-      <span class="{cFormComplete.labelClass} {value ? `${cForm.input.labelActiveBg} ${cForm.input.labelPosValue}` : cForm.input.labelPosDef}">
-         {label}:
+      <span class="{cFormComplete.labelClass} {$currentForm[name] ? `${cForm.input.labelActiveBg} ${cForm.input.labelPosValue}` : cForm.input.labelPosDef}">
+         {label}
       </span>
    
    </label>
