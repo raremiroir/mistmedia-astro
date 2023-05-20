@@ -21,9 +21,11 @@ interface ImportMetaEnv {
    readonly SOCIAL_INSTAGRAM: string;
 
    readonly GA_API: string;
-   readonly G_MAPS_API: string;
+   readonly GC_API: string;
    readonly G_MAPS_ID: string;
    readonly G_SITE_VERIFICATION: string;
+
+   readonly PUBLIC_MAPBOX_ACCESS_TOKEN: string;
 
    readonly MG_DOMAIN: string;
    readonly MG_API_KEY: string;
