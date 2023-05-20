@@ -20,6 +20,8 @@
 
   const { title, description = '' } = Astro.props;
 
+  const GOOGLE_MAPS_API_KEY = import.meta.env.GC_API;
+
 ---
 <!DOCTYPE html>
 <html lang={i18next.language} class="!w-screen !max-w-full !overflow-x-hidden scroll-mx-0 bg-white dark:bg-slate-900">
