@@ -3,9 +3,7 @@
    
 	import type { FormProps } from "@/types/components/form";
    import FormBase from "@/components/Form/FormBase.svelte";
-
-   import { mailToAdmin } from "@/utils/mail";
-
+   
    let inputItems: FormProps = {
       name: { 
          required: true, 
@@ -90,7 +88,19 @@
             Dit bericht werd automatisch verzonden vanaf <a href="https://mistmedia.be">Trixolutions.be</a>.<br/>
             Om te reageren op de verzender, dien je een aparte email naar zijn/haar e-mailadres te sturen.
          </i>`;
-      // mailToAdmin({ subject, message });
-      console.log({ subject, message });
+         
+      // console.log({ subject, message });
+      const body = JSON.stringify({ subject, message });
+      await fetch('/api/sendMail', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body,
+      }).then((res => {
+         console.log('Mail sent!')
+         return res.json()
+      })).catch((err) => {
+         console.error('Mail not sent!')
+         console.error(err)
+      })
    }}
 />
