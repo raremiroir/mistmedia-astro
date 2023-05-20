@@ -8,7 +8,8 @@ const key = dummyKeys.private.pass; // priv_key in production
 
 const validateToken = async (token: string, secret: string, version: TurnstileVersion = 'v0') => {
    // Define the URL to fetch
-   const url = `https://challenges.cloudflare.com/${version}/siteverify`;
+   const url = `https://challenges.cloudflare.com/turnstile/${version}/siteverify`;
+   
    // Fetch the URL
    const res = await fetch(url, {
       method: 'POST',
@@ -20,6 +21,7 @@ const validateToken = async (token: string, secret: string, version: TurnstileVe
          secret: secret
       })
    });
+
    // Await the response and parse it as JSON
    const data: TokenValidateResponse = await res.json();
 
