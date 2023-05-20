@@ -1,7 +1,7 @@
 <script lang="ts">
    import Icon from '@iconify/svelte';
    import { SlideToggle } from '@skeletonlabs/skeleton';
-   import { cForm, cToggle, classes } from '@/consts/style';
+   import { cForm, classes } from '@/consts/style';
 
    import type { OnKeyDownEvent } from '@tstype/components/toggle';
 
@@ -32,42 +32,52 @@
       toggleHandler()
    }}
 
+   const toggleSize = '!h-6 !w-12';
+   const toggleBorder = 'ring-[1px] ring-surface-500/30 rounded-token'
+   const toggleThumbSize = 'h-6 w-6 group-active/toggle:w-8 scale-[0.8]'
+   const toggleThumbBg = 'bg-surface-900 dark:bg-surface-50 rounded-full'
+
+   const toggleThumbOn = 'translate-x-full group-active/toggle:translate-x-1/2'
+
    // State
    $: toggleBg = checked ? bg_on : bg_off;
-   $: thumbPosition = checked ? cToggle.thumb.pos.on : cToggle.thumb.pos.off;
+   $: thumbPosition = checked && toggleThumbOn;
    $: thumbFill = checked ? ìcon_on : icon_off;
    // Reactive
-   $: toggleClass = `${toggle} ${toggleBg} ${cToggle.size.md} ${cToggle.border} ${classes.transition} ${$$props.class ?? ''}`;
-   $: thumbClass = `${cToggle.thumb.size.md} ${classes.flex.center} ${cToggle.thumb.bg} ${thumbPosition} ${classes.transition}`;
-   $: iconClass = `${cToggle.thumb.icon.size.md} ${cToggle.thumb.icon.base} ${thumbFill} ${classes.transition}`;
+   $: toggleClass = `${toggle} ${toggleBg} ${toggleSize} ${toggleBorder} ${classes.transition.fast} ${$$props.class ?? ''}`;
+   $: thumbClass = `${toggleThumbSize} ${classes.flex.center} ${toggleThumbBg} ${thumbPosition} ${classes.transition.fast}`;
+   $: iconClass = `w-4 h-auto aspect-square outline-[1px] ${thumbFill} ${classes.transition.fast}`;
 </script>
 
 
-<div class="flex items-center gap-2">
+<div class="grid grid-cols-4 md:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-1 md:gap-2">
    <!-- Toggle -->
-   <div 
-      class="toggle {toggleClass}"
-      on:click={toggleHandler} on:click
-      on:keydown={onKeyDown} on:keydown
-      on:keyup on:keypress
-      role="checkbox" tabindex="0"
-      aria-label={label} aria-checked={checked ? 'true' : 'false'}
-   > 
-      <input {required} {disabled} type="checkbox" bind:checked class="hidden" {name} id={name} />
-      <!-- Thumb -->
-      <div class="thumb {thumbClass}">
-         <!-- Icon -->
-         {#if checked}
-            <Icon icon="material-symbols:check" class={iconClass} />
-         {:else}
-            <Icon icon="material-symbols:close" class={iconClass} />
-         {/if}
+   <div class="col-span-1 flex items-center justify-start">
+      <div 
+         class="toggle {toggleClass}"
+         on:click={toggleHandler} on:click
+         on:keydown={onKeyDown} on:keydown
+         on:keyup on:keypress
+         role="checkbox" tabindex="0"
+         aria-label={label} aria-checked={checked ? 'true' : 'false'}
+      > 
+         <input {required} {disabled} type="checkbox" bind:checked class="hidden" {name} id={name} />
+         <!-- Thumb -->
+         <div class="thumb {thumbClass}">
+            <!-- Icon -->
+            {#if checked}
+               <Icon icon="material-symbols:check" class={iconClass} />
+            {:else}
+               <Icon icon="material-symbols:close" class={iconClass} />
+            {/if}
+         </div>
       </div>
    </div>
-   
-   <label for={name} class="mt-0.5">
-      {label}
-   </label>
+   <div class="col-span-3 md:col-span-4 xl:col-span-5 2xl:col-span-6">
+      <label for={name} class="mt-0.5">
+         {label}
+      </label>
+   </div>
 </div>
 
 <!-- <SlideToggle 
