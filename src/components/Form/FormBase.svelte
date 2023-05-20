@@ -18,6 +18,7 @@
    // Import i18n
    import i18next, { t } from 'i18next';
    import { getYupObject } from '@/lib/yup/schemas';
+   import { currentForm } from '@/stores';
 
    /* ~~-~~ ~- -~ ~~-~~ */
    /* ~~-~~ PROPS ~~-~~ */
@@ -27,7 +28,7 @@
    export const validateTurnstile = async (turnstile_response:any) => {
 
       const turnstileData = JSON.stringify({ turnstile_response });
-      console.log(turnstileData);
+      // console.log(turnstileData);
       let success = false;
 
       await fetch ('/api/turnstile', {
@@ -175,7 +176,7 @@
       validationSchema: validationSchema,
       onSubmit: async (values) => {
          await validateTurnstile(values.turnstile_response).then(async (res) => {
-            console.log('res', res);
+            // console.log('res', res);
             if (res) {
                await submitAction(values);
                success = true;
@@ -194,7 +195,8 @@
       success = false;
    }
 
-   // $: console.log($form);
+   $: $currentForm = $form;
+   // $: console.log($currentForm);
 
 </script>
 

@@ -20,6 +20,8 @@ export const currentTab: WritableAtom<number> = atom(0);
 // Errors in file dropzone
 export const fileErrors: Writable<string[]> = writable([]);
 
+// Form
+export const currentForm: WritableAtom<any> = atom({});
 
 // Modal settings
 export const modalSettings: WritableAtom<ModalSettings> = atom({
