@@ -49,11 +49,6 @@ export const TECHSTACK: {[key:string]: {[key:string]: string}} = {
       svg: 'assets/svg/brandstech/adobe-premierepro.svg',
       url: 'https://www.adobe.com/products/premiere.html'
    },
-   // creativecloud: {
-   //    name: 'Adobe Creative Cloud',
-   //    svg: 'assets/svg/brandstech/adobe-cc.svg',
-   //    url: 'https://www.adobe.com/creativecloud.html'
-   // },
    figma: {
       name: 'Figma',
       svg: 'assets/svg/brandstech/figma.svg',
@@ -67,7 +62,7 @@ export const TECHSTACK: {[key:string]: {[key:string]: string}} = {
    css3: {
       name: 'CSS3',
       svg: 'assets/svg/brandstech/css3.svg',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3'
+      url: 'https://developer.mozilla.org/en-US/docs/Web/CSS'
    },
    javascript: {
       name: 'JavaScript',
@@ -94,11 +89,11 @@ export const TECHSTACK: {[key:string]: {[key:string]: string}} = {
       svg: 'assets/svg/brandstech/npm.svg',
       url: 'https://www.npmjs.com/'
    },
-   // git: {
-   //    name: 'Git',
-   //    svg: 'assets/svg/brandstech/git.svg',
-   //    url: 'https://git-scm.com/'
-   // },
+   git: {
+      name: 'Git',
+      svg: 'assets/svg/brandstech/git.svg',
+      url: 'https://git-scm.com/'
+   },
    github: {
       name: 'GitHub',
       svg: 'assets/svg/brandstech/github.svg',
@@ -129,11 +124,11 @@ export const TECHSTACK: {[key:string]: {[key:string]: string}} = {
       svg: 'assets/svg/brandstech/svelte.svg',
       url: 'https://svelte.dev/'
    },
-   // react: {
-   //    name: 'React',
-   //    svg: 'assets/svg/brandstech/react.svg',
-   //    url: 'https://reactjs.org/'
-   // },
+   react: {
+      name: 'React',
+      svg: 'assets/svg/brandstech/react.svg',
+      url: 'https://reactjs.org/'
+   },
    vue: {
       name: 'Vue',
       svg: 'assets/svg/brandstech/vue.svg',
