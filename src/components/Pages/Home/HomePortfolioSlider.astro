@@ -1,0 +1,61 @@
+---
+import SliderDefault from "@/components/Common/Slider/SliderDefault.svelte";
+import SolutionPortfolioCard from "../Solutions/Common/SolutionPortfolioCard.astro";
+import db from "@/firebase";
+import type { Locales } from "@/types";
+
+export interface Props {
+   lang: Locales;
+}
+
+const { lang } = Astro.props;
+
+const featuredPortfolioItems = await db.custom.filter.by.featuredFromPortfolio() || [];
+console.log(featuredPortfolioItems);
+---
+
+<SliderDefault client:load thirdPage>
+      <SolutionPortfolioCard 
+         slot="first"
+         lang={lang} noBtn
+         item={{
+            enabled: featuredPortfolioItems[0].enabled,
+            id: featuredPortfolioItems[0].id,
+            title: featuredPortfolioItems[0].title,
+            description: featuredPortfolioItems[0].description[lang],
+            slug: featuredPortfolioItems[0].slug,
+            client: featuredPortfolioItems[0].client,
+            images: featuredPortfolioItems[0].images,
+            solution_type: featuredPortfolioItems[0].solution_type,
+            tags: featuredPortfolioItems[0].tags,
+         }} />
+      
+      <SolutionPortfolioCard 
+         slot="second"
+         lang={lang} noBtn
+         item={{
+            enabled: featuredPortfolioItems[1].enabled,
+            id: featuredPortfolioItems[1].id,
+            title: featuredPortfolioItems[1].title,
+            description: featuredPortfolioItems[1].description[lang],
+            slug: featuredPortfolioItems[1].slug,
+            client: featuredPortfolioItems[1].client,
+            images: featuredPortfolioItems[1].images,
+            solution_type: featuredPortfolioItems[1].solution_type,
+            tags: featuredPortfolioItems[1].tags,
+         }} />
+      <SolutionPortfolioCard
+         slot="third"
+         lang={lang} noBtn
+         item={{
+            enabled: featuredPortfolioItems[2].enabled,
+            id: featuredPortfolioItems[2].id,
+            title: featuredPortfolioItems[2].title,
+            description: featuredPortfolioItems[2].description[lang],
+            slug: featuredPortfolioItems[2].slug,
+            client: featuredPortfolioItems[2].client,
+            images: featuredPortfolioItems[2].images,
+            solution_type: featuredPortfolioItems[2].solution_type,
+            tags: featuredPortfolioItems[2].tags,
+         }} />
+</SliderDefault>
