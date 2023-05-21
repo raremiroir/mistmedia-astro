@@ -1,42 +1,36 @@
 ---
 import { t, changeLanguage } from "i18next";
-import { gaps } from "@/consts/style";
 // Astro components
 import Section 		from "@/components/Core/Section/Section.astro";
-// Svelte components
-import Drawer 			from "@/components/Common/Drawer/Drawer.svelte";
 // Import feature sidebar components
 import SolutionLayout from "@/layouts/SolutionLayout.astro";
 import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServices.astro";
-
 import db from "@/firebase";
-import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
 import FeaturesGrid from "@/components/Pages/Solutions/FeaturesGrid.astro";
 import type { FeatureCard } from "@/types/content";
 import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 
-const lang = "nl";
-const key = '3d'
-changeLanguage(lang);
+changeLanguage("nl");
 
+const lang = "nl";
+const key = "design";
 const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
 const services = await db.doc.fetch.collection(`solutions/${key}/services`);
 const features = await db.doc.fetch.collection(`solutions/${key}/features`);
-
-let featureCards:FeatureCard[] = [];
+let featureCards: FeatureCard[] = [];
 features.forEach((feature) => {
-   featureCards.push({
-      id: feature.id,
-      title: t(`services:solutions.${key}.features.${feature.id}.title`),
-      description: t(`services:solutions.${key}.features.${feature.id}.description`),
-      icon: feature.icon
-   })
+    featureCards.push({
+        id: feature.id,
+        title: t(`services:solutions.${key}.features.${feature.id}.title`),
+        description: t(`services:solutions.${key}.features.${feature.id}.description`),
+        icon: feature.icon
+    });
 });
 ---
 
 <SolutionLayout 
 	title={`${t(`services:solutions.${key}.title`)}`}
-	subtitle={`${t(`services:solutions.${key}.subtitle`)}`}
+	subtitle={`${t(`services:solutions.${key}.description`)}`}
 >
 	<!-- FEATURES -->
 	<FeaturesGrid featureCards={featureCards} />

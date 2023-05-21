@@ -1,20 +1,21 @@
 ---
-import { t } from 'i18next'
-
+import { t, changeLanguage } from "i18next";
 // Astro components
-import Section from '@/components/Core/Section/Section.astro';
+import Section from "@/components/Core/Section/Section.astro";
 // Svelte components
-import Card from '@/components/Common/Card/Card.svelte';
-import db from '@/firebase';
-import { gaps } from '@/consts/style';
-import Button from '@/components/Common/Button/Button.svelte';
-import SolutionLayout from '@/layouts/SolutionLayout.astro';
+import Card from "@/components/Common/Card/Card.svelte";
+import db from "@/firebase";
+import { gaps } from "@/consts/style";
+import Button from "@/components/Common/Button/Button.svelte";
+import SolutionLayout from "@/layouts/SolutionLayout.astro";
 
-const solutions = await db.doc.fetch.collection('solutions');
+changeLanguage("nl");
+
+const solutions = await db.doc.fetch.collection("solutions");
 export const prerender = true;
 ---
 
-<SolutionLayout title={t('site:pages.solutions.title')} subtitle={'We bieden een breed scala aan oplossingen voor uw bedrijf.'}>
+<SolutionLayout title={t('site:pages.solutions.title')} subtitle={`${t('site:pages.solutions.subtitle')}`}>
    <Section name="solutions">
       <div class={`grid grid-cols-3 ${gaps}`}>
          {solutions.map(solution => (
@@ -27,7 +28,7 @@ export const prerender = true;
                {t(`services:solutions.${solution.id}.description`) || 'Description'}
                <div slot="footer">
                   <Button href={solution.slug} size="lg" color="primary" variant="ghost">
-                     Meer info
+                     {t('btn.more_info')}
                   </Button>
                </div>
             </Card>

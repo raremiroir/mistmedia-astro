@@ -30,19 +30,18 @@ changeLanguage("nl");
 let valueCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
 t("about:values.items").forEach((value) => {
-	 valueCards.push({
-		  title: value.title,
-		  description: value.desc,
-		  icon: 'DevicesResponsive'
-	 })
+    valueCards.push({
+        title: value.title,
+        description: value.desc,
+        icon: "DevicesResponsive"
+    });
 });
 export const prerender = true;
-
-const linkedinLink = `https://linkedin.com/in/${import.meta.env.SOCIAL_LINKEDIN}`
-const twitterLink = `https://twitter.com/${import.meta.env.SOCIAL_TWITTER}`
-const facebookLink = `https://facebook.com/${import.meta.env.SOCIAL_FACEBOOK}`
-const instagramLink = `https://instagram.com/${import.meta.env.SOCIAL_INSTAGRAM}`
-const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`
+const linkedinLink = `https://linkedin.com/in/${import.meta.env.SOCIAL_LINKEDIN}`;
+const twitterLink = `https://twitter.com/${import.meta.env.SOCIAL_TWITTER}`;
+const facebookLink = `https://facebook.com/${import.meta.env.SOCIAL_FACEBOOK}`;
+const instagramLink = `https://instagram.com/${import.meta.env.SOCIAL_INSTAGRAM}`;
+const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`;
 ---
 
 <BaseLayout title={t("site:pages.about.title")}>

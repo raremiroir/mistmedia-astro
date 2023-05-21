@@ -1,9 +1,9 @@
 ---
 import { t, changeLanguage } from "i18next";
 // Astro components
-import Section 		from "@/components/Core/Section/Section.astro";
+import Section from "@/components/Core/Section/Section.astro";
 // Svelte components
-import Drawer 			from "@/components/Common/Drawer/Drawer.svelte";
+import Drawer from "@/components/Common/Drawer/Drawer.svelte";
 // Import feature sidebar components
 import WebFeatAccessible from "@/components/Pages/Solutions/Web/Features/WebFeatAccessible.astro";
 import WebFeatFast from "@/components/Pages/Solutions/Web/Features/WebFeatFast.astro";
@@ -15,27 +15,27 @@ import WebFeatTech from "@/components/Pages/Solutions/Web/Features/WebFeatTech.a
 import WebFeatSupport from "@/components/Pages/Solutions/Web/Features/WebFeatSupport.astro";
 import SolutionLayout from "@/layouts/SolutionLayout.astro";
 import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServices.astro";
-
 import db from "@/firebase";
 import SolutionFeatureCard from "@/components/Pages/Solutions/Common/SolutionFeatureCard.astro";
 import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 
-const lang = "nl";
-const key = 'web'
-changeLanguage(lang);
+changeLanguage("nl");
 
+const lang = "nl";
+const key = "web";
 const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
 const services = await db.doc.fetch.collection(`solutions/${key}/services`);
 const features = await db.doc.fetch.collection(`solutions/${key}/features`);
-
-let featureCards:{[key: string]: string}[] = [];
+let featureCards: {
+    [key: string]: string;
+}[] = [];
 features.forEach((feature) => {
-   featureCards.push({
-      id: feature.id,
-      title: t(`services:solutions.${key}.features.${feature.id}.title`),
-      description: t(`services:solutions.${key}.features.${feature.id}.description`),
-      icon: feature.icon
-   })
+    featureCards.push({
+        id: feature.id,
+        title: t(`services:solutions.${key}.features.${feature.id}.title`),
+        description: t(`services:solutions.${key}.features.${feature.id}.description`),
+        icon: feature.icon
+    });
 });
 ---
 
