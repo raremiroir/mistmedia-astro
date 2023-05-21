@@ -7,6 +7,8 @@
    // Main btn props
    export let id: string = '';
    export let href: string = '';
+   export let rel: string = '';
+   export let target: string = '';
    export let ariaLabel: string = '';
 
    // Main btn style props
@@ -68,6 +70,7 @@
    <a
       {id} type="button"
       href="{href}"
+      rel={rel} target={target}
       use:Ripple={ripple}
       class={btnClass}
       aria-label={ariaLabel}
