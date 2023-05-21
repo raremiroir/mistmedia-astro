@@ -11,10 +11,8 @@ import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 changeLanguage("nl");
 
 const lang = "nl";
-
-const portfolio = await db.doc.fetch.collection('portfolio');
+const portfolio = await db.doc.fetch.collection("portfolio");
 // const clients = await db.doc.fetch.collection('clients');
-
 export const prerender = true;
 ---
 

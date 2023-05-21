@@ -16,41 +16,41 @@ import HeroTypeWriter from "@/components/Pages/Home/HeroTypeWriter.svelte";
 // Common Section Components
 import CallToAction from "@/components/Pages/Common/CallToAction.astro";
 import Faq from "@/components/Pages/Common/Faq.astro";
-
 // Consts
 import { ICONS } from "@const/index";
 import Title from "@/components/Text/Title/Title.svelte";
 import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
-import MistLogoAnim 	from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
+import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
 
+changeLanguage("nl");
 
-const lang = 'nl'
-changeLanguage(lang);
-
-let servicesCards:{[key:string]:string}[] = [];
+const lang = "nl";
+let servicesCards: {
+    [key: string]: string;
+}[] = [];
 /* @ts-ignore */
 Object.keys(t("services:solutions")).forEach((key) => {
-	 servicesCards.push({
-		  title: t(`services:solutions.${key}.title`),
-		  subtitle: t(`services:solutions.${key}.subtitle`),
-		  description: t(`services:solutions.${key}.description`),
-		  icon: ICONS.services[key]
-	 })
+    servicesCards.push({
+        title: t(`services:solutions.${key}.title`),
+        subtitle: t(`services:solutions.${key}.subtitle`),
+        description: t(`services:solutions.${key}.description`),
+        icon: ICONS.services[key]
+    });
 });
-
-let reviewCards:{[key:string]:string}[] = [];
+let reviewCards: {
+    [key: string]: string;
+}[] = [];
 /* @ts-ignore */
 t("home:reviews.items").forEach((review, key) => {
-	 reviewCards.push({
-		  name: review.name,
-		  company: review.company,
-		  job_title: review.job_title,
-		  review: review.review,
-		  avatar: 'https://i.pravatar.cc/100'
-		//   avatar: AVATARS.reviews[key]
-	 })
+    reviewCards.push({
+        name: review.name,
+        company: review.company,
+        job_title: review.job_title,
+        review: review.review,
+        avatar: "https://i.pravatar.cc/100"
+        //   avatar: AVATARS.reviews[key]
+    });
 });
-
 export const prerender = true;
 ---
 

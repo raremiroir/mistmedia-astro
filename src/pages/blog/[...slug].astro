@@ -10,31 +10,23 @@ import Section from "@/components/Core/Section/Section.astro";
 changeLanguage("nl");
 
 // console.log(Astro.params);
-
 // 1. Get the slug from the incoming server request
 const { slug } = Astro.params;
 if (slug === undefined) {
     throw new Error("Slug is required");
 }
-
 // Get all posts
 const allPosts = await db.custom.blog.fetch.all();
 // Find post where data.slug === slug
-const entry: BlogPostType|undefined = allPosts.find((post) => post.data.slug === slug);
-
+const entry: BlogPostType | undefined = allPosts.find((post) => post.data.slug === slug);
 // 2. Query for the entry directly using the request slug
 // const entry = await getEntryBySlug("blog", slug);
-
 // console.log(entry); 
-console.log('bleep');
-
+console.log("bleep");
 // 3. Redirect if the entry does not exist
 if (entry === undefined) {
     return Astro.redirect("/404");
 }
-// // 4. (Optional) Render the entry to HTML in the template
-// const { Content } = await entry.render();
-
 ---
 <BlogPost post={entry} >
     <Section name={entry.data.title}>
