@@ -5,7 +5,6 @@
    import SlidePage from "@/components/Common/Slider/SlidePage.svelte";
    import Card from "@/components/Common/Card/Card.svelte";
    import type { SplideProps } from '@splidejs/svelte-splide/components/Splide/Splide.svelte';
-   import SlideItem from '@/components/Common/Slider/SlideItem.svelte';
 
    const label = 'Portfolio Slider';
 

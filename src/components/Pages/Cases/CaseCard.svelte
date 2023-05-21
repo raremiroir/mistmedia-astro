@@ -8,7 +8,6 @@
    export let title: string;
    export let description: string;
    export let slug: string;
-   export let id: string;
 
    let klass = '';
    export { klass as class };
