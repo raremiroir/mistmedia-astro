@@ -1,0 +1,35 @@
+---
+import { changeLanguage } from "i18next";
+import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "../../../layouts/BlogPost.astro";
+import { getEntryBySlug } from "astro:content";
+import db from "@/firebase";
+import type { BlogPostType } from "@/types/blog";
+import Section from "@/components/Core/Section/Section.astro";
+
+changeLanguage("en");
+
+// console.log(Astro.params);
+// 1. Get the slug from the incoming server request
+const { slug } = Astro.params;
+if (slug === undefined) {
+    throw new Error("Slug is required");
+}
+// Get all posts
+const allPosts = await db.custom.blog.fetch.all();
+// Find post where data.slug === slug
+const entry: BlogPostType | undefined = allPosts.find((post) => post.data.slug === slug);
+// 2. Query for the entry directly using the request slug
+// const entry = await getEntryBySlug("blog", slug);
+// console.log(entry); 
+console.log("bleep");
+// 3. Redirect if the entry does not exist
+if (entry === undefined) {
+    return Astro.redirect("/404");
+}
+---
+<BlogPost post={entry} >
+    <Section name={entry.data.title}>
+        <div set:html={entry.content}/>
+    </Section>
+</BlogPost>

@@ -1,0 +1,38 @@
+---
+import { t, changeLanguage } from "i18next";
+// Astro components
+import Section from "@/components/Core/Section/Section.astro";
+// Svelte components
+import Card from "@/components/Common/Card/Card.svelte";
+import db from "@/firebase";
+import { gaps } from "@/consts/style";
+import Button from "@/components/Common/Button/Button.svelte";
+import SolutionLayout from "@/layouts/SolutionLayout.astro";
+
+changeLanguage("en");
+
+const solutions = await db.doc.fetch.collection("solutions");
+export const prerender = true;
+---
+
+<SolutionLayout title={t('site:pages.solutions.title')} subtitle={`${t('site:pages.solutions.subtitle')}`}>
+   <Section name="solutions">
+      <div class={`grid grid-cols-3 ${gaps}`}>
+         {solutions.map(solution => (
+            <Card 
+               fillHeight noClamp hover article block footer
+               href={solution.slug} color="surface_alt"
+               title={t(`services:solutions.${solution.id}.title`) || 'Title'}
+               image={solution.image}
+            >
+               {t(`services:solutions.${solution.id}.description`) || 'Description'}
+               <div slot="footer">
+                  <Button href={solution.slug} size="lg" color="primary" variant="ghost">
+                     {t('btn.more_info')}
+                  </Button>
+               </div>
+            </Card>
+         ))}
+      </div>
+   </Section>
+</SolutionLayout>

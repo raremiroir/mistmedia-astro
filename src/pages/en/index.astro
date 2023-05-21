@@ -1,0 +1,147 @@
+---
+import i18next, { t, changeLanguage } from "i18next";
+// Astro components
+import { Picture } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+// Main components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Page from "@/components/Core/Page/Page.astro";
+import Section from "@/components/Core/Section/Section.astro";
+import Hero from "@/components/Common/Hero/Hero.astro";
+// Svelte components
+import Card from "@/components/Common/Card/Card.svelte";
+// Page specific components
+import HomePortfolioSlider from "@/components/Pages/Home/HomePortfolioSlider.astro";
+import HeroTypeWriter from "@/components/Pages/Home/HeroTypeWriter.svelte";
+// Common Section Components
+import CallToAction from "@/components/Pages/Common/CallToAction.astro";
+import Faq from "@/components/Pages/Common/Faq.astro";
+// Consts
+import { ICONS } from "@const/index";
+import Title from "@/components/Text/Title/Title.svelte";
+import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
+import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
+
+changeLanguage("en");
+
+const lang = "en";
+let servicesCards: {
+    [key: string]: string;
+}[] = [];
+/* @ts-ignore */
+Object.keys(t("services:solutions")).forEach((key) => {
+    servicesCards.push({
+        title: t(`services:solutions.${key}.title`),
+        subtitle: t(`services:solutions.${key}.subtitle`),
+        description: t(`services:solutions.${key}.description`),
+        icon: ICONS.services[key]
+    });
+});
+let reviewCards: {
+    [key: string]: string;
+}[] = [];
+/* @ts-ignore */
+t("home:reviews.items").forEach((review, key) => {
+    reviewCards.push({
+        name: review.name,
+        company: review.company,
+        job_title: review.job_title,
+        review: review.review,
+        avatar: "https://i.pravatar.cc/100"
+        //   avatar: AVATARS.reviews[key]
+    });
+});
+export const prerender = true;
+---
+
+<BaseLayout title={t("site:pages.home.title")}>
+	<Page>
+		<!-- HERO -->
+		<!-- HERO -->
+		<Hero slot="hero" customTitle media titleWidth="w-4/5">
+			<div slot="media" class="w-1/5 mb-6">
+				<MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+			</div>
+			<div slot="title" class="w-full flex flex-col gap-4">
+				<LogoLettering width="full" />
+				<!-- <Svg size={'full'} logo/> -->
+				<div class="">
+					<HeroTypeWriter lang={i18next.language} client:load/>
+				</div>
+			</div>
+		</Hero>
+		<!-- END HERO -->
+
+		<!-- SERVICES -->
+		<Section name="our-services" title={ `${t("home:sections.services.title")}` }>
+			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+				{servicesCards.map((item) => (
+					<><Card client:idle direction="row" centerRow block hover active>
+						<Title slot="title" h3 size="xs" weight="font-bold">
+							{item.title}
+						</Title>
+						<Icon 
+							slot="media" name={item.icon} 
+							class={`
+								text-surface-900 group-hover:text-primary-800 
+								dark:text-surface-50 dark:group-hover:text-primary-400 
+								transition-all duration-300 ease-out 
+								w-40 h-auto`} 
+						/>
+						{item.description}
+					</Card></>
+				))}
+			</div>
+		</Section>
+		<!-- END SERVICES -->
+		
+		<!-- PORTFOLIO -->
+		<Section alt name="portfolio" title={`${t("home:sections.portfolio.title")}`}>
+			<HomePortfolioSlider lang={lang} />
+		</Section>
+		<!-- END PORTFOLIO -->
+
+		<!-- REVIEWS -->
+		<Section name="reviews" title={`${t("home:reviews.title")}`}>
+			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+				{reviewCards.map((item) => (
+					<><Card client:idle block hover>
+						<div slot="title" class="flex items-center justify-start gap-3">
+							<div class="w-1/5">
+								<Picture 
+									src={item.avatar}
+									alt="Placeholder Avatar"
+									sizes="(min-width: 300px;) 30w, (min-width: 600px;) 45w, (min-width: 900;) 60w"
+									widths={[30, 45, 60]}
+									formats={['webp', 'avif', 'jpeg']}
+									aspectRatio={1}
+									fit="cover"
+									position="center"
+									class="w-12 rounded-full aspect-square"
+								/>
+							</div>
+							<div class="w-4/5 flex flex-col gap-0 items-start justify-center">
+								<Title h3 size="xs" class="pt-2">
+									{item.name}
+								</Title>
+								<Title h6 fake size="xs" class="italic">
+									{item.job_title}
+								</Title>
+							</div>
+						</div>
+						{item.review}
+					</Card></>
+				))}
+			</div>
+		</Section>
+		<!-- END REVIEWS -->
+
+		<!-- CTA -->
+		<CallToAction />
+		<!-- END CTA -->
+
+		<!-- FAQ -->
+		<Faq />
+		<!-- END FAQ -->
+	</Page>
+</BaseLayout>

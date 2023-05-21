@@ -1,0 +1,95 @@
+---
+import { t, changeLanguage } from "i18next";
+// Astro components
+import Section from "@/components/Core/Section/Section.astro";
+// Svelte components
+import Drawer from "@/components/Common/Drawer/Drawer.svelte";
+// Import feature sidebar components
+import WebFeatAccessible from "@/components/Pages/Solutions/Web/Features/WebFeatAccessible.astro";
+import WebFeatFast from "@/components/Pages/Solutions/Web/Features/WebFeatFast.astro";
+import WebFeatResponsive from "@/components/Pages/Solutions/Web/Features/WebFeatResponsive.astro";
+import WebFeatSecure from "@/components/Pages/Solutions/Web/Features/WebFeatSecure.astro";
+import WebFeatUxUi from "@/components/Pages/Solutions/Web/Features/WebFeatUxUi.astro";
+import WebFeatSeo from "@/components/Pages/Solutions/Web/Features/WebFeatSeo.astro";
+import WebFeatTech from "@/components/Pages/Solutions/Web/Features/WebFeatTech.astro";
+import WebFeatSupport from "@/components/Pages/Solutions/Web/Features/WebFeatSupport.astro";
+import SolutionLayout from "@/layouts/SolutionLayout.astro";
+import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServices.astro";
+import db from "@/firebase";
+import SolutionFeatureCard from "@/components/Pages/Solutions/Common/SolutionFeatureCard.astro";
+import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
+
+changeLanguage("en");
+
+const lang = "en";
+const key = "web";
+const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
+const services = await db.doc.fetch.collection(`solutions/${key}/services`);
+const features = await db.doc.fetch.collection(`solutions/${key}/features`);
+let featureCards: {
+    [key: string]: string;
+}[] = [];
+features.forEach((feature) => {
+    featureCards.push({
+        id: feature.id,
+        title: t(`services:solutions.${key}.features.${feature.id}.title`),
+        description: t(`services:solutions.${key}.features.${feature.id}.description`),
+        icon: feature.icon
+    });
+});
+---
+
+<SolutionLayout 
+title={`${t(`services:solutions.${key}.title`)}`}
+subtitle={`${t(`services:solutions.${key}.description`)}`}
+>
+	<!-- FEATURES -->
+	<Section name="features">
+		<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
+			{featureCards.map((feature) => (
+				<><Drawer client:idle>
+					<SolutionFeatureCard 
+						slot="trigger"
+						title={feature.title}
+						icon={feature.icon}
+					/>
+	
+					{() => {
+						if (!feature.id) 						return (<></>);
+						if (feature.id === 'accessible') return (<><WebFeatAccessible/></>);
+						if (feature.id === 'fast') 		return (<><WebFeatFast/></>);
+						if (feature.id === 'responsive') return (<><WebFeatResponsive/></>);
+						if (feature.id === 'secure') 		return (<><WebFeatSecure/></>);
+						if (feature.id === 'uxui') 		return (<><WebFeatUxUi/></>);
+						if (feature.id === 'seo') 			return (<><WebFeatSeo/></>);
+						if (feature.id === 'tech') 		return (<><WebFeatTech/></>);
+						if (feature.id === 'support') 	return (<><WebFeatSupport/></>);
+					}}
+				</Drawer></>
+			))}
+		</div>
+	</Section>
+	<!-- END FEATURES -->
+
+	<!-- SERVICES -->
+	<SolutionServices key={key} services={services} />
+	<!-- END SERVICES -->	
+
+	<!-- PORTFOLIO -->
+	<Section fullWidthAppend name="portfolio" title={`${t(`services:main.sections.portfolio.title`)}`} subtitle={`${t(`services:main.sections.portfolio.subtitle`)}`}>
+		<CaseGrid portfolio={portfolio} lang={lang} />
+	</Section>
+	<!-- END PORTFOLIO -->
+
+	<!-- PRICING -->
+	<!-- <Section fullWidthAppend name="web-pricing" title="Transparent Pricing" subtitle="Because we both know that's what's important.">
+		Cards here
+	</Section> -->
+	<!-- END PRICING -->
+
+	<!-- PRICING CALCULATOR -->
+	<!-- <Section fullWidthAppend alt name="web-pricing-calculator" title="Estimate your Price" subtitle="Get an estimated price using our price calculation tool!">
+		Calculator here
+	</Section> -->
+	<!-- END PRICING -->
+</SolutionLayout>
