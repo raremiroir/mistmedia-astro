@@ -11,7 +11,7 @@ import Hero from "@/components/Common/Hero/Hero.astro";
 // Svelte components
 import Card from "@/components/Common/Card/Card.svelte";
 // Page specific components
-import HomePortfolioSlider from "@/components/Pages/Home/HomePortfolioSlider.svelte";
+import HomePortfolioSlider from "@/components/Pages/Home/HomePortfolioSlider.astro";
 import HeroTypeWriter from "@/components/Pages/Home/HeroTypeWriter.svelte";
 // Common Section Components
 import CallToAction from "@/components/Pages/Common/CallToAction.astro";
@@ -24,7 +24,8 @@ import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
 import MistLogoAnim 	from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
 
 
-changeLanguage("nl");
+const lang = 'nl'
+changeLanguage(lang);
 
 let servicesCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
@@ -96,10 +97,7 @@ export const prerender = true;
 		
 		<!-- PORTFOLIO -->
 		<Section alt name="portfolio" title={`${t("home:sections.portfolio.title")}`}>
-			Coming very soon!
-			<!-- <HomePortfolioSlider 
-            client:load
-         /> -->
+			<HomePortfolioSlider lang={lang} />
 		</Section>
 		<!-- END PORTFOLIO -->
 
