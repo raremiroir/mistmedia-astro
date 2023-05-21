@@ -1,5 +1,5 @@
 ---
-import { t, changeLanguage } from "i18next";
+import i18next, { t, changeLanguage } from "i18next";
 import { gaps } from "@/consts/style";
 // Astro components
 import Section from "@/components/Core/Section/Section.astro";
@@ -12,10 +12,10 @@ import db from "@/firebase";
 import FeaturesGrid from "@/components/Pages/Solutions/FeaturesGrid.astro";
 import type { FeatureCard } from "@/types/content";
 import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
+import type { Locales } from "@/types";
 
 changeLanguage("en");
-
-const lang = "en";
+const lang = i18next.language as Locales;
 const key = "social";
 const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
 const services = await db.doc.fetch.collection(`solutions/${key}/services`);

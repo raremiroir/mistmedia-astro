@@ -21,10 +21,10 @@ import { ICONS } from "@const/index";
 import Title from "@/components/Text/Title/Title.svelte";
 import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
 import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
+import type { Locales } from "@/types";
 
 changeLanguage("en");
-
-const lang = "en";
+const lang = i18next.language as Locales;
 let servicesCards: {
     [key: string]: string;
 }[] = [];
