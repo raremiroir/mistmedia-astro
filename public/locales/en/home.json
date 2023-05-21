@@ -25,15 +25,18 @@
       "title": "Ready to kick off?",
       "learn_more": {
          "title": "Let's Get In Touch",
-         "subtitle": "Definitely don't hesitate to get in touch with us if you have any questions or if you would like to request a quote. We would love to hear from you!"
+         "subtitle": "Definitely don't hesitate to get in touch with us if you have any questions or if you would like to request a quote. We would love to hear from you!",
+         "slug": "contact"
       },
       "check_services": {
          "title": "Check out our services",
-         "subtitle": "See what we can do for you and your business. We offer a wide range of services to help you achieve your goals."
+         "subtitle": "See what we can do for you and your business. We offer a wide range of services to help you achieve your goals.",
+         "slug": "services"
       },
       "calculate_price": {
          "title": "Pricing calculator",
-         "subtitle": "Calculate the price of your project in a few clicks. It's easy and it's free!"
+         "subtitle": "Calculate the price of your project in a few clicks. It's easy and it's free!",
+         "slug": "quote-calculator"
       }
    },
    "faq": {

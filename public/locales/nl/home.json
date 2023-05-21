@@ -25,15 +25,18 @@
       "title": "Zin om te beginnen?",
       "contact_us": {
          "title": "Contacteer Ons!",
-         "subtitle": "Aarzel zeker niet om ons een berichtje te sturen als u vragen heeft of als u een offerte wilt aanvragen. We horen graag van je!"
+         "subtitle": "Aarzel zeker niet om ons een berichtje te sturen als u vragen heeft of als u een offerte wilt aanvragen. We horen graag van je!",
+         "slug": "contact"
       },
       "check_services": {
          "title": "Bekijk onze diensten",
-         "subtitle": "Ontdek hoe we je kunnen helpen om je doelen te bereiken. We bieden een breed scala aan diensten aan."
+         "subtitle": "Ontdek hoe we je kunnen helpen om je doelen te bereiken. We bieden een breed scala aan diensten aan.",
+         "slug": "diensten"
       },
       "calculate_price": {
          "title": "Prijscalculator",
-         "subtitle": "Bereken een prijsschatting voor uw project met onze prijscalculator. Het is gratis en vrijblijvend."
+         "subtitle": "Bereken een prijsschatting voor uw project met onze prijscalculator. Het is gratis en vrijblijvend.",
+         "slug": "prijscalculator"
       }
    },
    "faq": {
