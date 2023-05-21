@@ -1,8 +1,15 @@
 ---
 import Button from "@/components/Common/Button/Button.svelte";
 import Svg from "@/components/Media/Svg/Svg.svelte";
+
+export interface Props {
+   href: string;
+}
+const { href } = Astro.props;
+
 ---
 <Button
+   href={href} rel="noopener noreferrer" target="_blank"
    color="custom"
    klass="bg-[#0072b1] border-[#0072b1] shadow-[#00507A] hover:shadow-[#004f7ac2]"
    size="xs" square active ripple

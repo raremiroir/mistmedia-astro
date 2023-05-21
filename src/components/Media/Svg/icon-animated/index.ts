@@ -22,4 +22,5 @@ export { default as QuestionMarks } from './QuestionMarks.svelte';
 export { default as Security } from './Security.svelte';
 export { default as SunIcon } from './SunIcon.svelte';
 export { default as TrianglesIcon } from './TrianglesIcon.svelte';
+export { default as TwitterIcon } from './TwitterIcon.svelte';
 export { default as WebStack } from './WebStack.svelte';

@@ -10,16 +10,16 @@ const { href } = Astro.props;
 <Button
    href={href} rel="noopener noreferrer" target="_blank"
    color="custom"
-   klass="bg-surface-800 dark:bg-surface-900 hover:bg-surface-700 border-surface-800 hover:border-surface-700 shadow-surface-400 dark:hover:shadow-surface-400"
+   klass="bg-[#1d9bf0] border-[#1d9bf0] shadow-[#136aa4] hover:shadow-[#136aa4c0]"
    size="xs" square active ripple
 >
    <Svg
       client:load
-      animIcon="GithubIcon"
+      animIcon="TwitterIcon"
       size={36}
       animProps={{
-         norm: 'fill-surface-700',
-         strokeDark: 'stroke-surface-50',
+         norm: 'fill-surface-100',
+         dark: 'fill-surface-50',
       }}
    />
 </Button>

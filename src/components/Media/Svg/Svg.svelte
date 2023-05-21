@@ -8,7 +8,7 @@
    } from './svg-assets';
    import {
       Accessibility, ArrowsGrow, CaretDown, ChatBubble, CorporateBranding,
-      CubeIcon, DevicesResponsive, EnvelopeSend, FacebookIcon, GearsTurning, GithubIcon,
+      CubeIcon, DevicesResponsive, EnvelopeSend, FacebookIcon, TwitterIcon, GearsTurning, GithubIcon,
       InstagramIcon, LangSwitchIcon, LightningBolt, LightWeight, LinkedInIcon, MistMediaIcon,
       MoonIcon, PortfolioCards, PricingTag, QuestionMarks, Security, SunIcon, TrianglesIcon,
       WebStack
@@ -22,7 +22,7 @@
    }
    const iconAnimationsAssets: {[key:string]: any} = {
       Accessibility, ArrowsGrow, CaretDown, ChatBubble, CorporateBranding,
-      CubeIcon, DevicesResponsive, EnvelopeSend, FacebookIcon, GearsTurning, GithubIcon,
+      CubeIcon, DevicesResponsive, EnvelopeSend, FacebookIcon, TwitterIcon, GearsTurning, GithubIcon,
       InstagramIcon, LangSwitchIcon, LightningBolt, LightWeight, LinkedInIcon, MistMediaIcon,
       MoonIcon, PortfolioCards, PricingTag, QuestionMarks, Security, SunIcon, TrianglesIcon,
       WebStack

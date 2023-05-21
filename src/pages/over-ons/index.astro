@@ -19,6 +19,7 @@ import LinkedInBtn 	from "@/components/Pages/About/SocialBtns/LinkedInBtn.astro"
 import GithubBtn 		from "@/components/Pages/About/SocialBtns/GithubBtn.astro";
 import FacebookBtn 	from "@/components/Pages/About/SocialBtns/FacebookBtn.astro";
 import InstagramBtn 	from "@/components/Pages/About/SocialBtns/InstagramBtn.astro";
+import TwitterBtn from "@/components/Pages/About/SocialBtns/TwitterBtn.astro";
 // Common Section components
 import CallToAction 	from "@/components/Pages/Common/CallToAction.astro";
 import Title from "@/components/Text/Title/Title.svelte";
@@ -36,6 +37,12 @@ t("about:values.items").forEach((value) => {
 	 })
 });
 export const prerender = true;
+
+const linkedinLink = `https://linkedin.com/in/${import.meta.env.SOCIAL_LINKEDIN}`
+const twitterLink = `https://twitter.com/${import.meta.env.SOCIAL_TWITTER}`
+const facebookLink = `https://facebook.com/${import.meta.env.SOCIAL_FACEBOOK}`
+const instagramLink = `https://instagram.com/${import.meta.env.SOCIAL_INSTAGRAM}`
+const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`
 ---
 
 <BaseLayout title={t("site:pages.about.title")}>
@@ -109,11 +116,13 @@ export const prerender = true;
 								<span slot="title" class="capitalize">{t("about:miro.more.title_alt")}</span>
 							</Drawer>
 							<div class="flex flex-row gap-2 md:gap-4">
-								<LinkedInBtn />
-								<GithubBtn />
+								<!-- TODO: add links -->
+								<LinkedInBtn href={linkedinLink} />
+								<FacebookBtn href={facebookLink} />
+								<InstagramBtn href={instagramLink} />
+								<TwitterBtn href={twitterLink} />
+								<GithubBtn href={githubLink} />
 							</div>
-							<!-- <FacebookBtn /> -->
-							<!-- <InstagramBtn /> -->
 						</div>
 					</div>
 				</div>
