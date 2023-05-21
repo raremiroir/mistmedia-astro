@@ -121,12 +121,19 @@
          "optional": "Optioneel"
       }
    },
+   "message": {
+      "no_items": "Hier is helaas nog niets te zien, kom snel nog eens terug!"
+   },
    "blog": {
+      "intro": "Scroll naar beneden om onze laatste blogposts te lezen!",
       "info": {
          "dates": {
             "created": "Gepubliceerd op",
             "updated": "Laatst bijgewerkt op"
          }
       }
+   },
+   "cases": {
+      "intro": "Hier vind je een selectie van enkele van onze projecten."
    }
 }

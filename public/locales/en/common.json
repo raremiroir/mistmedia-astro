@@ -119,12 +119,19 @@
          "optional": "Optional"
       }
    },
+   "message": {
+      "no_items": "There are no items yet, check back soon!"
+   },
    "blog": {
+      "intro": "Navigate through our Blog and find a post that suits your interests!",
       "info": {
          "dates": {
             "created": "Published on",
             "updated": "Last updated on"
          }
       }
+   },
+   "cases": {
+      "intro": "We're proud to present a growing selection of cases we have worked on in the past."
    }
 }

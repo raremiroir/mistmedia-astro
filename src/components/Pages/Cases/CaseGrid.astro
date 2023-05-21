@@ -1,16 +1,12 @@
 ---
+import { t } from 'i18next';
 import type { DocumentData } from 'firebase/firestore';
 import type { Locales } from '@/types';
 
 import { gaps } from '@/consts/style'
 
 import SolutionPortfolioCard from '../Solutions/Common/SolutionPortfolioCard.astro';
-import Button from '@/components/Common/Button/Button.svelte';
 import db from '@/firebase';
-import Select from '@/components/Form/Inputs/Select.svelte';
-import TriggerSlide from '@/components/Utils/Transition/TriggerSlide.svelte';
-import CaseFilters from './CaseFilters.svelte';
-import { caseFilterTags, caseFilterSolutions, caseFilterClients } from '@/stores';
 import CaseCard from './CaseCard.svelte';
 
    export interface Props {
@@ -68,7 +64,7 @@ import CaseCard from './CaseCard.svelte';
             )
          ))
       ) : (
-         <span>There are no items yet, check back soon!</span>
+         <span>{t('message.no_items')}</span>
       )}
    </ul>
 </div>
