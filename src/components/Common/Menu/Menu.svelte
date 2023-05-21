@@ -1,3 +1,6 @@
+<!-- MENU -->
+<!-- Takes a trigger slot which opens the default slot being the menu -->
+
 <script lang='ts'>
    import type { PopupSettings } from '@skeletonlabs/skeleton';
    import Popup from "@/components/Utils/Popup/Popup.svelte";

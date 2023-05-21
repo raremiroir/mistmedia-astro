@@ -1,3 +1,7 @@
+<!-- TABS -->
+<!-- Takes a tabs prop which has labels and icons, then the panel slot will take an if statement depending on the currentTab store,
+      respectively corresponding with the index order of the tabs in the tabs prop (starting at 0) -->
+
 <script lang="ts">
    import { TabGroup, Tab } from '@skeletonlabs/skeleton';
    import type { MistTabs } from '@/types/components/tabs';

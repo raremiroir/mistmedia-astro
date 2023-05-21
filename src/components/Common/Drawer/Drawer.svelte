@@ -1,3 +1,6 @@
+<!-- DRAWER -->
+<!-- 'trigger'-slot will take a trigger in order to open the default slot which is the content of the drawer itself. -->
+
 <script lang="ts">
    import Drawer from 'svelte-drawer-component'
 	import { onDestroy, setContext } from 'svelte';

@@ -1,3 +1,6 @@
+<!-- BASE CARD -->
+<!-- This component can be used to create specific cards -->
+
 <script lang="ts">
    import boxGen from '../../../styles/mist-theme'
    import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '../../../styles/theme';

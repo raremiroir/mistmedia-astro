@@ -1,3 +1,7 @@
+<!-- ACCORDEON ITEM -->
+<!-- This component wraps the item which is displayed insided an accordeon. 
+   This component should be placed inside the Accordeon component slot -->
+
 <script lang="ts">
    import AccordeonTrigger from "./AccordeonTrigger.svelte";
    import AccordeonContent from "./AccordeonContent.svelte";

@@ -1,3 +1,5 @@
+<!-- BUTTON -->
+
 <script lang="ts">
    import type { ButtonVariant, ButtonColors, ButtonSizes, ButtonGroupType } from "./button";
    import Ripple from "../../actions/Ripple"

@@ -1,3 +1,6 @@
+<!-- ACCORDEON TRIGGER -->
+<!-- This component is to be used in the AccordeonItem component as trigger. -->
+
 <script lang="ts">
    import Title from '@/components/Text/Title/Title.svelte';
 

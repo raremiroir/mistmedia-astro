@@ -1,3 +1,6 @@
+<!-- ACCORDEON CONTENT -->
+<!-- This component is to be used in the AccordeonItem component as content. -->
+
 <script lang="ts">
    import { slide } from 'svelte/transition';
    export let key:number;

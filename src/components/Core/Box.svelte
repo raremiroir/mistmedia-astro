@@ -1,3 +1,6 @@
+<!-- BOX -->
+<!-- Generates a box in mist style -->
+
 <script lang="ts">
    import boxGen from "../../styles/mist-theme";
    import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '../../styles/theme';
