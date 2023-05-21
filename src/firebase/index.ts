@@ -181,6 +181,20 @@ export const db = {
                } catch (error) {
                   console.error(error);
                }
+            },
+            featuredFromPortfolio: async () => {
+               try {
+                  var itemsList: any[] = [];
+                  const allPortfolio = await db.doc.fetch.collection(`portfolio`);
+                  allPortfolio.forEach((item) => {
+                     if (item.featured === true) {
+                        itemsList.push(item);
+                     }
+                  });
+                  return itemsList;
+               } catch (error) {
+                  console.error(error);
+               }
             }
          }
       },
