@@ -28,10 +28,12 @@
    const tagColorClient = 'variant-soft bg-secondary-700/40 dark:bg-secondary-700/40 text-secondary-100 dark:text-secondary-100'
    const tagColorSolution = 'variant-soft bg-primary-700/40 dark:bg-primary-700/40 !text-primary-100 dark:!text-primary-100'
    const tagColor = 'variant-soft bg-slate-100/40 dark:bg-slate-800/40 text-slate-700 dark:text-slate-100'
+
+   let tagsWidth: number = 0
 </script>
 
 <!-- Tags -->
-   <div class="flex flex-col md:flex-row gap-1">
+   <div class="flex flex-col { tagsWidth > 400 ? 'md:flex-row' : ''} gap-1" bind:clientWidth={tagsWidth}>
       <div class="flex flex-row gap-1">
          <Tag class="{tagClass}" color="{tagColorClient}">
             {clientTag}
