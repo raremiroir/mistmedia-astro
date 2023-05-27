@@ -10,7 +10,10 @@ import Svg from "@/components/Media/Svg/Svg.svelte";
 let ctaCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
 Object.keys(t("home:cta")).forEach((key) => {
-	if (key !== 'title') {
+	if (
+      key !== 'title'
+   && key !== 'calculate_price' // TODO: remove when price calculator is ready
+   ) {
 		ctaCards.push({
 			title: t(`home:cta.${key}.title`),
 			subtitle: t(`home:cta.${key}.subtitle`),
