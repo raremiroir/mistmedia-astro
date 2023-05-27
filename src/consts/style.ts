@@ -62,19 +62,3 @@ export const cFormComplete = {
       labelClass: `${cForm.input.transition} ${cForm.input.labelBase} ${cForm.input.labelAbsolute} ${cForm.input.labelPadding}
                    ${cForm.input.labelPosFocus} ${cForm.input.labelBg} ${classes.transition.default}`
 }
-
-
-// Splide
-export const cSplide = {
-      wrap: `mt-16`,
-      options: {
-            drag: `cursor-grab active:cursor-grabbing`,
-      },
-      slide: {
-            solo_img: {
-                  base: 'bg-transparent opacity-60',
-                  hover: 'hover:opacity-80 hover:scale-110',
-                  active: 'active:scale-95 cursor-pointer',
-            }
-      }
-}

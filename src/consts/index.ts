@@ -144,11 +144,16 @@ export const TECHSTACK: {[key:string]: {[key:string]: string}} = {
       svg: 'assets/svg/brandstech/tailwind.svg',
       url: 'https://tailwindcss.com/'
    },
-   // vite: {
-   //    name: 'Vite',
-   //    svg: 'assets/svg/brandstech/vite.svg',
-   //    url: 'https://vitejs.dev/'
-   // },
+   vite: {
+      name: 'Vite',
+      svg: 'assets/svg/brandstech/vite.svg',
+      url: 'https://vitejs.dev/'
+   },
+   webpack: {
+      name: 'Webpack',
+      svg: 'assets/svg/brandstech/webpack.svg',
+      url: 'https://webpack.js.org/'
+   },
    vercel: {
       name: 'Vercel',
       svg: 'assets/svg/brandstech/vercel.svg',

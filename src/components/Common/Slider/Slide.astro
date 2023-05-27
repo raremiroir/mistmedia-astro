@@ -1,5 +1,5 @@
 ---
-import { cSplide, classes } from '@/consts/style';
+import { classes } from '@/consts/style';
 
 export interface Props {
    name?: string;
@@ -14,9 +14,9 @@ const slideClass = `
    splide__slide overflow-visible
    ${classes.transition}
    ${type === 'solo_img' && `
-      ${cSplide.slide.solo_img.base}
-      ${ hover && cSplide.slide.solo_img.hover}
-      ${ active && cSplide.slide.solo_img.active}
+      bg-transparent opacity-60 
+      hover:opacity-80 hover:scale-110 
+      active:scale-95
    `}
 `;
 ---

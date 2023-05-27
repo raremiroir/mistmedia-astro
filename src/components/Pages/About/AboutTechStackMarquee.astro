@@ -1,15 +1,14 @@
 ---
 import { Splide } from '@splidejs/splide';
 import { Image } from '@astrojs/image/components';
-import { cSplide } from '@/consts/style';
 
 import Slide from '@/components/Common/Slider/Slide.astro';
 import SlideTrack from '@/components/Common/Slider/SlideTrack.astro';
 
 import { TECHSTACK } from '@const/index';
 
-const sliderClass = `splide ${cSplide.options.drag} ${cSplide.wrap}`
-const slideClass = `splide__slide ${cSplide.slide.solo_img.base} ${cSplide.slide.solo_img.hover} ${cSplide.slide.solo_img.active}`
+const sliderClass = `splide cursor-grab active:cursor-grabbing`
+const slideClass = `splide__slide bg-transparent opacity-60 hover:opacity-80 hover:scale-110 active:scale-95 cursor-pointer`
 ---
 
 <script define:vars={Splide}>
@@ -58,9 +57,10 @@ const slideClass = `splide__slide ${cSplide.slide.solo_img.base} ${cSplide.slide
                   format="svg"
                   alt={brand.name}
                   height={80}
+                  width={80}
                   aspectRatio={1}
                   fit={'contain'}
-                  background={'transparent'}
+                  background={'#00000000'}
                />
             </a>
          </Slide></>

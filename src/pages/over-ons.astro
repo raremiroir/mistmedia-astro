@@ -23,6 +23,7 @@ import TwitterBtn from "@/components/Pages/About/SocialBtns/TwitterBtn.astro";
 // Common Section components
 import CallToAction from "@/components/Pages/Common/CallToAction.astro";
 import Title from "@/components/Text/Title/Title.svelte";
+import { gaps } from "@/consts/style";
 
 changeLanguage("nl");
 
@@ -135,7 +136,8 @@ const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`;
 			fullWidthAppend
 			name="about-difference" title={`${t("about:values.title")}`}
 			subtitle={`${t("about:values.subtitle")}`}>
-			<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+
+			<div class={`w-full grid grid-cols-1 md:grid-cols-2  ${gaps}`}>
 				{valueCards.map((value) => (
 					<><Card client:idle direction="row" centerRow block hover active>
 						<Title slot="title" h3 size="xs" weight="font-bold">
@@ -149,7 +151,7 @@ const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`;
 				))}
 			</div>
 
-			<AboutTechStackMarquee slot="append" />
+			<AboutTechStackMarquee />
 		</Section>
 		<!-- END VALUES -->
 

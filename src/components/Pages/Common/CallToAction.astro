@@ -7,6 +7,8 @@ import Title from "@/components/Text/Title/Title.svelte";
 import Card from "@/components/Common/Card/Card.svelte";
 import Svg from "@/components/Media/Svg/Svg.svelte";
 
+import { gaps } from "@/consts/style";
+
 let ctaCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
 Object.keys(t("home:cta")).forEach((key) => {
@@ -26,7 +28,7 @@ Object.keys(t("home:cta")).forEach((key) => {
 
 <!-- CTA -->
 <Section alt name="cta" title={`${t("home:cta.title")}`}>
-   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+   <div class={`grid grid-cols-1 md:grid-cols-2 ${gaps}`}>
       {ctaCards.map((item) => (
          <><a class="unstyled" href={`/${item.slug}`}><Card client:idle block hover active>
             <div slot="title" class="flex items-center justify-start gap-3">

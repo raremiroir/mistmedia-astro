@@ -82,23 +82,3 @@
       <slot name="third"/>
    </SplideSlide>
 </Splide>
-
-
-<style global lang="postcss">
-   .splide__pagination {
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      width: fit-content;
-      height: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem;
-      background-color: red;
-      border-radius: 0.5rem;
-   }
-
-</style>

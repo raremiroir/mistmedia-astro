@@ -53,7 +53,10 @@ subtitle={`${t(`services:solutions.${key}.description`)}`}
 						title={feature.title}
 						icon={feature.icon}
 					/>
-	
+
+					<div slot='title'>
+						{feature.title}
+					</div>
 					{() => {
 						if (!feature.id) 						return (<></>);
 						if (feature.id === 'accessible') return (<><WebFeatAccessible/></>);
