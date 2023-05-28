@@ -15,28 +15,6 @@ import { vitePreprocess } from '@astrojs/svelte';
 // https://astro.build/config
 const config: AstroUserConfig = {
   site: 'https://mistmedia.be',
-  // title: 'Mist Media',
-  // description: 'My site description',
-  // lang: 'nl',
-  // themeColor: '#ffffff',
-  // favicon: '/favicon.ico',
-  // logo: '/logo.png',
-  // // Your site's social media links
-  // social: {
-  //   twitter: 'https://twitter.com/example',
-  //   github: '',
-  //   linkedin: '',
-  //   instagram: '',
-  //   youtube: '',
-  //   facebook: ''
-  // },
-  // // ID's
-  // googleAnalytics: '',
-  // googleSearchConsole: '',
-  // googleTagManager: '',
-  // facebookPixel: '',
-  // vercel: '',
-  // sentry: '',
   // Integrations
   integrations: [
     sitemap({

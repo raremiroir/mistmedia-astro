@@ -14,7 +14,7 @@ export default {
   returnObjects: true,
 
   backend: {
-    loadPath: "./src/public/locales/{{lng}}/{{ns}}.json",
+    loadPath: "./public/locales/{{lng}}/{{ns}}.json",
   },
   
   // optional
