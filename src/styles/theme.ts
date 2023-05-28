@@ -196,7 +196,7 @@ export const theme = {
 				active: 'active:border-error-700 dark:border-error-200',
 			},
 			surface: {
-				default: 'border-white dark:border-surface-600',
+				default: 'border-surface-400-500-token',
 				hover: 'hover:border-surface-100 dark:border-surface-200',
 				active: 'active:border-surface-200 dark:border-surface-50',
 			},
