@@ -10,6 +10,7 @@ import astroI18next from "astro-i18next";
 import robotsTxt from "astro-robots-txt";
 import mdx from '@astrojs/mdx';
 import prefetch from '@astrojs/prefetch';
+import storyblok from '@storyblok/astro';
 import { vitePreprocess } from '@astrojs/svelte';
 
 // https://astro.build/config
@@ -48,6 +49,15 @@ const config: AstroUserConfig = {
       }
     }),
     robotsTxt(),
+    storyblok({
+      accessToken: "Lx4wOhjB1cWELPQMNi02xwtt",
+      apiOptions: {
+        region: "eu",
+      },
+      components: {
+        page: "components/Core/Page/Page.astro",
+      }
+    })
   ],
   output: "server",
   adapter: vercel(),

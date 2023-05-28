@@ -1,14 +1,15 @@
 ---
 import CallToAction from "@/components/Pages/Common/CallToAction.astro";
+import { storyblokEditable } from '@storyblok/astro';
 
-export interface Props {
-   cta?: boolean;
-}
+// export interface Props {
+//    cta?: boolean;
+// }
 
-const { cta } = Astro.props;
+const { cta, blok } = Astro.props;
 ---
 
-<div class="min-h-screen">
+<div class="min-h-screen" {...storyblokEditable(blok)}>
    <div>
       <slot name="hero" />
    </div>
