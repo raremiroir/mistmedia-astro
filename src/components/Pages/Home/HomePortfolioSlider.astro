@@ -11,12 +11,14 @@ export interface Props {
 const { lang } = Astro.props;
 
 const featuredPortfolioItems = await db.custom.filter.by.featuredFromPortfolio() || [];
+
+const itemWrapClass = "px-8 sm:px-4 md:px-2";
 ---
 
-<SliderDefault client:load thirdPage>
+<SliderDefault client:load>
       <div
          slot="first"
-         class="px-8 sm:px-4 md:px-0"
+         class={itemWrapClass}
       >
          <SolutionPortfolioCard 
             lang={lang} noBtn
@@ -34,7 +36,7 @@ const featuredPortfolioItems = await db.custom.filter.by.featuredFromPortfolio()
       </div>
       <div
          slot="second"
-         class="px-8 sm:px-4 md:px-0"
+         class={itemWrapClass}
       >
          <SolutionPortfolioCard 
             lang={lang} noBtn
@@ -52,7 +54,7 @@ const featuredPortfolioItems = await db.custom.filter.by.featuredFromPortfolio()
       </div>
       <div
          slot="third"
-         class="px-8 sm:px-4 md:px-0"
+         class={itemWrapClass}
       >
          <SolutionPortfolioCard
             lang={lang} noBtn
