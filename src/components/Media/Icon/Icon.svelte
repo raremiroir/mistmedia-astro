@@ -13,7 +13,7 @@
    //    'moneybag': BoldDuotoneMoneyBag
    // }
 
-   export let icon = '';
+   export let icon = 'ph:circle-fill';
    // export let customIcon: string = '';
 
    export let width: string = "w-8";
