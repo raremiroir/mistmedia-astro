@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write --plugin-search-dir=. .",
-    "prettier:check": "prettier --check --plugin-search-dir=. ."
+    "prettier:check": "prettier --check --plugin-search-dir=. .",
+    "i18n": "npx astro-i18next generate"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^6.2.2",
