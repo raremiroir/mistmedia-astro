@@ -17,6 +17,7 @@ changeLanguage("en");
 const posts = (await getCollection("blog"))
     .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 const dbPosts = await db.custom.blog.fetch.all();
+export const prerender = true;
 ---
 
 <BaseLayout title={t("site:pages.blog.title")}>

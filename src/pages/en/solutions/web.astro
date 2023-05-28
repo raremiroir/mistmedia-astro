@@ -5,20 +5,15 @@ import Section from "@/components/Core/Section/Section.astro";
 // Svelte components
 import Drawer from "@/components/Common/Drawer/Drawer.svelte";
 // Import feature sidebar components
-import WebFeatAccessible from "@/components/Pages/Solutions/Web/Features/WebFeatAccessible.astro";
-import WebFeatFast from "@/components/Pages/Solutions/Web/Features/WebFeatFast.astro";
-import WebFeatResponsive from "@/components/Pages/Solutions/Web/Features/WebFeatResponsive.astro";
-import WebFeatSecure from "@/components/Pages/Solutions/Web/Features/WebFeatSecure.astro";
-import WebFeatUxUi from "@/components/Pages/Solutions/Web/Features/WebFeatUxUi.astro";
-import WebFeatSeo from "@/components/Pages/Solutions/Web/Features/WebFeatSeo.astro";
-import WebFeatTech from "@/components/Pages/Solutions/Web/Features/WebFeatTech.astro";
-import WebFeatSupport from "@/components/Pages/Solutions/Web/Features/WebFeatSupport.astro";
+import FeatureModalContent from "@/components/Pages/Solutions/FeatureModalContent.astro";
+import WebFeatResponsive from "@/components/Pages/Solutions/Features/WebFeatResponsive.astro";
 import SolutionLayout from "@/layouts/SolutionLayout.astro";
 import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServices.astro";
 import db from "@/firebase";
 import SolutionFeatureCard from "@/components/Pages/Solutions/Common/SolutionFeatureCard.astro";
 import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 import type { Locales } from "@/types";
+import { gaps } from "@/consts/style";
 
 changeLanguage("en");
 
@@ -38,6 +33,7 @@ features.forEach((feature) => {
         icon: feature.icon
     });
 });
+export const prerender = true;
 ---
 
 <SolutionLayout 
@@ -46,7 +42,7 @@ subtitle={`${t(`services:solutions.${key}.description`)}`}
 >
 	<!-- FEATURES -->
 	<Section name="features">
-		<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-8">
+		<div class=`w-full grid grid-cols-2 lg:grid-cols-4 ${gaps}`>
 			{featureCards.map((feature) => (
 				<><Drawer client:idle>
 					<SolutionFeatureCard 
@@ -60,14 +56,13 @@ subtitle={`${t(`services:solutions.${key}.description`)}`}
 					</div>
 					{() => {
 						if (!feature.id) 						return (<></>);
-						if (feature.id === 'accessible') return (<><WebFeatAccessible/></>);
-						if (feature.id === 'fast') 		return (<><WebFeatFast/></>);
 						if (feature.id === 'responsive') return (<><WebFeatResponsive/></>);
-						if (feature.id === 'secure') 		return (<><WebFeatSecure/></>);
-						if (feature.id === 'uxui') 		return (<><WebFeatUxUi/></>);
-						if (feature.id === 'seo') 			return (<><WebFeatSeo/></>);
-						if (feature.id === 'tech') 		return (<><WebFeatTech/></>);
-						if (feature.id === 'support') 	return (<><WebFeatSupport/></>);
+						else return (<>
+						<FeatureModalContent 
+							solution={key} feature={feature.id} 
+							hasTitle={feature.id === 'accessible' || feature.id === 'seo'}
+							hasQuote={feature.id === 'accessible'}
+						/></>);
 					}}
 				</Drawer></>
 			))}
