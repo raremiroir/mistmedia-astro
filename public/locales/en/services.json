@@ -19,6 +19,7 @@
          "title": "Web Development & Design",
          "subtitle": "Websites with an eye for detail",
          "description": "Your online presence is extremely important in 2023. We design websites that are not just attractive, but that also perform flawlessly. From simple websites to complex web shops.",
+         "description_2": "We offer the full package, from web design to web hosting, from web security to SEO. We also offer these services separately, so you can choose what you need yourself.",
          "features": {
             "fast": {
                "title": "Lightning Fast",
@@ -140,6 +141,7 @@
          "title": "Graphic Design & Branding",
          "subtitle": "A powerful brand",
          "description": "We design graphics that make your brand stand out from the rest. From logos to flyers, from business cards to advertisements. Through a professional, universal corporate design, we ensure that your business acquires a recognisable identity.",
+         "description_2": "Our graphic design services are available as part of a web design/branding project, but can also be requested separately. We can also adapt existing graphic elements, or design a completely new corporate identity.",
          "features": {
             "allinone": {
                "title": "All-in-one",
@@ -161,11 +163,11 @@
             },
             "printed": {
                "title": "Printer Matter",
-               "description": "Flyers, posters, cards, ... <br/>We design it all."
+               "description": "From business cards to flyers, from posters to advertisements. We design it all, and even deliver it at your doorstep."
             },
             "editorial": {
                "title": "Editorial Design",
-               "description": "Magazines? Books? Newspapers? Your publication will be designed to look great and to be easy to read."
+               "description": "Whether it's a book, a magazine, or a newspaper, we make sure your publications are designed to perfection, and that they are consistent with your corporate design."
             }
          }
       },
@@ -174,6 +176,7 @@
          "title": "Social Media Marketing",
          "subtitle": "Online presence",
          "description": "We make your online presence get the boost it needs. Through social media marketing, we ensure that your company achieves great exposure on the internet.",
+         "description_2": "We can analyse your online presence and provide you with detailed reports, so you know exactly what is happening with your brand on the internet.",
          "features": {
             "analysis": {
                "title": "Detailed Analysis",
@@ -212,6 +215,7 @@
          "title": "Audio/Video Production",
          "subtitle": "Capturing your business",
          "description": "We make sure your business is captured in a professional way. These can be both photos and videos, which can also be integrated into your website and/or graphics.",
+         "description_2": "These services are also available as part of a web design/branding project, but can also be requested separately. We can also adapt existing photos and videos, or create a completely new production.",
          "features": {
             "personal": {
                "title": "Personal Approach",
@@ -258,6 +262,7 @@
          "title": "3D Visualisation & Animation",
          "subtitle": "Another dimension",
          "description": "From small, didactic animations to printable 3D models. We make sure your products, prototypes and animations are displayed in a professional and natural way.",
+         "description_2": "We offer the full package, from 3D modelling to 3D printing, from simple animations to elaborate, complex projects. We also offer these services separately, so you can decide what meets your needs best.",
          "features": {
             "detail": {
                "title": "Eye for Detail",
@@ -284,6 +289,41 @@
             "printing": {
                "title": "3D Printing",
                "description": "We can even print your 3D models, so you can admire them in real life and use them for your business."
+            }
+         }
+      },
+      "ai": {
+         "title_short": "AI Automation",
+         "title": "AI Prompting & Automation",
+         "subtitle": "Jump on the AI train, streamline automation.",
+         "description": "We are at the dawn of a new era. Artificial Intelligence is becoming more and more apparent in our daily lives, and now your business can jump on the AI train as well.",
+         "description_2": "We offer the full package, from AI prompts to automation. Definitely don't hesitate to contact us for more information or questions.",
+         "features": {
+            "detail": {
+               "title": "Expert Knowledge",
+               "description": "We have been studying AI since it was still in its infancy. We have the knowledge and experience to help you implement the best AI solutions for your business."
+            },
+            "realistic": {
+               "title": "Automation, Streamlined",
+               "description": "With AI, the opportunities are endless. It's possible to automate tasks which would otherwise take hours, days, or even weeks to complete, in a matter of seconds."
+            },
+            "finish": {
+               "title": "Up-to-date",
+               "description": "Using the latest technologies, and keeping our knowledge up-to-date, we help your business get AI future-proof."
+            }
+         },
+         "services": {
+            "prompting": {
+               "title": "AI Prompting",
+               "description": "Using well thought-out algorithms and detailed prompts, we make sure you get the most out of AI."
+            },
+            "automation": {
+               "title": "AI Automation",
+               "description": "With the use of Artificial Intelligence, we can automate difficult tasks in no-time, so you can focus on what really matters."
+            },
+            "generation": {
+               "title": "AI Generation",
+               "description": "We can even generate content for you, like data, text, images, audio and more. The limit is truly your imagination."
             }
          }
       }

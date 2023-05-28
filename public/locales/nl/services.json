@@ -5,7 +5,7 @@
       "description": "Wij bieden een breed scala aan oplossingen voor jouw bedrijf. Van webdesign tot grafisch ontwerp, van zoekmachine optimalisatie tot social media marketing. Wij zorgen ervoor dat jouw bedrijf een herkenbare identiteit krijgt, en dat je online zichtbaar bent.",
       "sections": {
          "services": {
-            "title": "Wat we voor jou kunnen doen"
+            "title": "Wat we voor jou kunnen betekenen"
          },
          "portfolio": {
             "title": "Neem een kijkje in ons portfolio",
@@ -19,6 +19,7 @@
          "title": "Web Design & Ontwikkeling",
          "subtitle": "Websites met aandacht voor detail",
          "description": "Jouw online aanwezigheid is énorm belangrijk, anno 2023. Wij ontwerpen websites die er niet alleen mooi uitzien, maar ook goed werken. Van eenvoudige websites tot complexe webshops.",
+         "description_2": "Wij bieden het volledige pakket aan, van webdesign tot webhosting, van websecurity tot seo. We bieden deze diensten ook apart aan, zodat je zelf kan kiezen wat je nodig hebt.",
          "features": {
             "fast": {
                "title": "Bliksemsnel",
@@ -141,6 +142,7 @@
          "title": "Grafisch Ontwerp & Huisstijl",
          "subtitle": "Een sterk merk",
          "description": "Wij ontwerpen grafische elementen die uw merk onderscheiden van de rest. Van logo's tot flyers, van visitekaartjes tot advertenties. Door middel van een professionenele, universele huisstijl zorgen wij ervoor dat jouw bedrijf een herkenbare identiteit krijgt.",
+         "description_2": "Onze graphic design diensten zijn beschikbaar als onderdeel van een webdesign/branding project, maar kunnen ook apart worden aangevraagd. We kunnen ook bestaande grafische elementen aanpassen, of een volledig nieuwe huisstijl ontwerpen.",
          "features": {
             "allinone": {
                "title": "Alles-in-één",
@@ -162,11 +164,11 @@
             },
             "printed": {
                "title": "Graphics voor Drukwerk",
-               "description": "Van visitekaarjtes, posters en flyers, tot advertenties en banners. <br/>Bij Mist Media is alles mogelijk."
+               "description": "Van visitekaarjtes, posters en flyers, tot advertenties en banners, geleverd aan de deur. Bij Mist Media is alles mogelijk."
             },
             "editorial": {
                "title": "Redactionele Vormgeving",
-               "description": ""
+               "description": "Of het nu magazines, boeken, of kranten zijn, wij zorgen ervoor dat jouw publicaties er professioneel uitzien, en dat ze perfect aansluiten bij jouw huisstijl."
             }
          }
       },
@@ -175,6 +177,7 @@
          "title": "Online Marketing",
          "subtitle": "Een sterke online aanwezigheid zorgt voor een sterk merk. Branding is niet enkel grafisch, maar ook online van immens belang.",
          "description": "Wij zorgen ervoor dat jouw online aanwezigheid een boost krijgt. Door middel van social media marketing zorgen wij ervoor dat jouw bedrijf goed zichtbaar wordt op het internet.",
+         "description_2": "We kunnen ook jouw online aanwezigheid analyseren, en verbeteren waar nodig.",
          "features": {
             "analysis": {
                "title": "Grondige Analyse",
@@ -213,6 +216,7 @@
          "title": "Audiovisuele Producties",
          "subtitle": "Vastleggen van jouw bedrijf",
          "description": "Wij zorgen ervoor dat jouw bedrijf op een professionele manier wordt vastgelegd. Dit kunnen zowel foto's als video's zijn, die ook geïntegreerd kunnen worden in jouw website of graphics.",
+         "description_2": "Ook deze diensten zijn beschikbaar als onderdeel van een webdesign/branding project, maar kunnen ook apart worden aangevraagd. We kunnen ook bestaande foto's en video's aanpassen, of een volledig nieuwe productie maken.",
          "features": {
             "personal": {
                "title": "Persoonlijke Aanpak",
@@ -260,6 +264,7 @@
          "title": "3D Visualisatie & Animatie",
          "subtitle": "Een nieuwe dimensie",
          "description": "Van kleine, didactische animaties tot printbare 3D modellen. Wij zorgen ervoor dat jouw producten, prototypes en animaties op een professionele en natuurlijke manier worden weergegeven.",
+         "description_2": "Wij bieden het volledige pakket aan, van 3D modellen tot 3D printing, van eenvoudige animaties tot uitgebreidere projecten. We bieden deze diensten ook apart aan.",
          "features": {
             "detail": {
                "title": "Oog voor Detail",
@@ -286,6 +291,41 @@
             "printing": {
                "title": "3D Printing",
                "description": "We printen jouw 3D modellen, zodat je ze ook in het echt kan bewonderen."
+            }
+         }
+      },
+      "ai": {
+         "title_short": "AI Implementatie",
+         "title": "AI Prompts & Automatisatie",
+         "subtitle": "De toekomst is nu, en wij helpen je om er klaar voor te zijn.",
+         "description": "We staan aan de vooravond van een nieuw tijdperk. Kunstmatige intelligentie wordt steeds meer zichtbaar in ons dagelijks leven, en nu kan ook jouw bedrijf op de AI-trein springen.",
+         "description_2": "Ook hier bieden wij het volledige pakket aan, van AI prompts tot automatisatie. Aarzel zeker niet om contact met ons op te nemen voor meer informatie of vragen.",
+         "features": {
+            "detail": {
+               "title": "Verstand van Zaken",
+               "description": "We bestuderen AI al sinds het nog in de kinderschoenen stond. We hebben de kennis en ervaring om je te helpen bij het implementeren van de beste AI-oplossingen voor jouw bedrijf."
+            },
+            "realistic": {
+               "title": "Automatisatie, Eindeloos",
+               "description": "Met AI zijn de mogelijkheden eindeloos. Het is mogelijk om taken te automatiseren die anders uren, dagen, of zelfs weken zouden duren, in een kwestie van seconden."
+            },
+            "finish": {
+               "title": "Up-to-date",
+               "description": "Door gebruik te maken van de nieuwste technologieën, en onze kennis up-to-date te houden, helpen we jouw bedrijf AI future-proof te maken."
+            }
+         },
+         "services": {
+            "prompting": {
+               "title": "AI Prompt Implementatie",
+               "description": "Door middel van goed doordachte algoritmes en gedetailleerde prompts zorgen wij ervoor dat je het meeste uit AI haalt."
+            },
+            "automation": {
+               "title": "AI Automatisatie",
+               "description": "Met de hulp van Kunstmatige Intelligentie kunnen we moeilijke taken automatiseren, zodat je je kan concentreren op wat echt belangrijk is."
+            },
+            "generation": {
+               "title": "AI Content Generatie",
+               "description": "We kunnen zelfs content voor je genereren, zoals data, tekst, afbeeldingen, audio en meer. Hier is de grens écht je eigen verbeelding."
             }
          }
       }

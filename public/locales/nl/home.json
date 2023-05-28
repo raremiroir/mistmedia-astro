@@ -29,9 +29,9 @@
          "slug": "contact"
       },
       "check_services": {
-         "title": "Bekijk onze diensten",
+         "title": "Onze Diensten",
          "subtitle": "Ontdek hoe we je kunnen helpen om je doelen te bereiken. We bieden een breed scala aan diensten aan.",
-         "slug": "diensten"
+         "slug": "solutions"
       },
       "calculate_price": {
          "title": "Prijscalculator",
