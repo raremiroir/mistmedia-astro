@@ -12,6 +12,7 @@ import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 import type { Locales } from "@/types";
 
 changeLanguage("en");
+
 const lang = i18next.language as Locales;
 const key = "av";
 const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];

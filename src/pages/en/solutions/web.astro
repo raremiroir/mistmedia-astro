@@ -21,6 +21,7 @@ import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 import type { Locales } from "@/types";
 
 changeLanguage("en");
+
 const lang = i18next.language as Locales;
 const key = "web";
 const portfolio = await db.custom.filter.by.categoryFromPortfolio(key) || [];
@@ -53,7 +54,10 @@ subtitle={`${t(`services:solutions.${key}.description`)}`}
 						title={feature.title}
 						icon={feature.icon}
 					/>
-	
+
+					<div slot='title'>
+						{feature.title}
+					</div>
 					{() => {
 						if (!feature.id) 						return (<></>);
 						if (feature.id === 'accessible') return (<><WebFeatAccessible/></>);

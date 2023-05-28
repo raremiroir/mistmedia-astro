@@ -10,6 +10,7 @@ import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
 import type { Locales } from "@/types";
 
 changeLanguage("en");
+
 const lang = i18next.language as Locales;
 const portfolio = await db.doc.fetch.collection("portfolio");
 // const clients = await db.doc.fetch.collection('clients');
