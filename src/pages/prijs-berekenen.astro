@@ -1,5 +1,5 @@
 ---
-import i18next, { t, changeLanguage } from "i18next";
+import { t, changeLanguage } from "i18next";
 // Astro components
 // Main components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -8,12 +8,10 @@ import Section from "@/components/Core/Section/Section.astro";
 import Hero from "@/components/Common/Hero/Hero.astro";
 // Svelte components
 // Consts
-import type { Locales } from "@/types";
 import PriceCalculator from "@/components/Pages/PriceCalculator.svelte";
 
 changeLanguage("nl");
 
-const lang = i18next.language as Locales;
 export const prerender = true;
 ---
 

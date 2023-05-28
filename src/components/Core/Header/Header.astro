@@ -14,11 +14,11 @@
    import HeaderLink       from './HeaderLink.svelte';
    import LightSwitch      from './LightSwitch.svelte';
    import Hamburger from './Hamburger.svelte';
-import MobileMenu from './MobileMenu.svelte';
+   import MobileMenu from './MobileMenu.svelte';
 
    const { pathname } = Astro.url;
    let currentLocaleSlug = i18next.language === baseLocale ? '' : i18next.language + '/';
-   const { width } = Astro.props;
+   // const { width } = Astro.props;
 
    const navItems:NavItem[] = [
 		{ 

@@ -43,7 +43,7 @@ let reviewCards: {
     [key: string]: string;
 }[] = [];
 /* @ts-ignore */
-t("home:reviews.items").forEach((review, key) => {
+t("home:reviews.items").forEach((review) => {
     reviewCards.push({
         name: review.name,
         company: review.company,

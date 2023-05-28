@@ -1,11 +1,10 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/Utils/FormattedDate.astro';
 import BaseLayout from './BaseLayout.astro';
 import Page from '@/components/Core/Page/Page.astro';
 import Hero from '@/components/Common/Hero/Hero.astro';
-import { widths } from '@/consts/style';
 import type { BlogPostType } from '@/types/blog';
+// import type { CollectionEntry } from 'astro:content';
 
 // type Props = CollectionEntry<'blog'>['data'];
 
@@ -15,9 +14,16 @@ export interface Props {
 
 const { post } = Astro.props;
 
-const { content } = post;
-const { slug, title, description, pubDate, heroImage, language, author } = post.data;
-const { id, createdAt, updatedAt } = post.meta;
+// const { content } = post;
+const { 
+	// slug, 
+	title, description, pubDate, 
+	// heroImage, language, author 
+} = post.data;
+const { 
+	// id, createdAt, 
+	updatedAt 
+} = post.meta;
 
 const datePublished = new Date(pubDate);
 ---
