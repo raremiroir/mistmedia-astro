@@ -16,9 +16,9 @@ import CaseCard from './CaseCard.svelte';
 
    const { portfolio, lang } = Astro.props;
 
-   const allTags = await db.doc.fetch.collection('tags');
-   const allSolutions = await db.doc.fetch.collection('solutions');
-   const allClients = await db.doc.fetch.collection('clients');
+   // const allTags = await db.doc.fetch.collection('tags');
+   // const allSolutions = await db.doc.fetch.collection('solutions');
+   // const allClients = await db.doc.fetch.collection('clients');
 
    // If portfolio is empty, or if there are no enabled items, set to true
    const noEnabledItems = portfolio.length === 0 || portfolio.filter( item => item.enabled ).length === 0;

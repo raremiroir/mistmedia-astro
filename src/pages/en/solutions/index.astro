@@ -5,7 +5,7 @@ import Section from "@/components/Core/Section/Section.astro";
 // Svelte components
 import Card from "@/components/Common/Card/Card.svelte";
 import db from "@/firebase";
-import { gaps } from "@/consts/style";
+import { gaps_2 } from "@/consts/style";
 import Button from "@/components/Common/Button/Button.svelte";
 import SolutionLayout from "@/layouts/SolutionLayout.astro";
 
@@ -16,20 +16,22 @@ export const prerender = true;
 ---
 
 <SolutionLayout title={t('site:pages.solutions.title')} subtitle={`${t('site:pages.solutions.subtitle')}`}>
-   <Section name="solutions">
-      <div class={`grid grid-cols-3 ${gaps}`}>
+   <Section name={t('site:pages.solutions.sections.solutions')}>
+      <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${gaps_2}`}>
          {solutions.map(solution => (
             <Card 
-               fillHeight noClamp hover article block footer
+               fillHeight noClamp hover article block
                href={solution.slug} color="surface_alt"
                title={t(`services:solutions.${solution.id}.title`) || 'Title'}
-               image={solution.image}
+               image={solution.image} bodyClass="h-full"
             >
-               {t(`services:solutions.${solution.id}.description`) || 'Description'}
-               <div slot="footer">
-                  <Button href={solution.slug} size="lg" color="primary" variant="ghost">
-                     {t('btn.more_info')}
-                  </Button>
+               <div class={`h-full flex flex-col items-start justify-between ${gaps_2}`}>
+                  {t(`services:solutions.${solution.id}.description`) || 'Description'}
+                  <div class="w-full flex items-end justify-end">
+                     <Button href={solution.slug} size="lg" color="primary" variant="ghost">
+                        {t('btn.more_info')}
+                     </Button>
+                  </div>
                </div>
             </Card>
          ))}

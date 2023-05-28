@@ -22,6 +22,7 @@ import Title from "@/components/Text/Title/Title.svelte";
 import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
 import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
 import type { Locales } from "@/types";
+import Button from "@/components/Common/Button/Button.svelte";
 
 changeLanguage("en");
 
@@ -59,30 +60,44 @@ export const prerender = true;
 	<Page>
 		<!-- HERO -->
 		<!-- HERO -->
-		<Hero slot="hero" customTitle media titleWidth="w-4/5">
-			<div slot="media" class="w-1/5 mb-6">
-				<MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+		<Hero slot="hero" customTitle titleWidth="w-full">
+			<div slot="title" class="w-full flex flex-row items-center justify-center gap-8">
+				<div class="w-1/5">
+					<MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+				</div>
+				<div class="w-full flex flex-col gap-4">
+					<LogoLettering width="full" />
+					<!-- <Svg size={'full'} logo/> -->
+					<div class="">
+						<HeroTypeWriter lang={i18next.language} client:load/>
+					</div>
+				</div>
 			</div>
-			<div slot="title" class="w-full flex flex-col gap-4">
-				<LogoLettering width="full" />
-				<!-- <Svg size={'full'} logo/> -->
-				<div class="">
-					<HeroTypeWriter lang={i18next.language} client:load/>
+
+			<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 px-28 md:px-36 lg:px-44 xl:px-48 2xl:px-64 mt-8">
+				<div class="col-span-1">
+					<Button href={`#${t('site:pages.home.sections.services')}`} block size="xl" color="primary">
+						Wat we doen
+					</Button>
+				</div>
+				<div class="col-span-1">
+					<Button href={`${t('site:pages.solutions.slug')}`} block size="xl" color="surface_dark" variant="soft">
+						Ontdek onze diensten
+					</Button>
 				</div>
 			</div>
 		</Hero>
 		<!-- END HERO -->
 
 		<!-- SERVICES -->
-		<Section name="our-services" title={ `${t("home:sections.services.title")}` }>
+		<Section name={t('site:pages.home.sections.services')} title={ `${t("home:sections.services.title")}` }>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{servicesCards.map((item) => (
 					<><Card client:idle direction="row" centerRow block hover active>
 						<Title slot="title" h3 size="xs" weight="font-bold">
 							{item.title}
 						</Title>
-						<Icon 
-							slot="media" name={item.icon} 
+						<Icon slot="media" name={item.icon} 
 							class={`
 								text-surface-900 group-hover:text-primary-800 
 								dark:text-surface-50 dark:group-hover:text-primary-400 
@@ -97,18 +112,18 @@ export const prerender = true;
 		<!-- END SERVICES -->
 		
 		<!-- PORTFOLIO -->
-		<Section alt name="portfolio" title={`${t("home:sections.portfolio.title")}`}>
+		<Section alt name={t('site:pages.home.sections.portfolio')} title={`${t("home:sections.portfolio.title")}`}>
 			<HomePortfolioSlider lang={lang} />
 		</Section>
 		<!-- END PORTFOLIO -->
 
 		<!-- REVIEWS -->
-		<Section name="reviews" title={`${t("home:reviews.title")}`}>
+		<Section name={t('site:pages.home.sections.reviews')} title={`${t("home:reviews.title")}`}>
 			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{reviewCards.map((item) => (
-					<><Card client:idle block hover>
+					<><Card client:idle block>
 						<div slot="title" class="flex items-center justify-start gap-3">
-							<div class="w-1/5">
+							<div class="w-fit">
 								<Picture 
 									src={item.avatar}
 									alt="Placeholder Avatar"
@@ -121,8 +136,8 @@ export const prerender = true;
 									class="w-12 rounded-full aspect-square"
 								/>
 							</div>
-							<div class="w-4/5 flex flex-col gap-0 items-start justify-center">
-								<Title h3 size="xs" class="pt-2">
+							<div class="w-full flex flex-col gap-0 items-start justify-center">
+								<Title h3 size="xs">
 									{item.name}
 								</Title>
 								<Title h6 fake size="xs" class="italic">

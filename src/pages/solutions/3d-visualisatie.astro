@@ -3,13 +3,10 @@ import i18next, { t, changeLanguage } from "i18next";
 import { gaps } from "@/consts/style";
 // Astro components
 import Section from "@/components/Core/Section/Section.astro";
-// Svelte components
-import Drawer from "@/components/Common/Drawer/Drawer.svelte";
 // Import feature sidebar components
 import SolutionLayout from "@/layouts/SolutionLayout.astro";
 import SolutionServices from "@/components/Pages/Solutions/Common/SolutionServices.astro";
 import db from "@/firebase";
-import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
 import FeaturesGrid from "@/components/Pages/Solutions/FeaturesGrid.astro";
 import type { FeatureCard } from "@/types/content";
 import CaseGrid from "@/components/Pages/Cases/CaseGrid.astro";
