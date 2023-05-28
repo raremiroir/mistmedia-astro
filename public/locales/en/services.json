@@ -22,19 +22,57 @@
          "features": {
             "fast": {
                "title": "Lightning Fast",
-               "description": "We make sure your website loads as fast as possible. This is not only important for the user experience, but also for your SEO."
+               "description": "We make sure your website loads as fast as possible. This is not only important for the user experience, but also for your SEO.",
+               "content": {
+                  "text": [
+                     "<strong>A website needs to be fast. No doubt about it.</strong><br/>According to studies, <strong>25% of mobile visitors</strong> abandon the website if it takes <strong>longer than 4 seconds</strong> to load.<br/>A delay of 2 seconds achieves a rating of 13%, which is better, but far from optimal.",
+                     "Not only is fast page loading important for <strong>user experience</strong>, but it is also very important for <strong>ranking in the search engines.</strong> Google has been using page speed as a ranking factor since 2010, and it is becoming more and more important.",
+                     "It is recommended to aim for a <strong>load-time under half a second</strong>, which is exactly what we do. We use <strong>innovative, impressive technologies</strong> to write your website in such a way that it loads as fast as possible, and we make sure that it stays that way."
+                  ]
+               }
             },
             "responsive": {
                "title": "Responsive",
-               "description": "Your website will be designed to look great on any device, from desktop to mobile, from tablet to smartwatch."
+               "description": "Your website will be designed to look great on any device, from desktop to mobile, from tablet to smartwatch.",
+               "content": {
+                  "intro": "<strong>Most internet users use their phone to visit the web.</strong> This is a standard to which all businesses and developers should adapt. For us, it's a <strong>basic feature</strong>, included in every website.",
+                  "text": [
+                     "As of August 2022, 62.06% of all web traffic came from users with mobile devices.",
+                     "About 85% of adult web users find that mobile design should be as good as, if not better than computer's design.",
+                     "Nearly 91% of small businesses do not have a responsive website.",
+                     "±88% of online consumers will not return to a website if they encounter a bad experience.",
+                     "About 73% of web designers believe the top reason users leave a website is because it's not responsive."
+                  ]
+               }
             },
             "secure": {
                "title": "Secure",
-               "description": "Security is extremely important in 2023. We make sure your website is protected against hackers and other malicious attacks."
+               "description": "Security is extremely important in 2023. We make sure your website is protected against hackers and other malicious attacks.",
+               "content": {
+                  "text": [
+                     "<strong>It is of fundamental importance that a website is secure.</strong><br/><br/>",
+                     "In today's digital age, where cyber threats are widespread, it is essential to take the security of a website seriously.<strong>A secure website protects both the owner and the visitors from potential risks</strong> such as data breaches, malware, phishing attacks, and other forms of cybercrime.<br/><br/>",
+                     "When designing and developing websites, <strong>we place a strong emphasis on security.</strong> We implement security measures such as SSL certificates, firewalls, and regular software and plugin updates.<br/>",
+                     "This helps protect sensitive data, prevent unauthorized access, and ensure the integrity of the website.<br/><br/>",
+                     "<strong>A secure website builds trust with visitors</strong> and encourages them to interact with the content, fill out forms, make purchases, and share personal information.<br/>",
+                     "It not only protects the visitors but also the <strong>reputation of the website owner.</strong><br/><br/>",
+                     "We will always ensure that <strong>security is a top priority.</strong> Your peace of mind and the protection of your data are of the utmost importance to us."
+                  ]
+               }
             },
             "accessible": {
                "title": "Accessible",
-               "description": "Everyone should be able to use your website. We make sure your website is accessible for everyone, including people with disabilities."
+               "description": "Everyone should be able to use your website. We make sure your website is accessible for everyone, including people with disabilities.",
+               "content": {
+                  "title": "What is Web Accessibility?",
+                  "text": [
+                     "Web Accessibility is when websites and web apps are designed and coded in such a way that people with disabilities can also use them properly.",
+                     "Currently, there are still way too many websites which are created with accessibility barriers, which makes is extremely difficult or even impossible for some people to use.",
+                     "For Mist Media, accessibilty means a website which is <strong>accessible from all browsers and all devices and, most importantly, accessible for all people,</strong> no matter their age, knowledge about the web, social challenges or <strong>disabilities</strong> (temporal and permanent). <br/>We guarantee your website will be accessible for everyone by following the <strong>WCAG 2.1 guidelines</strong>, so that you won't lose any potential customers."
+                  ],
+                  "quote": "The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.",
+                  "quote_author": "Tim Berners-Lee, inventor of the World Wide Web"
+               }
             },
             "uxui": {
                "title": "UX/UI Design",
@@ -42,7 +80,16 @@
             },
             "seo": {
                "title": "SEO",
-               "description": "Through advanced SEO-methods, we make sure your website is easily findable on the internet."
+               "description": "Through advanced SEO-methods, we make sure your website is easily findable on the internet.",
+               "content": {
+                  "title": "What is SEO?",
+                  "text": [
+                     "SEO stands for Search Engine Optimization and is a collection of techniques that help your website rank higher in search engines such as Google, Bing, and Yahoo. <br/><br/>",
+                     "You can compare it to a busy shopping street. The stores that stand out the most and attract the most visitors are the ones that make the most sales. <br/>This applies to the internet as well. The higher you rank in search engines, and thus the more visible you are, the more visitors and customers you will get.<br/>",
+                     "Of course, a store's customers are not solely due to its visibility, but also to the quality of its products, brand awareness, and so on. In SEO, there are also many factors that can impact the ranking of your website.<br/><br/>",
+                     "SEO is one of the most important factors that determine whether your business is successful online or not. We ensure that your website performs well in these SEO factors, so that your storefront stands out in this busy shopping street."
+                  ]
+               }
             },
             "tech": {
                "title": "Cutting Edge Tech",

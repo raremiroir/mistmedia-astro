@@ -1,4 +1,5 @@
 ---
+import { t } from 'i18next'
 import { Picture } from "@astrojs/image/components";
 import ContentWrap from "@/components/Pages/ContentWrap.astro";
 import Link from "@/components/Common/Button/Link.svelte";
@@ -9,24 +10,24 @@ const pieCharts = [
    {
       percentage: 62,
       speed: 16,
-      text: "As of August 2022, 62.06% of all web traffic came from users with mobile devices.",
+      text: t('services:solutions.web.features.responsive.content.text')[0],
    },
    {
       percentage: 85,
-      text: "85% of adult web users find that mobile design should be as good as, if not better than computer's design.",
+      text: t('services:solutions.web.features.responsive.content.text')[1],
    },
    {
       percentage: 91,
-      text: "91% of small businesses do not have a responsive website.",
+      text: t('services:solutions.web.features.responsive.content.text')[2],
    },
    {
       percentage: 88,
-      text: "88% of online consumers will not return to a website if they encounter a bad experience.",
+      text: t('services:solutions.web.features.responsive.content.text')[3],
    },
    {
       percentage: 73,
       speed: 14,
-      text: "73% of web designers believe the top reason users leave a website is because it's not responsive.",
+      text: t('services:solutions.web.features.responsive.content.text')[4],
    },
 ]
 
@@ -34,20 +35,12 @@ const pieCharts = [
 
 <ContentWrap>
    <section class="flex flex-col gap-4">
-      <p>
-         Most internet users use their phone to visit the web. 
-         This is a standard to which all businesses and developers should adapt. 
-         For us, it's a basic feature, included in every website.
-      </p>
+      <p set:html={t('services:solutions.web.features.responsive.content.intro')} />
       {pieCharts.map((chart) => (
          <div class="flex odd:flex-row-reverse even:flex-row gap-4 items-center">
             <PieChart client:load percentage={chart.percentage} size={120} speed={chart.speed?? 12}/>
             <p>{chart.text}</p>
          </div>
       ))}
-      <p>
-         It is recommended to aim for a load-time under half a second. <br/>
-         Half a second is our minimum guarantee. We use a relatively young, but impressive javascript framework to write your website.
-      </p>
    </section>
 </ContentWrap>

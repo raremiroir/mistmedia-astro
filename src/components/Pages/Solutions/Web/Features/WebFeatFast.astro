@@ -1,62 +1,17 @@
 ---
+import { t } from 'i18next';
 import { Picture } from "@astrojs/image/components";
 import ContentWrap from "@/components/Pages/ContentWrap.astro";
 import Link from "@/components/Common/Button/Link.svelte";
 
+let text: string[] = [];
+Object.values(t('services:solutions.web.features.fast.content.text')).map((value: string) => {
+   text.push(value);
+});
 ---
 
 <ContentWrap>
-   <section class="grid grid-cols-2 gap-4">
-      <p>
-         A website needs to be fast. No doubt about it.<br/>
-         According to studies, 25% of mobile visitors abandon the website if it takes longer than 4 seconds to load.<br/>
-         A delay of 2 seconds achieves a rating of 13%, which is better, but far from optimal.<br/>
-         <br/>
-         Not only is fast page loading important for user experience, but it is also very important for the Google Ranking Factor.<br/>
-         Basically, this means that the shorter your page loads, the higher it will get in Google's search results.
-      </p>
-      <div class="">
-         <figure>
-            <Picture 
-               src="https://www.hobo-web.co.uk/wp-content/uploads/Screenshot-2015-05-14-01.02.07.png"
-               alt="An image explaining the importance of fast loading websites"
-               sizes="(min-width: 300px;) 150w, (min-width: 600px;) 300w, (min-width: 900;) 450w"
-               widths={[150, 300, 450]}
-               formats={['webp', 'avif', 'jpeg']}
-               aspectRatio={0.89}
-               fit="contain"
-               position="center"
-               class="bg-transparent"
-            />
-            <figcaption class="text-xs flex flex-row gap-1">Source: <Link href="https://www.hobo-web.co.uk/" target="_blank">Hobo Web UK</Link></figcaption>
-         </figure>
-      </div>
-   </section>
-
-   <section class="grid grid-cols-2 gap-4">
-      <p>
-         It is recommended to aim for a load-time under half a second. <br/>
-         Half a second is our minimum guarantee. We use a relatively young, but impressive javascript framework to write your website.<br/>
-         <br/>
-         This framework, Svelte, has been proven to be the fastest one out there as of yet.<br/>
-         Combined with multiple tests using well-known and extensive tools, and optimizing every detail of your website, 
-         we can create an extremely fast page load and thus a comfortable user experience.
-      </p>
-      <div class="">
-         <figure>
-            <Picture 
-               src="https://i.imgur.com/t6VnNU6.png"
-               alt="An image showing the performance of a website built with Svelte"
-               sizes="(min-width: 300px;) 150w, (min-width: 600px;) 300w, (min-width: 900;) 450w"
-               widths={[150, 300, 450]}
-               formats={['webp', 'avif', 'jpeg']}
-               aspectRatio={0.56}
-               fit="contain"
-               position="center"
-               class="bg-transparent"
-            />
-            <figcaption class="text-xs flex flex-row gap-1">Source: <Link href="https://krausest.github.io/js-framework-benchmark/2020/table_chrome_84.0.4147.89.html" target="_blank">Krausest (Github)</Link></figcaption>
-         </figure>
-      </div>
+   <section class="grid grid-cols-1 gap-4">
+      { text.map((textItem) => ( <p set:html={textItem} /> ))}
    </section>
 </ContentWrap>

@@ -1,35 +1,36 @@
 ---
+import { t } from 'i18next';
 import ContentWrap from "@/components/Pages/ContentWrap.astro";
 import Quote from "@/components/Text/Quote/Quote.svelte";
-import Link from "@/components/Common/Button/Link.svelte";
 import Title from "@/components/Text/Title/Title.svelte";
 
+
+let text: string[] = [];
+Object.values(t('services:solutions.web.features.accessible.content.text')).map((value: string) => {
+   text.push(value);
+});
 ---
 
 <ContentWrap>
    <Title h3 size="xs" weight="font-thin italic">
-      What is Web Accessibility?
+      {t('services:solutions.web.features.accessible.content.title')}
    </Title>
-   <p>
-      Web Accessibility is when websites and web apps are designed and coded in 
-      such a way that people with disabilities can also use them properly.<br/>
-      <br/>
-      Currently, there are still way too many websites which are created with 
-      accessibility barriers, which makes is extremely difficult or even impossible 
-      for some people to use.<br/>
-      <br/>
-      For Mist Media, accessibilty means a website which is <strong>accessible from 
-      all browsers* and all devices and, most importantly, accessible for all people</strong>, 
-      no matter their age, knowledge about the web, social challenges or <strong>disabilities</strong> (temporal and permanent).<br/>
-      Mist Media guarantees your website to get an impressive accessibility score!
-   </p>
+   <div>
+      {
+         text.map((textItem: string) => (
+            <>
+               <p set:html={textItem} /><br/>
+            </>
+         ))
+      }
+   </div>
 
    <Quote>
-      The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
-      <span slot="author">Tim Berners-Lee, inventor of the World Wide Web</span>
+      {t('services:solutions.web.features.accessible.content.quote')}
+      <span slot="author">{t('services:solutions.web.features.accessible.content.quote_author')}</span>
    </Quote>
    
-   <p>
+   <!-- <p>
       For a more in-depth article about web accessibility, follow <Link href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank">this link.</Link>.
-   </p>
+   </p> -->
 </ContentWrap>

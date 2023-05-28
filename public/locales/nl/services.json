@@ -22,19 +22,58 @@
          "features": {
             "fast": {
                "title": "Bliksemsnel",
-               "description": "Wij zorgen ervoor dat jouw website snel laadt, zodat je bezoekers niet weglopen."
+               "description": "Wij zorgen ervoor dat jouw website snel laadt, zodat je bezoekers niet weglopen.",
+               "content": {
+                  "text": [
+                     "<strong>Een website moet snel zijn. Daar bestaat geen twijfel over.</strong><br/>Volgens studies verlaat <strong>25% van de mobiele bezoekers</strong> de website als het langer duurt dan 4 seconden om te laden.<br/>Een vertraging van 2 seconden leidt tot een waardering van 13%, wat beter is, maar verre van optimaal.",
+                     "Niet alleen is snelle paginalading belangrijk voor de <strong>gebruikerservaring</strong>, maar het is ook zeer belangrijk voor de <strong>ranking in zoekmachines.</strong> Google gebruikt paginasnelheid als een rankingfactor sinds 2010, en het wordt steeds belangrijker.",
+                     "Het wordt aanbevolen om te streven naar een <strong>laadtijd van minder dan een halve seconde</strong>, en dat is precies wat wij doen.<br/>We maken gebruik van <strong>innovatieve, indrukwekkende technologieën</strong> om jouw website zo te schrijven dat deze zo snel mogelijk laadt, en we zorgen ervoor dat het ook zo blijft."
+                  ]
+               }
+
             },
             "responsive": {
                "title": "Responsive",
-               "description": "Wij zorgen ervoor dat jouw website er goed uitziet op elk apparaat, van smartphone tot tablet, van desktop tot laptop."
+               "description": "Wij zorgen ervoor dat jouw website er goed uitziet op elk apparaat, van smartphone tot tablet, van desktop tot laptop.",
+               "content": {
+                  "intro": "<strong>De meeste internetgebruikers maken gebruik van hun telefoon om het web te bezoeken.</strong> Dit is een standaard waar alle bedrijven en ontwikkelaars zich aan moeten aanpassen. Voor ons is het een basisfunctie die bij elke website is inbegrepen.",
+                  "text": [
+                     "Sinds augustus 2022 komt meer dan 62% van al het webverkeer van gebruikers met mobiele apparaten.",
+                     "Zo'n 85% van de volwassen webgebruikers is van mening dat het ontwerp voor mobiele apparaten even goed zou moeten zijn, al dan niet beter, dan het ontwerp voor computers.",
+                     "Bijna 91% van de kleine bedrijven heeft geen responsieve website.",
+                     "Ongeveer 88% van de online consumenten zal niet terugkeren naar een website als ze een slechte ervaring hebben gehad.",
+                     "Zo'n 73% van de webdesigners is van mening dat de belangrijkste reden waarom gebruikers een website verlaten, is omdat deze niet responsief is."
+                  ]
+               }
             },
             "secure": {
                "title": "Veilig",
-               "description": "Wij zorgen ervoor dat jouw website veilig is voor jouw bezoekers, zodat ze niet bang hoeven te zijn voor hackers."
+               "description": "Wij zorgen ervoor dat jouw website veilig is voor jouw bezoekers, zodat ze niet bang hoeven te zijn voor hackers.",
+               "content": {
+                  "text": [
+                     "<strong>Het is van fundamenteel belang dat een website veilig is.</strong><br/><br/>",
+                     "In het digitale tijdperk van vandaag, waar cyberdreigingen wijdverspreid zijn, is het essentieel om de veiligheid van een website 'aux sérieux' te nemen. <strong>Een veilige website beschermt zowel de eigenaar als de bezoekers tegen potentiële risico's</strong>, zoals gegevensinbreuken, malware, phishing-aanvallen en andere vormen van cybercriminaliteit.<br/><br/>",
+                     "Bij het ontwerpen en ontwikkelen van websites <strong>leggen wij een sterke nadruk op veiligheid.</strong> We implementeren beveiligingsmaatregelen zoals SSL-certificaten, firewalls en regelmatige updates van software en plug-ins. <br/>",
+                     "Dit helpt bij het beschermen van gevoelige gegevens, het voorkomen van ongeoorloofde toegang en het waarborgen van de integriteit van de website.<br/><br/>",
+                     "<strong>Een veilige website creëert vertrouwen bij bezoekers</strong> en moedigt hen aan om interactie te hebben met de inhoud, formulieren in te vullen, aankopen te doen en persoonlijke gegevens te delen. <br/>",
+                     "Het beschermt niet alleen de bezoekers, maar ook de <strong>reputatie van de website-eigenaar.</strong><br/><br/>",
+                     "Wij zullen er altijd voor zorgen dat <strong>veiligheid een topprioriteit</strong> is. Jouw gemoedsrust en de bescherming van jouw gegevens zijn van het grootste belang voor ons."
+                  ]
+               }
             },
             "accessible": {
                "title": "Toegankelijk",
-               "description": "Wij zorgen ervoor dat jouw website toegankelijk is voor iedereen, ongeacht hun beperking."
+               "description": "Wij zorgen ervoor dat jouw website toegankelijk is voor iedereen, ongeacht hun beperking.",
+               "content": {
+                  "title": "Wat bedoelen we met toegankelijkheid?",
+                  "text": [
+                     "Webtoegankelijkheid houdt in dat websites en webapps zodanig ontworpen en gecodeerd zijn dat mensen met een beperking deze ook correct kunnen gebruiken.",
+                     "Op dit moment zijn er nog steeds veel te veel websites met toegankelijkheidsbelemmeringen, waardoor het voor sommige mensen extreem moeilijk of zelfs onmogelijk is om ze te gebruiken.",
+                     "Voor Mist Media betekent toegankelijkheid een website die <strong>toegankelijk is vanuit alle browsers en op alle apparaten, en vooral toegankelijk is voor iedereen,</strong> ongeacht leeftijd, kennis van het web, sociale uitdagingen of <strong>beperkingen</strong> (tijdelijk en permanent). <br/>Wij garanderen dat jouw website toegankelijk is voor iedereen, en dat je geen bezoekers verliest omdat ze jouw website niet kunnen gebruiken."
+                  ],
+                  "quote": "De kracht van het web ligt in zijn universaliteit. Toegang voor iedereen, ongeacht beperking, is een essentieel aspect.",
+                  "quote_author": "Tim Berners-Lee, uitvinder van het World Wide Web"
+               }
             },
             "uxui": {
                "title": "UX/UI Design",
@@ -42,7 +81,16 @@
             },
             "seo": {
                "title": "SEO",
-               "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet, zodat je bezoekers niet weglopen."
+               "description": "Wij zorgen ervoor dat jouw website goed vindbaar is op het internet, zodat je bezoekers niet weglopen.",
+               "content": {
+                  "title": "Wat is SEO?",
+                  "text": [
+                     "SEO staat voor Search Engine Optimization, en is een verzameling van technieken die ervoor zorgen dat jouw website hoger scoort in zoekmachines zoals Google, Bing en Yahoo. <br/><br/>",
+                     "Je kan het vergelijken met een drukke winkelstraat. De winkels die het meest opvallen, en die het meest bezocht worden, zijn de winkels die het meest verkopen. <br/>Dit is ook zo op het internet. Hoe hoger je scoort in zoekmachines, en dus ook hoe zichtbaarder je bent, hoe meer bezoekers je krijgt, en hoe meer klanten je krijgt.<br/>",
+                     "Nu heeft een winkel zijn klanten uiteraard niet enkel te danken aan zijn zichtbaarheid, maar ook aan de kwaliteit van zijn producten, de bekendheid van zijn merk, enzovoort. Bij SEO zijn er ook heel wat factoren die een impact kunnen hebben op de ranking van jouw website.<br/><br/>",
+                     "SEO is een van de belangrijkste factoren die bepalen of je bedrijf online succesvol is of niet. Wij zorgen ervoor dat jouw website goed scoort in deze SEO-factoren, zodat ook jouw uithangbord in deze drukke winkelstraat goed opvalt."
+                  ]
+               }
             },
             "tech": {
                "title": "Innovatie",

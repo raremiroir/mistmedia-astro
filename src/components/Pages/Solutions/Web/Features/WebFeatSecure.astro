@@ -1,32 +1,17 @@
 ---
+import { t } from 'i18next';
 import { Picture } from "@astrojs/image/components";
 import ContentWrap from "@/components/Pages/ContentWrap.astro";
 import Link from "@/components/Common/Button/Link.svelte";
 
+let text: string[] = [];
+Object.values(t('services:solutions.web.features.secure.content.text')).map((value: string) => {
+   text.push(value);
+});
 ---
 
 <ContentWrap >
-   <section class="grid grid-cols-2 gap-4">
-      <p>
-         Het is van uiterst belang dat een website veilig is.<br/><br/>
-         In het digitale tijdperk van vandaag, waar cyberdreigingen wijdverspreid zijn, 
-         is het essentieel om de veiligheid van een website 'aux sérieux' te nemen. 
-         Een veilige website beschermt zowel de eigenaar als de bezoekers tegen potentiële 
-         risico's, zoals gegevensinbreuken, malware, phishing-aanvallen en andere vormen 
-         van cybercriminaliteit.<br/><br/>
-         Bij het ontwerpen en ontwikkelen van websites leggen wij een sterke nadruk op 
-         veiligheid. We implementeren beveiligingsmaatregelen zoals SSL-certificaten, 
-         firewalls en regelmatige updates van software en plug-ins. <br/>
-         Dit helpt bij het beschermen van gevoelige gegevens, het voorkomen van 
-         ongeoorloofde toegang en het waarborgen van de integriteit van de website.<br/><br/>
-         Een veilige website creëert vertrouwen bij bezoekers en moedigt hen aan om 
-         interactie te hebben met de inhoud, formulieren in te vullen, aankopen te doen 
-         en persoonlijke gegevens te delen. <br/>
-         Het beschermt niet alleen de bezoekers, maar ook de reputatie van de website-eigenaar.
-         <br/><br/>
-         Bij het ontwerpen en ontwikkelen van jouw website zullen wij er altijd voor zorgen 
-         dat veiligheid een topprioriteit is. Jouw gemoedsrust en de bescherming van 
-         jouw gegevens zijn van het grootste belang voor ons.
-      </p>
+   <section>
+      { text.map((textItem) => ( <p set:html={textItem} />)) }
    </section>
 </ContentWrap>
