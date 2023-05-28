@@ -11,7 +11,7 @@
    export let h6: boolean = false;
    // Make it a span
    export let fake: boolean = false;
-   // Pick a size (2xs, xs, sm, md, lg, xl, 2xl)
+   // Pick a size (3xs, 2xs, xs, sm, md, lg, xl, 2xl)
    export let size:TitleSizes|string = '2xl'
    // Override color
    export let color: string = '';
@@ -35,7 +35,7 @@
    let sizeClass: string = "text-4xl";
    let weightClass: string = "font-bold";
 
-   $: if (size === '2xs' ||size === 'xs' || size === 'sm' || size === 'md' || size === 'lg' || size === 'xl' || size === '2xl') {
+   $: if (size === '3xs' || size === '2xs' ||size === 'xs' || size === 'sm' || size === 'md' || size === 'lg' || size === 'xl' || size === '2xl') {
       sizeClass = `${title[type].size[size]}`;
    } else {
       sizeClass = size;
