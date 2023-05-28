@@ -27,10 +27,36 @@ const footerLinks = [
 			{ title: '+32 484 340 391', icon: 'ph:phone-duotone', link: 'tel:0032484340391' } 
 	]},
 	{ title: "Solutions", links: [
-			{ title: 'Item 1', icon: 'ph:check-duotone', link: '' },
-			{ title: 'Item 2', icon: 'ph:check-duotone', link: '' },
-			{ title: 'Item 3', icon: 'ph:check-duotone', link: '' },
-			{ title: 'Item 4', icon: 'ph:check-duotone', link: '' } 
+			{ 
+				title: `${t(`site:pages.solutions.solutions.web.title`)}`, 
+				icon: 'ph:check-duotone', 
+				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.web.slug`)}` 
+			},
+			{ 
+				title: `${t(`site:pages.solutions.solutions.graphic.title`)}`, 
+				icon: 'ph:check-duotone', 
+				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.graphic.slug`)}` 
+			},
+			{ 
+				title: `${t(`site:pages.solutions.solutions.marketing.title`)}`, 
+				icon: 'ph:check-duotone', 
+				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.marketing.slug`)}` 
+			},
+			{ 
+				title: `${t(`site:pages.solutions.solutions.3d.title`)}`, 
+				icon: 'ph:check-duotone', 
+				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.3d.slug`)}` 
+			},
+			{ 
+				title: `${t(`site:pages.solutions.solutions.video.title`)}`, 
+				icon: 'ph:check-duotone', 
+				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.video.slug`)}` 
+			},
+			{ 
+				title: `${t(`site:pages.solutions.solutions.ai.title`)}`, 
+				icon: 'ph:check-duotone', 
+				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.ai.slug`)}`
+			 }
 	]},
 	{ title: "More About Us", links: [
 			{ title: 'About Us', icon: 'ph:info-duotone', link: '' },
@@ -38,7 +64,9 @@ const footerLinks = [
 			{ title: 'Privacy Policy', icon: 'ph:lock-open-duotone', link: '' },
 			{ title: 'Terms & Conditions', icon: 'ph:check-circle-duotone', link: '' } 
 	]},
-]
+];
+
+// const solutions = await db.doc.fetch.collection("solutions");
 ---
 
 <footer class="w-full bg-surface-700 dark:bg-slate-950 py-6 z-10">
