@@ -40,6 +40,8 @@
     "cloudflare": "^0.0.8",
     "firebase": "^9.21.0",
     "marked": "^5.0.2",
+    "marked-gfm-heading-id": "^3.0.3",
+    "marked-mangle": "^1.0.1",
     "nanostores": "^0.8.0",
     "postcss-each": "^1.1.0",
     "postcss-nested": "^6.0.1",

@@ -7,7 +7,10 @@ import type { FirebaseStorage, SettableMetadata } from 'firebase/storage';
 import type { DbFetchFileProps, DbFetchProps, DbInsertProps, DbProps, DbUploadFileProps } from "./types";
 import { initializeApp, type FirebaseApp, type FirebaseOptions, getApp } from 'firebase/app';
 import type { MistClient } from '@/types/content';
+
 import { marked } from 'marked';
+import { mangle } from "marked-mangle";
+import { gfmHeadingId } from "marked-gfm-heading-id";
 
 const firebaseConfig: FirebaseOptions = {
    apiKey: import.meta.env.FB_API_KEY,
@@ -217,7 +220,13 @@ export const db = {
                      return acc;
                   }, {});
                   const fileText = fileContent.split('---')[2].split('\n').filter(line => line !== '').join('\n');
-                  const fileMd = marked.parse(fileText);
+                  marked.use(
+                     mangle(), 
+                     gfmHeadingId({})
+                  );
+                  const fileMd = marked.parse(fileText, {
+                     mangle: false,
+                  });
 
                   return {
                      content: fileMd,
