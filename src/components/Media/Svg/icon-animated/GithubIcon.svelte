@@ -4,12 +4,6 @@
    export let norm = 'fill-accent-d1'
    export let transition = 'transition-all duration-500 ease-in-out'
 	
-   export let darkBgColor = ''
-   export let bgColor = ''
-   export let light = ''
-   export let dark = ''
-   export let opacity = ''
-
 	let klass = '';
 	export { klass as class };
 

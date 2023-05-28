@@ -13,6 +13,7 @@
 
 <svg 
    on:click={handleSvgClick}
+   on:keydown={(e) => {if (e.key === 'Enter' || e.key === ' ') handleSvgClick(e)}}
    width="120" height="100" viewBox="0 0 120 100" 
    xmlns="http://www.w3.org/2000/svg"
    class="bg-transparent group">

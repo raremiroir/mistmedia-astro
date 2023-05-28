@@ -2,8 +2,8 @@
    export let size = 200
 
 
-   export let bgColor = 'surface-700'
-   export let darkBgColor = 'surface-900'
+//    export let bgColor = 'surface-700'
+//    export let darkBgColor = 'surface-900'
    export let transition = 'transition-all duration-1000 ease-out'
 </script>
 

@@ -18,7 +18,7 @@
 
    export let width: string = "w-8";
    export let color: string = "text-primary-500";
-   export let hex: string = "#deece8";
+   // export let hex: string = "#deece8";
 
    let klass = '';
    export { klass as class };

@@ -33,11 +33,6 @@
          },
       }
    }
-
-   export let thirdPage = false;
-   export let fourthPage = false;
-   export let fifthPage = false;
-   export let sixthPage = false;
 </script>
 
 <Splide 

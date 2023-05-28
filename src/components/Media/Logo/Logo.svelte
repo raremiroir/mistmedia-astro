@@ -16,6 +16,6 @@
       <LogoIcon width={size} dark={color} light={color2} />
    </div>
    <div class="w-5/6">
-      <LogoLettering width={size} dark={color}  />
+      <LogoLettering width={size} color={color}  />
    </div>
 </div>

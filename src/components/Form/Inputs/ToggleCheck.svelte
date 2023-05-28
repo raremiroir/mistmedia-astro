@@ -14,8 +14,6 @@
    export let checked:boolean = false;
    $: checked;
 
-   export let trueLabel:string = '';
-
    // Classes
    export let bg_off = "bg-error";
    export let bg_on = "bg-success";

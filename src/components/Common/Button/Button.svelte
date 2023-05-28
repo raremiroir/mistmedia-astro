@@ -18,7 +18,7 @@
    // Extra btn style props
    export let disabled: boolean = false;
    export let active: boolean = false;
-   export let loading: boolean = false;
+   // export let loading: boolean = false;
 
    export let capitalize: boolean = false;
    export let uppercase: boolean = false;
@@ -26,9 +26,9 @@
    export let ripple: boolean = true;
    export let square: boolean = false;
    
-   export let icon: string = '';
-   export let iconOnly: boolean = false;
-   export let iconRight: boolean = false;
+   // export let icon: string = '';
+   // export let iconOnly: boolean = false;
+   // export let iconRight: boolean = false;
 
    export let variant:VariantProp = 'fill';
    export let color:ColorProp = 'surface_alt';

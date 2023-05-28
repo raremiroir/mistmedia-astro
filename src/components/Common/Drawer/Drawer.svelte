@@ -3,7 +3,6 @@
 
 <script lang="ts">
    import Drawer from 'svelte-drawer-component'
-	import { onDestroy, setContext } from 'svelte';
 	import Title from '@/components/Text/Title/Title.svelte';
 	import Icon from '@iconify/svelte'
 	import Button from '@/components/Common/Button/Button.svelte';

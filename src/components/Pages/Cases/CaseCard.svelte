@@ -2,7 +2,7 @@
    import { t } from 'i18next'
    import Drawer from "@/components/Common/Drawer/Drawer.svelte";
    import Button from '@/components/Common/Button/Button.svelte';
-   import { caseFilterTags, caseFilterSolutions, caseFilterClients } from '@/stores';
+   // import { caseFilterTags, caseFilterSolutions, caseFilterClients } from '@/stores';
 
    export let key: number;
    export let title: string;
