@@ -1,0 +1,39 @@
+---
+import { t } from 'i18next';
+import ContentWrap from "@/components/Pages/ContentWrap.astro";
+import Quote from "@/components/Text/Quote/Quote.svelte";
+import Title from "@/components/Text/Title/Title.svelte";
+
+export interface Props {
+   solution: string;
+   feature: string;
+
+   hasTitle?: boolean;
+   hasQuote?: boolean;
+}
+const { solution, feature, hasTitle = false, hasQuote = false } = Astro.props;
+
+
+let text: string[] = [];
+Object.values(t(`services:solutions.${solution}.features.${feature}.content.text`)).map((value: string) => {
+   text.push(value);
+});
+---
+
+<ContentWrap>
+   {!!hasTitle && (
+      <><Title h3 size="xs" weight="font-thin italic">
+         {t(`services:solutions.${solution}.features.${feature}.content.title`)}
+      </Title></>
+   )}
+   <div>
+      { text.map((textItem: string) => ( <><p set:html={textItem} /><br/></> ))}
+   </div>
+
+   {!!hasQuote && (
+      <><Quote>
+         {t('services:solutions.web.features.accessible.content.quote')}
+         <span slot="author">{t('services:solutions.web.features.accessible.content.quote_author')}</span>
+      </Quote></>
+   )}
+</ContentWrap>
