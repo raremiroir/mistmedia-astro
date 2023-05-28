@@ -115,7 +115,35 @@ const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`;
 								<Button slot="trigger" color="surface_alt" size='xl' variant="fill" capitalize block>
 									{t("about:miro.more.title")}
 								</Button>
-								<span slot="title" class="capitalize">{t("about:miro.more.title_alt")}</span>
+								
+								<article>
+									<h1 slot="title" class="capitalize">{t("about:miro.more.title_alt")}</h1><br/>
+									<p>
+										Ik ben Miro, een 22-jarige student-ondernemer en autodidact uit Antwerpen, België. Ik ben een full-stack web developer, UI/UX designer, graphic designer en 3D visualisator.
+										Ik ben gepassioneerd door het creëren van mooie en gebruiksvriendelijke websites en applicaties.<br/>
+										Ik ben ook een grote fan van open-source software en deel graag mijn kennis met anderen. <br/>
+									</p><br/>
+									<p>
+										Op dit moment studeer ik <a href="https://www.kdg.be/multimedia-creative-technologies" target="_blank" rel="noopener">Multimedia & Creatieve Technologie</a> bij Karel de Grote Hogeschool in Antwerpen.<br/>
+										Deze opleiding richt zich op het ontwikkelen van creatieve en technische vaardigheden in de digitale wereld. We krijgen alle expertise over web development, UI/UX design, 3D visualisatie, video editing, en veel meer. <br/>
+										Daarbovenop krijgen we ook nog eens de kans om alle soorten nieuwe technologieën te ontdekken en te werken met de nieuwste hardware en software.<br/>
+									</p><br/>
+									<p>
+										Ik heb ook reeds redelijk wat ervaring in het werkveld. Op dit moment ben ik, als student-ondernemer, oprichter van Mist Media. We zijn dus een jonge, ambitieuze startup die graag dichtbij zijn klanten staat. <br/>
+										Om meer te weten te komen over het werk dat Mist Media reeds geleverd heeft, kan je terecht op <a href={`/${t('site:pages.cases.slug')}`}>onze <em>Cases</em> pagina</a>, waar we enkele van onze projecten in de kijker zetten.<br/>
+									</p><br/>
+									<div class="flex flex-row gap-2 items-center justify-start">
+										<Button size="lg" color="primary" href={`/${t('site:pages.cases.slug')}`}>
+											Bekijk onze cases
+										</Button>
+										<Button size="lg" color="surface_dark" variant="minimal" shadow="none" href={`/${t('site:pages.solutions.slug')}`}>
+											Bekijk onze diensten
+										</Button>
+									</div>
+									<!-- Ik ben een grote fan van het <a href="https://jamstack.org/" target="_blank" rel="noopener noreferrer">JAMstack</a> principe en gebruik het voor al mijn projecten.  -->
+								</article>
+
+
 							</Drawer>
 							<div class="flex flex-row gap-2 md:gap-4">
 								<LinkedInBtn href={linkedinLink} />
@@ -139,7 +167,7 @@ const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`;
 
 			<div class={`w-full grid grid-cols-1 md:grid-cols-2  ${gaps}`}>
 				{valueCards.map((value) => (
-					<><Card client:idle direction="row" centerRow block hover active>
+					<><Card client:idle direction="row" centerRow block variant="outline" color="surface" shadow="none" >
 						<Title slot="title" h3 size="xs" weight="font-bold">
 							{value.title}
 						</Title>
