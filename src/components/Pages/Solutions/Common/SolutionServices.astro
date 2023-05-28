@@ -15,6 +15,12 @@ export interface Props {
 }
 const { key, services } = Astro.props;
 
+const servicesData: { id: string; icon: string; }[] = services.map(item => {
+   return {
+      id: item.id,
+      icon: item.icon,
+   }
+})
 
 ---
 
@@ -25,7 +31,7 @@ const { key, services } = Astro.props;
    subtitle={`${t(`services:solutions.${key}.description_2`)}`}>
    <div class={`gap-4 md:gap-4 lg:gap-6 2xl:gap-8 grid grid-cols-2 md:grid-cols-3`}>
 
-      {services.map((service) => (
+      {servicesData.map((service) => (
 
          <Card icon={service.icon} variant="outline" color="surface" shadow="none">
          <div slot="title" class="flex flex-row items-center justify-start gap-2">
