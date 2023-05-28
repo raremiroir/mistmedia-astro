@@ -16,7 +16,7 @@ export const prerender = true;
 ---
 
 <SolutionLayout title={t('site:pages.solutions.title')} subtitle={`${t('site:pages.solutions.subtitle')}`}>
-   <Section name="solutions">
+   <Section name={t('site:pages.solutions.sections.solutions')}>
       <div class={`grid grid-cols-3 ${gaps}`}>
          {solutions.map(solution => (
             <Card 

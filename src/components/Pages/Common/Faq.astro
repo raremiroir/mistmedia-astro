@@ -13,13 +13,13 @@ t("home:faq.items").forEach((item) => {
 	 faqItems.push({
 		  question: item.question,
 		  answer: item.answer,
-		  icon: 'ph:gear-six-duotone'
+		  icon: 'ph:question-duotone'
 	 })
 });
 ---
 
 <!-- FAQ -->
-<Section name="faq" title={`${t("home:faq.title")}`}>
+<Section name={t('site:pages.home.sections.faq')} title={`${t("home:faq.title")}`}>
    <Accordeon client:load>
       {faqItems.map((item, index) => (
          <><AccordeonItem key={index} title={item.question} icon={item.icon ? true : false} client:load>

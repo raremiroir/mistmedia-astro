@@ -5,20 +5,37 @@
    "pages": {
       "home": {
          "title": "Home",
-         "slug": ""
+         "slug": "",
+         "sections": {
+            "services": "services",
+            "portfolio": "portfolio",
+            "reviews": "reviews",
+            "cta": "start-now",
+            "faq": "frequently-asked-questions"
+         }
       },
       "about": {
          "title": "About Us",
-         "slug": "about"
+         "slug": "about",
+         "sections": {
+            "about-me": "about-miro",
+            "values": "our-values"
+         }
       },
       "cases": {
          "title": "Cases",
-         "slug": "cases"
+         "slug": "cases",
+         "sections": {
+            "cases": "all-cases"
+         }
       },
       "solutions": {
          "title": "Solutions",
          "slug": "solutions",
          "subtitle": "Mist Media offers a wide range of multimedia services to help you communicate with your customers.",
+         "sections": {
+            "solutions": "all-solutions"
+         },
          "solutions": {
             "web": {
                "title": "Web",

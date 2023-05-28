@@ -5,20 +5,37 @@
    "pages": {
       "home": {
          "title": "Home",
-         "slug": ""
+         "slug": "",
+         "sections": {
+            "services": "diensten",
+            "portfolio": "portfolio",
+            "reviews": "recensies",
+            "cta": "start-nu",
+            "faq": "veelgestelde-vragen"
+         }
       },
       "about": {
          "title": "Over Ons",
-         "slug": "over-ons"
+         "slug": "over-ons",
+         "sections": {
+            "about-me": "over-miro",
+            "values": "onze-waarden"
+         }
       },
       "cases": {
          "title": "Cases",
-         "slug": "cases"
+         "slug": "cases",
+         "sections": {
+            "cases": "alle-cases"
+         }
       },
       "solutions": {
          "title": "Solutions",
          "slug": "solutions",
          "subtitle": "Mist Media biedt een breed scala aan multimediale diensten aan die u kunnen helpen uw bedrijf te promoten en uw klanten te bereiken.",
+         "sections": {
+            "solutions": "alle-solutions"
+         },
          "solutions": {
             "web": {
                "title": "Web",

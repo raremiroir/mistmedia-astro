@@ -61,7 +61,7 @@ const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`;
 		<!-- END HERO -->
 
 		<!-- ABOUT ME -->
-		<Section name="about-me" title="" alt>
+		<Section name=name={t('site:pages.about.sections.about-me')} title="" alt>
 			<div class="w-full h-fit flex flex-row gap-4 sm:gap-6 mx-auto">
 				<Box 
 					class="h-full w-full max-w-sm hidden lg:flex"
@@ -134,7 +134,7 @@ const githubLink = `https://github.com/${import.meta.env.SOCIAL_GITHUB}`;
 		<!-- VALUES -->
 		<Section 
 			fullWidthAppend
-			name="about-difference" title={`${t("about:values.title")}`}
+			name=name={t('site:pages.about.sections.values')} title={`${t("about:values.title")}`}
 			subtitle={`${t("about:values.subtitle")}`}>
 
 			<div class={`w-full grid grid-cols-1 md:grid-cols-2  ${gaps}`}>
