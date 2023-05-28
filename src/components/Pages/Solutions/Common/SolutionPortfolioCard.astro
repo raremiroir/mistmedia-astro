@@ -11,6 +11,7 @@ import type { MistPortfolioItem } from '@/types/content';
 import { getDownloadURL } from 'firebase/storage';
 import { Picture } from '@astrojs/image/components';
 import Button from '@/components/Common/Button/Button.svelte';
+import type { DocumentData } from 'firebase/firestore';
 
 export interface Props {
    item: MistPortfolioItem;
@@ -18,7 +19,7 @@ export interface Props {
    noBtn?: boolean;
 }
 const { item, lang, noBtn } = Astro.props;
-const { description, enabled, id, images, slug, tags, title, solution_type } = item;
+const { description, enabled, id, images, slug, tags = [], title, solution_type } = item;
 
 const tagsList = await db.doc.fetch.fromRefArray(tags);
 const mainImage = images.find((image) => image.isMain) || images[0];

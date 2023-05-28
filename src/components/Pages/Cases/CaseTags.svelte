@@ -20,7 +20,7 @@
    export let clientTag: string;
    export let solutionTag: string;
 
-   export let tags: DocumentData[] = [];
+   export let tags: (DocumentData|undefined)[] = [];
    // console.log(tags);
 
    const tagClass = '!text-base backdrop-blur-md'
@@ -47,10 +47,14 @@
          </Tag>
       </div>
       <div class="flex flex-row gap-1">
-         {#each tags as tag}
-            <Tag class="{tagClass}" color="{tagColor}">
-               {tag.title[$locale]}
-            </Tag>
-         {/each}
+         {#if !!tags}
+            {#each tags as tag}
+               {#if !!tag}
+                  <Tag class="{tagClass}" color="{tagColor}">
+                     {tag.title[$locale]}
+                  </Tag>
+               {/if}
+            {/each}
+         {/if}
       </div>
    </div>
