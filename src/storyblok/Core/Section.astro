@@ -1,0 +1,22 @@
+---
+import Section from "@/components/Core/Section/Section.astro";
+
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+
+---
+<Section
+   {...storyblokEditable(blok)}
+   title={blok.title}
+   subtitle={blok.subtitle ?? ''}
+   name={blok.name}
+   alt={blok.alt ?? false}
+   compact={blok.compact ?? false}
+   transparent={blok.transparent ?? false}
+   klass={blok.klass ?? ''}
+>
+   { blok.slot?.map((blok: SbBlokData) => <StoryblokComponent blok={blok} /> ) }
+</Section>

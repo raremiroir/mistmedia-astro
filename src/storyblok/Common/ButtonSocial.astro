@@ -1,0 +1,22 @@
+---
+import LinkedInBtn from "@/components/Pages/About/SocialBtns/LinkedInBtn.astro";
+import GithubBtn from "@/components/Pages/About/SocialBtns/GithubBtn.astro";
+import FacebookBtn from "@/components/Pages/About/SocialBtns/FacebookBtn.astro";
+import InstagramBtn from "@/components/Pages/About/SocialBtns/InstagramBtn.astro";
+import TwitterBtn from "@/components/Pages/About/SocialBtns/TwitterBtn.astro";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+
+<div {...storyblokEditable(blok)}>
+   {
+      blok.social === 'linkedin' ? ( <LinkedInBtn href={blok.link} /> ) :
+      blok.social === 'github' ? ( <GithubBtn href={blok.link} /> ) :
+      blok.social === 'facebook' ? ( <FacebookBtn href={blok.link} /> ) :
+      blok.social === 'instagram' ? ( <InstagramBtn href={blok.link} /> ) :
+      blok.social === 'twitter' ? ( <TwitterBtn href={blok.link} /> ) :
+      null
+   }
+</div>

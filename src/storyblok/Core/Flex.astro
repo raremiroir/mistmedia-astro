@@ -1,0 +1,68 @@
+---
+import { gaps_2 } from "@/consts/style";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+
+const direction = blok.direction || 'row';
+const directionClass: {
+   [key: string]: string
+} = {
+   row: 'flex-row',
+   column: 'flex-col'
+}
+const justify = blok.justify || 'start';
+const justifyClass: {
+   [key: string]: string
+} = {
+   start: 'justify-start',
+   center: 'justify-center',
+   end: 'justify-end',
+   between: 'justify-between',
+   around: 'justify-around',
+   evenly: 'justify-evenly',
+}
+const align = blok.align || 'start';
+const alignClass: {
+   [key: string]: string
+} = {
+   start: 'items-start',
+   center: 'items-center',
+   end: 'items-end',
+   stretch: 'items-stretch',
+   baseline: 'items-baseline',
+}
+
+type Widths = 'full' | '1/2' | '1/3' | '1/4' | '1/5' | '1/6' | 'auto';
+const pickedWidth: Widths = blok.width || 'full';
+const widths: {
+   [key in Widths]: string;
+} = {
+   full: 'w-full',
+   '1/2': 'w-1/2',
+   '1/3': 'w-1/3',
+   '1/4': 'w-1/4',
+   '1/5': 'w-1/5',
+   '1/6': 'w-1/6',
+   auto: 'w-auto',
+}
+const gaps = blok.gap || gaps_2;
+---
+
+<div 
+   {...storyblokEditable(blok)}
+   class=`
+      flex
+      ${widths[pickedWidth]}
+      ${directionClass[direction]}
+      ${justifyClass[justify]}
+      ${alignClass[align]}
+      ${gaps} ${blok.class || ''}
+`>
+   {
+      blok.slot?.map((blok: SbBlokData) => {
+        return <StoryblokComponent blok={blok} />
+      })
+   }
+</div>

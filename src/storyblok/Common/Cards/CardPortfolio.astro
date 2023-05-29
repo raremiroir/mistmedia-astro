@@ -1,0 +1,25 @@
+---
+import i18next from "i18next";
+import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+// const lang = i18next.language;
+
+---
+
+<div {...storyblokEditable(blok)}>
+<SolutionPortfolioCard 
+   lang={blok.lang} noBtn
+   item={{
+      enabled: blok.enabled,
+      id: blok.id,
+      title: blok.title,
+      description: blok.description,
+      slug: blok.slug,
+      client: blok.client,
+      images: blok.images,
+      solution_type: blok.solution_type,
+      tags: blok.tags,
+   }} />
+</div>

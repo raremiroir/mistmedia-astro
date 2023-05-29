@@ -1,0 +1,29 @@
+---
+import Box from "@/components/Core/Box.svelte";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { ColorProp, VariantProp, SizeProp, RoundedProp, ShadowProp } from '@/styles/theme';
+
+const { blok } = Astro.props;
+---
+
+<Box 
+   {...storyblokEditable(blok)} 
+   client:load
+   class={blok.class}
+   variant={blok.variant as VariantProp}
+   color={blok.color as ColorProp}
+   size={blok.size as SizeProp}
+   rounded={blok.rounded as RoundedProp}
+   shadow={blok.shadow as ShadowProp}
+   hover={blok.hover}
+   active={blok.active}
+   block={blok.block}
+>
+   {
+      blok.slot?.map((blok: SbBlokData) => {
+        return <StoryblokComponent blok={blok} />
+      })
+   }
+</Box>

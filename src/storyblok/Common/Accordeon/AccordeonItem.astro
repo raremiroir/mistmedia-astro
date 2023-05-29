@@ -1,0 +1,18 @@
+---
+import Accordeon from "@/components/Common/Accordeon/Accordeon.svelte";
+
+import { Icon } from "astro-icon";
+import AccordeonItem from "@/components/Common/Accordeon/AccordeonItem.svelte";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+<AccordeonItem 
+   {...storyblokEditable(blok)} 
+   key={blok.index} title={blok.title} 
+   icon client:load
+>
+   <Icon name={blok.icon} slot="icon" />
+   {blok.content}
+</AccordeonItem>

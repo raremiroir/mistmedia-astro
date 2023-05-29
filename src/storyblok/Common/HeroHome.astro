@@ -1,0 +1,40 @@
+---
+import i18next, { t } from "i18next";
+import Hero from "@/components/Common/Hero/Hero.astro";
+import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
+import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
+import HeroTypeWriter from "@/components/Pages/Home/HeroTypeWriter.svelte";
+import Button from "@/components/Common/Button/Button.svelte";
+
+import { storyblokEditable } from "@storyblok/astro";
+const { blok } = Astro.props;
+const lang = i18next.language;
+---
+
+
+<Hero {...storyblokEditable(blok)} customTitle titleWidth="w-full">
+   <div slot="title" class="w-full flex flex-row items-center justify-center gap-8">
+      <div class="w-1/5">
+         <MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+      </div>
+      <div class="w-full flex flex-col gap-4">
+         <LogoLettering width="full" />
+         <div class="">
+            <HeroTypeWriter lang={i18next.language} client:load/>
+         </div>
+      </div>
+   </div>
+
+   <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 px-28 md:px-36 lg:px-44 xl:px-48 2xl:px-64 mt-8">
+      <div class="col-span-1">
+         <Button href={`#${t('site:pages.home.sections.services')}`} block size="xl" color="primary">
+            Wat we doen
+         </Button>
+      </div>
+      <div class="col-span-1">
+         <Button href={`${t('site:pages.solutions.slug')}`} block size="xl" color="surface_dark" variant="soft">
+            Ontdek onze diensten
+         </Button>
+      </div>
+   </div>
+</Hero>

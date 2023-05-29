@@ -1,0 +1,37 @@
+---
+import SliderDefault from "@/components/Common/Slider/SliderDefault.svelte";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+
+const itemWrapClass = "px-8 sm:px-4 md:px-2";
+---
+
+
+<div {...storyblokEditable(blok)}>
+   <SliderDefault client:load>
+      <div slot="first" class={itemWrapClass}>
+         {
+            blok.first?.map((blok: SbBlokData) => {
+              return <StoryblokComponent blok={blok} />
+            })
+         }
+      </div>
+      <div slot="second" class={itemWrapClass}>
+         {
+            blok.second?.map((blok: SbBlokData) => {
+              return <StoryblokComponent blok={blok} />
+            })
+         }
+      </div>
+      <div slot="third" class={itemWrapClass}>
+         {
+            blok.third?.map((blok: SbBlokData) => {
+              return <StoryblokComponent blok={blok} />
+            })
+         }
+      </div>
+   </SliderDefault>
+</div>

@@ -1,0 +1,18 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { marked } from 'marked';
+const { blok } = Astro.props;
+
+const Wrapper = blok.wrap_comp || 'div';
+const Component = blok.text_comp || 'p';
+
+const text = marked.parse(blok.text);
+---
+
+<Wrapper {...storyblokEditable(blok)} class={blok.wrap_class}>
+   <Component class={blok.class}>
+      <div set:html={text}/>
+   </Component>
+</Wrapper>

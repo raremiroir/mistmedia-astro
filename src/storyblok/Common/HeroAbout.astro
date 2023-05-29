@@ -1,0 +1,18 @@
+---
+import Hero from "@/components/Common/Hero/Hero.astro";
+import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { storyblokEditable } from '@storyblok/astro';
+
+const { blok } = Astro.props;
+---
+
+<Hero {...storyblokEditable(blok)} title={blok.title} media>
+   <div slot="media" class="w-1/3 mb-6">
+      <MistLogoAnim client:only light={`fill-surface-400 dark:fill-surface-400`} dark={`fill-surface-600 dark:fill-surface-100`} />
+   </div>
+   <span slot="subtitle">
+      {blok.subtitle}
+   </span>
+</Hero>

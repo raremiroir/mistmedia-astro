@@ -1,0 +1,39 @@
+---
+import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+
+const { 
+   width,
+   klass = '',
+} = blok;
+
+
+type Widths = 'full' | '1/2' | '1/3' | '1/4' | '1/5' | '1/6' | 'auto';
+const pickedWidth: Widths = width || 'full';
+
+const widths: {
+   [key in Widths]: string;
+} = {
+   full: 'w-full',
+   '1/2': 'w-1/2',
+   '1/3': 'w-1/3',
+   '1/4': 'w-1/4',
+   '1/5': 'w-1/5',
+   '1/6': 'w-1/6',
+   auto: 'w-auto',
+}
+---
+
+<div 
+   {...storyblokEditable(blok)} 
+   class={`${klass} ${widths[pickedWidth]}`}>
+   {
+      blok.slot?.map((blok: SbBlokData) => {
+        return <StoryblokComponent blok={blok} />
+      })
+   }
+</div>

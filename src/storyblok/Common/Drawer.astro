@@ -1,0 +1,33 @@
+---
+import Drawer from "@/components/Common/Drawer/Drawer.svelte";
+import Button from "@/components/Common/Button/Button.svelte";
+
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+
+<Drawer 
+   {...storyblokEditable(blok)} 
+   client:load
+   size={blok.size || '600px'}
+   position={blok.position || 'left'}
+   duration={blok.duration || 0.3}
+>
+   <div slot="trigger" class="h-full w-full">
+      {
+         blok.trigger?.map((blok: SbBlokData) => {
+           return <StoryblokComponent blok={blok} />
+         })
+      }
+   </div>
+   <div slot="title">
+      {blok.title}
+   </div>
+   {
+      blok.content?.map((blok: SbBlokData) => {
+        return <StoryblokComponent blok={blok} />
+      })
+   }
+</Drawer>

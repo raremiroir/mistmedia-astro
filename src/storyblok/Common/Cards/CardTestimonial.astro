@@ -1,0 +1,37 @@
+---
+import Card from "@/components/Common/Card/Card.svelte";
+import Title from "@/components/Text/Title/Title.svelte";
+import { Picture } from "@astrojs/image/components";
+
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+
+<Card {...storyblokEditable(blok)} client:idle block>
+   <div slot="title" class="flex items-center justify-start gap-3">
+      <div class="w-fit">
+         <Picture 
+            src={blok.avatar}
+            alt="Placeholder Avatar"
+            sizes="(min-width: 300px;) 30w, (min-width: 600px;) 45w, (min-width: 900;) 60w"
+            widths={[30, 45, 60]}
+            formats={['webp', 'avif', 'jpeg']}
+            aspectRatio={1}
+            fit="cover"
+            position="center"
+            class="w-12 rounded-full aspect-square"
+         />
+      </div>
+      <div class="w-full flex flex-col gap-0 items-start justify-center">
+         <Title h3 size="xs">
+            {blok.name}
+         </Title>
+         <Title h6 fake size="xs" class="italic">
+            {blok.job_title}
+         </Title>
+      </div>
+   </div>
+   {blok.review}
+</Card>
