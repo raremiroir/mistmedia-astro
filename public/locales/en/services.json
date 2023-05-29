@@ -77,7 +77,14 @@
             },
             "uxui": {
                "title": "UX/UI Design",
-               "description": "A sleek, modern design is important for your website. We make sure your website is designed to be user-friendly and easy to navigate."
+               "description": "A sleek, modern design is important for your website. We make sure your website is designed to be user-friendly and easy to navigate.",
+               "content": {
+                  "text": [
+                     "Een goede gebruikerservaring (UX) en gebruikersinterface (UI) design zijn essentieel voor een website.<br/><br/>",
+                     "Bij het ontwerpen van een website is het niet alleen belangrijk dat deze er visueel aantrekkelijk uitziet, maar ook dat de gebruikerservaring optimaal is. Een goed UX/UI design zorgt ervoor dat bezoekers moeiteloos door de website kunnen navigeren, de gewenste informatie gemakkelijk kunnen vinden en een positieve interactie hebben met de inhoud.<br/>",
+                     "Bij het creëren van een UX/UI design houden wij rekening met de behoeften en verwachtingen van de gebruikers. We analyseren het gebruikersgedrag, voeren gebruikerstests uit en verzamelen feedback om inzicht te krijgen in hoe de website het beste kan worden ontworpen voor een optimale ervaring.<br/>"
+                  ]
+               }
             },
             "seo": {
                "title": "SEO",
@@ -94,11 +101,23 @@
             },
             "tech": {
                "title": "Cutting Edge Tech",
-               "description": "Our websites are built using the latest and most advanced technologies. This ensures that your website is future-proof and will always be up-to-date."
+               "description": "Our websites are built using the latest and most advanced technologies. This ensures that your website is future-proof and will always be up-to-date.",
+               "content": {
+                  "text": [
+                     "We streven ernaar om bij te blijven met de <strong>nieuwste ontwikkelingen in de webindustrie</strong> en passen <strong>innovatieve technologieën</strong> toe om onze websites naar een hoger niveau te tillen. Door gebruik te maken van geavanceerde tools en frameworks kunnen we websites ontwerpen en ontwikkelen die niet alleen <strong>modern en visueel aantrekkelijk</strong> zijn, maar ook <strong>uitblinken in functionaliteit en prestaties.</strong> <br/>",
+                     "Naast de technische aspecten houden we ook rekening met de <strong>nieuwste trends en gebruikerservaring.</strong> We implementeren responsieve ontwerpen, zodat de websites op verschillende apparaten en schermformaten optimaal worden weergegeven. We zorgen ook voor snelle laadtijden, intuïtieve navigatie en aantrekkelijke visuele elementen om een <strong>boeiende en gebruiksvriendelijke ervaring voor de bezoekers te garanderen.</strong>"
+                  ]
+               }
             },
             "support": {
                "title": "Thorough Support",
-               "description": "We're here to help you. We provide thorough support for your website, from hosting to maintenance, from updates to security."
+               "description": "We're here to help you. We provide thorough support for your website, from hosting to maintenance, from updates to security.",
+               "content": {
+                  "text": [
+                     "Bij het creëren van een succesvolle online aanwezigheid gaat het niet alleen om het bouwen van een geweldige website, maar ook om het bieden van de <strong>juiste technische ondersteuning.</strong> Daarom bieden wij een breed scala aan diensten om ervoor te zorgen dat jouw website soepel functioneert en je <strong>volledige ondersteuning</strong> hebt op alle vlakken.<br/>",
+                     " Of het nu gaat om technische problemen, vragen over de functionaliteit van jouw website of advies over het verbeteren van jouw online aanwezigheid, onze <strong>kennis en expertise</strong> staan tot jouw beschikking."
+                  ]
+               }
             }
          },
          "services": {
