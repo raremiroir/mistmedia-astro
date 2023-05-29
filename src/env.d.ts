@@ -41,6 +41,8 @@ interface ImportMetaEnv {
    readonly FB_MESSAGING_SENDER_ID: string;
    readonly FB_APP_ID: string;
    readonly FB_MEASUREMENT_ID: string;
+
+   readonly STORYBLOK_TOKEN: string;
 }
 
 interface ImportMeta {
