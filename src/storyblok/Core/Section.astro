@@ -10,7 +10,7 @@ const { blok } = Astro.props;
 ---
 <Section
    {...storyblokEditable(blok)}
-   title={blok.title}
+   title={blok.title ?? ''}
    subtitle={blok.subtitle ?? ''}
    name={blok.name}
    alt={blok.alt ?? false}
