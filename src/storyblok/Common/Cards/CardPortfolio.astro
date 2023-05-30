@@ -1,7 +1,12 @@
 ---
-import i18next from "i18next";
-import SolutionPortfolioCard from "@/components/Pages/Solutions/Common/SolutionPortfolioCard.astro";
 import { storyblokEditable } from "@storyblok/astro";
+
+import { classes } from "@/consts/style";
+import Card from "@/components/Common/Card/Card.svelte";
+import Title from "@/components/Text/Title/Title.svelte";
+import { Picture } from '@astrojs/image/components';
+import Button from '@/components/Common/Button/Button.svelte';
+import CaseTags from '@/components/Pages/Cases/CaseTags.svelte';
 
 const { blok } = Astro.props;
 // const lang = i18next.language;
@@ -9,17 +14,57 @@ const { blok } = Astro.props;
 ---
 
 <div {...storyblokEditable(blok)}>
-<SolutionPortfolioCard 
-   lang={blok.lang} noBtn
-   item={{
-      enabled: blok.enabled,
-      id: blok.id,
-      title: blok.title,
-      description: blok.description,
-      slug: blok.slug,
-      client: blok.client,
-      images: blok.images,
-      solution_type: blok.solution_type,
-      tags: blok.tags,
-   }} />
+   <Card 
+      client:idle
+      class="h-full w-full"
+      padding="p-4" gap="gap-4" 
+      block hover active article
+      media="custom"
+      contentClass={`absolute inset-0 w-full h-full z-2 bg-gradient-to-t from-black/90 via-black/70 to-black/30 ${classes.transition.default}`}
+      innerContentClass="justify-between"
+      mediaClass={`h-full w-full absolute z-0 opacity-80 group-hover:opacity-100 ${classes.transition.default}`}
+      innerClass="relative !h-96"
+   >
+      <div slot="media" class="h-full w-full">
+         <Picture 
+            src={blok.image_main || '/img/placeholder.png'}
+            alt={blok.title}
+            widths={[200, 500, 800]}
+            sizes="(min-width: 300px;) 200w, (min-width: 600px;) 500w, (min-width: 900;) 800w"
+            formats={['webp', 'avif', 'jpeg']}
+            aspectRatio={16/9}
+            fit="cover" position="center"
+            class={`group-hover:blur-sm ${classes.transition.default} w-full h-full object-cover object-center`}
+         />
+      </div>
+      
+      <!-- Tags -->
+      <div slot="title">
+         <CaseTags 
+            client:load 
+            clientTag={blok.client}
+            solutionTag={blok.solution}
+            tags={blok.tags} 
+         /> 
+      </div>
+
+      <!-- Content -->
+      <div class="">
+         <Title h3 size="xs" weight="font-bold" class="uppercase mb-2" color={`text-surface-50/80 group-hover:text-primary/80 ${classes.transition.default}`}>
+            <div class="flex items-center justify-start">{blok.title}</div>
+         </Title>
+         <div class="flex flex-col gap-4">
+            <p class={`h-full line-clamp-4 !font-medium text-surface-50/80 group-hover:text-gray-50 ${classes.transition.default}`}>
+               {blok.description}
+            </p>
+            <div class="flex justify-end mb-1">
+               {!!blok.btn && (
+                  <Button color="primary" variant="soft" size="lg">
+                     {blok.btn}
+                  </Button>
+               )}
+            </div>
+         </div>
+      </div>
+   </Card>
 </div>
