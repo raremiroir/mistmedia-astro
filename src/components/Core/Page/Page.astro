@@ -1,22 +1,33 @@
 ---
 import CallToAction from "@/components/Pages/Common/CallToAction.astro";
 import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
-// export interface Props {
-//    cta?: boolean;
-// }
-
-const { cta, blok } = Astro.props;
+const { blok } = Astro.props;
 ---
 
 <div class="min-h-screen" {...storyblokEditable(blok)}>
    <div>
-      <slot name="hero" />
+      {
+         blok.hero?.map((blok: SbBlokData) => {
+           return <StoryblokComponent blok={blok} />
+         })
+      }
    </div>
    
    <main class="w-full">
-      <slot />
+      <!-- <slot /> -->
+      {
+         blok.body?.map((blok: SbBlokData) => {
+           return <StoryblokComponent blok={blok} />
+         })
+      }
 
-      { cta && <CallToAction /> }
+      {
+         blok.end?.map((blok: SbBlokData) => {
+         return <StoryblokComponent blok={blok} />
+         })
+      }
    </main>
 </div>
