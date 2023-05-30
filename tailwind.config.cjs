@@ -13,6 +13,17 @@ module.exports = {
 			'../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'
 		)
 	],
+	// Storyblok safelist
+	safelist: [
+		"w-full",
+		"flex", "flex-row", "md:flex",
+		"items-center", "sm:items-start",
+		"justify-center",
+		"gap-8",
+		"hidden", "md:hidden",
+		"w-5/6", "sm:w-full", 
+		"mx-auto"
+	],
 
 	// Style main container
 	container: {
