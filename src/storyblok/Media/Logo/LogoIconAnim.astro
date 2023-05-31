@@ -1,0 +1,17 @@
+---
+   import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
+  import { storyblokEditable } from '@storyblok/astro';
+  import type { SbBlokData } from '@storyblok/astro';
+  import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+  
+  const { blok } = Astro.props;
+---
+
+
+
+<MistLogoAnim 
+   {...storyblokEditable(blok)} 
+   client:only
+   light={`fill-surface-400 dark:fill-surface-400`} 
+   dark={`fill-surface-600 dark:fill-surface-100`}
+/>

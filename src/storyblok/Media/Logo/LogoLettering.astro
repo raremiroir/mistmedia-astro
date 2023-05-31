@@ -1,0 +1,14 @@
+---
+   import LogoLettering from "@/components/Media/Logo/LogoLettering.svelte";
+   import { storyblokEditable } from '@storyblok/astro';
+   import type { SbBlokData } from '@storyblok/astro';
+   import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+  
+   const { blok } = Astro.props;
+---
+
+
+<LogoLettering 
+   {...storyblokEditable(blok)} 
+   width="full"
+/>
