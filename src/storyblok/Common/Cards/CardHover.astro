@@ -11,7 +11,7 @@ const { blok } = Astro.props;
 ---
 
 <div {...storyblokEditable(blok)}>
-   <Card client:load direction="row" centerRow block hover fillHeight>
+   <Card client:load direction="row" centerRow block hover fillHeight noBody={blok.no_body}>
       <div slot="title" class="flex flex-row gap-4 items-center justify-start">
          {blok.icon && (
             <Icon name={blok.icon} 
@@ -29,6 +29,8 @@ const { blok } = Astro.props;
             {blok.title}
          </Title>
       </div>
-      {blok.description}
+      <p class={!blok.description ? 'hidden' : ''}>
+         {blok.description || ''}
+      </p>
    </Card>
 </div>

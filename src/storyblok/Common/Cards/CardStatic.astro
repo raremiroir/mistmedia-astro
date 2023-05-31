@@ -11,7 +11,7 @@ const { blok } = Astro.props;
 ---
 
 <div {...storyblokEditable(blok)}>
-   <Card client:idle direction="row" centerRow block variant="outline" color="surface" shadow="none" fillHeight>
+   <Card client:idle direction="row" centerRow block variant="outline" color="surface" shadow="none" fillHeight noBody={blok.no_body}>
       <div slot="title" class="flex flex-row gap-4 items-center justify-start">
          {blok.icon && (
             <Icon name={blok.icon} 
