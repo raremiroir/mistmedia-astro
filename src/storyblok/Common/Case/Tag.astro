@@ -1,0 +1,45 @@
+---
+   import Tag from "@/components/Text/Tags/Tag.svelte";
+   import { storyblokEditable } from "@storyblok/astro";
+   import type { SbBlokData } from '@storyblok/astro';
+   import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+   const { blok } = Astro.props;
+
+   const textColors: { [key: string]: string } = {
+      slate: '!text-slate-700 dark:!text-slate-100',
+      primary: '!text-primary-100 dark:!text-primary-100',
+      secondary: '!text-secondary-100 dark:!text-secondary-100',
+   }
+   const bgColors: { [key: string]: {[key: number]: string} } = {
+      slate: {
+         40: 'bg-slate-100/40 dark:bg-slate-100/40',
+         80: 'bg-slate-100/80 dark:bg-slate-100/80'
+      },
+      primary: { 
+         40: 'bg-primary-700/40 dark:bg-primary-100/40',
+         80: 'bg-primary-700/80 dark:bg-primary-100/80',
+      },
+      secondary: { 
+         40: 'bg-secondary-700/40 dark:bg-secondary-100/40',
+         80: 'bg-secondary-700/80 dark:bg-secondary-100/80',
+      },
+   }
+
+   const tagClass = `!text-base ${ blok.backdrop && `backdrop-blur-md`}`
+   const tagColor = `variant-soft ${bgColors[blok.color || 'slate'][blok.backdrop ? 40 : 80]} ${textColors[blok.color || 'slate']}`
+
+   
+   const linkProps = blok.href ? { href: blok.href, target: blok.target || '_self', rel: blok.rel || '' } : {}
+   const element = blok.href ? 'a' : 'span';
+---
+
+<Tag 
+{...storyblokEditable(blok)}
+   class={tagClass} 
+   color={tagColor} 
+   element={element}
+   {...linkProps}
+>
+   {blok.label}
+</Tag>

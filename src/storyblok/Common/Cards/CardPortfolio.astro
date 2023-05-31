@@ -1,5 +1,7 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 import { classes } from "@/consts/style";
 import Card from "@/components/Common/Card/Card.svelte";
@@ -9,7 +11,6 @@ import Button from '@/components/Common/Button/Button.svelte';
 import CaseTags from '@/components/Pages/Cases/CaseTags.svelte';
 
 const { blok } = Astro.props;
-// const lang = i18next.language;
 
 ---
 
@@ -40,12 +41,9 @@ const { blok } = Astro.props;
       
       <!-- Tags -->
       <div slot="title">
-         <CaseTags 
-            client:load 
-            clientTag={blok.client}
-            solutionTag={blok.solution}
-            tags={blok.tags} 
-         /> 
+         { !!blok.tags && (
+            <>{ blok.tags.map((blok: SbBlokData) => <StoryblokComponent blok={blok} /> ) }</>
+         )}
       </div>
 
       <!-- Content -->
