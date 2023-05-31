@@ -1,6 +1,5 @@
 ---
 import Hero from "@/components/Common/Hero/Hero.astro";
-import MistLogoAnim from "@/components/Media/Svg/svg-assets/MistLogoAnim.svelte";
 import type { SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import { storyblokEditable } from '@storyblok/astro';
@@ -8,8 +7,13 @@ import { storyblokEditable } from '@storyblok/astro';
 const { blok } = Astro.props;
 ---
 
-<Hero {...storyblokEditable(blok)} alt title={blok.title}>
+<Hero {...storyblokEditable(blok)} alt title={blok.title || ''}>
    <span slot="subtitle">
-      {blok.subtitle}
+      {blok.subtitle || ''}
+      {
+         blok.subtitle_slot?.map((blok: SbBlokData) => {
+         return <StoryblokComponent blok={blok} />
+         })
+       }
    </span>
 </Hero>
