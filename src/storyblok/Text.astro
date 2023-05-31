@@ -8,7 +8,10 @@ const { blok } = Astro.props;
 const Wrapper = blok.wrap_comp || 'div';
 const Component = blok.text_comp || 'p';
 
-const text = marked.parse(blok.text);
+const text = marked.parse(blok.text, {
+   mangle: false,
+   headerIds: false,
+});
 ---
 
 <Wrapper {...storyblokEditable(blok)} class={blok.wrap_class}>
