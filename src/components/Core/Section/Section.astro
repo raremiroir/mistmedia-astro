@@ -1,6 +1,7 @@
 --- 
 import { gaps, widths } from "@/consts/style";
 import Title from "@/components/Text/Title/Title.svelte";
+import SvgWaves from "@/components/Media/Svg/svg-bg/SvgWaves.astro";
 export interface Props {
    name: string;
    title?: string;
@@ -12,50 +13,53 @@ export interface Props {
    fullWidthPrepend?: boolean;
    fullWidthAppend?: boolean;
 
-   svg?: string;
-   img?: string;
+   bg?: 'svg' | 'img' | 'none';
 }
 
 const { 
    name, title, subtitle, 
    alt, transparent, klass,
-   compact, 
-   // svg, img,
+   compact, bg = 'none',
    fullWidthPrepend = false,
    fullWidthAppend = false,
 } = Astro.props;
 
-
-const bgColors = {
-   default: 'bg-white dark:bg-slate-900',
-   alt: 'bg-gray-100/10 dark:bg-slate-800'
-}
-
-
-const sectionClass = `
-   w-full relative overflow-hidden
-   ${ !!transparent ? 'bg-transparent' : !!alt ? bgColors.alt : bgColors.default }
-   ${klass}
-`;
 // const bgImgClass = `absolute bottom-0 h-full w-full object-cover -z-1 opacity-20 mix-blend-multiply`;
 
 const innerWrapClass = `
    ${widths} ${ compact ? 'py-6' : 'py-8 sm:py-12 md:py-16' }
-   mx-auto flex flex-col ${gaps} z-1
+   mx-auto flex flex-col ${gaps} z-2
 `
 ---
 
 <section
    id={name}
-   class={sectionClass}>
+   class=`
+      w-full relative overflow-hidden
+      ${ !!transparent ? 'bg-transparent' 
+       : !!alt ? 'bg-[#efefef] dark:bg-slate-800' 
+       : 'bg-white dark:bg-slate-900' }
+      ${klass}
+   `>
 
-   <!-- {(!!svg || !!img) && (
-      // TODO: optimize this
-      <img 
-         src={svg?? img} alt=""
-         class={bgImgClass}
-      />
-   )} -->
+   {(bg !== 'none') && (
+      <><div class="absolute inset-0 z-0">
+         { bg === 'svg' ? (
+            <>
+               <SvgWaves />
+            </>
+         ) : bg === 'img' ? (
+            <>
+            
+            </>
+         ) : null}
+      </div></>
+      // // TODO: optimize this
+      // <img 
+      //    src={svg?? img} alt=""
+      //    class={bgImgClass}
+      // />
+   )}
 
    {
       fullWidthPrepend && (
@@ -69,7 +73,7 @@ const innerWrapClass = `
 
       <!-- Section Title -->
       {title && (
-         <div class="mt-0 mx-0 mb-8 py-0 pr-0 pl-8 border-l-4 border-primary-700 dark:border-primary-600/40">
+         <div class="z-2 mt-0 mx-0 mb-8 py-0 pr-0 pl-8 border-l-4 border-primary-700 dark:border-primary-600/40">
             <slot name="title">
                <Title h2 size="2xs" class="capitalize">
                   {title}
