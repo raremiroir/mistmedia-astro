@@ -23,11 +23,19 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params
+console.log('home slug:', slug);
 
 const storyblokApi = useStoryblokApi()
+// If slug contains /, split it
+let slugArr = (!!slug && slug.includes('/')) ? slug.split('/') : slug;
 
 const { data } = await storyblokApi.get(
-  `cdn/stories/${slug === undefined ? 'home' : slug}`,
+  `cdn/stories/${
+    slugArr === undefined ? 'home' : 
+    slugArr === 'solutions' ? 'solutions' :
+    slugArr[0] === 'solutions' && slugArr[1] !== undefined ? slugArr[0] + '/' + slugArr[1] :
+    slugArr
+  }`,
   {
     version: 'draft',
   }
@@ -36,6 +44,4 @@ const { data } = await storyblokApi.get(
 const story = data.story
 ---
 
-<BaseLayout title="Title">
-  <StoryblokComponent blok={story.content} />
-</BaseLayout>
+<StoryblokComponent blok={story.content} />
