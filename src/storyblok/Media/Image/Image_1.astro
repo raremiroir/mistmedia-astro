@@ -1,0 +1,21 @@
+---
+import { Picture } from "@astrojs/image/components";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+---
+
+<Picture 
+   {...storyblokEditable(blok)} 
+   src={blok.src}
+   alt={blok.alt}
+   sizes="(min-width: 600px;) 400w, (min-width: 800px;) 600w, (min-width: 1200px;) 800w"
+   widths={[400, 600, 800]}
+   formats={['webp', 'avif', 'png']}
+   aspectRatio={1}
+   fit="cover"
+   position="center"
+   class="h-auto w-full bg-transparent" 
+/>
