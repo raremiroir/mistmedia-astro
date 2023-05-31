@@ -1,4 +1,3 @@
-<!-- LINK -->
 <script lang="ts">
    import Popup from "@/components/Utils/Popup/Popup.svelte";
    import type { PopupSettings } from "@skeletonlabs/skeleton";
@@ -39,7 +38,7 @@
    </a>
 {/if}
 
-<style>
+<style lang="postcss" global>
    a::after {
       content: "";
       width: calc(100% - 32px);
