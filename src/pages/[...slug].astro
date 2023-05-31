@@ -34,6 +34,8 @@ const { data } = await storyblokApi.get(
     slugArr === undefined ? 'home' : 
     slugArr === 'solutions' ? 'solutions' :
     slugArr[0] === 'solutions' && slugArr[1] !== undefined ? slugArr[0] + '/' + slugArr[1] :
+    slugArr === 'blog' ? 'blog' :
+    slugArr[0] === 'blog' && slugArr[1] !== undefined ? slugArr[0] + '/' + slugArr[1] :
     slugArr
   }`,
   {
