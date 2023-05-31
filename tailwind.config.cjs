@@ -16,9 +16,11 @@ module.exports = {
 	// Storyblok safelist
 	safelist: [
 		"w-full",
-		"flex", "flex-row", "md:flex",
-		"items-center", "sm:items-start",
-		"justify-center",
+		"flex", "flex-row", "flex-col", "md:flex",
+		"items-center", "sm:items-start", "items-start", "items-end", "items-stretch",
+		"justify-center", "justify-start", "justify-between", "justify-evenly", "justify-around",
+		"w-full", "sm:w-auto", "w-auto", "w-1/2", "w-1/3", "w-1/4", "w-1/5", "w-1/6", "w-1/12",
+		"w-2/3", "w-2/4", "w-2/5", "w-2/6", "w-2/12", "w-3/4", "w-3/5", "w-3/6", "w-3/12", "w-4/5", "w-4/6", "w-4/12", "w-5/6", "w-5/12",
 		"gap-8",
 		"hidden", "md:hidden",
 		"w-5/6", "sm:w-full", 
