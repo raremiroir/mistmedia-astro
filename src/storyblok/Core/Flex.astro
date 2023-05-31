@@ -1,5 +1,7 @@
 ---
 import { gaps_2 } from "@/consts/style";
+import sbWidths from '@/storyblok/data/widths';
+import type { SbWidths } from '@/storyblok/data/widths';
 import { storyblokEditable } from '@storyblok/astro';
 import type { SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
@@ -34,27 +36,18 @@ const alignClass: {
    baseline: 'items-baseline',
 }
 
-type Widths = 'full' | '1/2' | '1/3' | '1/4' | '1/5' | '1/6' | 'auto';
-const pickedWidth: Widths = blok.width || 'full';
-const widths: {
-   [key in Widths]: string;
-} = {
-   full: 'w-full',
-   '1/2': 'w-1/2',
-   '1/3': 'w-1/3',
-   '1/4': 'w-1/4',
-   '1/5': 'w-1/5',
-   '1/6': 'w-1/6',
-   auto: 'w-auto',
-}
+
+const pickedWidth: SbWidths = blok.width || 'full';
+
 const gaps = blok.gap || gaps_2;
 ---
 
-<div 
+<div
    {...storyblokEditable(blok)}
+   id={blok.id || undefined}
    class=`
       flex
-      ${widths[pickedWidth]}
+      ${sbWidths[pickedWidth]}
       ${directionClass[direction]}
       ${justifyClass[justify]}
       ${alignClass[align]}
