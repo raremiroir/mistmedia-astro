@@ -1,0 +1,17 @@
+---  
+  import { storyblokEditable } from '@storyblok/astro';
+  import type { SbBlokData } from '@storyblok/astro';
+  import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+  
+  const { blok } = Astro.props;
+import Typewriter from '@/components/Utils/Typewriter/Typewriter.svelte';
+---
+
+<Typewriter
+   {...storyblokEditable(blok)} 
+   client:load
+   text={blok.text || ''}
+   interval={8}
+   mode="loopOnce"
+   class="unstyled !text-title-2xs leading-tight font-mono"
+/>

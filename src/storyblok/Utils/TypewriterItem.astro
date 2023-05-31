@@ -1,0 +1,9 @@
+---
+  import { storyblokEditable } from '@storyblok/astro';
+  import type { SbBlokData } from '@storyblok/astro';
+  import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+  
+  const { blok } = Astro.props;
+---
+
+<span {...storyblokEditable(blok)} class="whitespace-nowrap">{blok.text}</span>

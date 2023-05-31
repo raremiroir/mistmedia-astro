@@ -1,0 +1,22 @@
+---  
+  import { storyblokEditable } from '@storyblok/astro';
+  import type { SbBlokData } from '@storyblok/astro';
+  import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+  import Title from "@/components/Text/Title/Title.svelte";
+
+  const { blok } = Astro.props;
+  import Typewriter from '@/components/Utils/Typewriter/Typewriter.svelte';
+
+  const texts = blok.text ?? [];
+---
+
+<Title {...storyblokEditable(blok)} h1 fake size="xl">
+  <span class="flex flex-row items-end !text-title-sm !leading-none !text-surface-700">
+     <span class="text-surface-700 dark:text-surface-200">We&nbsp;</span>
+     <Typewriter client:only mode="loopRandom">
+        {texts.map((text:string) => (
+          <span class="whitespace-nowrap">{text}</span>
+        ))}
+     </Typewriter>
+  </span>
+</Title>
