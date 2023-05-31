@@ -1,5 +1,5 @@
 ---
-import CallToAction from "@/components/Pages/Common/CallToAction.astro";
+import BaseLayout from '@/layouts/BaseLayout.astro';
 import { storyblokEditable } from '@storyblok/astro';
 import type { SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
@@ -7,27 +7,29 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 const { blok } = Astro.props;
 ---
 
-<div class="min-h-screen" {...storyblokEditable(blok)}>
-   <div>
-      {
-         blok.hero?.map((blok: SbBlokData) => {
-           return <StoryblokComponent blok={blok} />
-         })
-      }
-   </div>
-   
-   <main class="w-full">
-      <!-- <slot /> -->
-      {
-         blok.body?.map((blok: SbBlokData) => {
-           return <StoryblokComponent blok={blok} />
-         })
-      }
+<BaseLayout {...storyblokEditable(blok)} title={blok.title || 'Title'}>
+   <div class="min-h-screen">
+      <div>
+         {
+            blok.hero?.map((blok: SbBlokData) => {
+            return <StoryblokComponent blok={blok} />
+            })
+         }
+      </div>
+      
+      <main class="w-full">
+         <!-- <slot /> -->
+         {
+            blok.body?.map((blok: SbBlokData) => {
+            return <StoryblokComponent blok={blok} />
+            })
+         }
 
-      {
-         blok.end?.map((blok: SbBlokData) => {
-         return <StoryblokComponent blok={blok} />
-         })
-      }
-   </main>
-</div>
+         {
+            blok.end?.map((blok: SbBlokData) => {
+            return <StoryblokComponent blok={blok} />
+            })
+         }
+      </main>
+   </div>
+</BaseLayout>
