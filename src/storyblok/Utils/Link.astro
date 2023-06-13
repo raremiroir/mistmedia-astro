@@ -4,9 +4,16 @@ import type { SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 const { blok } = Astro.props;
+
+// console.log(blok.link);
 ---
 
-<a {...storyblokEditable(blok)} href={blok.href} target={blok.target} rel={blok.rel}>
+<a 
+   {...storyblokEditable(blok)} 
+   href={blok.link?.cached_url || blok.link?.url || '#'}
+   target={blok.link?.target || '_self'}
+   rel={`${blok.no_follow ? 'nofollow' : ''} ${blok.no_opener ? 'noopener' : ''} ${blok.no_referrer ? 'noreferrer' : ''}`}
+>
    {
       blok.slot?.map((blok: SbBlokData) => {
         return <StoryblokComponent blok={blok} />

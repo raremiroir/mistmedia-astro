@@ -30,8 +30,12 @@
    const tagColor = `variant-soft ${bgColors[blok.color || 'slate'][blok.backdrop ? 40 : 80]} ${textColors[blok.color || 'slate']}`
 
    
-   const linkProps = blok.href ? { href: blok.href, target: blok.target || '_self', rel: blok.rel || '' } : {}
-   const element = blok.href ? 'a' : 'span';
+   const linkProps = blok.add_link ? { 
+      href: blok.link.cached_url || blok.link.url || '', 
+      target: blok.link.target || '_self', 
+      rel: blok.rel || '' 
+   } : {}
+   const element = blok.add_link ? 'a' : 'span';
 ---
 
 <Tag 
