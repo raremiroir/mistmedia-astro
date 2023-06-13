@@ -14,7 +14,7 @@ const text = marked.parse(blok.text, {
 });
 ---
 
-<Wrapper {...storyblokEditable(blok)} class={blok.wrap_class}>
+<Wrapper {...storyblokEditable(blok)} class={blok.wrap_class} style={`${blok.style}`}>
    <Component class={blok.class}>
       <div set:html={text}/>
    </Component>
