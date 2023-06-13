@@ -12,6 +12,12 @@ import CaseTags from '@/components/Pages/Cases/CaseTags.svelte';
 
 const { blok } = Astro.props;
 
+const btnProps = blok.link ? {
+   href: blok.link.cached_url || blok.link.url || '#',
+   target: blok.link.target || '_self',
+   rel: blok.link_rel,
+} : {};
+
 ---
 
 <div {...storyblokEditable(blok)}>
@@ -57,7 +63,7 @@ const { blok } = Astro.props;
             </p>
             <div class="flex justify-end mb-1">
                {!!blok.btn && (
-                  <Button color="primary" variant="soft" size="lg">
+                  <Button color="primary" variant="soft" size="lg" {...btnProps}>
                      {blok.btn}
                   </Button>
                )}
