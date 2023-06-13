@@ -15,7 +15,7 @@ module.exports = {
 	],
 	// Storyblok safelist
 	safelist: [
-		"w-full",
+		"w-full", "max-w-md", "max-w-sm",
 		"flex", "flex-row", "flex-col", "md:flex",
 		"items-center", "sm:items-start", "items-start", "items-end", "items-stretch",
 		"justify-center", "justify-start", "justify-between", "justify-evenly", "justify-around",
@@ -24,7 +24,9 @@ module.exports = {
 		"gap-8",
 		"hidden", "md:hidden",
 		"w-5/6", "sm:w-full", 
-		"mx-auto"
+		"mx-auto",
+		"text-title-2xl", "font-bold", 
+		"text-surface-900", "dark:text-white"
 	],
 
 	// Style main container
