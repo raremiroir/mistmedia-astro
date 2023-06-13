@@ -1,0 +1,20 @@
+---
+import Alert from '@/components/Utils/Alert/Alert.svelte';
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+
+<Alert
+   {...storyblokEditable(blok)}
+   icon={blok.icon || ''}
+   type={blok.type || 'info'}
+   title={blok.title || 'Alert!'}
+   visible={blok.visible || true}
+>
+   {blok.content || 'This is an alert!'}
+</Alert>
+
+
+

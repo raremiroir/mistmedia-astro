@@ -1,0 +1,10 @@
+---
+import { gaps_2 } from "@/consts/style";
+import ContactForm from "@/components/Pages/Contact/ContactForm.svelte";
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+
+<ContactForm {...storyblokEditable(blok)} client:load/>

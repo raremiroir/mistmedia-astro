@@ -34,7 +34,6 @@ const config: AstroUserConfig = {
         html: "storyblok/Html",
         // Layouts
         page: "components/Core/Page/Page",
-        page_solution: "layouts/SolutionLayout",
         // Core
         section: "storyblok/Core/Section",
         box: "storyblok/Core/Box",
@@ -43,6 +42,7 @@ const config: AstroUserConfig = {
         flex: "storyblok/Core/Flex",
         // Utils
         link: "storyblok/Utils/Link",
+        alert: "storyblok/Utils/Alert",
         typewriter: "storyblok/Utils/Typewriter",
         typewriter_multiple: "storyblok/Utils/TypewriterMultiple",
         // Common
@@ -66,6 +66,8 @@ const config: AstroUserConfig = {
         image_16_9: "storyblok/Media/Image/Image_16-9",
         logo_icon_anim: "storyblok/Media/Logo/LogoIconAnim",
         logo_lettering: "storyblok/Media/Logo/LogoLettering",
+        // Forms
+        contact_form: "storyblok/Form/FormContact"
       }
     }),
     sitemap({
