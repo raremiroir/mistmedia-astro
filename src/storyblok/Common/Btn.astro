@@ -4,6 +4,13 @@ import { storyblokEditable } from '@storyblok/astro';
 import type { SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 const { blok } = Astro.props;
+
+
+const linkProps = blok.link ? {
+   href: blok.link.cached_url,
+   target: blok.link.target,
+   rel: blok.rel
+} : {}
 ---
 
 <Button 
@@ -19,6 +26,7 @@ const { blok } = Astro.props;
    capitalize={blok.capitalize}
    uppercase={blok.uppercase}
    klass={blok.klass}
+   {...linkProps}
    {...blok.attributes}
 >
    {

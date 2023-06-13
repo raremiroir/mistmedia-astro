@@ -46,7 +46,7 @@ const config: AstroUserConfig = {
         typewriter: "storyblok/Utils/Typewriter",
         typewriter_multiple: "storyblok/Utils/TypewriterMultiple",
         // Common
-        button: "storyblok/Common/Button",
+        button: "storyblok/Common/Btn",
         button_social: "storyblok/Common/ButtonSocial",
         hero_about: "storyblok/Common/Heros/HeroAbout",
         hero_home: "storyblok/Common/Heros/HeroHome",
