@@ -60,14 +60,33 @@ select:-webkit-autofill:focus {
   color: rgba(var(--color-surface-900)) !important;
 }
 
-
 /* Drawer styles */
 .app .drawer .panel {
    box-shadow: 0 0 12px 8px #00000036;
 }
-
-
-
 .splide__track {
    padding: 0 1rem !important;
+}
+
+
+h1, h2, h3 {
+   font-weight: 800;
+   @apply font-titlemono;
+}
+h4, h5, h6 {
+   font-weight: 500;
+   @apply font-body;
+}
+h1 {
+   @apply text-surface-900 dark:text-white;
+   font-size: clamp(3rem, 2rem + 5vw, 7rem);
+}
+h2 {
+   @apply text-surface-900 dark:text-surface-50;
+}
+h3, h4 {
+   @apply text-surface-800 dark:text-surface-50;
+}
+h5, h6 {
+   @apply text-surface-700 dark:text-surface-100;
 }
