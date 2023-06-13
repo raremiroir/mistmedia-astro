@@ -32,10 +32,9 @@ let slugArr = (!!slug && slug.includes('/')) ? slug.split('/') : slug;
 const { data } = await storyblokApi.get(
   `cdn/stories/${
     slugArr === undefined ? 'home' : 
-    slugArr === 'solutions' ? 'solutions' :
-    slugArr[0] === 'solutions' && slugArr[1] !== undefined ? slugArr[0] + '/' + slugArr[1] :
-    slugArr === 'blog' ? 'blog' :
-    slugArr[0] === 'blog' && slugArr[1] !== undefined ? slugArr[0] + '/' + slugArr[1] :
+    typeof slugArr === 'string' ? slugArr :
+    slugArr.length === 1 ? slugArr[0] :
+    slugArr.length >= 2 ? slugArr.join('/') :
     slugArr
   }`,
   {
