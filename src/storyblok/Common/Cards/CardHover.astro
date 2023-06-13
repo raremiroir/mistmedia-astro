@@ -10,27 +10,38 @@ import Svg from "@/components/Media/Svg/Svg.svelte";
 const { blok } = Astro.props;
 ---
 
-<div {...storyblokEditable(blok)}>
-   <Card client:load direction="row" centerRow block hover fillHeight noBody={blok.no_body}>
-      <div slot="title" class="flex flex-row gap-4 items-center justify-start">
-         {blok.icon && (
-            <Icon name={blok.icon} 
-               class={`
-                  text-surface-900 group-hover:text-primary-800 
-                  dark:text-surface-50 dark:group-hover:text-primary-400 
-                  transition-all duration-300 ease-out 
-                  w-8 h-auto`} 
-            />
-         )}
-         {blok.icon_anim && (
-            <Svg animIcon={blok.icon_anim} size={48} />
-         )}
-         <Title h3 size="2xs" weight="font-bold">
-            {blok.title}
-         </Title>
-      </div>
-      <p class={!blok.description ? 'hidden' : ''}>
+<Card 
+   {...storyblokEditable(blok)} 
+   client:load 
+   direction="row" centerRow 
+   block hover fillHeight 
+   noBody={blok.no_body}
+>
+   <div slot="title" class="flex flex-row gap-4 items-center justify-start">
+      {blok.icon && (
+         <Icon name={blok.icon} 
+            class={`
+               text-surface-900 group-hover:text-primary-800 
+               dark:text-surface-50 dark:group-hover:text-primary-400 
+               transition-all duration-300 ease-out 
+               w-8 h-auto`} 
+         />
+      )}
+      {blok.icon_anim && (
+         <Svg animIcon={blok.icon_anim} size={48} />
+      )}
+      <Title h3 size="2xs" weight="font-bold">
+         {blok.title}
+      </Title>
+   </div>
+   <div class="w-full h-full">
+      <p class={!blok.description ? 'hidden' : 'min-h-8'}>
          {blok.description || ''}
       </p>
-   </Card>
-</div>
+      {
+         blok.slot?.map((blok: SbBlokData) => {
+            return <StoryblokComponent blok={blok} />
+         })
+      }
+   </div>
+</Card>
