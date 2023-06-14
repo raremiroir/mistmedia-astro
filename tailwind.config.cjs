@@ -26,7 +26,14 @@ module.exports = {
 		"w-5/6", "sm:w-full", 
 		"mx-auto",
 		"text-title-2xl", "font-bold", 
-		"text-surface-900", "dark:text-white"
+		"text-surface-900", "dark:text-white",
+		"bg-surface-300", "dark:bg-surface-700", 
+      "checked:bg-surface-300", "checked:dark:bg-surface-700", 
+      "aria-checked:bg-surface-300", "aria-checked:dark:bg-surface-700",
+      "border-2", "border-transparent", "rounded-lg",
+      "placeholder:!text-transparent", "focus:placeholder:text-surface-600", "dark:focus:placeholder:text-surface-400", "placeholder:italic",
+      "text-bold", "!text-surface-900", "dark:!text-surface-50", "autofill:!text-primary-900", "dark:autofill:!text-primary-100",
+		"input", "peer"
 	],
 
 	// Style main container
