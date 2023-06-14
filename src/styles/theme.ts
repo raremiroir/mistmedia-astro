@@ -148,8 +148,8 @@ export const theme = {
 			surface_alt: {
 				default: 'bg-[#d9dcdf] dark:bg-slate-500/80',
 				default_alt: 'bg-white/40 dark:bg-black/40',
-				hover: 'hover:!bg-primary-50 dark:hover:bg-primary-900/20',
-				hover_alt: 'hover:bg-primary/15 dark:hover:bg-primary-400/15',
+				hover: 'hover:bg-primary-50 dark:hover:bg-primary-900/20',
+				hover_alt: 'hover:bg-primary/15 dark:hover:bg-primary-700/15',
 				active: 'active:bg-primary-200/80 dark:active:bg-primary-900/40',
 				active_alt: 'active:bg-primary/40 dark:active:bg-primary-400/40',
 			},
