@@ -175,6 +175,11 @@
       initialValues: initValues,
       validationSchema: validationSchema,
       onSubmit: async (values) => {
+
+         // if (inputItems.accept_terms && !values.accept_terms) {
+         //    alert(translation.validation.terms_error);
+         //    return;
+         // }
          await validateTurnstile(values.turnstile_response).then(async (res) => {
             // console.log('res', res);
             if (res) {
@@ -213,9 +218,15 @@
             on:click={() => resetForm()}
             on:keydown={(e) => { if (e.key === 'Enter' || e.key === 'Space') resetForm() }}>
             <slot name="success">
-               <Alert compact visible title="{translation.alert.title}" icon="mdi:email-sent">
+               <Alert 
+                  compact visible 
+                  title="{translation.alert.title}" 
+                  icon="mdi:email-sent"
+                  type="success"
+               >
                   {translation.alert.message}
-                  <Button slot="actions" color="success" variant="fill">
+                  <Button 
+                     slot="actions" color="success" variant="fill">
                      <span class="capitalize">{translation.alert.button}</span>
                   </Button>
                </Alert>
