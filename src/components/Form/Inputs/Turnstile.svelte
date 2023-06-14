@@ -8,6 +8,7 @@
 
    const sitekey = import.meta.env.PUBLIC_TS_SITEKEY;
    import { turnstile as dummyKeys } from '@/consts/dummy';
+   import { classes } from '@/consts/style';
    const key = dummyKeys.public.pass; // sitekey in production
 
    export let turnstileResponse: string | undefined;
@@ -31,23 +32,29 @@
 
    export let description = '';
    export let errors:any = [];
-   
-
 </script>
 
-<div class="flex flex-col gap-1 items-start justify-center">
+<div class="
+      flex flex-col gap-1 items-start justify-center 
+      {classes.transition.default}">
    {#if description}
       <small>{description}</small>
    {/if}
    {#if errors}
       <ValidationError error={errors}/>
    {/if}
-   <Turnstile 
-      on:turnstile-callback={(e) => {
-         turnstileResponse = e.detail.token
-      }}
-      siteKey="{key}"
-      {size} {action} {theme} {retry}
-      {forms} formsField={name}
-   />
+   <div class="
+         p-0 border-2 border-primary-500-400-token rounded-md 
+         overflow-hidden mix-blend-multiply dark:mix-blend-luminosity
+         opacity-70 hover:opacity-100
+         {classes.transition.default}">
+      <Turnstile 
+         on:turnstile-callback={(e) => {
+            turnstileResponse = e.detail.token
+         }}
+         siteKey="{key}"
+         {size} {action} {theme} {retry}
+         {forms} formsField={name}
+      />
+   </div>
 </div>
