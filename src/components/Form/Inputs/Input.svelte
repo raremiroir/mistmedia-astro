@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Dropzone from "./Dropzone.svelte";
-   import { cForm, cFormComplete, classes } from "@/consts/style";
+   import { classes } from "@/consts/style";
    import Button from "@/components/Common/Button/Button.svelte";
    import Icon from "@/components/Media/Icon/Icon.svelte";
    import ValidationError from "../Utils/ValidationError.svelte";
@@ -66,41 +66,60 @@
       autocorrect: 'off', autocapitalize: 'off',
    }
 
+   let focused:boolean = false;
+   $: focused;
+
+   const inputClass = `
+      input peer ${classes.transition.fast}
+      bg-surface-500/30 dark:bg-surface-300/30
+      checked:bg-surface-300 checked:dark:bg-surface-700 
+      aria-checked:bg-surface-300 aria-checked:dark:bg-surface-700
+      border-2 border-transparent rounded-lg
+      placeholder:!text-transparent 
+      focus:placeholder:text-surface-600 dark:focus:placeholder:text-surface-400 placeholder:italic
+      text-bold !text-surface-900 dark:!text-surface-50 
+      autofill:!text-primary-900 dark:autofill:!text-primary-100`
+
    // Clear input value
    const clear = () => value = '';
 </script>
 
-<div class="w-full h-full flex flex-col gap-0.5 items-start justify-start {klass}">
-   <label class="{cFormComplete.wrapClass}">
+<div class="
+      w-full h-full 
+      flex flex-col gap-0.5 items-start justify-start 
+      mt-2 {classes.transition.fast}
+      {klass}">
+   <label class="label relative group w-full cursor-text flex items-start {classes.transition.fast}">
       
       {#if !textarea && !dropzone}
          <input  
-            class="unstyled {cFormComplete.inputClass}"
+            class="unstyled {inputClass}"
             {...inputProps}
             bind:value
-            on:blur on:focus
+            on:blur on:focus={() => focused = true}
             on:input={handleInput}
             on:change={onChange} />
       {:else if textarea}
          <textarea 
-            class="{cFormComplete.inputClass} {noResize ? 'resize-none' : ''} 
-                  !text-black dark:!text-white autofill:text-black dark:autofill:!text-white"
+            class="{inputClass} {noResize ? 'resize-none' : ''}"
             {...inputProps} 
             bind:value
-            on:blur on:focus
+            on:blur on:focus={() => focused = true}
             on:change={onChange} {rows}
          />
       {:else if dropzone}
          <Dropzone 
             {name} 
-            on:blur on:focus
+            on:blur on:focus={() => focused = true}
             onChange={onChange}
             bind:files={files}
          />
       {/if}
       {#if value && !noClear}
          <div 
-            class="{cFormComplete.clearClass}" 
+            class="
+               h-fit aspect-square bg-transparent justify-center cursor-pointer mt-1 mr-2
+               absolute z-1 right-0 flex items-start {classes.transition.fast}" 
             on:click={() => clear()}
             on:keydown={() => {}}
          >
@@ -109,7 +128,15 @@
             </Button>
          </div>
       {/if}
-      <span class="{cFormComplete.labelClass} {$currentForm[name] ? `${cForm.input.labelActiveBg} ${cForm.input.labelPosValue}` : cForm.input.labelPosDef}">
+      <span 
+         class=" 
+            {$currentForm[name] || value
+               ? `bg-transparent -top-[16px] scale-95` 
+               : 'top-[10px]'}
+            {classes.transition.fast} leading-none absolute z-2 left-1
+            px-1 py-0 peer-focus:-top-[16px] peer-focus:scale-95
+            bg-transparent rounded-lg
+            peer-focus:bg-transparent">
          {label}
       </span>
    
