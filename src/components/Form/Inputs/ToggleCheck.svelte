@@ -1,12 +1,13 @@
 <script lang="ts">
    import Icon from '@iconify/svelte';
    import { SlideToggle } from '@skeletonlabs/skeleton';
-   import { cForm, classes } from '@/consts/style';
+   import { classes } from '@/consts/style';
 
    import type { OnKeyDownEvent } from '@tstype/components/toggle';
 
    export let name:string = '';
    export let label:string = '';
+   $: label;
 
    export let required:boolean = false;
    export let disabled:boolean = false;
@@ -72,7 +73,7 @@
       </div>
    </div>
    <div class="col-span-3 md:col-span-4 xl:col-span-5 2xl:col-span-6">
-      <label for={name} class="mt-0.5">
+      <label for={name} class="mt-0.5 text-surface-800-100-token">
          {label}
       </label>
    </div>
