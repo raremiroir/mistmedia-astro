@@ -30,7 +30,7 @@
          "Of het nu een vraag, commentaar, kritiek, onderzoek, of wat dan ook is.",
          "Aarzel in geen geval om ons te contacteren!",
          "We zijn altijd blij om van je te horen.",
-         "We doen ons uiterste best om binnen de 24 uur te reageren."
+         "We doen ons uiterste best om binnen de 48 uur te reageren."
       ],
       "mail": {
          "cta": "Mail ons",
@@ -81,7 +81,7 @@
                "sending": "Verzenden...",
                "success": "Bericht verzonden!",
                "error": "Bericht niet verzonden!",
-               "message": "Bedankt voor je bericht! We doen ons uiterste best om binnen de 24 uur te reageren.",
+               "message": "Bedankt voor je bericht! We doen ons uiterste best om binnen de 48 uur te reageren.",
                "another_message": "Wil je nog een bericht sturen?"
             }
          }
