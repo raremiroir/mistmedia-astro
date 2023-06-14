@@ -51,13 +51,13 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid #253341;
+  @apply border border-primary-500 dark:border-primary-400;
   background: transparent;
-  -webkit-text-fill-color: rgba(var(--color-surface-400)) !important;
+  -webkit-text-fill-color: black !important;
+  color: black !important;
   -webkit-box-shadow: 0 0 0px 1000px #253341 inset;
   box-shadow: 0 0 0px 1000px #253341 inset;
   transition: background-color 5000s ease-in-out 0s;
-  color: rgba(var(--color-surface-900)) !important;
 }
 
 /* Drawer styles */
