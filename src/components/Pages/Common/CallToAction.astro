@@ -24,10 +24,12 @@ Object.keys(t("home:cta")).forEach((key) => {
 		})
 	}
 });
+
+const { alt } = Astro.props;
 ---
 
 <!-- CTA -->
-<Section alt name={t('site:pages.home.sections.cta')} title={`${t("home:cta.title")}`}>
+<Section alt={alt} name={t('site:pages.home.sections.cta')} title={`${t("home:cta.title")}`}>
    <div class={`grid grid-cols-1 md:grid-cols-2 ${gaps}`}>
       {ctaCards.map((item) => (
          <><a class="unstyled" href={`/${item.slug}`}><Card client:idle block hover active fillHeight>

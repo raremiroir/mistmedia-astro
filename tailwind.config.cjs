@@ -184,7 +184,7 @@ module.exports = {
 					900: '#6c1313',
 				},
 				surface: {
-					DEFAULT: '#3C4854',
+					DEFAULT: '#: ',
 					50: '#e2e4e5',
 					100: '#d8dadd',
 					200: '#ced1d4',

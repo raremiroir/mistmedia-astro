@@ -61,6 +61,7 @@ const config: AstroUserConfig = {
         slider_home: "storyblok/Common/SliderHome",
         case_tag: "storyblok/Common/Case/Tag",
         case_tags: "storyblok/Common/Case/Tags",
+        cta: "storyblok/Common/Cta",
         // Media
         image_1: "storyblok/Media/Image/Image_1",
         image_16_9: "storyblok/Media/Image/Image_16-9",

@@ -1,0 +1,10 @@
+---
+import CallToAction from '@/components/Pages/Common/CallToAction.astro';
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+
+
+<CallToAction {...storyblokEditable(blok)}/>
