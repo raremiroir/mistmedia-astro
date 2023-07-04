@@ -1,4 +1,5 @@
 ---
+import { locale } from '@/stores'
 import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
@@ -22,12 +23,15 @@ export async function getStaticPaths() {
   })
 }
 
-const { slug } = Astro.params
-console.log('home slug:', slug);
 
 const storyblokApi = useStoryblokApi()
+
+const { slug } = Astro.params
 // If slug contains /, split it
 let slugArr = (!!slug && slug.includes('/')) ? slug.split('/') : slug;
+// If first part of slug is 'en', change locale to 'en'
+locale.set(!!slugArr && slugArr[0] === 'en' ? 'en' : 'nl');
+
 
 const { data } = await storyblokApi.get(
   `cdn/stories/${
