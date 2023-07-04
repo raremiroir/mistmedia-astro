@@ -1,5 +1,6 @@
 ---
 import { t } from 'i18next';
+import { locale } from '@/stores';
 // Svelte components
 import Title 	from '@/components/Text/Title/Title.svelte'
 import Button 		from '@/components/Common/Button/Button.svelte'
@@ -13,56 +14,179 @@ import { widths } from "@/consts/style";
 const today = new Date();
 
 const socialIcons = [
-	{ icon: 'LinkedInIcon', link: 'https://www.linkedin.com/in/mistmedia/'},
-	{ icon: 'InstagramIcon', link: 'https://www.instagram.com/mirostorm/'},
-	{ icon: 'TwitterIcon', link: 'https://twitter.com/mistmedia_'},
-	{ icon: 'GithubIcon', link: 'https://github.com/raremiroir'},
-	{ icon: 'FacebookIcon', link: 'https://youtube.com/channel/UCdgOJXIe5Om_rCcpK4Adnvg'},
+	{ name: 'LinkedIn', icon: 'LinkedInIcon', link: 'https://www.linkedin.com/in/mistmedia/'},
+	{ name: 'Instagram', icon: 'InstagramIcon', link: 'https://www.instagram.com/mirostorm/'},
+	{ name: 'Twitter', icon: 'TwitterIcon', link: 'https://twitter.com/mistmedia_'},
+	{ name: 'Github', icon: 'GithubIcon', link: 'https://github.com/raremiroir'},
+	{ name: 'Facebook', icon: 'FacebookIcon', link: 'https://youtube.com/channel/UCdgOJXIe5Om_rCcpK4Adnvg'},
 ]
 
-const footerLinks = [
-	{ title: "Get In Touch", links: [
-			{ title: `Antwerp, Belgium`, icon: 'ph:map-pin-line-duotone', link: '/contact' },
-			{ title: 'miro@mistmedia.be', icon: 'ph:envelope-duotone', link: 'mailto:miro@mistmedia.be' },
-			{ title: '+32 484 340 391', icon: 'ph:phone-duotone', link: 'tel:0032484340391' } 
-	]},
-	{ title: "Solutions", links: [
+const footerTranslations = { 
+	socials: {
+		en: 'Follow us on social media',
+		nl: 'Volg ons op sociale media',
+	},
+	rights_reserved: {
+		en: "All rights reserved.",
+		nl: "Alle rechten voorbehouden."
+	}
+}
+
+const footerLinks: {
+	[key:string]: any
+} = [
+	{ 
+		title: {
+			nl: 'Contacteer Ons',
+			en: 'Get In Touch',
+		}, 
+		links: [
 			{ 
-				title: `${t(`site:pages.solutions.solutions.web.title`)}`, 
-				icon: 'ph:check-duotone', 
-				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.web.slug`)}` 
+				title: {
+					nl: 'Antwerpen, België',
+					en: 'Antwerp, Belgium',
+				},
+				icon: 'ph:map-pin-line-duotone', 
+				link: {
+					nl: 'contact',
+					en: 'en/contact',
+				}
 			},
 			{ 
-				title: `${t(`site:pages.solutions.solutions.graphic.title`)}`, 
-				icon: 'ph:check-duotone', 
-				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.graphic.slug`)}` 
+				title: 'miro@mistmedia.be', 
+				icon: 'ph:envelope-duotone', 
+				link: 'mailto:miro@mistmedia.be' 
 			},
 			{ 
-				title: `${t(`site:pages.solutions.solutions.marketing.title`)}`, 
+				title: '+32 484 340 391', 
+				icon: 'ph:phone-duotone', 
+				link: 'tel:0032484340391' 
+			} 
+	]
+	},
+	{ 
+		title: {
+			nl: 'Onze Diensten',
+			en: 'Our Solutions',
+		}, 
+		links: [
+			{ 
+				title: {
+					nl: 'Web',
+					en: 'Web',
+				}, 
 				icon: 'ph:check-duotone', 
-				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.marketing.slug`)}` 
+				link: {
+					nl: 'solutions/web',
+					en: 'en/solutions/web',
+				}, 
 			},
 			{ 
-				title: `${t(`site:pages.solutions.solutions.3d.title`)}`, 
+				title: {
+					nl: 'Grafisch Ontwerp',
+					en: 'Graphic Design',
+				},
 				icon: 'ph:check-duotone', 
-				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.3d.slug`)}` 
+				link: {
+					nl: 'solutions/grafisch-ontwerp',
+					en: 'en/solutions/graphic-design',
+				}, 
 			},
 			{ 
-				title: `${t(`site:pages.solutions.solutions.video.title`)}`, 
+				title: {
+					nl: 'Online Marketing',
+					en: 'Online Marketing',
+				},
 				icon: 'ph:check-duotone', 
-				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.video.slug`)}` 
+				link: {
+					nl: 'solutions/online-marketing',
+					en: 'en/solutions/online-marketing',
+				}, 
 			},
 			{ 
-				title: `${t(`site:pages.solutions.solutions.ai.title`)}`, 
+				title: {
+					nl: '3D Visualisatie',
+					en: '3D Visualization',
+				},
 				icon: 'ph:check-duotone', 
-				link: `${t(`site:pages.solutions.slug`)}/${t(`site:pages.solutions.solutions.ai.slug`)}`
+				link: {
+					nl: 'solutions/3d',
+					en: 'en/solutions/3d',
+				}, 
+			},
+			{ 
+				title: {
+					nl: 'Audiovisueel',
+					en: 'Audiovisual',
+				},
+				icon: 'ph:check-duotone', 
+				link: {
+					nl: 'solutions/audiovisueel',
+					en: 'en/solutions/audiovisual',
+				},
+			},
+			{ 
+				title: {
+					nl: 'animIcon',
+					en: 'AI',
+				},
+				icon: 'ph:check-duotone', 
+				link: {
+					nl: 'solutions/artificiele-intelligentie',
+					en: 'en/solutions/artificial-intelligence',
+				}, 
 			 }
 	]},
-	{ title: "More About Us", links: [
-			{ title: 'About Us', icon: 'ph:info-duotone', link: '' },
-			{ title: 'FAQ', icon: 'ph:question-duotone', link: '' },
-			{ title: 'Privacy Policy', icon: 'ph:lock-open-duotone', link: '' },
-			{ title: 'Terms & Conditions', icon: 'ph:check-circle-duotone', link: '' } 
+	{ 
+		title: {
+			nl: 'Meer Over Ons',
+			en: 'More About Us',
+		}, 
+		links: [
+			{ 
+				title: {
+					nl: 'Over Ons',
+					en: 'About Us',
+				}, 
+				icon: 'ph:info-duotone', 
+				link: {
+					nl: 'over-ons',
+					en: 'en/about-us',
+				},
+			},
+			{ 
+				title: {
+					nl: 'Veelgestelde Vragen',
+					en: 'FAQ',
+				}, 
+				icon: 'ph:question-duotone', 
+				link: {
+					nl: '/#veelgestelde-vragen',
+					en: 'en/#faq',
+				}
+			},
+			{ 
+				title: {
+					nl: 'Privacybeleid',
+					en: 'Privacy Policy',
+				},
+				icon: 'ph:lock-open-duotone', 
+				link: {
+					nl: 'privacybeleid',
+					en: 'en/privacy-policy',
+				}
+			},
+			{ 
+				title: {
+					nl: 'Algemene Voorwaarden',
+					en: 'Terms & Conditions',
+				}, 
+				icon: 'ph:check-circle-duotone', 
+				link: {
+					nl: 'algemene-voorwaarden',
+					en: 'en/terms-and-conditions',
+				}
+			} 
 	]},
 ];
 
@@ -79,13 +203,14 @@ const footerLinks = [
 				h3 size="xs" 
 				color="text-surface-400"
 				class="hidden sm:flex items-center">
-            {t("contact.socials.title")}
+            {footerTranslations.socials[locale.get()]}
          </Title>
          <div class="flex justify-center gap-4">
 				{ socialIcons.map((item) => (
 					<Button 
 						client:idle
 						href={item.link} target="_blank" 
+						ariaLabel={`Go to social: ${item.name}`}
 						rounded="circle" size="sm" square shadow="none"
 						color="primary" variant="minimal" klass="group">
 						<Svg 
@@ -113,7 +238,7 @@ const footerLinks = [
 				<Svg client:idle logo size={250} dark="fill-surface-400" light="fill-surface-300" />
 			</div>
 
-			{ footerLinks.map((col) => (
+			{ footerLinks.map((col:any) => (
 				<div class="
 						flex flex-col gap-4 lg:gap-2
 						items-center justify-start lg:items-start
@@ -122,14 +247,14 @@ const footerLinks = [
 						h3 size="2xs" noFill
 						color="text-surface-300 dark:text-surface-200" 
 						class="capitalize">
-						{col.title}
+						{col.title[locale.get()]}
 					</Title>
 					<ul class="flex flex-col items-start justify-start gap-4">
-						{ col.links.map((link) => (
+						{ col.links.map((link: any) => (
 							<li class="list-none">
-								<Link href={link.link}>
+								<Link href={link.link[locale.get()]}>
 									<Icon slot="icon" name={link.icon} class="w-8 h-8" />
-									{link.title}
+									{link.title[locale.get()]}
 								</Link>
 							</li>
 						))}
@@ -144,7 +269,7 @@ const footerLinks = [
 				border-t-2 border-surface-200/40
 				pt-6 opacity-70 
 				text-surface-200 dark:text-surface-100">
-			&copy; {today.getFullYear()} Mist Media. {t("footer.copyright.rights_reserved")}
+			&copy; {today.getFullYear()} Mist Media. {footerTranslations.rights_reserved[locale.get()]}
 		</span>
    </div>
 </footer>
