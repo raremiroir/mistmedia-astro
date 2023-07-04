@@ -1,5 +1,6 @@
 <script lang="ts">
    import Popup from "@/components/Utils/Popup/Popup.svelte";
+   import { classes } from "@/consts/style";
    import type { PopupSettings } from "@skeletonlabs/skeleton";
 
    export let klass = '';
@@ -7,20 +8,19 @@
    export let target = '';
    export let rel = '';
 
-   export let color = 'text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200';
+   export let color = 'text-primary-500 dark:text-primary-400 hover:text-primary-300 dark:hover:text-primary-200';
 
    export let popup = '';
    export let popupPlacement:PopupSettings['placement'] = 'top';
 
-   const cTransition = 'transition-all duration-200 ease-out';
-   const cText = 'text-clamp-lg min-w-fit max-w-[60%] whitespace-nowrap overflow-hidden no-underline'
-   const cFlex = 'flex flex-row gap-2 items-center justify-start';
-   
-   const cAfter = 'after:absolute after:right-2 after:bottom-1';
-   const cActiveAfter = 'active:after:left-0 active:after:-bottom-0.5 active:after:w-full active:after:h-full';
-   const cHoverAfter = 'hover:after:bg-primary/25';
-
-   const linkClass = `unstyled relative group ${cTransition} ${cText} ${cFlex} ${cAfter} ${cActiveAfter} ${cHoverAfter} ${color} ${klass}`;
+   const linkClass = `
+      unstyled relative group ${classes.transition.fast} 
+      text-clamp-lg min-w-fit max-w-[60%] whitespace-nowrap overflow-hidden no-underline
+      flex flex-row gap-1.5 items-center justify-start 
+      after:absolute after:right-2 after:bottom-1 
+      active:after:left-0 active:after:-bottom-0.5 active:after:w-full active:after:h-full
+      hover:after:bg-primary/25
+      ${color} ${klass}`;
 </script>
 
 {#if popup}
@@ -34,7 +34,7 @@
 {:else}
    <a {href} {target} {rel} class={linkClass} style="font-size: inherit !important;">
       <slot name="icon" />
-      <slot/>
+      <span class="pt-0.5"><slot/></span>
    </a>
 {/if}
 
