@@ -3,73 +3,79 @@
    
 	import type { FormProps } from "@/types/components/form";
    import FormBase from "@/components/Form/FormBase.svelte";
-   
-   let inputItems: FormProps = {
+
+   import { locale } from "@/stores";
+
+   console.log($locale)
+
+   export let title = $locale === 'nl' ? 'Contacteer ons' : 'Contact us';
+   export let submitText = $locale === 'nl' ? 'Bericht verzenden' : 'Send message';
+
+   export let inputItems: FormProps = {
       name: { 
          required: true, 
-         first_name: t('form.input.first_name'),
-         last_name: t('form.input.last_name'),
+         first_name: $locale === 'nl' ? "Voornaam" : "First name",
+         last_name: $locale === 'nl' ? "Achternaam" : "Last name",
       },
       email: { 
          required: true, 
-         label: t('form.input.email'),
+         label: $locale === 'nl' ? "E-mail" : "Email",
       },
       organisation: { 
          required: false, 
-         label: t('form.input.organisation'),
+         label: $locale === 'nl' ? "Bedrijf" : "Company",
       },
       subject: { 
          required: true, 
-         label: t('form.input.subject'),
+         label: $locale === 'nl' ? "Onderwerp" : "Subject",
       },
       message: { 
          required: true, 
-         label: t('form.input.message'),
+         label: $locale === 'nl' ? "Bericht" : "Message",
          rows: 6, 
       },
-      accept_terms: { 
-         required: true,
-         label: t('form.accept_terms'),
-      },
+      // accept_terms: { 
+      //    required: true,
+      //    label: $locale === 'nl' ? "Ik ga akkoord met de algemene voorwaarden" : "I agree to the terms and conditions",
+      // },
       turnstile_response: { 
          required: true,
-         label: t('form.turnstile_response'),
+         label: $locale === 'nl' ? "Even bewijzen dat je geen robot bent..." : "Just to prove you're not a robot...",
       },
+   }
+
+   export let translation = {
+      validation: {
+         required: locale.get() === 'nl' ? "moet ingevuld worden" : "should probably be filled in",
+         only_alpha: $locale === 'nl' ? "Dit veld mag enkel letters en/of cijfers bevatten" : "This field can only contain letters and/or numbers",
+         field_too_short: $locale === 'nl' ? "Het is onbeleefd om zo weinig te zeggen" : "It's rude to say so little",
+         field_too_long: $locale === 'nl' ? "Dat is wel heel veel tekst, probeer het wat beknopter te houden" : "That's a lot of text, try to keep it a bit shorter",
+         email_error: $locale === 'nl' ? "Met dit e-mailadres kan je niet veel doen" : "You can't do much with this email address",
+         phone_error: $locale === 'nl' ? "Dit lijkt niet helemaal op een telefoonnummer" : "This doesn't look much like a phone number",
+         terms_error: $locale === 'nl' ? "Het stelt vrij weinig voor, maar je moet toch wel akkoord gaan met de algemene voorwaarden" : "It's not a big deal, but you should probably agree to the terms and conditions",
+         turnstile_error: $locale === 'nl' ? "Ben jij een robot? 🤔" : "Are you a robot? 🤔",
+      },
+      placeholder: {
+         first_name: $locale === 'nl' ? "Peter" : "Anne",
+         last_name: $locale === 'nl' ? "Selie" : "Chovy",
+         email: $locale === 'nl' ? "peter.selie@mail.be" : "anne.chovy@mail.com",
+         phone: $locale === 'nl' ? "012 34 56 78" : "012 34 56 78",
+         organisation: $locale === 'nl' ? "Peterselie NV" : "Anchovy Inc.",
+         job: $locale === 'nl' ? "CEO" : "CTO",
+         subject: $locale === 'nl' ? "Waar wil je het met ons over hebben?" : "What do you want to talk to us about?",
+         message: $locale === 'nl' ? "Schrijf je bericht hier..." : "Write your message here...",
+      },
+      alert: {
+         title: $locale === 'nl' ? "Bericht verzonden!" : "Message sent!",
+         message: $locale === 'nl' ? "Bedankt voor je bericht! We doen ons uiterste best om binnen de 48 uur te reageren." : "Thanks for your message! We'll do our best to get back to you within 48 hours.",
+         button: $locale === 'nl' ? "Wil je nog een bericht sturen?" : "Do you want to send another message?",
+      }
    }
 </script>
 
 <FormBase 
-   translation={{
-      validation: {
-         required: t('form.validation.required'),
-         only_alpha: t('form.validation.only_alpha'),
-         field_too_short: t('form.validation.field_too_short'),
-         field_too_long: t('form.validation.field_too_long'),
-         email_error: t('form.validation.email_error'),
-         phone_error: t('form.validation.phone_error'),
-         terms_error: t('form.validation.terms_error'),
-         turnstile_error: t('form.validation.captcha_error'),
-      },
-      placeholder: {
-         first_name: t('form.placeholders.first_name'),
-         last_name: t('form.placeholders.last_name'),
-         email: t('form.placeholders.email'),
-         phone: t('form.placeholders.phone'),
-         organisation: t('form.placeholders.organisation'),
-         job: t('form.placeholders.job'),
-         subject: t('form.placeholders.subject'),
-         message: t('form.placeholders.message'),
-      },
-      alert: {
-         title: t('form.input.submit.send.success'),
-         message: t('form.input.submit.send.message'),
-         button: t('form.input.submit.send.another_message'),
-      }
-   }}
-
-   inputItems={inputItems}
-   title={`${t("contact.cta")}`}
-   submitText={`${t("form.input.submit.default")}`}
+   {translation} {inputItems}
+   {title} {submitText}
 
    submitAction={async (values) => {
       const subject = `Mistmedia.be: Nieuw bericht van ${values.first_name} ${values.last_name} - ${values.subject}`;

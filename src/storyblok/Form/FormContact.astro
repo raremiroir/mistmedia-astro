@@ -4,7 +4,75 @@ import ContactForm from "@/components/Pages/Contact/ContactForm.svelte";
 import { storyblokEditable } from '@storyblok/astro';
 import type { SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { locale } from "@/stores";
+
 const { blok } = Astro.props;
 ---
 
-<ContactForm {...storyblokEditable(blok)} client:load/>
+<ContactForm 
+   {...storyblokEditable(blok)} 
+   client:load
+
+   title={locale.get() === 'nl' ? 'Contacteer ons' : 'Contact us'}
+   submitText={locale.get() === 'nl' ? 'Bericht verzenden' : 'Send message'}
+   inputItems={{
+      name: { 
+         required: true, 
+         first_name: locale.get() === 'nl' ? "Voornaam" : "First name",
+         last_name: locale.get() === 'nl' ? "Achternaam" : "Last name",
+      },
+      email: { 
+         required: true, 
+         label: locale.get() === 'nl' ? "E-mail" : "Email",
+      },
+      organisation: { 
+         required: false, 
+         label: locale.get() === 'nl' ? "Bedrijf" : "Company",
+      },
+      subject: { 
+         required: true, 
+         label: locale.get() === 'nl' ? "Onderwerp" : "Subject",
+      },
+      message: { 
+         required: true, 
+         label: locale.get() === 'nl' ? "Bericht" : "Message",
+         rows: 6, 
+      },
+      // accept_terms: { 
+      //    required: true,
+      //    label: locale.get() === 'nl' ? "Ik ga akkoord met de algemene voorwaarden" : "I agree to the terms and conditions",
+      // },
+      turnstile_response: { 
+         required: true,
+         label: locale.get() === 'nl' ? "Even bewijzen dat je geen robot bent..." : "Just to prove you're not a robot...",
+      },
+   }}
+   translation={{
+      validation: {
+         required: locale.get() === 'nl' ? "moet ingevuld worden" : "should probably be filled in",
+         only_alpha: locale.get() === 'nl' ? "Dit veld mag enkel letters en/of cijfers bevatten" : "This field can only contain letters and/or numbers",
+         field_too_short: locale.get() === 'nl' ? "Het is onbeleefd om zo weinig te zeggen" : "It's rude to say so little",
+         field_too_long: locale.get() === 'nl' ? "Dat is wel heel veel tekst, probeer het wat beknopter te houden" : "That's a lot of text, try to keep it a bit shorter",
+         email_error: locale.get() === 'nl' ? "Met dit e-mailadres kan je niet veel doen" : "You can't do much with this email address",
+         phone_error: locale.get() === 'nl' ? "Dit lijkt niet helemaal op een telefoonnummer" : "This doesn't look much like a phone number",
+         terms_error: locale.get() === 'nl' ? "Het stelt vrij weinig voor, maar je moet toch wel akkoord gaan met de algemene voorwaarden" : "It's not a big deal, but you should probably agree to the terms and conditions",
+         turnstile_error: locale.get() === 'nl' ? "Ben jij een robot? 🤔" : "Are you a robot? 🤔",
+      },
+      placeholder: {
+         first_name: locale.get() === 'nl' ? "Peter" : "Anne",
+         last_name: locale.get() === 'nl' ? "Selie" : "Chovy",
+         email: locale.get() === 'nl' ? "peter.selie@mail.be" : "anne.chovy@mail.com",
+         phone: locale.get() === 'nl' ? "012 34 56 78" : "012 34 56 78",
+         organisation: locale.get() === 'nl' ? "Peterselie NV" : "Anchovy Inc.",
+         job: locale.get() === 'nl' ? "CEO" : "CTO",
+         subject: locale.get() === 'nl' ? "Waar wil je het met ons over hebben?" : "What do you want to talk to us about?",
+         message: locale.get() === 'nl' ? "Schrijf je bericht hier..." : "Write your message here...",
+      },
+      alert: {
+         title: locale.get() === 'nl' ? "Bericht verzonden!" : "Message sent!",
+         message: locale.get() === 'nl' ? "Bedankt voor je bericht! We doen ons uiterste best om binnen de 48 uur te reageren." : "Thanks for your message! We'll do our best to get back to you within 48 hours.",
+         button: locale.get() === 'nl' ? "Wil je nog een bericht sturen?" : "Do you want to send another message?",
+      }
+   }}
+   
+/>

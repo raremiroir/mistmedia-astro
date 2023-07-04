@@ -375,9 +375,10 @@
          {#if inputItems.accept_terms}
             <FormRow>
                <ToggleCheck 
-                  label="I have read and accept the privacy policy and terms of service." 
+                  label={inputItems.accept_terms.label}
                   name="accept_terms" 
-                  required size="sm"
+                  required={inputItems.accept_terms.required} 
+                  size="sm" 
                />
             </FormRow>
          {/if}
