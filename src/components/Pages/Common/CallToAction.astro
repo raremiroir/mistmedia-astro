@@ -8,19 +8,72 @@ import Card from "@/components/Common/Card/Card.svelte";
 import Svg from "@/components/Media/Svg/Svg.svelte";
 
 import { gaps } from "@/consts/style";
+import { locale } from "@/stores";
+
+
+const translations: {
+   [key:string]: any
+} = {
+   nl: {
+      section_slug: 'start-nu',
+      title: "Zin om te beginnen?",
+      contact_us: {
+         title: "Contacteer Ons!",
+         subtitle: "Aarzel zeker niet om ons een berichtje te sturen als u vragen heeft of als u een gratis offerte wilt aanvragen. We horen graag van je!",
+         slug: "contact",
+         icon: "EnvelopeSend"
+      },
+      check_services: {
+         title: "Onze Diensten",
+         subtitle: "Ontdek hoe we je kunnen helpen om je doelen te bereiken. We bieden een breed scala aan diensten aan.",
+         slug: "solutions",
+         icon: "PortfolioCards"
+      },
+      calculate_price: {
+         title: "Prijscalculator",
+         subtitle: "Bereken een prijsschatting voor uw project met onze prijscalculator. Het is gratis en vrijblijvend.",
+         slug: "prijscalculator",
+         icon: "EnvelopeSend"
+      }
+   },
+   en: {
+      section_slug: 'start-now',
+      title: "Ready to kick off?",
+      contact_us: {
+         title: "Let's Get In Touch",
+         subtitle: "Definitely don't hesitate to get in touch with us if you have any questions or if you would like to request a free quote. We would love to hear from you!",
+         slug: "contact",
+         icon: "EnvelopeSend"
+      },
+      check_services: {
+         title: "Check out our services",
+         subtitle: "See what we can do for you and your business. We offer a wide range of services to help you achieve your goals.",
+         slug: "solutions",
+         icon: "PortfolioCards"
+      },
+      calculate_price: {
+         title: "Pricing calculator",
+         subtitle: "Calculate the price of your project in a few clicks. It's easy and it's free!",
+         slug: "quote-calculator",
+         icon: "EnvelopeSend"
+      }
+   }
+}
+
 
 let ctaCards:{[key:string]:string}[] = [];
 /* @ts-ignore */
-Object.keys(t("home:cta")).forEach((key) => {
+Object.keys(translations[locale.get()]).forEach((key) => {
 	if (
       key !== 'title'
+   && key !== 'section_slug'
    && key !== 'calculate_price' // TODO: remove when price calculator is ready
    ) {
 		ctaCards.push({
-			title: t(`home:cta.${key}.title`),
-			subtitle: t(`home:cta.${key}.subtitle`),
-			icon: 'DevicesResponsive',
-         slug: t(`home:cta.${key}.slug`)
+			title: translations[locale.get()][key].title,
+			subtitle: translations[locale.get()][key].subtitle,
+			icon: translations[locale.get()][key].icon,
+         slug: translations[locale.get()][key].slug
 		})
 	}
 });
@@ -29,7 +82,7 @@ const { alt } = Astro.props;
 ---
 
 <!-- CTA -->
-<Section alt={alt} name={t('site:pages.home.sections.cta')} title={`${t("home:cta.title")}`}>
+<Section alt={alt} name={translations[locale.get()].section_slug} title={translations[locale.get()].title}>
    <div class={`grid grid-cols-1 md:grid-cols-2 ${gaps}`}>
       {ctaCards.map((item) => (
          <><a class="unstyled" href={`/${item.slug}`}><Card client:idle block hover active fillHeight>
