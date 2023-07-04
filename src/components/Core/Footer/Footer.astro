@@ -43,24 +43,24 @@ const footerLinks: {
 		links: [
 			{ 
 				title: {
-					nl: 'Antwerpen, België',
-					en: 'Antwerp, Belgium',
+					nl: 'Via het formulier',
+					en: 'Through the form',
 				},
-				icon: 'ph:map-pin-line-duotone', 
+				icon: 'ph:clipboard-text-duotone', 
 				link: {
 					nl: 'contact',
-					en: 'en/contact',
+					en: '/en/contact',
 				}
 			},
 			{ 
-				title: 'miro@mistmedia.be', 
+				title: { nl: 'miro@mistmedia.be', en: 'miro@mistmedia.be'}, 
 				icon: 'ph:envelope-duotone', 
-				link: 'mailto:miro@mistmedia.be' 
+				link: {nl: 'mailto:miro@mistmedia.be', en: 'mailto:miro@mistmedia.be'} 
 			},
 			{ 
-				title: '+32 484 340 391', 
+				title: { nl: '+32 484 34 03 91', en: '+32 484 34 03 91'}, 
 				icon: 'ph:phone-duotone', 
-				link: 'tel:0032484340391' 
+				link: {nl: 'tel:+32484340391', en: 'tel:+32484340391'}
 			} 
 	]
 	},
@@ -75,10 +75,10 @@ const footerLinks: {
 					nl: 'Web',
 					en: 'Web',
 				}, 
-				icon: 'ph:check-duotone', 
+				icon: 'ph:globe-simple-duotone', 
 				link: {
 					nl: 'solutions/web',
-					en: 'en/solutions/web',
+					en: '/en/solutions/web',
 				}, 
 			},
 			{ 
@@ -86,10 +86,10 @@ const footerLinks: {
 					nl: 'Grafisch Ontwerp',
 					en: 'Graphic Design',
 				},
-				icon: 'ph:check-duotone', 
+				icon: 'ph:palette-duotone', 
 				link: {
 					nl: 'solutions/grafisch-ontwerp',
-					en: 'en/solutions/graphic-design',
+					en: '/en/solutions/graphic-design',
 				}, 
 			},
 			{ 
@@ -97,10 +97,10 @@ const footerLinks: {
 					nl: 'Online Marketing',
 					en: 'Online Marketing',
 				},
-				icon: 'ph:check-duotone', 
+				icon: 'ph:rocket-launch-duotone', 
 				link: {
 					nl: 'solutions/online-marketing',
-					en: 'en/solutions/online-marketing',
+					en: '/en/solutions/online-marketing',
 				}, 
 			},
 			{ 
@@ -108,10 +108,10 @@ const footerLinks: {
 					nl: '3D Visualisatie',
 					en: '3D Visualization',
 				},
-				icon: 'ph:check-duotone', 
+				icon: 'ph:cube-duotone', 
 				link: {
 					nl: 'solutions/3d',
-					en: 'en/solutions/3d',
+					en: '/en/solutions/3d',
 				}, 
 			},
 			{ 
@@ -119,21 +119,21 @@ const footerLinks: {
 					nl: 'Audiovisueel',
 					en: 'Audiovisual',
 				},
-				icon: 'ph:check-duotone', 
+				icon: 'ph:monitor-play-duotone', 
 				link: {
 					nl: 'solutions/audiovisueel',
-					en: 'en/solutions/audiovisual',
+					en: '/en/solutions/audiovisual',
 				},
 			},
 			{ 
 				title: {
-					nl: 'animIcon',
+					nl: 'AI',
 					en: 'AI',
 				},
-				icon: 'ph:check-duotone', 
+				icon: 'ph:robot-duotone', 
 				link: {
 					nl: 'solutions/artificiele-intelligentie',
-					en: 'en/solutions/artificial-intelligence',
+					en: '/en/solutions/artificial-intelligence',
 				}, 
 			 }
 	]},
@@ -151,7 +151,7 @@ const footerLinks: {
 				icon: 'ph:info-duotone', 
 				link: {
 					nl: 'over-ons',
-					en: 'en/about-us',
+					en: '/en/about-us',
 				},
 			},
 			{ 
@@ -162,7 +162,7 @@ const footerLinks: {
 				icon: 'ph:question-duotone', 
 				link: {
 					nl: '/#veelgestelde-vragen',
-					en: 'en/#faq',
+					en: '/en/#faq',
 				}
 			},
 			{ 
@@ -173,7 +173,7 @@ const footerLinks: {
 				icon: 'ph:lock-open-duotone', 
 				link: {
 					nl: 'privacybeleid',
-					en: 'en/privacy-policy',
+					en: '/en/privacy-policy',
 				}
 			},
 			{ 
@@ -184,7 +184,7 @@ const footerLinks: {
 				icon: 'ph:check-circle-duotone', 
 				link: {
 					nl: 'algemene-voorwaarden',
-					en: 'en/terms-and-conditions',
+					en: '/en/terms-and-conditions',
 				}
 			} 
 	]},
@@ -249,11 +249,11 @@ const footerLinks: {
 						class="capitalize">
 						{col.title[locale.get()]}
 					</Title>
-					<ul class="flex flex-col items-start justify-start gap-4">
+					<ul class="flex flex-col items-start justify-start gap-2">
 						{ col.links.map((link: any) => (
 							<li class="list-none">
 								<Link href={link.link[locale.get()]}>
-									<Icon slot="icon" name={link.icon} class="w-8 h-8" />
+									<Icon slot="icon" name={link.icon} class="w-auto h-6" />
 									{link.title[locale.get()]}
 								</Link>
 							</li>
