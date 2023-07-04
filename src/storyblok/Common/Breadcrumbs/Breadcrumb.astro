@@ -1,0 +1,16 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+
+---
+
+<div class="flex items-center justify-start gap-4">
+	<li class="crumb-separator" aria-hidden>/</li>
+	{ blok.haslink ? (
+		<li class="crumb"><a class="anchor" href={`/${blok.link.cached_url}`}>{blok.label}</a></li>
+	) : (
+		<li>{blok.label}</li>
+	)}
+</div>

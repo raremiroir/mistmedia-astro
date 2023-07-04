@@ -46,6 +46,8 @@ const config: AstroUserConfig = {
         typewriter: "storyblok/Utils/Typewriter",
         typewriter_multiple: "storyblok/Utils/TypewriterMultiple",
         // Common
+        breadcrumbs: "storyblok/Common/Breadcrumbs/Breadcrumbs",
+        breadcrumb: "storyblok/Common/Breadcrumbs/Breadcrumb",
         button: "storyblok/Common/Btn",
         button_social: "storyblok/Common/ButtonSocial",
         hero_about: "storyblok/Common/Heros/HeroAbout",
